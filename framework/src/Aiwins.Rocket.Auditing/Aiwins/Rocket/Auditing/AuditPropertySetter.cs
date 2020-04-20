@@ -54,7 +54,7 @@ namespace Aiwins.Rocket.Auditing {
                 }
             }
 
-            /* TODO: The code below is from old ABP, not implemented yet
+            /* TODO: The code below is from old Rocket, not implemented yet
                 if (tenantId.HasValue && MultiTenancyHelper.IsHostEntity(entity))
                 {
                     //Tenant user created a host entity
@@ -100,7 +100,7 @@ namespace Aiwins.Rocket.Auditing {
                 }
             }
 
-            /* TODO: The code below is from old ABP, not implemented yet
+            /* TODO: The code below is from old Rocket, not implemented yet
             if (tenantId.HasValue && MultiTenancyHelper.IsHostEntity(entity))
             {
                 //Tenant user modified a host entity

@@ -4,26 +4,21 @@ using Aiwins.Rocket.Localization;
 using Aiwins.Rocket.Modularity;
 using Aiwins.Rocket.VirtualFileSystem;
 
-namespace Aiwins.Rocket.Application
-{
-    [DependsOn(
-        typeof(RocketAuditingModule),
-        typeof(RocketLocalizationModule)
-        )]
-    public class RocketDddApplicationContractsModule : RocketModule
-    {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<RocketVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.AddEmbedded<RocketDddApplicationContractsModule>();
+namespace Aiwins.Rocket.Application {
+    [DependsOn (
+        typeof (RocketAuditingModule),
+        typeof (RocketLocalizationModule)
+    )]
+    public class RocketDddApplicationContractsModule : RocketModule {
+        public override void ConfigureServices (ServiceConfigurationContext context) {
+            Configure<RocketVirtualFileSystemOptions> (options => {
+                options.FileSets.AddEmbedded<RocketDddApplicationContractsModule> ();
             });
 
-            Configure<RocketLocalizationOptions>(options =>
-            {
+            Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<RocketDddApplicationContractsResource>("en")
-                    .AddVirtualJson("/Volo/Rocket/Application/Localization/Resources/RocketDdd");
+                    .Add<RocketDddApplicationContractsResource> ("en")
+                    .AddVirtualJson ("/Aiwins/Rocket/Application/Localization/Resources/RocketDdd");
             });
         }
     }

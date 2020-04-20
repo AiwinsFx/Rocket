@@ -1,13 +1,11 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Timing
-{
-    public interface IClock
-    {
+namespace Aiwins.Rocket.Timing {
+    public interface IClock {
         /// <summary>
         /// 获取现在的时间。
         /// </summary>
-        DateTime Now { get; }
+        DateTimeOffset Now { get; }
 
         /// <summary>
         /// 获取时区
@@ -20,10 +18,10 @@ namespace Aiwins.Rocket.Timing
         bool SupportsMultipleTimezone { get; }
 
         /// <summary>
-        /// 时间转换 <see cref="DateTime"/>.
+        /// 时间转换 <see cref="DateTimeOffset"/>.
         /// </summary>
         /// <param name="dateTime">待转换的时间</param>
         /// <returns>转换后的时间</returns>
-        DateTimeOffset Normalize(DateTimeOffset dateTime);
+        DateTimeOffset Normalize (DateTimeOffset dateTime);
     }
 }

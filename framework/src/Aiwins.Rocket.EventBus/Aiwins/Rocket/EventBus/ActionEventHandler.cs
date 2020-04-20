@@ -1,6 +1,7 @@
 using System;
 using System.Threading.Tasks;
 using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.EventBus.Local;
 
 namespace Aiwins.Rocket.EventBus {
     /// <summary>

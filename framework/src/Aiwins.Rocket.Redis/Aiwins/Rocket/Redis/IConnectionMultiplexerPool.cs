@@ -2,7 +2,7 @@
 using StackExchange.Redis;
 
 namespace Aiwins.Rocket.Redis {
-    public interface IConnectionPool : IDisposable {
+    public interface IConnectionMultiplexerPool : IDisposable {
         IConnectionMultiplexer Get (string connectionName = null);
     }
 }

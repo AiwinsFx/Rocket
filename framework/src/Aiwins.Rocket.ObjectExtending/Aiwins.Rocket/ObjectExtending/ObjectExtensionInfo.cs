@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Data;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.ObjectExtending
-{
-    public class ObjectExtensionInfo
-    {
+namespace Aiwins.Rocket.ObjectExtending {
+    public class ObjectExtensionInfo {
         [NotNull]
         public Type Type { get; }
 
@@ -17,62 +15,57 @@ namespace Aiwins.Rocket.ObjectExtending
         [NotNull]
         public Dictionary<object, object> Configuration { get; }
 
-        public ObjectExtensionInfo([NotNull] Type type)
-        {
-            Type = Check.AssignableTo<IHasExtraProperties>(type, nameof(type));
-            Properties = new Dictionary<string, ObjectExtensionPropertyInfo>();
-            Configuration = new Dictionary<object, object>();
+        [NotNull]
+        public List<Action<ObjectExtensionValidationContext>> Validators { get; }
+
+        public ObjectExtensionInfo ([NotNull] Type type) {
+            Type = Check.AssignableTo<IHasExtraProperties> (type, nameof (type));
+            Properties = new Dictionary<string, ObjectExtensionPropertyInfo> ();
+            Configuration = new Dictionary<object, object> ();
+            Validators = new List<Action<ObjectExtensionValidationContext>> ();
         }
 
-        public virtual bool HasProperty(string propertyName)
-        {
-            return Properties.ContainsKey(propertyName);
+        public virtual bool HasProperty (string propertyName) {
+            return Properties.ContainsKey (propertyName);
         }
 
         [NotNull]
-        public virtual ObjectExtensionInfo AddOrUpdateProperty<TProperty>(
-            [NotNull] string propertyName,
-            [CanBeNull] Action<ObjectExtensionPropertyInfo> configureAction = null)
-        {
-            return AddOrUpdateProperty(
-                typeof(TProperty),
+        public virtual ObjectExtensionInfo AddOrUpdateProperty<TProperty> (
+            [NotNull] string propertyName, [CanBeNull] Action<ObjectExtensionPropertyInfo> configureAction = null) {
+            return AddOrUpdateProperty (
+                typeof (TProperty),
                 propertyName,
                 configureAction
             );
         }
 
         [NotNull]
-        public virtual ObjectExtensionInfo AddOrUpdateProperty(
-            [NotNull] Type propertyType,
-            [NotNull] string propertyName,
-            [CanBeNull] Action<ObjectExtensionPropertyInfo> configureAction = null)
-        {
-            Check.NotNull(propertyType, nameof(propertyType));
-            Check.NotNull(propertyName, nameof(propertyName));
+        public virtual ObjectExtensionInfo AddOrUpdateProperty (
+            [NotNull] Type propertyType, [NotNull] string propertyName, [CanBeNull] Action<ObjectExtensionPropertyInfo> configureAction = null) {
+            Check.NotNull (propertyType, nameof (propertyType));
+            Check.NotNull (propertyName, nameof (propertyName));
 
-            var propertyInfo = Properties.GetOrAdd(
+            var propertyInfo = Properties.GetOrAdd (
                 propertyName,
-                () => new ObjectExtensionPropertyInfo(this, propertyType, propertyName)
+                () => new ObjectExtensionPropertyInfo (this, propertyType, propertyName)
             );
 
-            configureAction?.Invoke(propertyInfo);
+            configureAction?.Invoke (propertyInfo);
 
             return this;
         }
 
         [NotNull]
-        public virtual ImmutableList<ObjectExtensionPropertyInfo> GetProperties()
-        {
-            return Properties.Values.ToImmutableList();
+        public virtual ImmutableList<ObjectExtensionPropertyInfo> GetProperties () {
+            return Properties.Values.ToImmutableList ();
         }
 
         [CanBeNull]
-        public virtual ObjectExtensionPropertyInfo GetPropertyOrNull(
-            [NotNull] string propertyName)
-        {
-            Check.NotNullOrEmpty(propertyName, nameof(propertyName));
+        public virtual ObjectExtensionPropertyInfo GetPropertyOrNull (
+            [NotNull] string propertyName) {
+            Check.NotNullOrEmpty (propertyName, nameof (propertyName));
 
-            return Properties.GetOrDefault(propertyName);
+            return Properties.GetOrDefault (propertyName);
         }
     }
 }

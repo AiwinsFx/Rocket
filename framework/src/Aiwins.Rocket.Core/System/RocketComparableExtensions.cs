@@ -1,9 +1,9 @@
 namespace System
 {
     /// <summary>
-    /// Extension methods for <see cref="IComparable{T}"/>.
+    /// IComparable <see cref="IComparable{T}"/> 相关的扩展方法。
     /// </summary>
-    public static class AbpComparableExtensions
+    public static class RocketComparableExtensions
     {
         /// <summary>
         /// Checks a value is between a minimum and maximum value.

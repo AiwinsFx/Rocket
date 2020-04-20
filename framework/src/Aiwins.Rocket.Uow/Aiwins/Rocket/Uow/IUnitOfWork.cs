@@ -4,10 +4,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace Volo.Abp.Uow
-{
-    public interface IUnitOfWork : IDatabaseApiContainer, ITransactionApiContainer, IDisposable
-    {
+namespace Aiwins.Rocket.Uow {
+    public interface IUnitOfWork : IDatabaseApiContainer, ITransactionApiContainer, IDisposable {
         Guid Id { get; }
 
         Dictionary<string, object> Items { get; }
@@ -17,7 +15,7 @@ namespace Volo.Abp.Uow
 
         event EventHandler<UnitOfWorkEventArgs> Disposed;
 
-        IAbpUnitOfWorkOptions Options { get; }
+        IRocketUnitOfWorkOptions Options { get; }
 
         IUnitOfWork Outer { get; }
 
@@ -29,18 +27,18 @@ namespace Volo.Abp.Uow
 
         string ReservationName { get; }
 
-        void SetOuter([CanBeNull] IUnitOfWork outer);
+        void SetOuter ([CanBeNull] IUnitOfWork outer);
 
-        void Initialize([NotNull] AbpUnitOfWorkOptions options);
+        void Initialize ([NotNull] RocketUnitOfWorkOptions options);
 
-        void Reserve([NotNull] string reservationName);
+        void Reserve ([NotNull] string reservationName);
 
-        Task SaveChangesAsync(CancellationToken cancellationToken = default);
+        Task SaveChangesAsync (CancellationToken cancellationToken = default);
 
-        Task CompleteAsync(CancellationToken cancellationToken = default);
+        Task CompleteAsync (CancellationToken cancellationToken = default);
 
-        Task RollbackAsync(CancellationToken cancellationToken = default);
+        Task RollbackAsync (CancellationToken cancellationToken = default);
 
-        void OnCompleted(Func<Task> handler);
+        void OnCompleted (Func<Task> handler);
     }
 }

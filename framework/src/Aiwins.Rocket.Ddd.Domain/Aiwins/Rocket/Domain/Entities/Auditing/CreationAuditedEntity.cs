@@ -1,16 +1,14 @@
 using System;
 using Aiwins.Rocket.Auditing;
 
-namespace Aiwins.Rocket.Domain.Entities.Auditing
-{
+namespace Aiwins.Rocket.Domain.Entities.Auditing {
     /// <summary>
     /// This class can be used to simplify implementing <see cref="T:Aiwins.Rocket.Auditing.ICreationAuditedObject" /> for an entity.
     /// </summary>
     [Serializable]
-    public abstract class CreationAuditedEntity : Entity, ICreationAuditedObject
-    {
+    public abstract class CreationAuditedEntity : Entity, ICreationAuditedObject {
         /// <inheritdoc />
-        public virtual DateTime CreationTime { get; set; }
+        public virtual DateTimeOffset CreationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? CreatorId { get; set; }
@@ -21,22 +19,18 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing
     /// </summary>
     /// <typeparam name="TKey">Type of the primary key of the entity</typeparam>
     [Serializable]
-    public abstract class CreationAuditedEntity<TKey> : Entity<TKey>, ICreationAuditedObject
-    {
+    public abstract class CreationAuditedEntity<TKey> : Entity<TKey>, ICreationAuditedObject {
         /// <inheritdoc />
-        public virtual DateTime CreationTime { get; set; }
+        public virtual DateTimeOffset CreationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? CreatorId { get; set; }
 
-        protected CreationAuditedEntity()
-        {
+        protected CreationAuditedEntity () {
 
         }
 
-        protected CreationAuditedEntity(TKey id)
-            : base(id)
-        {
+        protected CreationAuditedEntity (TKey id) : base (id) {
 
         }
     }

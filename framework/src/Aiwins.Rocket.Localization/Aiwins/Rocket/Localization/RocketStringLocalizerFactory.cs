@@ -10,25 +10,24 @@ using Microsoft.Extensions.Options;
 namespace Aiwins.Rocket.Localization {
     public class RocketStringLocalizerFactory : IStringLocalizerFactory {
         private readonly ResourceManagerStringLocalizerFactory _innerFactory;
-        private readonly RocketLocalizationOptions _abpLocalizationOptions;
+        private readonly RocketLocalizationOptions _rocketLocalizationOptions;
         private readonly IServiceProvider _serviceProvider;
-
         private readonly ConcurrentDictionary<Type, StringLocalizerCacheItem> _localizerCache;
 
         //TODO: 考虑通过装饰器模式实现，而非ResourceManagerStringLocalizerFactory。
         public RocketStringLocalizerFactory (
             ResourceManagerStringLocalizerFactory innerFactory,
-            IOptions<RocketLocalizationOptions> abpLocalizationOptions,
+            IOptions<RocketLocalizationOptions> rocketLocalizationOptions,
             IServiceProvider serviceProvider) {
             _innerFactory = innerFactory;
             _serviceProvider = serviceProvider;
-            _abpLocalizationOptions = abpLocalizationOptions.Value;
+            _rocketLocalizationOptions = rocketLocalizationOptions.Value;
 
             _localizerCache = new ConcurrentDictionary<Type, StringLocalizerCacheItem> ();
         }
 
         public virtual IStringLocalizer Create (Type resourceType) {
-            var resource = _abpLocalizationOptions.Resources.GetOrDefault (resourceType);
+            var resource = _rocketLocalizationOptions.Resources.GetOrDefault (resourceType);
             if (resource == null) {
                 return _innerFactory.Create (resourceType);
             }
@@ -46,7 +45,7 @@ namespace Aiwins.Rocket.Localization {
         }
 
         private StringLocalizerCacheItem CreateStringLocalizerCacheItem (LocalizationResource resource) {
-            foreach (var globalContributor in _abpLocalizationOptions.GlobalContributors) {
+            foreach (var globalContributor in _rocketLocalizationOptions.GlobalContributors) {
                 resource.Contributors.Add ((ILocalizationResourceContributor) Activator.CreateInstance (globalContributor));
             }
 

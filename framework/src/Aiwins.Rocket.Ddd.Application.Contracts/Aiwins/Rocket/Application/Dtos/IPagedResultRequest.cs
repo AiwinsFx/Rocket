@@ -1,12 +1,10 @@
-namespace Aiwins.Rocket.Application.Dtos
-{
+namespace Aiwins.Rocket.Application.Dtos {
     /// <summary>
-    /// This interface is defined to standardize to request a paged result.
+    /// 请求分页
     /// </summary>
-    public interface IPagedResultRequest : ILimitedResultRequest
-    {
+    public interface IPagedResultRequest : ILimitedResultRequest {
         /// <summary>
-        /// Skip count (beginning of the page).
+        /// 分页跳过的数据数量
         /// </summary>
         int SkipCount { get; set; }
     }

@@ -1,33 +1,30 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Features
-{
+namespace Aiwins.Rocket.Features {
     /// <summary>
-    /// This attribute can be used on a class/method to declare that given class/method is available
-    /// only if required feature(s) are enabled.
+    /// 此属性可用于类/方法，以声明给定的类/方法可用
+    /// 仅当功能启用的时候
     /// </summary>
-    [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method)]
-    public class RequiresFeatureAttribute : Attribute
-    {
+    [AttributeUsage (AttributeTargets.Class | AttributeTargets.Method)]
+    public class RequiresFeatureAttribute : Attribute {
         /// <summary>
-        /// A list of features to be checked if they are enabled.
+        /// 功能集
         /// </summary>
         public string[] Features { get; }
 
         /// <summary>
-        /// If this property is set to true, all of the <see cref="Features"/> must be enabled.
-        /// If it's false, at least one of the <see cref="Features"/> must be enabled.
-        /// Default: false.
+        /// 如果设置为true，则功能集<see cref="Features"/> 所有功能都必须启用
+        /// 如果为false, 则功能集 <see cref="Features"/> 中至少保证有一个功能启用
+        /// 默认值: false.
         /// </summary>
         public bool RequiresAll { get; set; }
 
         /// <summary>
-        /// Creates a new instance of <see cref="RequiresFeatureAttribute"/> class.
+        /// 创建一个新的 <see cref="RequiresFeatureAttribute"/> 对象
         /// </summary>
-        /// <param name="features">A list of features to be checked if they are enabled</param>
-        public RequiresFeatureAttribute(params string[] features)
-        {
-            Features = features ?? Array.Empty<string>();
+        /// <param name="features">功能集</param>
+        public RequiresFeatureAttribute (params string[] features) {
+            Features = features ?? Array.Empty<string> ();
         }
     }
 }

@@ -132,9 +132,7 @@ namespace Aiwins.Rocket.EntityFrameworkCore {
         }
 
         public virtual void Initialize (RocketEfCoreDbContextInitializationContext initializationContext) {
-            if (initializationContext.UnitOfWork.Options.Timeout.HasValue &&
-                Database.IsRelational () &&
-                !Database.GetCommandTimeout ().HasValue) {
+            if (initializationContext.UnitOfWork.Options.Timeout.HasValue && Database.IsRelational () && !Database.GetCommandTimeout ().HasValue) {
                 Database.SetCommandTimeout (initializationContext.UnitOfWork.Options.Timeout.Value.TotalSeconds.To<int> ());
             }
 
@@ -411,8 +409,8 @@ namespace Aiwins.Rocket.EntityFrameworkCore {
 
                 var dateTimePropertyInfos = typeof (TEntity).GetProperties ()
                     .Where (property =>
-                        (property.PropertyType == typeof (DateTime) ||
-                            property.PropertyType == typeof (DateTime?)) &&
+                        (property.PropertyType == typeof (DateTimeOffset) ||
+                            property.PropertyType == typeof (DateTimeOffset?)) &&
                         property.CanWrite &&
                         !property.IsDefined (typeof (DisableDateTimeNormalizationAttribute), true)
                     ).ToList ();

@@ -1,13 +1,11 @@
 using System;
 
-namespace Aiwins.Rocket.Validation
-{
+namespace Aiwins.Rocket.Validation {
     /// <summary>
-    /// Can be added to a method to enable auto validation if validation is disabled for it's class.
+    /// 启用自动验证
     /// </summary>
-    [AttributeUsage(AttributeTargets.Method)]
-    public class EnableValidationAttribute : Attribute
-    {
+    [AttributeUsage (AttributeTargets.Method)]
+    public class EnableValidationAttribute : Attribute {
 
     }
 }

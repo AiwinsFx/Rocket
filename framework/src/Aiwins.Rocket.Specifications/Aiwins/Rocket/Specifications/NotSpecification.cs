@@ -3,24 +3,24 @@ using System.Linq.Expressions;
 
 namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents the specification which indicates the semantics opposite to the given specification.
+    /// Not规约
     /// </summary>
-    /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public class NotSpecification<T> : Specification<T> {
         private readonly ISpecification<T> _specification;
 
         /// <summary>
-        /// Initializes a new instance of <see cref="NotSpecification{T}"/> class.
+        /// 初始化一个新的规约对象 <see cref="NotSpecification{T}"/> 实例
         /// </summary>
-        /// <param name="specification">The specification to be reversed.</param>
+        /// <param name="specification">规约</param>
         public NotSpecification (ISpecification<T> specification) {
             _specification = specification;
         }
 
         /// <summary>
-        /// Gets the LINQ expression which represents the current specification.
+        /// 获取当前规约的LINQ表达式
         /// </summary>
-        /// <returns>The LINQ expression.</returns>
+        /// <returns>LINQ表达式</returns>
         public override Expression<Func<T, bool>> ToExpression () {
             var expression = _specification.ToExpression ();
             return Expression.Lambda<Func<T, bool>> (

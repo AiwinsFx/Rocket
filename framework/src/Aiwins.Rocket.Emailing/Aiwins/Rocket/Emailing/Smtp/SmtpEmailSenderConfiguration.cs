@@ -5,8 +5,8 @@ using Aiwins.Rocket.Settings;
 
 namespace Aiwins.Rocket.Emailing.Smtp {
     /// <summary>
-    /// Implementation of <see cref="ISmtpEmailSenderConfiguration"/> that reads settings
-    /// from <see cref="ISettingProvider"/>.
+    /// 实现了 <see cref="ISmtpEmailSenderConfiguration"/> 接口
+    /// 通过 <see cref="ISettingProvider"/> 获取配置信息
     /// </summary>
     public class SmtpEmailSenderConfiguration : EmailSenderConfiguration, ISmtpEmailSenderConfiguration, ITransientDependency {
         public SmtpEmailSenderConfiguration (ISettingProvider settingProvider) : base (settingProvider) {

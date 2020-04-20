@@ -17,19 +17,15 @@ namespace Aiwins.Rocket.Timing {
         public virtual bool SupportsMultipleTimezone => Options.Kind == DateTimeKind.Utc;
 
         public virtual DateTimeOffset Normalize (DateTimeOffset dateTime) {
-            if (Kind == DateTimeKind.Unspecified || Kind == dateTime.Kind) {
-                return dateTime;
-            }
-
-            if (Kind == DateTimeKind.Local && dateTime.Kind == DateTimeKind.Utc) {
+            if (Kind == DateTimeKind.Local) {
                 return dateTime.ToLocalTime ();
             }
 
-            if (Kind == DateTimeKind.Utc && dateTime.Kind == DateTimeKind.Local) {
+            if (Kind == DateTimeKind.Utc) {
                 return dateTime.ToUniversalTime ();
             }
 
-            return DateTime.SpecifyKind (dateTime, Kind);
+            return dateTime;
         }
     }
 }

@@ -3,7 +3,7 @@
     <LangVersion>latest</LangVersion>
     <Version>2.4.0</Version>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <PackageIconUrl>https://rocket.aiwins.cn/assets/abp_nupkg.png</PackageIconUrl>
+    <PackageIconUrl>https://rocket.aiwins.cn/assets/rocket_nupkg.png</PackageIconUrl>
     <PackageProjectUrl>https://rocket.aiwins.cn</PackageProjectUrl>
     <PackageLicenseUrl>https://github.com/aiwinsfx/rocket/blob/master/LICENSE</PackageLicenseUrl>
     <RepositoryType>git</RepositoryType>

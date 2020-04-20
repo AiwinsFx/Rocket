@@ -5,14 +5,14 @@ using Microsoft.Extensions.Options;
 using StackExchange.Redis;
 
 namespace Aiwins.Rocket.Redis {
-    public class ConnectionPool : IConnectionPool, ISingletonDependency {
+    public class ConnectionMultiplexerPool : IConnectionMultiplexerPool, ISingletonDependency {
         protected RocketRedisOptions Options { get; }
 
         protected ConcurrentDictionary<string, IConnectionMultiplexer> Connections { get; }
 
         private bool _isDisposed;
 
-        public ConnectionPool (IOptions<RocketRedisOptions> options) {
+        public ConnectionMultiplexerPool (IOptions<RocketRedisOptions> options) {
             Options = options.Value;
             Connections = new ConcurrentDictionary<string, IConnectionMultiplexer> ();
         }

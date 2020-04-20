@@ -1,16 +1,16 @@
 ﻿namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents that the implemented classes are composite specifications.
+    /// 组合规约
     /// </summary>
-    /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public interface ICompositeSpecification<T> : ISpecification<T> {
         /// <summary>
-        /// Gets the left side of the specification.
+        /// 左规约
         /// </summary>
         ISpecification<T> Left { get; }
 
         /// <summary>
-        /// Gets the right side of the specification.
+        /// 右规约
         /// </summary>
         ISpecification<T> Right { get; }
     }

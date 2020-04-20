@@ -4,52 +4,43 @@ using System.Reflection;
 using System.Threading.Tasks;
 using Aiwins.Rocket.DependencyInjection;
 
-namespace Aiwins.Rocket.Features
-{
-    public class MethodInvocationFeatureCheckerService : IMethodInvocationFeatureCheckerService, ITransientDependency
-    {
+namespace Aiwins.Rocket.Features {
+    public class MethodInvocationFeatureCheckerService : IMethodInvocationFeatureCheckerService, ITransientDependency {
         private readonly IFeatureChecker _featureChecker;
 
-        public MethodInvocationFeatureCheckerService(
-            IFeatureChecker featureChecker)
-        {
+        public MethodInvocationFeatureCheckerService (
+            IFeatureChecker featureChecker) {
             _featureChecker = featureChecker;
         }
 
-        public async Task CheckAsync(MethodInvocationFeatureCheckerContext context)
-        {
-            if (IsFeatureCheckDisabled(context))
-            {
+        public async Task CheckAsync (MethodInvocationFeatureCheckerContext context) {
+            if (IsFeatureCheckDisabled (context)) {
                 return;
             }
 
-            foreach (var requiresFeatureAttribute in GetRequiredFeatureAttributes(context.Method))
-            {
-                await _featureChecker.CheckEnabledAsync(requiresFeatureAttribute.RequiresAll, requiresFeatureAttribute.Features);
+            foreach (var requiresFeatureAttribute in GetRequiredFeatureAttributes (context.Method)) {
+                await _featureChecker.CheckEnabledAsync (requiresFeatureAttribute.RequiresAll, requiresFeatureAttribute.Features);
             }
         }
 
-        protected virtual bool IsFeatureCheckDisabled(MethodInvocationFeatureCheckerContext context)
-        {
+        protected virtual bool IsFeatureCheckDisabled (MethodInvocationFeatureCheckerContext context) {
             return context.Method
-                .GetCustomAttributes(true)
-                .OfType<DisableFeatureCheckAttribute>()
-                .Any();
+                .GetCustomAttributes (true)
+                .OfType<DisableFeatureCheckAttribute> ()
+                .Any ();
         }
 
-        protected virtual IEnumerable<RequiresFeatureAttribute> GetRequiredFeatureAttributes(MethodInfo methodInfo)
-        {
+        protected virtual IEnumerable<RequiresFeatureAttribute> GetRequiredFeatureAttributes (MethodInfo methodInfo) {
             var attributes = methodInfo
-                .GetCustomAttributes(true)
-                .OfType<RequiresFeatureAttribute>();
+                .GetCustomAttributes (true)
+                .OfType<RequiresFeatureAttribute> ();
 
-            if (methodInfo.IsPublic)
-            {
+            if (methodInfo.IsPublic) {
                 attributes = attributes
-                    .Union(
+                    .Union (
                         methodInfo.DeclaringType
-                            .GetCustomAttributes(true)
-                            .OfType<RequiresFeatureAttribute>()
+                        .GetCustomAttributes (true)
+                        .OfType<RequiresFeatureAttribute> ()
                     );
             }
 

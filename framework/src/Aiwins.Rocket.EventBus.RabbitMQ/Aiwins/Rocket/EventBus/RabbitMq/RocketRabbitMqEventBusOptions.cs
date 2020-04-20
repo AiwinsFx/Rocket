@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.EventBus.RabbitMq
-{
-    public class RocketRabbitMqEventBusOptions
-    {
+﻿namespace Aiwins.Rocket.EventBus.RabbitMq {
+    public class RocketRabbitMqEventBusOptions {
         public string ConnectionName { get; set; }
 
         public string ClientName { get; set; }

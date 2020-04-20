@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Aiwins.Rocket.Auditing;
+using Aiwins.Rocket.Data;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.Json;
@@ -107,7 +108,7 @@ namespace Aiwins.Rocket.EntityFrameworkCore.EntityHistory {
             return multiTenantEntity.TenantId;
         }
 
-        private DateTime GetChangeTime (EntityChangeInfo entityChange) {
+        private DateTimeOffset GetChangeTime (EntityChangeInfo entityChange) {
             var entity = entityChange.EntityEntry.As<EntityEntry> ().Entity;
             switch (entityChange.ChangeType) {
                 case EntityChangeType.Created:

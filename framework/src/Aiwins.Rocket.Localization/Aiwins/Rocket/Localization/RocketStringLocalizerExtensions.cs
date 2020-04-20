@@ -25,7 +25,7 @@ namespace Aiwins.Rocket.Localization {
                 );
 
             if (localizerField == null) {
-                throw new RocketException ($"Could not find the _localizer field inside the {typeof(StringLocalizer<>).FullName} class. Probably its name has changed. Please report this issue to the ABP framework.");
+                throw new RocketException ($"Could not find the _localizer field inside the {typeof(StringLocalizer<>).FullName} class. Probably its name has changed. Please report this issue to the Rocket framework.");
             }
 
             return localizerField.GetValue (stringLocalizer) as IStringLocalizer;

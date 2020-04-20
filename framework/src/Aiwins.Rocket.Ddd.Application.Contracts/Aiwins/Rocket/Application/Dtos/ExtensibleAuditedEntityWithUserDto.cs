@@ -2,35 +2,32 @@ using System;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Data;
 
-namespace Aiwins.Rocket.Application.Dtos
-{
+namespace Aiwins.Rocket.Application.Dtos {
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IAuditedObject"/> interface.
-    /// It has the <see cref="Creator"/> and <see cref="LastModifier"/> objects as a DTOs represent the related user.
-    /// It also implements the <see cref="IHasExtraProperties"/> interface.
+    /// 实现了 <see cref="IAuditedObject"/> 接口的实体映射对象
+    /// 拥有 <see cref="Creator"/> 和 <see cref="LastModifier"/> 等审计对象
+    /// 它同时实现了 <see cref="IHasExtraProperties"/> 接口。
     /// </summary>
-    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
-    /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
-    [Serializable]
-    public abstract class ExtensibleAuditedEntityWithUserDto<TPrimaryKey, TUserDto> : ExtensibleAuditedEntityDto<TPrimaryKey>, IAuditedObject<TUserDto>
-    {
-        /// <inheritdoc />
-        public TUserDto Creator { get; set; }
-
-        /// <inheritdoc />
-        public TUserDto LastModifier { get; set; }
-    }
-
-    /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IAuditedObject"/> interface.
-    /// It has the <see cref="Creator"/> and <see cref="LastModifier"/> objects as a DTOs represent the related user.
-    /// It also implements the <see cref="IHasExtraProperties"/> interface.
-    /// </summary>
-    /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
+    /// <typeparam name="TUserDto">用户映射实体类型</typeparam>
     [Serializable]
     public abstract class ExtensibleAuditedEntityWithUserDto<TUserDto> : ExtensibleAuditedEntityDto,
-        IAuditedObject<TUserDto>
-    {
+        IAuditedObject<TUserDto> {
+            /// <inheritdoc />
+            public TUserDto Creator { get; set; }
+
+            /// <inheritdoc />
+            public TUserDto LastModifier { get; set; }
+        }
+
+    /// <summary>
+    /// 实现了 <see cref="IAuditedObject"/> 接口的实体映射对象
+    /// 拥有 <see cref="Creator"/> 和 <see cref="LastModifier"/> 等审计对象
+    /// 它同时实现了 <see cref="IHasExtraProperties"/> 接口。
+    /// </summary>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
+    /// <typeparam name="TUserDto">用户映射实体类型</typeparam>
+    [Serializable]
+    public abstract class ExtensibleAuditedEntityWithUserDto<TPrimaryKey, TUserDto> : ExtensibleAuditedEntityDto<TPrimaryKey>, IAuditedObject<TUserDto> {
         /// <inheritdoc />
         public TUserDto Creator { get; set; }
 

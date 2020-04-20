@@ -3,10 +3,8 @@ using System.Linq.Expressions;
 
 namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents the parameter rebinder used for rebinding the parameters
-    /// for the given expressions. This is part of the solution which solves
-    /// the expression parameter problem when going to Entity Framework.
-    /// For more information about this solution please refer to http://blogs.msdn.com/b/meek/archive/2008/05/02/linq-to-entities-combining-predicates.aspx.
+    /// 参数绑定
+    /// 更多信息可参见 http://blogs.msdn.com/b/meek/archive/2008/05/02/linq-to-entities-combining-predicates.aspx.
     /// </summary>
     internal class ParameterRebinder : ExpressionVisitor {
         private readonly Dictionary<ParameterExpression, ParameterExpression> _map;

@@ -2,25 +2,21 @@ using System.Collections.Generic;
 using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 using Aiwins.Rocket;
+using JetBrains.Annotations;
 
-namespace System
-{
+namespace System {
     /// <summary>
-    /// Extension methods for String class.
+    /// string <see cref="string"/> 相关的扩展方法。
     /// </summary>
-    public static class AbpStringExtensions
-    {
+    public static class RocketStringExtensions {
         /// <summary>
-        /// Adds a char to end of given string if it does not ends with the char.
+        /// 如果字符串的结尾不是指定字符，则在该字符串的结尾添加一个指定的字符
         /// </summary>
-        public static string EnsureEndsWith(this string str, char c, StringComparison comparisonType = StringComparison.Ordinal)
-        {
-            Check.NotNull(str, nameof(str));
+        public static string EnsureEndsWith (this string str, char c, StringComparison comparisonType = StringComparison.Ordinal) {
+            Check.NotNull (str, nameof (str));
 
-            if (str.EndsWith(c.ToString(), comparisonType))
-            {
+            if (str.EndsWith (c.ToString (), comparisonType)) {
                 return str;
             }
 
@@ -28,14 +24,12 @@ namespace System
         }
 
         /// <summary>
-        /// Adds a char to beginning of given string if it does not starts with the char.
+        /// 如果字符串的开头不是指定字符，则在该字符串的开头添加一个指定的字符
         /// </summary>
-        public static string EnsureStartsWith(this string str, char c, StringComparison comparisonType = StringComparison.Ordinal)
-        {
-            Check.NotNull(str, nameof(str));
+        public static string EnsureStartsWith (this string str, char c, StringComparison comparisonType = StringComparison.Ordinal) {
+            Check.NotNull (str, nameof (str));
 
-            if (str.StartsWith(c.ToString(), comparisonType))
-            {
+            if (str.StartsWith (c.ToString (), comparisonType)) {
                 return str;
             }
 
@@ -43,66 +37,57 @@ namespace System
         }
 
         /// <summary>
-        /// Indicates whether this string is null or an System.String.Empty string.
+        /// 判断是否为空字符串.
         /// </summary>
-        public static bool IsNullOrEmpty(this string str)
-        {
-            return string.IsNullOrEmpty(str);
+        public static bool IsNullOrEmpty (this string str) {
+            return string.IsNullOrEmpty (str);
         }
 
         /// <summary>
-        /// indicates whether this string is null, empty, or consists only of white-space characters.
+        /// 判断是否为空字符串.
         /// </summary>
-        public static bool IsNullOrWhiteSpace(this string str)
-        {
-            return string.IsNullOrWhiteSpace(str);
+        public static bool IsNullOrWhiteSpace (this string str) {
+            return string.IsNullOrWhiteSpace (str);
         }
 
         /// <summary>
-        /// Gets a substring of a string from beginning of the string.
+        /// 截取字符串，保留左半边子字符串。
         /// </summary>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
-        /// <exception cref="ArgumentException">Thrown if <paramref name="len"/> is bigger that string's length</exception>
-        public static string Left(this string str, int len)
-        {
-            Check.NotNull(str, nameof(str));
+        /// <exception cref="ArgumentNullException">字符串 <paramref name="str"/> 为空抛出异常</exception>
+        /// <exception cref="ArgumentException">字符串长度小于指定截取长度<paramref name="len"/> 抛出异常</exception>
+        public static string Left (this string str, int len) {
+            Check.NotNull (str, nameof (str));
 
-            if (str.Length < len)
-            {
-                throw new ArgumentException("len argument can not be bigger than given string's length!");
+            if (str.Length < len) {
+                throw new ArgumentException ("len argument can not be bigger than given string's length!");
             }
 
-            return str.Substring(0, len);
+            return str.Substring (0, len);
         }
 
         /// <summary>
-        /// Converts line endings in the string to <see cref="Environment.NewLine"/>.
+        /// 将字符串中的换行符、空格替换为NewLine <see cref="Environment.NewLine"/>.
         /// </summary>
-        public static string NormalizeLineEndings(this string str)
-        {
-            return str.Replace("\r\n", "\n").Replace("\r", "\n").Replace("\n", Environment.NewLine);
+        public static string NormalizeLineEndings (this string str) {
+            return str.Replace ("\r\n", "\n").Replace ("\r", "\n").Replace ("\n", Environment.NewLine);
         }
 
         /// <summary>
-        /// Gets index of nth occurrence of a char in a string.
+        /// 查询指定字符在字符串中的索引位置.
         /// </summary>
-        /// <param name="str">source string to be searched</param>
-        /// <param name="c">Char to search in <see cref="str"/></param>
-        /// <param name="n">Count of the occurrence</param>
-        public static int NthIndexOf(this string str, char c, int n)
-        {
-            Check.NotNull(str, nameof(str));
+        /// <param name="str">字符串</param>
+        /// <param name="c">查询字符 <see cref="str"/></param>
+        /// <param name="n">字符的索引</param>
+        public static int NthIndexOf (this string str, char c, int n) {
+            Check.NotNull (str, nameof (str));
 
             var count = 0;
-            for (var i = 0; i < str.Length; i++)
-            {
-                if (str[i] != c)
-                {
+            for (var i = 0; i < str.Length; i++) {
+                if (str[i] != c) {
                     continue;
                 }
 
-                if ((++count) == n)
-                {
+                if ((++count) == n) {
                     return i;
                 }
             }
@@ -111,40 +96,34 @@ namespace System
         }
 
         /// <summary>
-        /// Removes first occurrence of the given postfixes from end of the given string.
+        /// 从字符串的末尾移除指定后缀（可选字符数组中第一个匹配到的位置截取）。
         /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="postFixes">one or more postfix.</param>
-        /// <returns>Modified string or the same string if it has not any of given postfixes</returns>
-        public static string RemovePostFix(this string str, params string[] postFixes)
-        {
-            return str.RemovePostFix(StringComparison.Ordinal, postFixes);
+        /// <param name="str">字符串</param>
+        /// <param name="postFixes">可选字符数组</param>
+        /// <returns>经过处理的字符串</returns>
+        public static string RemovePostFix (this string str, params string[] postFixes) {
+            return str.RemovePostFix (StringComparison.Ordinal, postFixes);
         }
 
         /// <summary>
-        /// Removes first occurrence of the given postfixes from end of the given string.
+        /// 从字符串的末尾移除指定后缀（可选字符数组中第一个匹配到的位置截取）。
         /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="comparisonType">String comparison type</param>
-        /// <param name="postFixes">one or more postfix.</param>
-        /// <returns>Modified string or the same string if it has not any of given postfixes</returns>
-        public static string RemovePostFix(this string str, StringComparison comparisonType, params string[] postFixes)
-        {
-            if (str.IsNullOrEmpty())
-            {
+        /// <param name="str">字符串</param>
+        /// <param name="comparisonType">比较类型</param>
+        /// <param name="postFixes">可选字符数组</param>
+        /// <returns>经过处理的字符串</returns>
+        public static string RemovePostFix (this string str, StringComparison comparisonType, params string[] postFixes) {
+            if (str.IsNullOrEmpty ()) {
                 return null;
             }
 
-            if (postFixes.IsNullOrEmpty())
-            {
+            if (postFixes.IsNullOrEmpty ()) {
                 return str;
             }
 
-            foreach (var postFix in postFixes)
-            {
-                if (str.EndsWith(postFix, comparisonType))
-                {
-                    return str.Left(str.Length - postFix.Length);
+            foreach (var postFix in postFixes) {
+                if (str.EndsWith (postFix, comparisonType)) {
+                    return str.Left (str.Length - postFix.Length);
                 }
             }
 
@@ -152,328 +131,281 @@ namespace System
         }
 
         /// <summary>
-        /// Removes first occurrence of the given prefixes from beginning of the given string.
+        /// 从字符串的开头移除子字符串（可选字符数组中第一个匹配到的位置截取）。
         /// </summary>
-        /// <param name="str">The string.</param>
-        /// <param name="preFixes">one or more prefix.</param>
-        /// <returns>Modified string or the same string if it has not any of given prefixes</returns>
-        public static string RemovePreFix(this string str, params string[] preFixes)
-        {
-            return str.RemovePreFix(StringComparison.Ordinal, preFixes);
+        /// <param name="str">字符串</param>
+        /// <param name="preFixes">可选字符数组</param>
+        /// <returns>经过处理的字符串</returns>
+        public static string RemovePreFix (this string str, params string[] preFixes) {
+            return str.RemovePreFix (StringComparison.Ordinal, preFixes);
         }
 
         /// <summary>
-        /// Removes first occurrence of the given prefixes from beginning of the given string.
+        /// 从字符串的开头移除子字符串（可选字符数组中第一个匹配到的位置截取）。
         /// </summary>
-        /// <param name="str">The string.</param>
+        /// <param name="str">字符串</param>
         /// <param name="comparisonType">String comparison type</param>
-        /// <param name="preFixes">one or more prefix.</param>
-        /// <returns>Modified string or the same string if it has not any of given prefixes</returns>
-        public static string RemovePreFix(this string str, StringComparison comparisonType, params string[] preFixes)
-        {
-            if (str.IsNullOrEmpty())
-            {
+        /// <param name="preFixes">可选字符数组</param>
+        /// <returns>经过处理的字符串</returns>
+        public static string RemovePreFix (this string str, StringComparison comparisonType, params string[] preFixes) {
+            if (str.IsNullOrEmpty ()) {
                 return null;
             }
 
-            if (preFixes.IsNullOrEmpty())
-            {
+            if (preFixes.IsNullOrEmpty ()) {
                 return str;
             }
 
-            foreach (var preFix in preFixes)
-            {
-                if (str.StartsWith(preFix, comparisonType))
-                {
-                    return str.Right(str.Length - preFix.Length);
+            foreach (var preFix in preFixes) {
+                if (str.StartsWith (preFix, comparisonType)) {
+                    return str.Right (str.Length - preFix.Length);
                 }
             }
 
             return str;
         }
 
-        public static string ReplaceFirst(this string str, string search, string replace, StringComparison comparisonType = StringComparison.Ordinal)
-        {
-            Check.NotNull(str, nameof(str));
+        public static string ReplaceFirst (this string str, string search, string replace, StringComparison comparisonType = StringComparison.Ordinal) {
+            Check.NotNull (str, nameof (str));
 
-            var pos = str.IndexOf(search, comparisonType);
-            if (pos < 0)
-            {
+            var pos = str.IndexOf (search, comparisonType);
+            if (pos < 0) {
                 return str;
             }
 
-            return str.Substring(0, pos) + replace + str.Substring(pos + search.Length);
+            return str.Substring (0, pos) + replace + str.Substring (pos + search.Length);
         }
 
         /// <summary>
-        /// Gets a substring of a string from end of the string.
+        /// 截取字符串，保留右半边子字符串。
         /// </summary>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
-        /// <exception cref="ArgumentException">Thrown if <paramref name="len"/> is bigger that string's length</exception>
-        public static string Right(this string str, int len)
-        {
-            Check.NotNull(str, nameof(str));
+        /// <exception cref="ArgumentNullException">字符串 <paramref name="str"/> 为空抛出异常</exception>
+        /// <exception cref="ArgumentException">字符串长度小于指定截取长度<paramref name="len"/> 抛出异常</exception>
+        public static string Right (this string str, int len) {
+            Check.NotNull (str, nameof (str));
 
-            if (str.Length < len)
-            {
-                throw new ArgumentException("len argument can not be bigger than given string's length!");
+            if (str.Length < len) {
+                throw new ArgumentException ("len argument can not be bigger than given string's length!");
             }
 
-            return str.Substring(str.Length - len, len);
+            return str.Substring (str.Length - len, len);
         }
 
         /// <summary>
-        /// Uses string.Split method to split given string by given separator.
+        /// 按照指定分隔符，通过 string.Split <see cref="string.Split"/> 方法将字符串分割生成数组。
         /// </summary>
-        public static string[] Split(this string str, string separator)
-        {
-            return str.Split(new[] { separator }, StringSplitOptions.None);
+        public static string[] Split (this string str, string separator) {
+            return str.Split (new [] { separator }, StringSplitOptions.None);
         }
 
         /// <summary>
-        /// Uses string.Split method to split given string by given separator.
+        /// 按照指定分隔符，通过 string.Split <see cref="string.Split"/> 方法将字符串分割生成数组。
         /// </summary>
-        public static string[] Split(this string str, string separator, StringSplitOptions options)
-        {
-            return str.Split(new[] { separator }, options);
+        public static string[] Split (this string str, string separator, StringSplitOptions options) {
+            return str.Split (new [] { separator }, options);
         }
 
         /// <summary>
-        /// Uses string.Split method to split given string by <see cref="Environment.NewLine"/>.
+        /// 按照分隔符 <see cref="Environment.NewLine"/>，通过 string.Split <see cref="string.Split"/> 方法将字符串分割生成数组。
         /// </summary>
-        public static string[] SplitToLines(this string str)
-        {
-            return str.Split(Environment.NewLine);
+        public static string[] SplitToLines (this string str) {
+            return str.Split (Environment.NewLine);
         }
 
         /// <summary>
-        /// Uses string.Split method to split given string by <see cref="Environment.NewLine"/>.
+        /// 按照分隔符 <see cref="Environment.NewLine"/>，通过 string.Split <see cref="string.Split"/> 方法将字符串分割生成数组。
         /// </summary>
-        public static string[] SplitToLines(this string str, StringSplitOptions options)
-        {
-            return str.Split(Environment.NewLine, options);
+        public static string[] SplitToLines (this string str, StringSplitOptions options) {
+            return str.Split (Environment.NewLine, options);
         }
 
         /// <summary>
-        /// Converts PascalCase string to camelCase string.
+        /// PascalCase字符串转换为camelCase字符串。
         /// </summary>
-        /// <param name="str">String to convert</param>
-        /// <param name="useCurrentCulture">set true to use current culture. Otherwise, invariant culture will be used.</param>
-        /// <returns>camelCase of the string</returns>
-        public static string ToCamelCase(this string str, bool useCurrentCulture = false)
-        {
-            if (string.IsNullOrWhiteSpace(str))
-            {
+        /// <param name="str">字符串</param>
+        /// <param name="useCurrentCulture">是否使用当前区域文化</param>
+        /// <returns>camelCase字符串</returns>
+        public static string ToCamelCase (this string str, bool useCurrentCulture = false) {
+            if (string.IsNullOrWhiteSpace (str)) {
                 return str;
             }
 
-            if (str.Length == 1)
-            {
-                return useCurrentCulture ? str.ToLower() : str.ToLowerInvariant();
+            if (str.Length == 1) {
+                return useCurrentCulture ? str.ToLower () : str.ToLowerInvariant ();
             }
 
-            return (useCurrentCulture ? char.ToLower(str[0]) : char.ToLowerInvariant(str[0])) + str.Substring(1);
+            return (useCurrentCulture ? char.ToLower (str[0]) : char.ToLowerInvariant (str[0])) + str.Substring (1);
         }
 
         /// <summary>
-        /// Converts given PascalCase/camelCase string to sentence (by splitting words by space).
-        /// Example: "ThisIsSampleSentence" is converted to "This is a sample sentence".
+        /// 将PascalCase/camelCase字符串转换为空格分割的单词。
+        /// 示例: "ThisIsSampleSentence" is converted to "This is a sample sentence"。
         /// </summary>
-        /// <param name="str">String to convert.</param>
-        /// <param name="useCurrentCulture">set true to use current culture. Otherwise, invariant culture will be used.</param>
-        public static string ToSentenceCase(this string str, bool useCurrentCulture = false)
-        {
-            if (string.IsNullOrWhiteSpace(str))
-            {
+        /// <param name="str">字符串</param>
+        /// <param name="useCurrentCulture">是否使用当前区域文化</param>
+        public static string ToSentenceCase (this string str, bool useCurrentCulture = false) {
+            if (string.IsNullOrWhiteSpace (str)) {
                 return str;
             }
 
-            return useCurrentCulture
-                ? Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLower(m.Value[1]))
-                : Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLowerInvariant(m.Value[1]));
+            return useCurrentCulture ?
+                Regex.Replace (str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLower (m.Value[1])) :
+                Regex.Replace (str, "[a-z][A-Z]", m => m.Value[0] + " " + char.ToLowerInvariant (m.Value[1]));
         }
 
         /// <summary>
-        /// Converts given PascalCase/camelCase string to kebab-case.
+        /// 将PascalCase/camelCase字符串转换为kebab-case字符串。
         /// </summary>
-        /// <param name="str">String to convert.</param>
-        /// <param name="useCurrentCulture">set true to use current culture. Otherwise, invariant culture will be used.</param>
-        public static string ToKebabCase(this string str, bool useCurrentCulture = false)
-        {
-            if (string.IsNullOrWhiteSpace(str))
-            {
+        /// <param name="str">字符串</param>
+        /// <param name="useCurrentCulture">是否使用当前区域文化</param>
+        public static string ToKebabCase (this string str, bool useCurrentCulture = false) {
+            if (string.IsNullOrWhiteSpace (str)) {
                 return str;
             }
 
-            str = str.ToCamelCase();
+            str = str.ToCamelCase ();
 
-            return useCurrentCulture
-                ? Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLower(m.Value[1]))
-                : Regex.Replace(str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLowerInvariant(m.Value[1]));
+            return useCurrentCulture ?
+                Regex.Replace (str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLower (m.Value[1])) :
+                Regex.Replace (str, "[a-z][A-Z]", m => m.Value[0] + "-" + char.ToLowerInvariant (m.Value[1]));
         }
 
         /// <summary>
-        /// Converts string to enum value.
+        /// 字符串转换为枚举值
         /// </summary>
-        /// <typeparam name="T">Type of enum</typeparam>
-        /// <param name="value">String value to convert</param>
-        /// <returns>Returns enum object</returns>
-        public static T ToEnum<T>(this string value)
-            where T : struct
-        {
-            Check.NotNull(value, nameof(value));
-            return (T)Enum.Parse(typeof(T), value);
+        /// <typeparam name="T">枚举类型</typeparam>
+        /// <param name="value">值</param>
+        /// <returns>枚举值</returns>
+        public static T ToEnum<T> (this string value)
+        where T : struct {
+            Check.NotNull (value, nameof (value));
+            return (T) Enum.Parse (typeof (T), value);
         }
 
         /// <summary>
-        /// Converts string to enum value.
+        /// 字符串转换为枚举值
         /// </summary>
-        /// <typeparam name="T">Type of enum</typeparam>
-        /// <param name="value">String value to convert</param>
-        /// <param name="ignoreCase">Ignore case</param>
-        /// <returns>Returns enum object</returns>
-        public static T ToEnum<T>(this string value, bool ignoreCase)
-            where T : struct
-        {
-            Check.NotNull(value, nameof(value));
-            return (T)Enum.Parse(typeof(T), value, ignoreCase);
+        /// <typeparam name="T">枚举类型</typeparam>
+        /// <param name="value">值</param>
+        /// <param name="ignoreCase">是否忽略大小写</param>
+        /// <returns>枚举值</returns>
+        public static T ToEnum<T> (this string value, bool ignoreCase)
+        where T : struct {
+            Check.NotNull (value, nameof (value));
+            return (T) Enum.Parse (typeof (T), value, ignoreCase);
         }
 
-        public static string ToMd5(this string str)
-        {
-            using (var md5 = MD5.Create())
-            {
-                var inputBytes = Encoding.UTF8.GetBytes(str);
-                var hashBytes = md5.ComputeHash(inputBytes);
+        public static string ToMd5 (this string str) {
+            using (var md5 = MD5.Create ()) {
+                var inputBytes = Encoding.UTF8.GetBytes (str);
+                var hashBytes = md5.ComputeHash (inputBytes);
 
-                var sb = new StringBuilder();
-                foreach (var hashByte in hashBytes)
-                {
-                    sb.Append(hashByte.ToString("X2"));
+                var sb = new StringBuilder ();
+                foreach (var hashByte in hashBytes) {
+                    sb.Append (hashByte.ToString ("X2"));
                 }
 
-                return sb.ToString();
+                return sb.ToString ();
             }
         }
 
         /// <summary>
-        /// Converts camelCase string to PascalCase string.
+        /// camelCase字符串转换为PascalCase字符串。
         /// </summary>
-        /// <param name="str">String to convert</param>
-        /// <param name="useCurrentCulture">set true to use current culture. Otherwise, invariant culture will be used.</param>
-        /// <returns>PascalCase of the string</returns>
-        public static string ToPascalCase(this string str, bool useCurrentCulture = false)
-        {
-            if (string.IsNullOrWhiteSpace(str))
-            {
+        /// <param name="str">字符串</param>
+        /// <param name="useCurrentCulture">是否使用当前区域文化</param>
+        /// <returns>PascalCase字符串</returns>
+        public static string ToPascalCase (this string str, bool useCurrentCulture = false) {
+            if (string.IsNullOrWhiteSpace (str)) {
                 return str;
             }
 
-            if (str.Length == 1)
-            {
-                return useCurrentCulture ? str.ToUpper() : str.ToUpperInvariant();
+            if (str.Length == 1) {
+                return useCurrentCulture ? str.ToUpper () : str.ToUpperInvariant ();
             }
 
-            return (useCurrentCulture ? char.ToUpper(str[0]) : char.ToUpperInvariant(str[0])) + str.Substring(1);
+            return (useCurrentCulture ? char.ToUpper (str[0]) : char.ToUpperInvariant (str[0])) + str.Substring (1);
         }
 
         /// <summary>
-        /// Gets a substring of a string from beginning of the string if it exceeds maximum length.
+        /// 截取指定长度的字符串，保留左边子字符串
         /// </summary>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
-        public static string Truncate(this string str, int maxLength)
-        {
-            if (str == null)
-            {
+        /// <exception cref="ArgumentNullException">字符串为空 <paramref name="str"/> 抛出异常</exception>
+        public static string Truncate (this string str, int maxLength) {
+            if (str == null) {
                 return null;
             }
 
-            if (str.Length <= maxLength)
-            {
+            if (str.Length <= maxLength) {
                 return str;
             }
 
-            return str.Left(maxLength);
+            return str.Left (maxLength);
         }
 
         /// <summary>
-        /// Gets a substring of a string from Ending of the string if it exceeds maximum length.
+        /// 截取指定长度的字符串，保留右边子字符串
         /// </summary>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
-        public static string TruncateFromBeginning(this string str, int maxLength)
-        {
-            if (str == null)
-            {
+        /// <exception cref="ArgumentNullException">字符串为空 <paramref name="str"/> 抛出异常</exception>
+        public static string TruncateFromBeginning (this string str, int maxLength) {
+            if (str == null) {
                 return null;
             }
 
-            if (str.Length <= maxLength)
-            {
+            if (str.Length <= maxLength) {
                 return str;
             }
 
-            return str.Right(maxLength);
+            return str.Right (maxLength);
         }
 
         /// <summary>
-        /// Gets a substring of a string from beginning of the string if it exceeds maximum length.
-        /// It adds a "..." postfix to end of the string if it's truncated.
-        /// Returning string can not be longer than maxLength.
+        /// 截取指定长度字符串，超出部分添加字符串后缀...
         /// </summary>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
-        public static string TruncateWithPostfix(this string str, int maxLength)
-        {
-            return TruncateWithPostfix(str, maxLength, "...");
+        /// <exception cref="ArgumentNullException">字符串为空 <paramref name="str"/> 抛出异常</exception>
+        public static string TruncateWithPostfix (this string str, int maxLength) {
+            return TruncateWithPostfix (str, maxLength, "...");
         }
 
         /// <summary>
-        /// Gets a substring of a string from beginning of the string if it exceeds maximum length.
-        /// It adds given <paramref name="postfix"/> to end of the string if it's truncated.
-        /// Returning string can not be longer than maxLength.
+        /// 截取指定长度字符串，超出部分添加后缀
         /// </summary>
-        /// <exception cref="ArgumentNullException">Thrown if <paramref name="str"/> is null</exception>
-        public static string TruncateWithPostfix(this string str, int maxLength, string postfix)
-        {
-            if (str == null)
-            {
+        /// <exception cref="ArgumentNullException">字符串为空 <paramref name="str"/> 抛出异常</exception>
+        public static string TruncateWithPostfix (this string str, int maxLength, string postfix) {
+            if (str == null) {
                 return null;
             }
 
-            if (str == string.Empty || maxLength == 0)
-            {
+            if (str == string.Empty || maxLength == 0) {
                 return string.Empty;
             }
 
-            if (str.Length <= maxLength)
-            {
+            if (str.Length <= maxLength) {
                 return str;
             }
 
-            if (maxLength <= postfix.Length)
-            {
-                return postfix.Left(maxLength);
+            if (maxLength <= postfix.Length) {
+                return postfix.Left (maxLength);
             }
 
-            return str.Left(maxLength - postfix.Length) + postfix;
+            return str.Left (maxLength - postfix.Length) + postfix;
         }
 
         /// <summary>
-        /// Converts given string to a byte array using <see cref="Encoding.UTF8"/> encoding.
+        /// 通过UTF8编码格式将字符串转换为字节数组。
         /// </summary>
-        public static byte[] GetBytes(this string str)
-        {
-            return str.GetBytes(Encoding.UTF8);
+        public static byte[] GetBytes (this string str) {
+            return str.GetBytes (Encoding.UTF8);
         }
 
         /// <summary>
-        /// Converts given string to a byte array using the given <paramref name="encoding"/>
+        /// 通过指定编码格式将字符串转换为字节数组。
         /// </summary>
-        public static byte[] GetBytes([NotNull] this string str, [NotNull] Encoding encoding)
-        {
-            Check.NotNull(str, nameof(str));
-            Check.NotNull(encoding, nameof(encoding));
+        public static byte[] GetBytes ([NotNull] this string str, [NotNull] Encoding encoding) {
+            Check.NotNull (str, nameof (str));
+            Check.NotNull (encoding, nameof (encoding));
 
-            return encoding.GetBytes(str);
+            return encoding.GetBytes (str);
         }
     }
 }

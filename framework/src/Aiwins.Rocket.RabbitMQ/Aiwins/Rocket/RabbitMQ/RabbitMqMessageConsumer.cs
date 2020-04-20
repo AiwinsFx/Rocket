@@ -18,7 +18,7 @@ namespace Aiwins.Rocket.RabbitMQ {
 
         protected IExceptionNotifier ExceptionNotifier { get; }
 
-        protected AbpTimer Timer { get; }
+        protected RocketTimer Timer { get; }
 
         protected ExchangeDeclareConfiguration Exchange { get; private set; }
 
@@ -36,7 +36,7 @@ namespace Aiwins.Rocket.RabbitMQ {
 
         public RabbitMqMessageConsumer (
             IConnectionPool connectionPool,
-            AbpTimer timer,
+            RocketTimer timer,
             IExceptionNotifier exceptionNotifier) {
             ConnectionPool = connectionPool;
             Timer = timer;
@@ -96,7 +96,7 @@ namespace Aiwins.Rocket.RabbitMQ {
                                 );
                                 break;
                             default:
-                                throw new AbpException ($"Unknown {nameof(QueueBindType)}: {command.Type}");
+                                throw new RocketException ($"Unknown {nameof(QueueBindType)}: {command.Type}");
                         }
 
                         QueueBindCommands.TryDequeue (out command);

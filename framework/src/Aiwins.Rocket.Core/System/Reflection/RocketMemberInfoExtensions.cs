@@ -1,52 +1,43 @@
 ﻿using System.Linq;
 
-namespace System.Reflection
-{
+namespace System.Reflection {
     /// <summary>
-    /// Extensions to <see cref="MemberInfo"/>.
+    /// MemberInfo <see cref="MemberInfo"/> 相关的扩展方法
     /// </summary>
-    public static class AbpMemberInfoExtensions
-    {
+    public static class RocketMemberInfoExtensions {
         /// <summary>
-        /// Gets a single attribute for a member.
+        /// 获取方法的特性 Attribute.
         /// </summary>
-        /// <typeparam name="TAttribute">Type of the attribute</typeparam>
-        /// <param name="memberInfo">The member that will be checked for the attribute</param>
-        /// <param name="inherit">Include inherited attributes</param>
-        /// <returns>Returns the attribute object if found. Returns null if not found.</returns>
-        public static TAttribute GetSingleAttributeOrNull<TAttribute>(this MemberInfo memberInfo, bool inherit = true)
-            where TAttribute : Attribute
-        {
-            if (memberInfo == null)
-            {
-                throw new ArgumentNullException(nameof(memberInfo));
+        /// <typeparam name="TAttribute">特性的类型</typeparam>
+        /// <param name="memberInfo">成员信息</param>
+        /// <param name="inherit">是否包含继承的特性</param>
+        /// <returns>返回查询到的Attribute，未查询到返回Null</returns>
+        public static TAttribute GetSingleAttributeOrNull<TAttribute> (this MemberInfo memberInfo, bool inherit = true)
+        where TAttribute : Attribute {
+            if (memberInfo == null) {
+                throw new ArgumentNullException (nameof (memberInfo));
             }
 
-            var attrs = memberInfo.GetCustomAttributes(typeof(TAttribute), inherit).ToArray();
-            if (attrs.Length > 0)
-            {
-                return (TAttribute)attrs[0];
+            var attrs = memberInfo.GetCustomAttributes (typeof (TAttribute), inherit).ToArray ();
+            if (attrs.Length > 0) {
+                return (TAttribute) attrs[0];
             }
 
             return default;
         }
 
-
-        public static TAttribute GetSingleAttributeOfTypeOrBaseTypesOrNull<TAttribute>(this Type type, bool inherit = true)
-            where TAttribute : Attribute
-        {
-            var attr = type.GetTypeInfo().GetSingleAttributeOrNull<TAttribute>();
-            if (attr != null)
-            {
+        public static TAttribute GetSingleAttributeOfTypeOrBaseTypesOrNull<TAttribute> (this Type type, bool inherit = true)
+        where TAttribute : Attribute {
+            var attr = type.GetTypeInfo ().GetSingleAttributeOrNull<TAttribute> ();
+            if (attr != null) {
                 return attr;
             }
 
-            if (type.GetTypeInfo().BaseType == null)
-            {
+            if (type.GetTypeInfo ().BaseType == null) {
                 return null;
             }
 
-            return type.GetTypeInfo().BaseType.GetSingleAttributeOfTypeOrBaseTypesOrNull<TAttribute>(inherit);
+            return type.GetTypeInfo ().BaseType.GetSingleAttributeOfTypeOrBaseTypesOrNull<TAttribute> (inherit);
         }
     }
 }

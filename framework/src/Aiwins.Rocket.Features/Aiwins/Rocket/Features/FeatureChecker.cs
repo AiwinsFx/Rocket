@@ -5,10 +5,8 @@ using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
-namespace Aiwins.Rocket.Features
-{
-    public class FeatureChecker : FeatureCheckerBase
-    {
+namespace Aiwins.Rocket.Features {
+    public class FeatureChecker : FeatureCheckerBase {
         protected RocketFeatureOptions Options { get; }
         protected IServiceProvider ServiceProvider { get; }
         protected IFeatureDefinitionManager FeatureDefinitionManager { get; }
@@ -16,48 +14,42 @@ namespace Aiwins.Rocket.Features
 
         private readonly Lazy<List<IFeatureValueProvider>> _providers;
 
-        public FeatureChecker(
+        public FeatureChecker (
             IOptions<RocketFeatureOptions> options,
             IServiceProvider serviceProvider,
-            IFeatureDefinitionManager featureDefinitionManager)
-        {
+            IFeatureDefinitionManager featureDefinitionManager) {
             ServiceProvider = serviceProvider;
             FeatureDefinitionManager = featureDefinitionManager;
 
             Options = options.Value;
 
-            _providers = new Lazy<List<IFeatureValueProvider>>(
+            _providers = new Lazy<List<IFeatureValueProvider>> (
                 () => Options
-                    .ValueProviders
-                    .Select(type => ServiceProvider.GetRequiredService(type) as IFeatureValueProvider)
-                    .ToList(),
+                .ValueProviders
+                .Select (type => ServiceProvider.GetRequiredService (type) as IFeatureValueProvider)
+                .ToList (),
                 true
             );
         }
-        
-        public override async Task<string> GetOrNullAsync(string name)
-        {
-            var featureDefinition = FeatureDefinitionManager.Get(name);
-            var providers = Enumerable
-                .Reverse(Providers);
 
-            if (featureDefinition.AllowedProviders.Any())
-            {
-                providers = providers.Where(p => featureDefinition.AllowedProviders.Contains(p.Name));
+        public override async Task<string> GetOrNullAsync (string name) {
+            var featureDefinition = FeatureDefinitionManager.Get (name);
+            var providers = Enumerable
+                .Reverse (Providers);
+
+            if (featureDefinition.AllowedProviders.Any ()) {
+                providers = providers.Where (p => featureDefinition.AllowedProviders.Contains (p.Name));
             }
 
-            return await GetOrNullValueFromProvidersAsync(providers, featureDefinition);
+            return await GetOrNullValueFromProvidersAsync (providers, featureDefinition);
         }
 
-        protected virtual async Task<string> GetOrNullValueFromProvidersAsync(
+        protected virtual async Task<string> GetOrNullValueFromProvidersAsync (
             IEnumerable<IFeatureValueProvider> providers,
-            FeatureDefinition feature)
-        {
-            foreach (var provider in providers)
-            {
-                var value = await provider.GetOrNullAsync(feature);
-                if (value != null)
-                {
+            FeatureDefinition feature) {
+            foreach (var provider in providers) {
+                var value = await provider.GetOrNullAsync (feature);
+                if (value != null) {
                     return value;
                 }
             }

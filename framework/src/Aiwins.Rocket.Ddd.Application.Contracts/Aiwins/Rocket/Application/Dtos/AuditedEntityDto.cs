@@ -1,30 +1,27 @@
 using System;
 using Aiwins.Rocket.Auditing;
 
-namespace Aiwins.Rocket.Application.Dtos
-{
+namespace Aiwins.Rocket.Application.Dtos {
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IAuditedObject"/> interface.
+    /// 实现了 <see cref="IAuditedObject"/> 接口的实体映射对象
     /// </summary>
     [Serializable]
-    public abstract class AuditedEntityDto : CreationAuditedEntityDto, IAuditedObject
-    {
+    public abstract class AuditedEntityDto : CreationAuditedEntityDto, IAuditedObject {
         /// <inheritdoc />
-        public DateTime? LastModificationTime { get; set; }
+        public DateTimeOffset? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public Guid? LastModifierId { get; set; }
     }
 
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IAuditedObject"/> interface.
+    /// 实现了 <see cref="IAuditedObject"/> 接口的实体映射对象
     /// </summary>
-    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     [Serializable]
-    public abstract class AuditedEntityDto<TPrimaryKey> : CreationAuditedEntityDto<TPrimaryKey>, IAuditedObject
-    {
+    public abstract class AuditedEntityDto<TPrimaryKey> : CreationAuditedEntityDto<TPrimaryKey>, IAuditedObject {
         /// <inheritdoc />
-        public DateTime? LastModificationTime { get; set; }
+        public DateTimeOffset? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public Guid? LastModifierId { get; set; }

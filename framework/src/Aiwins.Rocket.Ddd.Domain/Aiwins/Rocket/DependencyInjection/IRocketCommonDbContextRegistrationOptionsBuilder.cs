@@ -2,10 +2,8 @@ using System;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Aiwins.Rocket.DependencyInjection
-{
-    public interface IRocketCommonDbContextRegistrationOptionsBuilder
-    {
+namespace Aiwins.Rocket.DependencyInjection {
+    public interface IRocketCommonDbContextRegistrationOptionsBuilder {
         IServiceCollection Services { get; }
 
         /// <summary>
@@ -15,7 +13,7 @@ namespace Aiwins.Rocket.DependencyInjection
         /// Registers repositories only for aggregate root entities by default.
         /// set <see cref="includeAllEntities"/> to true to include all entities.
         /// </param>
-        IRocketCommonDbContextRegistrationOptionsBuilder AddDefaultRepositories(bool includeAllEntities = false);
+        IRocketCommonDbContextRegistrationOptionsBuilder AddDefaultRepositories (bool includeAllEntities = false);
 
         /// <summary>
         /// Registers default repositories for this DbContext.
@@ -26,7 +24,7 @@ namespace Aiwins.Rocket.DependencyInjection
         /// Registers repositories only for aggregate root entities by default.
         /// set <see cref="includeAllEntities"/> to true to include all entities.
         /// </param>
-        IRocketCommonDbContextRegistrationOptionsBuilder AddDefaultRepositories<TDefaultRepositoryDbContext>(bool includeAllEntities = false);
+        IRocketCommonDbContextRegistrationOptionsBuilder AddDefaultRepositories<TDefaultRepositoryDbContext> (bool includeAllEntities = false);
 
         /// <summary>
         /// Registers default repositories for this DbContext.
@@ -37,7 +35,7 @@ namespace Aiwins.Rocket.DependencyInjection
         /// Registers repositories only for aggregate root entities by default.
         /// set <see cref="includeAllEntities"/> to true to include all entities.
         /// </param>
-        IRocketCommonDbContextRegistrationOptionsBuilder AddDefaultRepositories(Type defaultRepositoryDbContextType, bool includeAllEntities = false);
+        IRocketCommonDbContextRegistrationOptionsBuilder AddDefaultRepositories (Type defaultRepositoryDbContextType, bool includeAllEntities = false);
 
         /// <summary>
         /// Registers custom repository for a specific entity.
@@ -45,7 +43,7 @@ namespace Aiwins.Rocket.DependencyInjection
         /// </summary>
         /// <typeparam name="TEntity">Entity type</typeparam>
         /// <typeparam name="TRepository">Repository type</typeparam>
-        IRocketCommonDbContextRegistrationOptionsBuilder AddRepository<TEntity, TRepository>();
+        IRocketCommonDbContextRegistrationOptionsBuilder AddRepository<TEntity, TRepository> ();
 
         /// <summary>
         /// Uses given class(es) for default repositories.
@@ -53,18 +51,18 @@ namespace Aiwins.Rocket.DependencyInjection
         /// <param name="repositoryImplementationType">Repository implementation type</param>
         /// <param name="repositoryImplementationTypeWithoutKey">Repository implementation type (without primary key)</param>
         /// <returns></returns>
-        IRocketCommonDbContextRegistrationOptionsBuilder SetDefaultRepositoryClasses([NotNull] Type repositoryImplementationType, [NotNull] Type repositoryImplementationTypeWithoutKey);
+        IRocketCommonDbContextRegistrationOptionsBuilder SetDefaultRepositoryClasses ([NotNull] Type repositoryImplementationType, [NotNull] Type repositoryImplementationTypeWithoutKey);
 
         /// <summary>
         /// Replaces given DbContext type with this DbContext type.
         /// </summary>
         /// <typeparam name="TOtherDbContext">The DbContext type to be replaced</typeparam>
-        IRocketCommonDbContextRegistrationOptionsBuilder ReplaceDbContext<TOtherDbContext>();
+        IRocketCommonDbContextRegistrationOptionsBuilder ReplaceDbContext<TOtherDbContext> ();
 
         /// <summary>
         /// Replaces given DbContext type with this DbContext type.
         /// </summary>
         /// <param name="otherDbContextType">The DbContext type to be replaced</param>
-        IRocketCommonDbContextRegistrationOptionsBuilder ReplaceDbContext(Type otherDbContextType);
+        IRocketCommonDbContextRegistrationOptionsBuilder ReplaceDbContext (Type otherDbContextType);
     }
 }

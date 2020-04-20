@@ -16,11 +16,7 @@ namespace Aiwins.Rocket.Redis {
 
         public override void OnApplicationShutdown (ApplicationShutdownContext context) {
             context.ServiceProvider
-                .GetRequiredService<IChannelPool> ()
-                .Dispose ();
-
-            context.ServiceProvider
-                .GetRequiredService<IConnectionPool> ()
+                .GetRequiredService<IConnectionMultiplexerPool> ()
                 .Dispose ();
         }
     }

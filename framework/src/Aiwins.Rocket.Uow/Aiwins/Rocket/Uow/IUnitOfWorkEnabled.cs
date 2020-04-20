@@ -1,6 +1,3 @@
-﻿namespace Volo.Abp.Uow
-{
-    public interface IUnitOfWorkEnabled
-    {
-    }
+﻿namespace Aiwins.Rocket.Uow {
+    public interface IUnitOfWorkEnabled { }
 }

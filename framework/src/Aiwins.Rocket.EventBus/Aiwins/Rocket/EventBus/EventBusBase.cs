@@ -7,6 +7,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Aiwins.Rocket.Collections;
 using Aiwins.Rocket.EventBus.Distributed;
+using Aiwins.Rocket.EventBus.Local;
 using Aiwins.Rocket.Reflection;
 using Microsoft.Extensions.DependencyInjection;
 

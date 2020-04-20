@@ -1,46 +1,41 @@
 ﻿using System.Globalization;
 using System.Linq;
 
-namespace System
-{
+namespace System {
     /// <summary>
-    /// Extension methods for all objects.
+    /// objects <see cref="objects"/> 相关的扩展方法。
     /// </summary>
-    public static class AbpObjectExtensions
-    {
+    public static class RocketObjectExtensions {
         /// <summary>
-        /// Used to simplify and beautify casting an object to a type. 
+        /// 将对象转换为指定类型的对象. 
         /// </summary>
-        /// <typeparam name="T">Type to be casted</typeparam>
-        /// <param name="obj">Object to cast</param>
-        /// <returns>Casted object</returns>
-        public static T As<T>(this object obj)
-            where T : class
-        {
-            return (T)obj;
+        /// <typeparam name="T">指定类型</typeparam>
+        /// <param name="obj">对象</param>
+        /// <returns>转换后的对象</returns>
+        public static T As<T> (this object obj)
+        where T : class {
+            return (T) obj;
         }
 
         /// <summary>
-        /// Converts given object to a value type using <see cref="Convert.ChangeType(object,System.Type)"/> method.
+        /// 通过Convert.ChangeType <see cref="Convert.ChangeType(object,System.Type)"/> 方法将对象进行转换.
         /// </summary>
-        /// <param name="obj">Object to be converted</param>
-        /// <typeparam name="T">Type of the target object</typeparam>
-        /// <returns>Converted object</returns>
-        public static T To<T>(this object obj)
-            where T : struct
-        {
-            return (T)Convert.ChangeType(obj, typeof(T), CultureInfo.InvariantCulture);
+        /// <param name="obj">对象</param>
+        /// <typeparam name="T">指定类型</typeparam>
+        /// <returns>转换后的对象</returns>
+        public static T To<T> (this object obj)
+        where T : struct {
+            return (T) Convert.ChangeType (obj, typeof (T), CultureInfo.InvariantCulture);
         }
 
         /// <summary>
-        /// Check if an item is in a list.
+        /// 检查对象是否在数组中存在.
         /// </summary>
-        /// <param name="item">Item to check</param>
-        /// <param name="list">List of items</param>
-        /// <typeparam name="T">Type of the items</typeparam>
-        public static bool IsIn<T>(this T item, params T[] list)
-        {
-            return list.Contains(item);
+        /// <param name="item">对象</param>
+        /// <param name="list">数组</param>
+        /// <typeparam name="T">数组子项的类型</typeparam>
+        public static bool IsIn<T> (this T item, params T[] list) {
+            return list.Contains (item);
         }
     }
 }

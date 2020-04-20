@@ -9,11 +9,11 @@ namespace Aiwins.Rocket.Json.Newtonsoft {
     public class RocketJsonIsoDateTimeConverter : IsoDateTimeConverter, ITransientDependency {
         private readonly IClock _clock;
 
-        public RocketJsonIsoDateTimeConverter (IClock clock, IOptions<RocketJsonOptions> abpJsonOptions) {
+        public RocketJsonIsoDateTimeConverter (IClock clock, IOptions<RocketJsonOptions> rocketJsonOptions) {
             _clock = clock;
 
-            if (abpJsonOptions.Value.DefaultDateTimeFormat != null) {
-                DateTimeFormat = abpJsonOptions.Value.DefaultDateTimeFormat;
+            if (rocketJsonOptions.Value.DefaultDateTimeFormat != null) {
+                DateTimeFormat = rocketJsonOptions.Value.DefaultDateTimeFormat;
             }
         }
 

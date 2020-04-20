@@ -5,13 +5,13 @@ using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiwins.Rocket.RabbitMQ {
     [DependsOn (
-        typeof (AbpJsonModule),
-        typeof (AbpThreadingModule)
+        typeof (RocketJsonModule),
+        typeof (RocketThreadingModule)
     )]
-    public class AbpRabbitMqModule : AbpModule {
+    public class RocketRabbitMqModule : RocketModule {
         public override void ConfigureServices (ServiceConfigurationContext context) {
             var configuration = context.Services.GetConfiguration ();
-            Configure<AbpRabbitMqOptions> (configuration.GetSection ("RabbitMQ"));
+            Configure<RocketRabbitMqOptions> (configuration.GetSection ("RabbitMQ"));
         }
 
         public override void OnApplicationShutdown (ApplicationShutdownContext context) {

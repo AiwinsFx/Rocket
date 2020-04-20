@@ -1,48 +1,40 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.DynamicProxy;
 using JetBrains.Annotations;
 using Microsoft.Extensions.Options;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.DynamicProxy;
 
-namespace Volo.Abp.Uow
-{
-    public class UnitOfWorkInterceptor : AbpInterceptor, ITransientDependency
-    {
+namespace Aiwins.Rocket.Uow {
+    public class UnitOfWorkInterceptor : RocketInterceptor, ITransientDependency {
         private readonly IUnitOfWorkManager _unitOfWorkManager;
-        private readonly AbpUnitOfWorkDefaultOptions _defaultOptions;
+        private readonly RocketUnitOfWorkDefaultOptions _defaultOptions;
 
-        public UnitOfWorkInterceptor(IUnitOfWorkManager unitOfWorkManager, IOptions<AbpUnitOfWorkDefaultOptions> options)
-        {
+        public UnitOfWorkInterceptor (IUnitOfWorkManager unitOfWorkManager, IOptions<RocketUnitOfWorkDefaultOptions> options) {
             _unitOfWorkManager = unitOfWorkManager;
             _defaultOptions = options.Value;
         }
 
-        public override async Task InterceptAsync(IAbpMethodInvocation invocation)
-        {
-            if (!UnitOfWorkHelper.IsUnitOfWorkMethod(invocation.Method, out var unitOfWorkAttribute))
-            {
-                await invocation.ProceedAsync();
+        public override async Task InterceptAsync (IRocketMethodInvocation invocation) {
+            if (!UnitOfWorkHelper.IsUnitOfWorkMethod (invocation.Method, out var unitOfWorkAttribute)) {
+                await invocation.ProceedAsync ();
                 return;
             }
 
-            using (var uow = _unitOfWorkManager.Begin(CreateOptions(invocation, unitOfWorkAttribute)))
-            {
-                await invocation.ProceedAsync();
-                await uow.CompleteAsync();
+            using (var uow = _unitOfWorkManager.Begin (CreateOptions (invocation, unitOfWorkAttribute))) {
+                await invocation.ProceedAsync ();
+                await uow.CompleteAsync ();
             }
         }
 
-        private AbpUnitOfWorkOptions CreateOptions(IAbpMethodInvocation invocation, [CanBeNull] UnitOfWorkAttribute unitOfWorkAttribute)
-        {
-            var options = new AbpUnitOfWorkOptions();
+        private RocketUnitOfWorkOptions CreateOptions (IRocketMethodInvocation invocation, [CanBeNull] UnitOfWorkAttribute unitOfWorkAttribute) {
+            var options = new RocketUnitOfWorkOptions ();
 
-            unitOfWorkAttribute?.SetOptions(options);
+            unitOfWorkAttribute?.SetOptions (options);
 
-            if (unitOfWorkAttribute?.IsTransactional == null)
-            {
-                options.IsTransactional = _defaultOptions.CalculateIsTransactional(
-                    autoValue: !invocation.Method.Name.StartsWith("Get", StringComparison.InvariantCultureIgnoreCase)
+            if (unitOfWorkAttribute?.IsTransactional == null) {
+                options.IsTransactional = _defaultOptions.CalculateIsTransactional (
+                    autoValue: !invocation.Method.Name.StartsWith ("Get", StringComparison.InvariantCultureIgnoreCase)
                 );
             }
 

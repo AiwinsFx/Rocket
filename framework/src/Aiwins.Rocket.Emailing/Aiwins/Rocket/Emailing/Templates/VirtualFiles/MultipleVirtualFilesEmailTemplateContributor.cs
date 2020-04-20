@@ -1,62 +1,51 @@
 ﻿using System;
 using System.Collections.Generic;
+using Aiwins.Rocket.VirtualFileSystem;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
-using Aiwins.Rocket.VirtualFileSystem;
 
-namespace Aiwins.Rocket.Emailing.Templates.VirtualFiles
-{
-    public class MultipleVirtualFilesEmailTemplateContributor : IEmailTemplateContributor
-    {
+namespace Aiwins.Rocket.Emailing.Templates.VirtualFiles {
+    public class MultipleVirtualFilesEmailTemplateContributor : IEmailTemplateContributor {
         private readonly string _virtualPath;
 
         private IVirtualFileProvider _virtualFileProvider;
 
         private Dictionary<string, string> _templateDictionary;
 
-        private readonly object _syncObj = new object();
+        private readonly object _syncObj = new object ();
 
-        public MultipleVirtualFilesEmailTemplateContributor(string virtualPath)
-        {
+        public MultipleVirtualFilesEmailTemplateContributor (string virtualPath) {
             _virtualPath = virtualPath;
         }
 
-        public void Initialize(EmailTemplateInitializationContext context)
-        {
-            _virtualFileProvider = context.ServiceProvider.GetRequiredService<IVirtualFileProvider>();
+        public void Initialize (EmailTemplateInitializationContext context) {
+            _virtualFileProvider = context.ServiceProvider.GetRequiredService<IVirtualFileProvider> ();
         }
 
-        public string GetOrNull(string cultureName)
-        {
-            return GetTemplateDictionary().GetOrDefault(cultureName);
+        public string GetOrNull (string cultureName) {
+            return GetTemplateDictionary ().GetOrDefault (cultureName);
         }
 
-        private Dictionary<string, string> GetTemplateDictionary()
-        {
+        private Dictionary<string, string> GetTemplateDictionary () {
             var dictionaries = _templateDictionary;
-            if (dictionaries != null)
-            {
+            if (dictionaries != null) {
                 return dictionaries;
             }
 
-            lock (_syncObj)
-            {
+            lock (_syncObj) {
                 dictionaries = _templateDictionary;
-                if (dictionaries != null)
-                {
+                if (dictionaries != null) {
                     return dictionaries;
                 }
 
-                _templateDictionary = new Dictionary<string, string>();
-                foreach (var file in _virtualFileProvider.GetDirectoryContents(_virtualPath))
-                {
-                    if (file.IsDirectory)
-                    {
+                _templateDictionary = new Dictionary<string, string> ();
+                foreach (var file in _virtualFileProvider.GetDirectoryContents (_virtualPath)) {
+                    if (file.IsDirectory) {
                         continue;
                     }
 
-                    // TODO: How to normalize file names?
-                    _templateDictionary.Add(file.Name.RemovePostFix(".tpl"), file.ReadAsString());
+                    // TODO: 考虑如何规范化文件名称?
+                    _templateDictionary.Add (file.Name.RemovePostFix (".tpl"), file.ReadAsString ());
                 }
 
                 dictionaries = _templateDictionary;

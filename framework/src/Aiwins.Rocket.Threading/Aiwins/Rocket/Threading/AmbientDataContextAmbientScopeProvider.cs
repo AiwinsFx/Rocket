@@ -5,78 +5,66 @@ using JetBrains.Annotations;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
-namespace Aiwins.Rocket.Threading
-{
-    public class AmbientDataContextAmbientScopeProvider<T> : IAmbientScopeProvider<T>
-    {
+namespace Aiwins.Rocket.Threading {
+    public class AmbientDataContextAmbientScopeProvider<T> : IAmbientScopeProvider<T> {
         public ILogger<AmbientDataContextAmbientScopeProvider<T>> Logger { get; set; }
 
-        private static readonly ConcurrentDictionary<string, ScopeItem> ScopeDictionary = new ConcurrentDictionary<string, ScopeItem>();
+        private static readonly ConcurrentDictionary<string, ScopeItem> ScopeDictionary = new ConcurrentDictionary<string, ScopeItem> ();
 
         private readonly IAmbientDataContext _dataContext;
 
-        public AmbientDataContextAmbientScopeProvider([NotNull] IAmbientDataContext dataContext)
-        {
-            Check.NotNull(dataContext, nameof(dataContext));
+        public AmbientDataContextAmbientScopeProvider ([NotNull] IAmbientDataContext dataContext) {
+            Check.NotNull (dataContext, nameof (dataContext));
 
             _dataContext = dataContext;
 
             Logger = NullLogger<AmbientDataContextAmbientScopeProvider<T>>.Instance;
         }
 
-        public T GetValue(string contextKey)
-        {
-            var item = GetCurrentItem(contextKey);
-            if (item == null)
-            {
+        public T GetValue (string contextKey) {
+            var item = GetCurrentItem (contextKey);
+            if (item == null) {
                 return default;
             }
 
             return item.Value;
         }
 
-        public IDisposable BeginScope(string contextKey, T value)
-        {
-            var item = new ScopeItem(value, GetCurrentItem(contextKey));
+        public IDisposable BeginScope (string contextKey, T value) {
+            var item = new ScopeItem (value, GetCurrentItem (contextKey));
 
-            if (!ScopeDictionary.TryAdd(item.Id, item))
-            {
-                throw new RocketException("Can not add item! ScopeDictionary.TryAdd returns false!");
+            if (!ScopeDictionary.TryAdd (item.Id, item)) {
+                throw new RocketException ("Can not add item! ScopeDictionary.TryAdd returns false!");
             }
 
-            _dataContext.SetData(contextKey, item.Id);
+            _dataContext.SetData (contextKey, item.Id);
 
-            return new DisposeAction(() =>
-            {
-                ScopeDictionary.TryRemove(item.Id, out item);
+            return new DisposeAction (() => {
+                ScopeDictionary.TryRemove (item.Id, out item);
 
-                if (item.Outer == null)
-                {
-                    _dataContext.SetData(contextKey, null);
+                if (item.Outer == null) {
+                    _dataContext.SetData (contextKey, null);
                     return;
                 }
 
-                _dataContext.SetData(contextKey, item.Outer.Id);
+                _dataContext.SetData (contextKey, item.Outer.Id);
             });
         }
 
-        private ScopeItem GetCurrentItem(string contextKey)
-        {
-            var objKey = _dataContext.GetData(contextKey) as string;
-            return objKey != null ? ScopeDictionary.GetOrDefault(objKey) : null;
+        private ScopeItem GetCurrentItem (string contextKey) {
+            var objKey = _dataContext.GetData (contextKey) as string;
+            return objKey != null ? ScopeDictionary.GetOrDefault (objKey) : null;
         }
 
-        private class ScopeItem
-        {
+        private class ScopeItem {
             public string Id { get; }
 
             public ScopeItem Outer { get; }
 
             public T Value { get; }
 
-            public ScopeItem(T value, ScopeItem outer = null)
-            {
-                Id = Guid.NewGuid().ToString();
+            public ScopeItem (T value, ScopeItem outer = null) {
+                Id = Guid.NewGuid ().ToString ();
 
                 Value = value;
                 Outer = outer;

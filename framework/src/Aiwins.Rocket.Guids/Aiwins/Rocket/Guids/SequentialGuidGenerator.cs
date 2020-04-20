@@ -40,14 +40,14 @@ namespace Aiwins.Rocket.Guids {
             // create the six-byte block which will be our timestamp.
 
             // We start with the number of milliseconds that have elapsed since
-            // DateTime.MinValue.  This will form the timestamp.  There's no use
-            // being more specific than milliseconds, since DateTime.Now has
+            // DateTimeOffset.MinValue.  This will form the timestamp.  There's no use
+            // being more specific than milliseconds, since DateTimeOffset.Now has
             // limited resolution.
 
             // Using millisecond resolution for our 48-bit timestamp gives us
             // about 5900 years before the timestamp overflows and cycles.
             // Hopefully this should be sufficient for most purposes. :)
-            long timestamp = DateTime.UtcNow.Ticks / 10000L;
+            long timestamp = DateTimeOffset.UtcNow.Ticks / 10000L;
 
             // Then get the bytes
             byte[] timestampBytes = BitConverter.GetBytes (timestamp);

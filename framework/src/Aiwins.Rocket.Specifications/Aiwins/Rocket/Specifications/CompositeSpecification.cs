@@ -1,11 +1,11 @@
 ﻿namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents the base class for composite specifications.
+    /// 复合规约基类
     /// </summary>
-    /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public abstract class CompositeSpecification<T> : Specification<T>, ICompositeSpecification<T> {
         /// <summary>
-        /// Constructs a new instance of <see cref="CompositeSpecification{T}"/> class.
+        /// 初始化一个新的复合规约 <see cref="CompositeSpecification{T}"/> 实例
         /// </summary>
         /// <param name="left">The first specification.</param>
         /// <param name="right">The second specification.</param>
@@ -15,12 +15,12 @@
         }
 
         /// <summary>
-        /// Gets the first specification.
+        /// 左规约
         /// </summary>
         public ISpecification<T> Left { get; }
 
         /// <summary>
-        /// Gets the second specification.
+        /// 右规约
         /// </summary>
         public ISpecification<T> Right { get; }
     }

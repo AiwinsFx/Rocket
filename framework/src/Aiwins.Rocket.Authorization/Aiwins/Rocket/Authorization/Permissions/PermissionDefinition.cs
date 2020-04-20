@@ -27,7 +27,7 @@ namespace Aiwins.Rocket.Authorization.Permissions {
         /// 权限提供集合
         /// 集合为空，则不限制提供者
         /// </summary>
-        public List<string> Providers { get; } //TODO: Rename to AllowedProviders?
+        public List<string> Providers { get; } //TODO: 考虑重命名为AllowedProviders?
 
         public ILocalizableString DisplayName {
             get => _displayName;

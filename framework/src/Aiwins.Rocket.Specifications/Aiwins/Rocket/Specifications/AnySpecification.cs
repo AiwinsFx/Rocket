@@ -3,10 +3,9 @@ using System.Linq.Expressions;
 
 namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// 组合表达式
-    /// 任何一个表达式被给定的对象满足
+    /// Any规约
     /// </summary>
-    /// <typeparam name="T">表达式类型</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public sealed class AnySpecification<T> : Specification<T> {
         /// <summary>
         /// 获取LINQ表达式

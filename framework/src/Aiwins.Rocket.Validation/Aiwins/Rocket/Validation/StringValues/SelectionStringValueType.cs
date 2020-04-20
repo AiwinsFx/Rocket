@@ -1,21 +1,16 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Validation.StringValues
-{
+namespace Aiwins.Rocket.Validation.StringValues {
     [Serializable]
-    [StringValueType("SELECTION")]
-    public class SelectionStringValueType : StringValueTypeBase
-    {
+    [StringValueType ("SELECTION")]
+    public class SelectionStringValueType : StringValueTypeBase {
         public ISelectionStringValueItemSource ItemSource { get; set; }
 
-        public SelectionStringValueType()
-        {
+        public SelectionStringValueType () {
 
         }
 
-        public SelectionStringValueType(IValueValidator validator)
-            : base(validator)
-        {
+        public SelectionStringValueType (IValueValidator validator) : base (validator) {
 
         }
     }

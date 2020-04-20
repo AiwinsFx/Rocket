@@ -1,18 +1,16 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Validation.StringValues
-{
-    public interface IValueValidator
-    {
+namespace Aiwins.Rocket.Validation.StringValues {
+    public interface IValueValidator {
         string Name { get; }
 
         [CanBeNull]
-        object this[string key] { get; set; }
+        object this [string key] { get; set; }
 
         [NotNull]
         IDictionary<string, object> Properties { get; }
 
-        bool IsValid(object value);
+        bool IsValid (object value);
     }
 }

@@ -1,22 +1,20 @@
 using System;
 using Aiwins.Rocket.Auditing;
 
-namespace Aiwins.Rocket.Domain.Entities.Auditing
-{
+namespace Aiwins.Rocket.Domain.Entities.Auditing {
     /// <summary>
     /// This class can be used to simplify implementing <see cref="IAuditedObject{TUser}"/>.
     /// </summary>
     /// <typeparam name="TUser">Type of the user</typeparam>
     [Serializable]
     public abstract class AuditedEntityWithUser<TUser> : AuditedEntity, IAuditedObject<TUser>
-        where TUser : IEntity<Guid>
-    {
-        /// <inheritdoc />
-        public virtual TUser Creator { get; set; }
+        where TUser : IEntity<Guid> {
+            /// <inheritdoc />
+            public virtual TUser Creator { get; set; }
 
-        /// <inheritdoc />
-        public virtual TUser LastModifier { get; set; }
-    }
+            /// <inheritdoc />
+            public virtual TUser LastModifier { get; set; }
+        }
 
     /// <summary>
     /// This class can be used to simplify implementing <see cref="IAuditedObject{TUser}"/>.
@@ -25,23 +23,19 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing
     /// <typeparam name="TUser">Type of the user</typeparam>
     [Serializable]
     public abstract class AuditedEntityWithUser<TKey, TUser> : AuditedEntity<TKey>, IAuditedObject<TUser>
-        where TUser : IEntity<Guid>
-    {
-        /// <inheritdoc />
-        public virtual TUser Creator { get; set; }
+        where TUser : IEntity<Guid> {
+            /// <inheritdoc />
+            public virtual TUser Creator { get; set; }
 
-        /// <inheritdoc />
-        public virtual TUser LastModifier { get; set; }
+            /// <inheritdoc />
+            public virtual TUser LastModifier { get; set; }
 
-        protected AuditedEntityWithUser()
-        {
+            protected AuditedEntityWithUser () {
 
+            }
+
+            protected AuditedEntityWithUser (TKey id) : base (id) {
+
+            }
         }
-
-        protected AuditedEntityWithUser(TKey id)
-            : base(id)
-        {
-
-        }
-    }
 }

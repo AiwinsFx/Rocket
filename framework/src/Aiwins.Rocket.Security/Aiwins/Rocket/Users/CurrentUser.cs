@@ -9,9 +9,7 @@ namespace Aiwins.Rocket.Users {
     public class CurrentUser : ICurrentUser, ITransientDependency {
         private static readonly Claim[] EmptyClaimsArray = new Claim[0];
 
-        // public virtual bool IsAuthenticated => Id.HasValue;
-
-        public virtual bool IsAuthenticated => _principalAccessor.Principal?.IsAuthenticated;
+        public virtual bool IsAuthenticated => Id.HasValue;
 
         public virtual Guid? Id => _principalAccessor.Principal?.FindUserId ();
 

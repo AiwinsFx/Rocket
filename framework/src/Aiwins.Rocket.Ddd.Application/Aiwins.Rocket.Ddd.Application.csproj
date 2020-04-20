@@ -19,7 +19,6 @@
     <ProjectReference Include="..\Aiwins.Rocket.Ddd.Application.Contracts\Aiwins.Rocket.Ddd.Application.Contracts.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Ddd.Domain\Aiwins.Rocket.Ddd.Domain.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Features\Aiwins.Rocket.Features.csproj" />
-    <ProjectReference Include="..\Aiwins.Rocket.Http.Abstractions\Aiwins.Rocket.Http.Abstractions.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Localization\Aiwins.Rocket.Localization.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.ObjectMapping\Aiwins.Rocket.ObjectMapping.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Security\Aiwins.Rocket.Security.csproj" />

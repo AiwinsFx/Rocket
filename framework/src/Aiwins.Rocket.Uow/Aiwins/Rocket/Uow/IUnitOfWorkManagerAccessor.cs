@@ -1,7 +1,5 @@
-﻿namespace Volo.Abp.Uow
-{
-    public interface IUnitOfWorkManagerAccessor
-    {
+﻿namespace Aiwins.Rocket.Uow {
+    public interface IUnitOfWorkManagerAccessor {
         IUnitOfWorkManager UnitOfWorkManager { get; }
     }
 }

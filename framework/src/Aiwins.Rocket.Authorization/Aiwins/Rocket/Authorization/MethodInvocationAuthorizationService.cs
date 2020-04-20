@@ -7,14 +7,14 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace Aiwins.Rocket.Authorization {
     public class MethodInvocationAuthorizationService : IMethodInvocationAuthorizationService, ITransientDependency {
-        private readonly IRocketAuthorizationPolicyProvider _abpAuthorizationPolicyProvider;
-        private readonly IRocketAuthorizationService _abpAuthorizationService;
+        private readonly IRocketAuthorizationPolicyProvider _rocketAuthorizationPolicyProvider;
+        private readonly IRocketAuthorizationService _rocketAuthorizationService;
 
         public MethodInvocationAuthorizationService (
-            IRocketAuthorizationPolicyProvider abpAuthorizationPolicyProvider,
-            IRocketAuthorizationService abpAuthorizationService) {
-            _abpAuthorizationPolicyProvider = abpAuthorizationPolicyProvider;
-            _abpAuthorizationService = abpAuthorizationService;
+            IRocketAuthorizationPolicyProvider rocketAuthorizationPolicyProvider,
+            IRocketAuthorizationService rocketAuthorizationService) {
+            _rocketAuthorizationPolicyProvider = rocketAuthorizationPolicyProvider;
+            _rocketAuthorizationService = rocketAuthorizationService;
         }
 
         public async Task CheckAsync (MethodInvocationAuthorizationContext context) {
@@ -23,7 +23,7 @@ namespace Aiwins.Rocket.Authorization {
             }
 
             var authorizationPolicy = await AuthorizationPolicy.CombineAsync (
-                _abpAuthorizationPolicyProvider,
+                _rocketAuthorizationPolicyProvider,
                 GetAuthorizationDataAttributes (context.Method)
             );
 
@@ -31,7 +31,7 @@ namespace Aiwins.Rocket.Authorization {
                 return;
             }
 
-            await _abpAuthorizationService.CheckAsync (authorizationPolicy);
+            await _rocketAuthorizationService.CheckAsync (authorizationPolicy);
         }
 
         protected virtual bool AllowAnonymous (MethodInvocationAuthorizationContext context) {

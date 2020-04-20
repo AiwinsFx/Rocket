@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Aiwins.Rocket.EventBus.Local;
 
 namespace Aiwins.Rocket.EventBus.Distributed {
     public sealed class NullDistributedEventBus : IDistributedEventBus {

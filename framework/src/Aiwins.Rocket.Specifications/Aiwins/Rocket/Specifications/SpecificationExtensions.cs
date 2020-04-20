@@ -3,13 +3,12 @@
 namespace Aiwins.Rocket.Specifications {
     public static class SpecificationExtensions {
         /// <summary>
-        /// Combines the current specification instance with another specification instance
-        /// and returns the combined specification which represents that both the current and
-        /// the given specification must be satisfied by the given object.
+        /// 将当前规约与另一个规约组合
+        /// 并返回同时满足当前规约和另一个规约的组合规约
         /// </summary>
-        /// <param name="specification">The specification</param>
-        /// <param name="other">The specification instance with which the current specification is combined.</param>
-        /// <returns>The combined specification instance.</returns>
+        /// <param name="specification">给定规约</param>
+        /// <param name="other">其他规约</param>
+        /// <returns>And规约实例</returns>
         public static ISpecification<T> And<T> ([NotNull] this ISpecification<T> specification, [NotNull] ISpecification<T> other) {
             Check.NotNull (specification, nameof (specification));
             Check.NotNull (other, nameof (other));
@@ -18,14 +17,12 @@ namespace Aiwins.Rocket.Specifications {
         }
 
         /// <summary>
-        /// Combines the current specification instance with another specification instance
-        /// and returns the combined specification which represents that either the current or
-        /// the given specification should be satisfied by the given object.
+        /// 将当前规约与另一个规约组合
+        /// 并返回满足当前规约或者满足另一个规约的组合规约
         /// </summary>
-        /// <param name="specification">The specification</param>
-        /// <param name="other">The specification instance with which the current specification
-        /// is combined.</param>
-        /// <returns>The combined specification instance.</returns>
+        /// <param name="specification">给定规约</param>
+        /// <param name="other">其他规约</param>
+        /// <returns>Or规约实例</returns>
         public static ISpecification<T> Or<T> ([NotNull] this ISpecification<T> specification, [NotNull] ISpecification<T> other) {
             Check.NotNull (specification, nameof (specification));
             Check.NotNull (other, nameof (other));
@@ -34,14 +31,12 @@ namespace Aiwins.Rocket.Specifications {
         }
 
         /// <summary>
-        /// Combines the current specification instance with another specification instance
-        /// and returns the combined specification which represents that the current specification
-        /// should be satisfied by the given object but the specified specification should not.
+        /// 将当前规约与另一个规约组合
+        /// 并返回满足当前规约而不满足另一个规约的组合规约
         /// </summary>
-        /// <param name="specification">The specification</param>
-        /// <param name="other">The specification instance with which the current specification
-        /// is combined.</param>
-        /// <returns>The combined specification instance.</returns>
+        /// <param name="specification">给定规约</param>
+        /// <param name="other">其他规约</param>
+        /// <returns>AndNot组合规约实例</returns>
         public static ISpecification<T> AndNot<T> ([NotNull] this ISpecification<T> specification, [NotNull] ISpecification<T> other) {
             Check.NotNull (specification, nameof (specification));
             Check.NotNull (other, nameof (other));
@@ -50,10 +45,9 @@ namespace Aiwins.Rocket.Specifications {
         }
 
         /// <summary>
-        /// Reverses the current specification instance and returns a specification which represents
-        /// the semantics opposite to the current specification.
+        /// 反转当前规约语义
         /// </summary>
-        /// <returns>The reversed specification instance.</returns>
+        /// <returns>Not规约实例（和给定的规约语义相反）</returns>
         public static ISpecification<T> Not<T> ([NotNull] this ISpecification<T> specification) {
             Check.NotNull (specification, nameof (specification));
 

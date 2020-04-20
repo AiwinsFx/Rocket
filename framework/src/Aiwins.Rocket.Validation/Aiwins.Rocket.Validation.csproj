@@ -15,8 +15,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="Volo\Rocket\Validation\Localization\*.json" />
-    <EmbeddedResource Include="Volo\Rocket\Validation\Localization\*.json" />
+    <None Remove="Aiwins\Rocket\Validation\Localization\*.json" />
+    <EmbeddedResource Include="Aiwins\Rocket\Validation\Localization\*.json" />
   </ItemGroup>
 
   <ItemGroup>

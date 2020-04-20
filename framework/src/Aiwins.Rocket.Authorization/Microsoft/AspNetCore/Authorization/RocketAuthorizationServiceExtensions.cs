@@ -114,11 +114,11 @@ namespace Microsoft.AspNetCore.Authorization {
         }
 
         private static IRocketAuthorizationService AsRocketAuthorizationService (this IAuthorizationService authorizationService) {
-            if (!(authorizationService is IRocketAuthorizationService abpAuthorizationService)) {
+            if (!(authorizationService is IRocketAuthorizationService rocketAuthorizationService)) {
                 throw new RocketException ($"{nameof(authorizationService)} should implement {typeof(IRocketAuthorizationService).FullName}");
             }
 
-            return abpAuthorizationService;
+            return rocketAuthorizationService;
         }
     }
 }

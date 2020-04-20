@@ -1,17 +1,16 @@
 ﻿namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents that the implemented classes are specification parsers that
-    /// parses the given specification to a domain specific criteria object, such 
-    /// as the <c>ICriteria</c> instance in NHibernate.
+    /// 将给定规约解析为特定领域的条件对象，
+    /// 比如满足NHibernate库中的 <c>ICriteria</c> 接口对象
     /// </summary>
-    /// <typeparam name="TCriteria">The type of the domain specific criteria.</typeparam>
+    /// <typeparam name="TCriteria">特定领域的条件对象类型</typeparam>
     public interface ISpecificationParser<out TCriteria> {
         /// <summary>
-        /// Parses the given specification to a domain specific criteria object.
+        /// 将给定规约解析为特定领域的条件对象。
         /// </summary>
-        /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
-        /// <param name="specification">The specified specification instance.</param>
-        /// <returns>The instance of the domain specific criteria.</returns>
+        /// <typeparam name="T">规约类型</typeparam>
+        /// <param name="specification">规约实例</param>
+        /// <returns>特定领域的条件对象</returns>
         TCriteria Parse<T> (ISpecification<T> specification);
     }
 }

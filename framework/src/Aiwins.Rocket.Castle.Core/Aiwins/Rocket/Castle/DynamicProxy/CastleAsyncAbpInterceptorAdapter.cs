@@ -8,8 +8,8 @@ namespace Aiwins.Rocket.Castle.DynamicProxy {
     where TInterceptor : IRocketInterceptor {
         private readonly TInterceptor _rocketInterceptor;
 
-        public CastleAsyncRocketInterceptorAdapter (TInterceptor abpInterceptor) {
-            _rocketInterceptor = abpInterceptor;
+        public CastleAsyncRocketInterceptorAdapter (TInterceptor rocketInterceptor) {
+            _rocketInterceptor = rocketInterceptor;
         }
 
         protected override async Task InterceptAsync (IInvocation invocation, IInvocationProceedInfo proceedInfo, Func<IInvocation, IInvocationProceedInfo, Task> proceed) {

@@ -1,11 +1,9 @@
-namespace Aiwins.Rocket.Application.Dtos
-{
+namespace Aiwins.Rocket.Application.Dtos {
     /// <summary>
-    /// This interface is defined to standardize to return a page of items to clients.
+    /// 数据分页
     /// </summary>
-    /// <typeparam name="T">Type of the items in the <see cref="IListResult{T}.Items"/> list</typeparam>
-    public interface IPagedResult<T> : IListResult<T>, IHasTotalCount
-    {
+    /// <typeparam name="T">集合的数据类型 <see cref="IListResult{T}.Items"/> list</typeparam>
+    public interface IPagedResult<T> : IListResult<T>, IHasTotalCount {
 
     }
 }

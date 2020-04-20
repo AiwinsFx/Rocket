@@ -15,8 +15,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Volo\Rocket\Application\Localization\Resources\RocketDdd\*.json" />
-    <Content Remove="Volo\Rocket\Application\Localization\Resources\RocketDdd\*.json" />
+    <EmbeddedResource Include="Aiwins\Rocket\Application\Localization\Resources\RocketDdd\*.json" />
+    <Content Remove="Aiwins\Rocket\Application\Localization\Resources\RocketDdd\*.json" />
   </ItemGroup>
 
   <ItemGroup>

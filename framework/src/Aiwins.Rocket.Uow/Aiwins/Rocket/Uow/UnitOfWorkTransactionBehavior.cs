@@ -1,7 +1,5 @@
-﻿namespace Volo.Abp.Uow
-{
-    public enum UnitOfWorkTransactionBehavior
-    {
+﻿namespace Aiwins.Rocket.Uow {
+    public enum UnitOfWorkTransactionBehavior {
         Auto,
 
         Enabled,

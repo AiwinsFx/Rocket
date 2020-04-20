@@ -1,14 +1,12 @@
 ﻿using System.Threading.Tasks;
 
-namespace Aiwins.Rocket.Emailing
-{
+namespace Aiwins.Rocket.Emailing {
     /// <summary>
-    /// Defines configurations used while sending emails.
+    /// 定义发送邮件的配置
     /// </summary>
-    public interface IEmailSenderConfiguration
-    {
-        Task<string> GetDefaultFromAddressAsync();
+    public interface IEmailSenderConfiguration {
+        Task<string> GetDefaultFromAddressAsync ();
 
-        Task<string> GetDefaultFromDisplayNameAsync();
+        Task<string> GetDefaultFromDisplayNameAsync ();
     }
 }

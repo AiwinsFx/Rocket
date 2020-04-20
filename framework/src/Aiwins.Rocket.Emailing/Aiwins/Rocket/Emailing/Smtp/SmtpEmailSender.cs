@@ -8,13 +8,13 @@ using Aiwins.Rocket.Threading;
 
 namespace Aiwins.Rocket.Emailing.Smtp {
     /// <summary>
-    /// Used to send emails over SMTP.
+    /// SMTP协议发送邮件
     /// </summary>
     public class SmtpEmailSender : EmailSenderBase, ISmtpEmailSender, ITransientDependency {
         protected ISmtpEmailSenderConfiguration SmtpConfiguration { get; }
 
         /// <summary>
-        /// Creates a new <see cref="SmtpEmailSender"/>.
+        /// 创建一个新的SMTP邮件发送 <see cref="SmtpEmailSender"/> 实例
         /// </summary>
         public SmtpEmailSender (
             ISmtpEmailSenderConfiguration smtpConfiguration,

@@ -33,7 +33,7 @@ namespace Aiwins.Rocket.BackgroundJobs.RabbitMQ {
         protected IExceptionNotifier ExceptionNotifier { get; }
 
         protected SemaphoreSlim SyncObj = new SemaphoreSlim (1, 1);
-        protected bool IsDiposed { get; private set; }
+        protected bool IsDisposed { get; private set; }
 
         public JobQueue (
             IOptions<RocketBackgroundJobOptions> backgroundJobOptions,
@@ -98,11 +98,11 @@ namespace Aiwins.Rocket.BackgroundJobs.RabbitMQ {
         }
 
         public virtual void Dispose () {
-            if (IsDiposed) {
+            if (IsDisposed) {
                 return;
             }
 
-            IsDiposed = true;
+            IsDisposed = true;
 
             ChannelAccessor?.Dispose ();
         }
@@ -179,7 +179,7 @@ namespace Aiwins.Rocket.BackgroundJobs.RabbitMQ {
         }
 
         protected void CheckDisposed () {
-            if (IsDiposed) {
+            if (IsDisposed) {
                 throw new RocketException ("This object is disposed!");
             }
         }

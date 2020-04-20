@@ -1,21 +1,19 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-namespace Aiwins.Rocket.Threading
-{
+namespace Aiwins.Rocket.Threading {
     /// <summary>
-    /// Interface to start/stop self threaded services.
+    /// 线程服务接口（包含启动和停止操作）
     /// </summary>
-    public interface IRunnable
-    {
+    public interface IRunnable {
         /// <summary>
-        /// Starts the service.
+        /// 启动服务
         /// </summary>
-        Task StartAsync(CancellationToken cancellationToken = default);
+        Task StartAsync (CancellationToken cancellationToken = default);
 
         /// <summary>
-        /// Stops the service.
+        /// 停止服务
         /// </summary>
-        Task StopAsync(CancellationToken cancellationToken = default);
+        Task StopAsync (CancellationToken cancellationToken = default);
     }
 }

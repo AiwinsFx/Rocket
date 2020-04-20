@@ -1,12 +1,10 @@
 using Aiwins.Rocket.DependencyInjection;
 
-namespace Aiwins.Rocket.Domain.Services
-{
+namespace Aiwins.Rocket.Domain.Services {
     /// <summary>
-    /// This interface must be implemented by all domain services to identify them by convention.
+    /// 此接口需要被所有的领域接口实现，以便按照约定注册和标识它们
     /// </summary>
-    public interface IDomainService : ITransientDependency
-    {
+    public interface IDomainService : ITransientDependency {
 
     }
 }

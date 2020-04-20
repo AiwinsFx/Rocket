@@ -1,26 +1,20 @@
 using System;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MultiTenancy;
 using Aiwins.Rocket.Timing;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
 
-namespace Aiwins.Rocket.Domain.Services
-{
-    public abstract class DomainService : IDomainService
-    {
+namespace Aiwins.Rocket.Domain.Services {
+    public abstract class DomainService : IDomainService {
         public IServiceProvider ServiceProvider { get; set; }
-        protected readonly object ServiceProviderLock = new object();
-        protected TService LazyGetRequiredService<TService>(ref TService reference)
-        {
-            if (reference == null)
-            {
-                lock (ServiceProviderLock)
-                {
-                    if (reference == null)
-                    {
-                        reference = ServiceProvider.GetRequiredService<TService>();
+        protected readonly object ServiceProviderLock = new object ();
+        protected TService LazyGetRequiredService<TService> (ref TService reference) {
+            if (reference == null) {
+                lock (ServiceProviderLock) {
+                    if (reference == null) {
+                        reference = ServiceProvider.GetRequiredService<TService> ();
                     }
                 }
             }
@@ -28,22 +22,21 @@ namespace Aiwins.Rocket.Domain.Services
             return reference;
         }
 
-        public IClock Clock => LazyGetRequiredService(ref _clock);
+        public IClock Clock => LazyGetRequiredService (ref _clock);
         private IClock _clock;
 
         public IGuidGenerator GuidGenerator { get; set; }
 
-        public ILoggerFactory LoggerFactory => LazyGetRequiredService(ref _loggerFactory);
+        public ILoggerFactory LoggerFactory => LazyGetRequiredService (ref _loggerFactory);
         private ILoggerFactory _loggerFactory;
-        
-        public ICurrentTenant CurrentTenant => LazyGetRequiredService(ref _currentTenant);
+
+        public ICurrentTenant CurrentTenant => LazyGetRequiredService (ref _currentTenant);
         private ICurrentTenant _currentTenant;
 
         protected ILogger Logger => _lazyLogger.Value;
-        private Lazy<ILogger> _lazyLogger => new Lazy<ILogger>(() => LoggerFactory?.CreateLogger(GetType().FullName) ?? NullLogger.Instance, true);
-        
-        protected DomainService()
-        {
+        private Lazy<ILogger> _lazyLogger => new Lazy<ILogger> (() => LoggerFactory?.CreateLogger (GetType ().FullName) ?? NullLogger.Instance, true);
+
+        protected DomainService () {
             GuidGenerator = SimpleGuidGenerator.Instance;
         }
     }

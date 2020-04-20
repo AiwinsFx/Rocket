@@ -1,17 +1,13 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Features
-{
+namespace Aiwins.Rocket.Features {
     [Serializable]
-    public class FeatureValue : NameValue
-    {
-        public FeatureValue()
-        {
+    public class FeatureValue : NameValue {
+        public FeatureValue () {
 
         }
 
-        public FeatureValue(string name, string value)
-        {
+        public FeatureValue (string name, string value) {
             Name = name;
             Value = value;
         }

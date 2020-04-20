@@ -1,4 +1,5 @@
 using System;
+using Aiwins.Rocket.Data;
 
 namespace Aiwins.Rocket.Auditing {
     /// <summary>

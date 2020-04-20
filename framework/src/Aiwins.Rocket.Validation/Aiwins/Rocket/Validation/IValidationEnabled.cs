@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Validation
-{
-    public interface IValidationEnabled
-    {
-        
+﻿namespace Aiwins.Rocket.Validation {
+    public interface IValidationEnabled {
+
     }
 }

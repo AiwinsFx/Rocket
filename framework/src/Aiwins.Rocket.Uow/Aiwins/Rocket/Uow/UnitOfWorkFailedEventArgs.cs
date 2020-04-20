@@ -1,32 +1,26 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Volo.Abp.Uow
-{
+namespace Aiwins.Rocket.Uow {
     /// <summary>
-    /// Used as event arguments on <see cref="IUnitOfWork.Failed"/> event.
+    /// 定义工作单元执行失败 <see cref="IUnitOfWork.Failed"/> 的事件。
     /// </summary>
-    public class UnitOfWorkFailedEventArgs : UnitOfWorkEventArgs
-    {
+    public class UnitOfWorkFailedEventArgs : UnitOfWorkEventArgs {
         /// <summary>
-        /// Exception that caused failure. This is set only if an error occurred during <see cref="IUnitOfWork.Complete"/>.
-        /// Can be null if there is no exception, but <see cref="IUnitOfWork.Complete"/> is not called. 
-        /// Can be null if another exception occurred during the UOW.
+        /// 工作单元执行失败的异常信息，执行完成阶段 <see cref="IUnitOfWork.Complete"/> 赋值。
         /// </summary>
         [CanBeNull]
         public Exception Exception { get; }
 
         /// <summary>
-        /// True, if the unit of work is manually rolled back.
+        /// 运用指定工作单元是否手动回滚
         /// </summary>
         public bool IsRolledback { get; }
 
         /// <summary>
-        /// Creates a new <see cref="UnitOfWorkFailedEventArgs"/> object.
+        /// 创建工作单元执行失败的事件参数 <see cref="UnitOfWorkFailedEventArgs"/> 对象。
         /// </summary>
-        public UnitOfWorkFailedEventArgs([NotNull] IUnitOfWork unitOfWork, [CanBeNull] Exception exception, bool isRolledback)
-            : base(unitOfWork)
-        {
+        public UnitOfWorkFailedEventArgs ([NotNull] IUnitOfWork unitOfWork, [CanBeNull] Exception exception, bool isRolledback) : base (unitOfWork) {
             Exception = exception;
             IsRolledback = isRolledback;
         }

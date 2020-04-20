@@ -1,13 +1,10 @@
 using System;
 
-namespace Aiwins.Rocket.Validation.StringValues
-{
+namespace Aiwins.Rocket.Validation.StringValues {
     [Serializable]
-    [ValueValidator("NULL")]
-    public class AlwaysValidValueValidator : ValueValidatorBase
-    {
-        public override bool IsValid(object value)
-        {
+    [ValueValidator ("NULL")]
+    public class AlwaysValidValueValidator : ValueValidatorBase {
+        public override bool IsValid (object value) {
             return true;
         }
     }

@@ -1,16 +1,14 @@
 using System;
 using Aiwins.Rocket.Auditing;
 
-namespace Aiwins.Rocket.Domain.Entities.Auditing
-{
+namespace Aiwins.Rocket.Domain.Entities.Auditing {
     /// <summary>
     /// This class can be used to simplify implementing <see cref="IAuditedObject"/>.
     /// </summary>
     [Serializable]
-    public abstract class AuditedEntity : CreationAuditedEntity, IAuditedObject
-    {
+    public abstract class AuditedEntity : CreationAuditedEntity, IAuditedObject {
         /// <inheritdoc />
-        public virtual DateTime? LastModificationTime { get; set; }
+        public virtual DateTimeOffset? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? LastModifierId { get; set; }
@@ -21,22 +19,18 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing
     /// </summary>
     /// <typeparam name="TKey">Type of the primary key of the entity</typeparam>
     [Serializable]
-    public abstract class AuditedEntity<TKey> : CreationAuditedEntity<TKey>, IAuditedObject
-    {
+    public abstract class AuditedEntity<TKey> : CreationAuditedEntity<TKey>, IAuditedObject {
         /// <inheritdoc />
-        public virtual DateTime? LastModificationTime { get; set; }
+        public virtual DateTimeOffset? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? LastModifierId { get; set; }
 
-        protected AuditedEntity()
-        {
+        protected AuditedEntity () {
 
         }
 
-        protected AuditedEntity(TKey id)
-            : base(id)
-        {
+        protected AuditedEntity (TKey id) : base (id) {
 
         }
     }

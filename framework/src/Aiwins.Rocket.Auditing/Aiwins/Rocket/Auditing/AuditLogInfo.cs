@@ -21,7 +21,7 @@ namespace Aiwins.Rocket.Auditing {
 
         public Guid? ImpersonatorTenantId { get; set; }
 
-        public DateTime ExecutionTime { get; set; }
+        public DateTimeOffset ExecutionTime { get; set; }
 
         public int ExecutionDuration { get; set; }
 

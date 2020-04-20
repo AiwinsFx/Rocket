@@ -1,14 +1,12 @@
 using System;
 using Aiwins.Rocket.Auditing;
 
-namespace Aiwins.Rocket.Domain.Entities.Auditing
-{
+namespace Aiwins.Rocket.Domain.Entities.Auditing {
     /// <summary>
     /// Implements <see cref="IFullAuditedObject"/> to be a base class for full-audited aggregate roots.
     /// </summary>
     [Serializable]
-    public abstract class FullAuditedAggregateRoot : AuditedAggregateRoot, IFullAuditedObject
-    {
+    public abstract class FullAuditedAggregateRoot : AuditedAggregateRoot, IFullAuditedObject {
         /// <inheritdoc />
         public virtual bool IsDeleted { get; set; }
 
@@ -16,7 +14,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing
         public virtual Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public virtual DateTime? DeletionTime { get; set; }
+        public virtual DateTimeOffset? DeletionTime { get; set; }
     }
 
     /// <summary>
@@ -24,8 +22,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing
     /// </summary>
     /// <typeparam name="TKey">Type of the primary key of the entity</typeparam>
     [Serializable]
-    public abstract class FullAuditedAggregateRoot<TKey> : AuditedAggregateRoot<TKey>, IFullAuditedObject
-    {
+    public abstract class FullAuditedAggregateRoot<TKey> : AuditedAggregateRoot<TKey>, IFullAuditedObject {
         /// <inheritdoc />
         public virtual bool IsDeleted { get; set; }
 
@@ -33,17 +30,14 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing
         public virtual Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public virtual DateTime? DeletionTime { get; set; }
+        public virtual DateTimeOffset? DeletionTime { get; set; }
 
-        protected FullAuditedAggregateRoot()
-        {
-            
+        protected FullAuditedAggregateRoot () {
+
         }
 
-        protected FullAuditedAggregateRoot(TKey id)
-        : base(id)
-        {
-            
+        protected FullAuditedAggregateRoot (TKey id) : base (id) {
+
         }
     }
 }

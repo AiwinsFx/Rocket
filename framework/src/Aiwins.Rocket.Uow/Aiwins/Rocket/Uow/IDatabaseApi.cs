@@ -1,7 +1,5 @@
-﻿namespace Volo.Abp.Uow
-{
-    public interface IDatabaseApi
-    {
-        
+﻿namespace Aiwins.Rocket.Uow {
+    public interface IDatabaseApi {
+
     }
 }

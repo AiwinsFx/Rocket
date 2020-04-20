@@ -1,12 +1,10 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Domain.Entities
-{
+namespace Aiwins.Rocket.Domain.Entities {
     /// <summary>
     /// This exception is thrown if an entity excepted to be found but not found.
     /// </summary>
-    public class EntityNotFoundException : RocketException
-    {
+    public class EntityNotFoundException : RocketException {
         /// <summary>
         /// Type of the entity.
         /// </summary>
@@ -20,39 +18,32 @@ namespace Aiwins.Rocket.Domain.Entities
         /// <summary>
         /// Creates a new <see cref="EntityNotFoundException"/> object.
         /// </summary>
-        public EntityNotFoundException()
-        {
+        public EntityNotFoundException () {
 
         }
 
         /// <summary>
         /// Creates a new <see cref="EntityNotFoundException"/> object.
         /// </summary>
-        public EntityNotFoundException(Type entityType)
-            : this(entityType, null, null)
-        {
+        public EntityNotFoundException (Type entityType) : this (entityType, null, null) {
 
         }
 
         /// <summary>
         /// Creates a new <see cref="EntityNotFoundException"/> object.
         /// </summary>
-        public EntityNotFoundException(Type entityType, object id)
-            : this(entityType, id, null)
-        {
+        public EntityNotFoundException (Type entityType, object id) : this (entityType, id, null) {
 
         }
 
         /// <summary>
         /// Creates a new <see cref="EntityNotFoundException"/> object.
         /// </summary>
-        public EntityNotFoundException(Type entityType, object id, Exception innerException)
-            : base(
-                id == null
-                    ? $"There is no such an entity given given id. Entity type: {entityType.FullName}"
-                    : $"There is no such an entity. Entity type: {entityType.FullName}, id: {id}",
-                innerException)
-        {
+        public EntityNotFoundException (Type entityType, object id, Exception innerException) : base (
+            id == null ?
+            $"There is no such an entity given given id. Entity type: {entityType.FullName}" :
+            $"There is no such an entity. Entity type: {entityType.FullName}, id: {id}",
+            innerException) {
             EntityType = entityType;
             Id = id;
         }
@@ -61,9 +52,7 @@ namespace Aiwins.Rocket.Domain.Entities
         /// Creates a new <see cref="EntityNotFoundException"/> object.
         /// </summary>
         /// <param name="message">Exception message</param>
-        public EntityNotFoundException(string message)
-            : base(message)
-        {
+        public EntityNotFoundException (string message) : base (message) {
 
         }
 
@@ -72,9 +61,7 @@ namespace Aiwins.Rocket.Domain.Entities
         /// </summary>
         /// <param name="message">Exception message</param>
         /// <param name="innerException">Inner exception</param>
-        public EntityNotFoundException(string message, Exception innerException)
-            : base(message, innerException)
-        {
+        public EntityNotFoundException (string message, Exception innerException) : base (message, innerException) {
 
         }
     }

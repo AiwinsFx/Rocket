@@ -1,14 +1,12 @@
 using System;
 using Aiwins.Rocket.Auditing;
 
-namespace Aiwins.Rocket.Application.Dtos
-{
+namespace Aiwins.Rocket.Application.Dtos {
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IFullAuditedObject"/> interface.
+    /// 实现了 <see cref="IFullAuditedObject"/> 接口的实体映射对象
     /// </summary>
     [Serializable]
-    public abstract class FullAuditedEntityDto : AuditedEntityDto, IFullAuditedObject
-    {
+    public abstract class FullAuditedEntityDto : AuditedEntityDto, IFullAuditedObject {
         /// <inheritdoc />
         public bool IsDeleted { get; set; }
 
@@ -16,16 +14,15 @@ namespace Aiwins.Rocket.Application.Dtos
         public Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public DateTime? DeletionTime { get; set; }
+        public DateTimeOffset? DeletionTime { get; set; }
     }
 
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IFullAuditedObject"/> interface.
+    /// 实现了 <see cref="IFullAuditedObject"/> 接口的实体映射对象
     /// </summary>
-    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
     [Serializable]
-    public abstract class FullAuditedEntityDto<TPrimaryKey> : AuditedEntityDto<TPrimaryKey>, IFullAuditedObject
-    {
+    public abstract class FullAuditedEntityDto<TPrimaryKey> : AuditedEntityDto<TPrimaryKey>, IFullAuditedObject {
         /// <inheritdoc />
         public bool IsDeleted { get; set; }
 
@@ -33,6 +30,6 @@ namespace Aiwins.Rocket.Application.Dtos
         public Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public DateTime? DeletionTime { get; set; }
+        public DateTimeOffset? DeletionTime { get; set; }
     }
 }

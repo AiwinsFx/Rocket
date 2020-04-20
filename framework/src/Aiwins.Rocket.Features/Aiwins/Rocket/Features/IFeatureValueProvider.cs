@@ -1,12 +1,10 @@
 ﻿using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Features
-{
-    public interface IFeatureValueProvider
-    {
+namespace Aiwins.Rocket.Features {
+    public interface IFeatureValueProvider {
         string Name { get; }
 
-        Task<string> GetOrNullAsync([NotNull] FeatureDefinition feature);
+        Task<string> GetOrNullAsync ([NotNull] FeatureDefinition feature);
     }
 }

@@ -1,11 +1,9 @@
-﻿namespace Aiwins.Rocket.Application.Services
-{
+﻿namespace Aiwins.Rocket.Application.Services {
     /// <summary>
-    /// This interface must be implemented by all application services to register and identify them by convention.
+    /// 此接口必须被所有的应用程序服务实现，以便按照约定注册和标识它们
     /// </summary>
-    public interface IApplicationService : 
-        IRemoteService
-    {
+    public interface IApplicationService:
+        IRemoteService {
 
-    }
+        }
 }

@@ -1,99 +1,91 @@
 ﻿using System.Linq.Expressions;
-using JetBrains.Annotations;
 using Aiwins.Rocket;
+using JetBrains.Annotations;
 
-namespace System.Linq
-{
+namespace System.Linq {
     /// <summary>
-    /// Some useful extension methods for <see cref="IQueryable{T}"/>.
+    /// IQueryable <see cref="IQueryable{T}"/> 相关的扩展方法
     /// </summary>
-    public static class AbpQueryableExtensions
-    {
+    public static class RocketQueryableExtensions {
         /// <summary>
-        /// Used for paging. Can be used as an alternative to Skip(...).Take(...) chaining.
+        /// IQueryable分页查询
         /// </summary>
-        public static IQueryable<T> PageBy<T>([NotNull] this IQueryable<T> query, int skipCount, int maxResultCount)
-        {
-            Check.NotNull(query, nameof(query));
+        public static IQueryable<T> PageBy<T> ([NotNull] this IQueryable<T> query, int skipCount, int maxResultCount) {
+            Check.NotNull (query, nameof (query));
 
-            return query.Skip(skipCount).Take(maxResultCount);
+            return query.Skip (skipCount).Take (maxResultCount);
         }
 
         /// <summary>
-        /// Used for paging. Can be used as an alternative to Skip(...).Take(...) chaining.
+        /// IQueryable分页查询
         /// </summary>
-        public static TQueryable PageBy<T, TQueryable>([NotNull] this TQueryable query, int skipCount, int maxResultCount)
-            where TQueryable : IQueryable<T>
-        {
-            Check.NotNull(query, nameof(query));
+        public static TQueryable PageBy<T, TQueryable> ([NotNull] this TQueryable query, int skipCount, int maxResultCount)
+        where TQueryable : IQueryable<T> {
+            Check.NotNull (query, nameof (query));
 
-            return (TQueryable) query.Skip(skipCount).Take(maxResultCount);
+            return (TQueryable) query.Skip (skipCount).Take (maxResultCount);
+        }
+        
+        /// <summary>
+        /// 当条件成立的时候根据指定表达式过滤 <see cref="IQueryable{T}"/> 。
+        /// </summary>
+        /// <param name="source">IEnumerable集合</param>
+        /// <param name="condition">条件是否满足</param>
+        /// <param name="predicate">集合过滤表达式</param>
+        /// <returns>根据条件 <paramref name="condition"/> 返回对应的查询表达式 <see cref="IQueryable{T}"/></returns>
+        public static IQueryable<T> WhereIf<T> ([NotNull] this IQueryable<T> query, bool condition, Expression<Func<T, bool>> predicate) {
+            Check.NotNull (query, nameof (query));
+
+            return condition ?
+                query.Where (predicate) :
+                query;
         }
 
         /// <summary>
-        /// Filters a <see cref="IQueryable{T}"/> by given predicate if given condition is true.
+        /// 当条件成立的时候根据指定表达式过滤 <see cref="IQueryable{T}"/> 。
         /// </summary>
-        /// <param name="query">Queryable to apply filtering</param>
-        /// <param name="condition">A boolean value</param>
-        /// <param name="predicate">Predicate to filter the query</param>
-        /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static IQueryable<T> WhereIf<T>([NotNull] this IQueryable<T> query, bool condition, Expression<Func<T, bool>> predicate)
-        {
-            Check.NotNull(query, nameof(query));
+        /// <param name="source">IEnumerable集合</param>
+        /// <param name="condition">条件是否满足</param>
+        /// <param name="predicate">集合过滤表达式</param>
+        /// <returns>根据条件 <paramref name="condition"/> 返回对应的查询表达式 <see cref="IQueryable{T}"/></returns>
+        public static TQueryable WhereIf<T, TQueryable> ([NotNull] this TQueryable query, bool condition, Expression<Func<T, bool>> predicate)
+        where TQueryable : IQueryable<T> {
+            Check.NotNull (query, nameof (query));
 
-            return condition
-                ? query.Where(predicate)
-                : query;
+            return condition ?
+                (TQueryable) query.Where (predicate) :
+                query;
         }
 
         /// <summary>
-        /// Filters a <see cref="IQueryable{T}"/> by given predicate if given condition is true.
+        /// 当条件成立的时候根据指定表达式过滤 <see cref="IQueryable{T}"/> 。
         /// </summary>
-        /// <param name="query">Queryable to apply filtering</param>
-        /// <param name="condition">A boolean value</param>
-        /// <param name="predicate">Predicate to filter the query</param>
-        /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static TQueryable WhereIf<T, TQueryable>([NotNull] this TQueryable query, bool condition, Expression<Func<T, bool>> predicate)
-            where TQueryable : IQueryable<T>
-        {
-            Check.NotNull(query, nameof(query));
+        /// <param name="source">IEnumerable集合</param>
+        /// <param name="condition">条件是否满足</param>
+        /// <param name="predicate">集合过滤表达式</param>
+        /// <returns>根据条件 <paramref name="condition"/> 返回对应的查询表达式 <see cref="IQueryable{T}"/></returns>
+        public static IQueryable<T> WhereIf<T> ([NotNull] this IQueryable<T> query, bool condition, Expression<Func<T, int, bool>> predicate) {
+            Check.NotNull (query, nameof (query));
 
-            return condition
-                ? (TQueryable) query.Where(predicate)
-                : query;
+            return condition ?
+                query.Where (predicate) :
+                query;
         }
 
         /// <summary>
-        /// Filters a <see cref="IQueryable{T}"/> by given predicate if given condition is true.
+        /// 当条件成立的时候根据指定表达式过滤 <see cref="IQueryable{T}"/> 。
         /// </summary>
-        /// <param name="query">Queryable to apply filtering</param>
-        /// <param name="condition">A boolean value</param>
-        /// <param name="predicate">Predicate to filter the query</param>
-        /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static IQueryable<T> WhereIf<T>([NotNull] this IQueryable<T> query, bool condition, Expression<Func<T, int, bool>> predicate)
-        {
-            Check.NotNull(query, nameof(query));
+        /// <param name="source">IEnumerable集合</param>
+        /// <param name="condition">条件是否满足</param>
+        /// <param name="predicate">集合过滤表达式</param>
+        /// <returns>根据条件 <paramref name="condition"/> 返回对应的查询表达式 <see cref="IQueryable{T}"/></returns>
+        public static TQueryable WhereIf<T, TQueryable> ([NotNull] this TQueryable query, bool condition, Expression<Func<T, int, bool>> predicate)
+        where TQueryable : IQueryable<T> {
+            Check.NotNull (query, nameof (query));
 
-            return condition
-                ? query.Where(predicate)
-                : query;
-        }
-
-        /// <summary>
-        /// Filters a <see cref="IQueryable{T}"/> by given predicate if given condition is true.
-        /// </summary>
-        /// <param name="query">Queryable to apply filtering</param>
-        /// <param name="condition">A boolean value</param>
-        /// <param name="predicate">Predicate to filter the query</param>
-        /// <returns>Filtered or not filtered query based on <paramref name="condition"/></returns>
-        public static TQueryable WhereIf<T, TQueryable>([NotNull] this TQueryable query, bool condition, Expression<Func<T, int, bool>> predicate)
-            where TQueryable : IQueryable<T>
-        {
-            Check.NotNull(query, nameof(query));
-
-            return condition
-                ? (TQueryable) query.Where(predicate)
-                : query;
+            return condition ?
+                (TQueryable) query.Where (predicate) :
+                query;
         }
     }
 }

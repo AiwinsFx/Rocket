@@ -19,8 +19,8 @@ namespace Aiwins.Rocket.MailKit {
 
         public MailKitSmtpEmailSender (ISmtpEmailSenderConfiguration smtpConfiguration,
             IBackgroundJobManager backgroundJobManager,
-            IOptions<RocketMailKitOptions> abpMailKitConfiguration) : base (smtpConfiguration, backgroundJobManager) {
-            RocketMailKitOptions = abpMailKitConfiguration.Value;
+            IOptions<RocketMailKitOptions> rocketMailKitConfiguration) : base (smtpConfiguration, backgroundJobManager) {
+            RocketMailKitOptions = rocketMailKitConfiguration.Value;
             SmtpConfiguration = smtpConfiguration;
         }
 

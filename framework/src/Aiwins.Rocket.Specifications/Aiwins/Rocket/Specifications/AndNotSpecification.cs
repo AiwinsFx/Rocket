@@ -3,16 +3,15 @@ using System.Linq.Expressions;
 
 namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// 组合表达式
-    /// 第一个表达式需要被给定的对象满足，而第二个表达式不能满足。
+    /// AndNot规约
     /// </summary>
-    /// <typeparam name="T">表达式类型</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public class AndNotSpecification<T> : CompositeSpecification<T> {
         /// <summary>
         /// 构造函数 <see cref="AndNotSpecification{T}"/>
         /// </summary>
-        /// <param name="left">第一个表达式</param>
-        /// <param name="right">第二个表达式</param>
+        /// <param name="left">左规约</param>
+        /// <param name="right">右规约</param>
         public AndNotSpecification (ISpecification<T> left, ISpecification<T> right) : base (left, right) { }
 
         /// <summary>

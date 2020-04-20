@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using JetBrains.Annotations;
 
 namespace Aiwins.Rocket.ObjectExtending {
@@ -12,6 +13,12 @@ namespace Aiwins.Rocket.ObjectExtending {
 
         [NotNull]
         public Type Type { get; }
+
+        [NotNull]
+        public List<ValidationAttribute> ValidationAttributes { get; }
+
+        [NotNull]
+        public List<Action<ObjectExtensionPropertyValidationContext>> Validators { get; }
 
         /// <summary>
         /// Indicates whether to check the other side of the object mapping
@@ -37,6 +44,8 @@ namespace Aiwins.Rocket.ObjectExtending {
             Name = Check.NotNull (name, nameof (name));
 
             Configuration = new Dictionary<object, object> ();
+            ValidationAttributes = new List<ValidationAttribute> ();
+            Validators = new List<Action<ObjectExtensionPropertyValidationContext>> ();
         }
     }
 }

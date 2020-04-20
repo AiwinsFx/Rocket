@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Validation.StringValues
-{
-    public class LocalizableSelectionStringValueItem : ISelectionStringValueItem
-    {
+﻿namespace Aiwins.Rocket.Validation.StringValues {
+    public class LocalizableSelectionStringValueItem : ISelectionStringValueItem {
         public string Value { get; set; }
 
         public LocalizableStringInfo DisplayText { get; set; }

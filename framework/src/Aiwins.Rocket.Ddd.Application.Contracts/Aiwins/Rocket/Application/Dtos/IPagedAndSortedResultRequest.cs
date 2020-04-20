@@ -1,10 +1,8 @@
-namespace Aiwins.Rocket.Application.Dtos
-{
+namespace Aiwins.Rocket.Application.Dtos {
     /// <summary>
-    /// This interface is defined to standardize to request a paged and sorted result.
+    /// 数据分页并排序
     /// </summary>
-    public interface IPagedAndSortedResultRequest : IPagedResultRequest, ISortedResultRequest
-    {
-        
+    public interface IPagedAndSortedResultRequest : IPagedResultRequest, ISortedResultRequest {
+
     }
 }

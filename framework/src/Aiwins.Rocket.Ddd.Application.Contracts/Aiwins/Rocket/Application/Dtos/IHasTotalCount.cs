@@ -1,12 +1,7 @@
-namespace Aiwins.Rocket.Application.Dtos
-{
-    /// <summary>
-    /// This interface is defined to standardize to set "Total Count of Items" to a DTO.
-    /// </summary>
-    public interface IHasTotalCount
-    {
+namespace Aiwins.Rocket.Application.Dtos {
+    public interface IHasTotalCount {
         /// <summary>
-        /// Total count of Items.
+        /// 数据总量
         /// </summary>
         long TotalCount { get; set; }
     }

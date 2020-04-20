@@ -1,7 +1,5 @@
-﻿namespace Volo.Abp.Uow
-{
-    public interface IAmbientUnitOfWork : IUnitOfWorkAccessor
-    {
+﻿namespace Aiwins.Rocket.Uow {
+    public interface IAmbientUnitOfWork : IUnitOfWorkAccessor {
 
     }
 }

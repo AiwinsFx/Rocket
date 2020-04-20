@@ -1,9 +1,7 @@
 using System.Reflection;
 
-namespace Aiwins.Rocket.Validation
-{
-    public class MethodInvocationValidationContext : RocketValidationResult
-    {
+namespace Aiwins.Rocket.Validation {
+    public class MethodInvocationValidationContext : RocketValidationResult {
         public object TargetObject { get; }
 
         public MethodInfo Method { get; }
@@ -12,12 +10,11 @@ namespace Aiwins.Rocket.Validation
 
         public ParameterInfo[] Parameters { get; }
 
-        public MethodInvocationValidationContext(object targetObject, MethodInfo method, object[] parameterValues)
-        {
+        public MethodInvocationValidationContext (object targetObject, MethodInfo method, object[] parameterValues) {
             TargetObject = targetObject;
             Method = method;
             ParameterValues = parameterValues;
-            Parameters = method.GetParameters();
+            Parameters = method.GetParameters ();
         }
     }
 }

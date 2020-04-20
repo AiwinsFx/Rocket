@@ -2,41 +2,41 @@
 
 namespace Aiwins.Rocket.Emailing.Smtp {
     /// <summary>
-    /// Defines configurations to used by SmtpClient object.
+    /// SmtpClient客户端配置
     /// </summary>
     public interface ISmtpEmailSenderConfiguration : IEmailSenderConfiguration {
         /// <summary>
-        /// SMTP Host name/IP.
+        /// SMTP 服务主机/IP地址
         /// </summary>
         Task<string> GetHostAsync ();
 
         /// <summary>
-        /// SMTP Port.
+        /// SMTP 端口号
         /// </summary>
         Task<int> GetPortAsync ();
 
         /// <summary>
-        /// User name to login to SMTP server.
+        /// SMTP 服务用户名
         /// </summary>
         Task<string> GetUserNameAsync ();
 
         /// <summary>
-        /// Password to login to SMTP server.
+        /// SMTP 服务密码
         /// </summary>
         Task<string> GetPasswordAsync ();
 
         /// <summary>
-        /// Domain name to login to SMTP server.
+        /// SMTP 服务域名
         /// </summary>
         Task<string> GetDomainAsync ();
 
         /// <summary>
-        /// Is SSL enabled?
+        /// 是否启用SSL
         /// </summary>
         Task<bool> GetEnableSslAsync ();
 
         /// <summary>
-        /// Use default credentials?
+        /// 是否使用默认证书
         /// </summary>
         Task<bool> GetUseDefaultCredentialsAsync ();
     }

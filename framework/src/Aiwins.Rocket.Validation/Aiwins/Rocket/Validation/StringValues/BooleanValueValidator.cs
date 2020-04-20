@@ -1,24 +1,19 @@
 using System;
 
-namespace Aiwins.Rocket.Validation.StringValues
-{
+namespace Aiwins.Rocket.Validation.StringValues {
     [Serializable]
-    [ValueValidator("BOOLEAN")]
-    public class BooleanValueValidator : ValueValidatorBase
-    {
-        public override bool IsValid(object value)
-        {
-            if (value == null)
-            {
+    [ValueValidator ("BOOLEAN")]
+    public class BooleanValueValidator : ValueValidatorBase {
+        public override bool IsValid (object value) {
+            if (value == null) {
                 return false;
             }
 
-            if (value is bool)
-            {
+            if (value is bool) {
                 return true;
             }
 
-            return bool.TryParse(value.ToString(), out _);
+            return bool.TryParse (value.ToString (), out _);
         }
     }
 }

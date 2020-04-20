@@ -3,15 +3,14 @@ using System.Linq.Expressions;
 
 namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents the specification that can be satisfied by the given object
-    /// in no circumstance.
+    /// None规约
     /// </summary>
-    /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public sealed class NoneSpecification<T> : Specification<T> {
         /// <summary>
-        /// Gets the LINQ expression which represents the current specification.
+        /// 获取当前规约的LINQ表达式
         /// </summary>
-        /// <returns>The LINQ expression.</returns>
+        /// <returns>LINQ表达式</returns>
         public override Expression<Func<T, bool>> ToExpression () {
             return o => false;
         }

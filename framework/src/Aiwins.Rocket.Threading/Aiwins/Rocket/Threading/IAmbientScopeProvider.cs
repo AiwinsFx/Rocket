@@ -1,11 +1,9 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Threading
-{
-    public interface IAmbientScopeProvider<T>
-    {
-        T GetValue(string contextKey);
+namespace Aiwins.Rocket.Threading {
+    public interface IAmbientScopeProvider<T> {
+        T GetValue (string contextKey);
 
-        IDisposable BeginScope(string contextKey, T value);
+        IDisposable BeginScope (string contextKey, T value);
     }
 }

@@ -5,12 +5,12 @@ using Aiwins.Rocket.Data;
 namespace Aiwins.Rocket.Application.Dtos
 {
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="ICreationAuditedObject{TCreator}"/> interface.
-    /// It has the <see cref="Creator"/> object as a DTO represents the user.
-    /// It also implements the <see cref="IHasExtraProperties"/> interface.
+    /// 实现了 <see cref="ICreationAuditedObject{TCreator}"/> 接口的实体映射对象
+    /// 拥有 <see cref="Creator"/> 审计对象
+    /// 它同时实现了 <see cref="IHasExtraProperties"/> 接口。
     /// </summary>
-    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
-    /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
+    /// <typeparam name="TUserDto">用户映射实体类型</typeparam>
     [Serializable]
     public abstract class ExtensibleCreationAuditedEntityWithUserDto<TPrimaryKey, TUserDto> : ExtensibleCreationAuditedEntityDto<TPrimaryKey>, ICreationAuditedObject<TUserDto>
     {
@@ -18,11 +18,11 @@ namespace Aiwins.Rocket.Application.Dtos
     }
 
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="ICreationAuditedObject{TCreator}"/> interface.
-    /// It has the <see cref="Creator"/> object as a DTO represents the user.
-    /// It also implements the <see cref="IHasExtraProperties"/> interface.
+    /// 实现了 <see cref="ICreationAuditedObject{TCreator}"/> 接口的实体映射对象
+    /// 拥有 <see cref="Creator"/> 审计对象
+    /// 它同时实现了 <see cref="IHasExtraProperties"/> 接口。
     /// </summary>
-    /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
+    /// <typeparam name="TUserDto">用户映射实体类型</typeparam>
     [Serializable]
     public abstract class ExtensibleCreationAuditedEntityWithUserDto<TUserDto> : ExtensibleCreationAuditedEntityDto,
         ICreationAuditedObject<TUserDto>

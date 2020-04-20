@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Validation
-{
-    public interface IObjectValidationContributor
-    {
-        void AddErrors(ObjectValidationContext context);
+﻿namespace Aiwins.Rocket.Validation {
+    public interface IObjectValidationContributor {
+        void AddErrors (ObjectValidationContext context);
     }
 }

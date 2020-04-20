@@ -3,26 +3,24 @@ using System.Linq.Expressions;
 
 namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents the specification which is represented by the corresponding
-    /// LINQ expression.
+    /// LINQ表达式构建的规约
     /// </summary>
-    /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public class ExpressionSpecification<T> : Specification<T> {
         private readonly Expression<Func<T, bool>> _expression;
 
         /// <summary>
-        /// Initializes a new instance of <c>ExpressionSpecification&lt;T&gt;</c> class.
+        /// 初始化一个新的表达式规约 <c>ExpressionSpecification&lt;T&gt;</c> 实例
         /// </summary>
-        /// <param name="expression">The LINQ expression which represents the current
-        /// specification.</param>
+        /// <param name="expression">当前规约的LINQ表达式</param>
         public ExpressionSpecification (Expression<Func<T, bool>> expression) {
             _expression = expression;
         }
 
         /// <summary>
-        /// Gets the LINQ expression which represents the current specification.
+        /// 获取当前规约的LINQ表达式
         /// </summary>
-        /// <returns>The LINQ expression.</returns>
+        /// <returns>LINQ表达式</returns>
         public override Expression<Func<T, bool>> ToExpression () {
             return _expression;
         }

@@ -6,13 +6,13 @@ using RabbitMQ.Client;
 
 namespace Aiwins.Rocket.RabbitMQ {
     public class ConnectionPool : IConnectionPool, ISingletonDependency {
-        protected AbpRabbitMqOptions Options { get; }
+        protected RocketRabbitMqOptions Options { get; }
 
         protected ConcurrentDictionary<string, IConnection> Connections { get; }
 
         private bool _isDisposed;
 
-        public ConnectionPool (IOptions<AbpRabbitMqOptions> options) {
+        public ConnectionPool (IOptions<RocketRabbitMqOptions> options) {
             Options = options.Value;
             Connections = new ConcurrentDictionary<string, IConnection> ();
         }

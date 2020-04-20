@@ -1,27 +1,25 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.ObjectExtending
-{
+namespace Aiwins.Rocket.ObjectExtending {
     [Flags]
-    public enum MappingPropertyDefinitionChecks : byte
-    {
+    public enum MappingPropertyDefinitionChecks : byte {
         /// <summary>
-        /// No check. Copy all extra properties from the source to the destination.
+        /// 不进行属性检查。将源对象的额外属性信息复制到目标对象
         /// </summary>
         None = 0,
 
         /// <summary>
-        /// Copy the extra properties defined for the source class.
+        /// 复制源对象的额外属性信息
         /// </summary>
         Source = 1,
 
         /// <summary>
-        /// Copy the extra properties defined for the destination class.
+        /// 复制目标对象的额外属性信息
         /// </summary>
         Destination = 2,
 
         /// <summary>
-        /// Copy extra properties defined for both of the source and destination classes.
+        /// 二者皆复制
         /// </summary>
         Both = Source | Destination
     }

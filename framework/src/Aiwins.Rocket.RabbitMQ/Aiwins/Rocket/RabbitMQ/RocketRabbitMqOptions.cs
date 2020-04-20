@@ -1,8 +1,8 @@
 ﻿namespace Aiwins.Rocket.RabbitMQ {
-    public class AbpRabbitMqOptions {
+    public class RocketRabbitMqOptions {
         public RabbitMqConnections Connections { get; }
 
-        public AbpRabbitMqOptions () {
+        public RocketRabbitMqOptions () {
             Connections = new RabbitMqConnections ();
         }
     }

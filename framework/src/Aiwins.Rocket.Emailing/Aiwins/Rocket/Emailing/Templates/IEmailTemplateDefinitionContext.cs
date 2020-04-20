@@ -1,9 +1,7 @@
-﻿namespace Aiwins.Rocket.Emailing.Templates
-{
-    public interface IEmailTemplateDefinitionContext
-    {
-        EmailTemplateDefinition GetOrNull(string name);
+﻿namespace Aiwins.Rocket.Emailing.Templates {
+    public interface IEmailTemplateDefinitionContext {
+        EmailTemplateDefinition GetOrNull (string name);
 
-        void Add(params EmailTemplateDefinition[] definitions);
+        void Add (params EmailTemplateDefinition[] definitions);
     }
 }

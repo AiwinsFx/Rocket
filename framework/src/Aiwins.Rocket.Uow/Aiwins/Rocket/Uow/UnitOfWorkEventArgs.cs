@@ -1,18 +1,15 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Volo.Abp.Uow
-{
-    public class UnitOfWorkEventArgs : EventArgs
-    {
+namespace Aiwins.Rocket.Uow {
+    public class UnitOfWorkEventArgs : EventArgs {
         /// <summary>
-        /// Reference to the unit of work related to this event.
+        /// 工作单元的引用实例。
         /// </summary>
         public IUnitOfWork UnitOfWork { get; }
 
-        public UnitOfWorkEventArgs([NotNull] IUnitOfWork unitOfWork)
-        {
-            Check.NotNull(unitOfWork, nameof(unitOfWork));
+        public UnitOfWorkEventArgs ([NotNull] IUnitOfWork unitOfWork) {
+            Check.NotNull (unitOfWork, nameof (unitOfWork));
 
             UnitOfWork = unitOfWork;
         }

@@ -1,16 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Aiwins.Rocket.Domain.Entities.Events.Distributed
-{
+namespace Aiwins.Rocket.Domain.Entities.Events.Distributed {
     [Serializable]
-    public abstract class EtoBase
-    {
+    public abstract class EtoBase {
         public Dictionary<string, object> Properties { get; }
 
-        protected EtoBase()
-        {
-            Properties = new Dictionary<string, object>();
+        protected EtoBase () {
+            Properties = new Dictionary<string, object> ();
         }
     }
 }

@@ -3,22 +3,21 @@ using System.Linq.Expressions;
 
 namespace Aiwins.Rocket.Specifications {
     /// <summary>
-    /// Represents the combined specification which indicates that either of the given
-    /// specification should be satisfied by the given object.
+    /// Or规约
     /// </summary>
-    /// <typeparam name="T">The type of the object to which the specification is applied.</typeparam>
+    /// <typeparam name="T">规约类型</typeparam>
     public class OrSpecification<T> : CompositeSpecification<T> {
         /// <summary>
-        /// Initializes a new instance of <see cref="OrSpecification{T}"/> class.
+        /// 初始化一个新的规约对象 <see cref="OrSpecification{T}"/> 实例
         /// </summary>
-        /// <param name="left">The first specification.</param>
-        /// <param name="right">The second specification.</param>
+        /// <param name="left">左规约</param>
+        /// <param name="right">右规约</param>
         public OrSpecification (ISpecification<T> left, ISpecification<T> right) : base (left, right) { }
 
         /// <summary>
-        /// Gets the LINQ expression which represents the current specification.
+        /// 获取当前规约的LINQ表达式
         /// </summary>
-        /// <returns>The LINQ expression.</returns>
+        /// <returns>LINQ表达式</returns>
         public override Expression<Func<T, bool>> ToExpression () {
             return Left.ToExpression ().Or (Right.ToExpression ());
         }

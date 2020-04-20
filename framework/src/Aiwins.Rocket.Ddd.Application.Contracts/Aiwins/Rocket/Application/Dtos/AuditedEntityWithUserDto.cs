@@ -1,16 +1,14 @@
 using System;
 using Aiwins.Rocket.Auditing;
 
-namespace Aiwins.Rocket.Application.Dtos
-{
+namespace Aiwins.Rocket.Application.Dtos {
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IAuditedObject"/> interface.
-    /// It has the <see cref="Creator"/> and <see cref="LastModifier"/> objects as a DTOs represent the related user.
+    /// 实现了 <see cref="IAuditedObject"/> 接口的实体映射对象
+    /// 拥有 <see cref="Creator"/> 和 <see cref="LastModifier"/> 等审计对象
     /// </summary>
-    /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
+    /// <typeparam name="TUserDto">用户映射实体类型</typeparam>
     [Serializable]
-    public abstract class AuditedEntityWithUserDto<TUserDto> : AuditedEntityDto, IAuditedObject<TUserDto>
-    {
+    public abstract class AuditedEntityWithUserDto<TUserDto> : AuditedEntityDto, IAuditedObject<TUserDto> {
         /// <inheritdoc />
         public TUserDto Creator { get; set; }
 
@@ -19,14 +17,13 @@ namespace Aiwins.Rocket.Application.Dtos
     }
 
     /// <summary>
-    /// This class can be inherited by DTO classes to implement <see cref="IAuditedObject"/> interface.
-    /// It has the <see cref="Creator"/> and <see cref="LastModifier"/> objects as a DTOs represent the related user.
+    /// 实现了 <see cref="IAuditedObject"/> 接口的实体映射对象
+    /// 拥有 <see cref="Creator"/> 和 <see cref="LastModifier"/> 等审计对象
     /// </summary>
-    /// <typeparam name="TPrimaryKey">Type of primary key</typeparam>
-    /// <typeparam name="TUserDto">Type of the User DTO</typeparam>
+    /// <typeparam name="TPrimaryKey">主键类型</typeparam>
+    /// <typeparam name="TUserDto">用户映射实体类型</typeparam>
     [Serializable]
-    public abstract class AuditedEntityWithUserDto<TPrimaryKey, TUserDto> : AuditedEntityDto<TPrimaryKey>, IAuditedObject<TUserDto>
-    {
+    public abstract class AuditedEntityWithUserDto<TPrimaryKey, TUserDto> : AuditedEntityDto<TPrimaryKey>, IAuditedObject<TUserDto> {
         /// <inheritdoc />
         public TUserDto Creator { get; set; }
 
