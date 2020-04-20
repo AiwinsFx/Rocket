@@ -1,0 +1,24 @@
+{
+  "culture": "cs",
+  "texts": {
+    "DisplayName:Rocket.Mailing.DefaultFromAddress": "Výchozí adresa odesílatele",
+    "DisplayName:Rocket.Mailing.DefaultFromDisplayName": "Výchozí zobrazované jméno odesilátele",
+    "DisplayName:Rocket.Mailing.Smtp.Host": "Hostitel",
+    "DisplayName:Rocket.Mailing.Smtp.Port": "Port",
+    "DisplayName:Rocket.Mailing.Smtp.UserName": "Uživatelské jméno",
+    "DisplayName:Rocket.Mailing.Smtp.Password": "Heslo",
+    "DisplayName:Rocket.Mailing.Smtp.Domain": "Doména",
+    "DisplayName:Rocket.Mailing.Smtp.EnableSsl": "Povolit SSL",
+    "DisplayName:Rocket.Mailing.Smtp.UseDefaultCredentials": "Použít výchozí přihlašovací údaje",
+    "Description:Rocket.Mailing.DefaultFromAddress": "Výchozí adresa odesílatele",
+    "Description:Rocket.Mailing.DefaultFromDisplayName": "Výchozí zobrazované jméno odesilátele",
+    "Description:Rocket.Mailing.Smtp.Host": "Název nebo IP adresa hostitele použitého pro SMTP transakce.",
+    "Description:Rocket.Mailing.Smtp.Port": "Port použitý pro SMTP tansakce",
+    "Description:Rocket.Mailing.Smtp.UserName": "Uživatelské jméno spojené s přihlašovacími údaji.",
+    "Description:Rocket.Mailing.Smtp.Password": "Heslo pro uživatelské jméno spojené s přihlašovacími údaji.",
+    "Description:Rocket.Mailing.Smtp.Domain": "Název domény nebo počítače, který ověřuje přihlašovací údaje.",
+    "Description:Rocket.Mailing.Smtp.EnableSsl": "Zda SmtpClient používá SSL k šifrování připojení.",
+    "Description:Rocket.Mailing.Smtp.UseDefaultCredentials": "Zda jsou výchozí přihlašovací údaje odesílány s požadavky."
+  }
+}
+ 

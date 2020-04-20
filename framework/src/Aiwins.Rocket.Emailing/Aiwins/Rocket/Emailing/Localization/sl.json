@@ -1,0 +1,23 @@
+{
+  "culture": "sl",
+  "texts": {
+    "DisplayName:Rocket.Mailing.DefaultFromAddress": "Privzeti naslov za pošiljanje",
+    "DisplayName:Rocket.Mailing.DefaultFromDisplayName": "Privzeto ime za prikaz pri pošiljanju",
+    "DisplayName:Rocket.Mailing.Smtp.Host": "Gostitelj",
+    "DisplayName:Rocket.Mailing.Smtp.Port": "Vrata",
+    "DisplayName:Rocket.Mailing.Smtp.UserName": "Uporabniško ime",
+    "DisplayName:Rocket.Mailing.Smtp.Password": "Geslo",
+    "DisplayName:Rocket.Mailing.Smtp.Domain": "Domena",
+    "DisplayName:Rocket.Mailing.Smtp.EnableSsl": "Omogoči SSL",
+    "DisplayName:Rocket.Mailing.Smtp.UseDefaultCredentials": "Uporabi privzete poverilnice",
+    "Description:Rocket.Mailing.DefaultFromAddress": "Privzeti naslov za pošiljanje",
+    "Description:Rocket.Mailing.DefaultFromDisplayName": "Privzeto ime za prikaz pri pošiljanju",
+    "Description:Rocket.Mailing.Smtp.Host": "Naziv ali IP naslov gostitelja za uporabo SMTP transakcij.",
+    "Description:Rocket.Mailing.Smtp.Port": "Vrata za uporabo SMTP transakcij.",
+    "Description:Rocket.Mailing.Smtp.UserName": "Uporabniško ime, povezano s poverilnicami.",
+    "Description:Rocket.Mailing.Smtp.Password": "The password for the user name associated with the credentials.",
+    "Description:Rocket.Mailing.Smtp.Domain": "Geslo za uporabniško ime, povezano s poverilnicami.",
+    "Description:Rocket.Mailing.Smtp.EnableSsl": "Ali SmtpClient uporablja sloj varnih vtičnic (SSL) za šifriranje povezave.",
+    "Description:Rocket.Mailing.Smtp.UseDefaultCredentials": "Ali so privzete poverilnice poslane skupaj z zahtevki."
+  }
+}

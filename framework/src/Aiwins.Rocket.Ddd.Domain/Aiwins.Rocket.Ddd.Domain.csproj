@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.Ddd.Domain</AssemblyName>
+    <PackageId>Aiwins.Rocket.Ddd.Domain</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.Auditing\Aiwins.Rocket.Auditing.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Data\Aiwins.Rocket.Data.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.EventBus\Aiwins.Rocket.EventBus.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Guids\Aiwins.Rocket.Guids.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.MultiTenancy\Aiwins.Rocket.MultiTenancy.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.ObjectMapping\Aiwins.Rocket.ObjectMapping.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Threading\Aiwins.Rocket.Threading.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Timing\Aiwins.Rocket.Timing.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Uow\Aiwins.Rocket.Uow.csproj" />
+  </ItemGroup>
+
+</Project>

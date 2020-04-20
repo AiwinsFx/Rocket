@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.Http</AssemblyName>
+    <PackageId>Aiwins.Rocket.Http</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.Http.Abstractions\Aiwins.Rocket.Http.Abstractions.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Json\Aiwins.Rocket.Json.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Minify\Aiwins.Rocket.Minify.csproj" />
+  </ItemGroup>
+
+</Project>

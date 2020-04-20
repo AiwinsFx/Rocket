@@ -1,0 +1,84 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Aiwins.Rocket.Castle.DynamicProxy;
+using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.Modularity;
+using Autofac.Core;
+using Autofac.Extras.DynamicProxy;
+
+namespace Autofac.Builder {
+    public static class RocketRegistrationBuilderExtensions {
+        public static IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> ConfigureRocketConventions<TLimit, TActivatorData, TRegistrationStyle> (
+            this IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> registrationBuilder,
+            IModuleContainer moduleContainer,
+            ServiceRegistrationActionList registrationActionList)
+        where TActivatorData : ReflectionActivatorData {
+            var serviceType = registrationBuilder.RegistrationData.Services.OfType<IServiceWithType> ().FirstOrDefault ()?.ServiceType;
+            if (serviceType == null) {
+                return registrationBuilder;
+            }
+
+            var implementationType = registrationBuilder.ActivatorData.ImplementationType;
+            if (implementationType == null) {
+                return registrationBuilder;
+            }
+
+            registrationBuilder = registrationBuilder.EnablePropertyInjection (moduleContainer, implementationType);
+            registrationBuilder = registrationBuilder.InvokeRegistrationActions (registrationActionList, serviceType, implementationType);
+
+            return registrationBuilder;
+        }
+
+        private static IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> InvokeRegistrationActions<TLimit, TActivatorData, TRegistrationStyle> (this IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> registrationBuilder, ServiceRegistrationActionList registrationActionList, Type serviceType, Type implementationType)
+        where TActivatorData : ReflectionActivatorData {
+            var serviceRegistredArgs = new OnServiceRegistredContext (serviceType, implementationType);
+
+            foreach (var registrationAction in registrationActionList) {
+                registrationAction.Invoke (serviceRegistredArgs);
+            }
+
+            if (serviceRegistredArgs.Interceptors.Any ()) {
+                registrationBuilder = registrationBuilder.AddInterceptors (
+                    serviceType,
+                    serviceRegistredArgs.Interceptors
+                );
+            }
+
+            return registrationBuilder;
+        }
+
+        private static IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> EnablePropertyInjection<TLimit, TActivatorData, TRegistrationStyle> (
+            this IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> registrationBuilder,
+            IModuleContainer moduleContainer,
+            Type implementationType)
+        where TActivatorData : ReflectionActivatorData {
+            // 仅对RocketModule的程序集中的类型启用属性注入
+            if (moduleContainer.Modules.Any (m => m.Assembly == implementationType.Assembly)) {
+                registrationBuilder = registrationBuilder.PropertiesAutowired ();
+            }
+
+            return registrationBuilder;
+        }
+
+        private static IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> AddInterceptors<TLimit, TActivatorData, TRegistrationStyle> (
+            this IRegistrationBuilder<TLimit, TActivatorData, TRegistrationStyle> registrationBuilder,
+            Type serviceType,
+            IEnumerable<Type> interceptors)
+        where TActivatorData : ReflectionActivatorData {
+            if (serviceType.IsInterface) {
+                registrationBuilder = registrationBuilder.EnableInterfaceInterceptors ();
+            } else {
+                (registrationBuilder as IRegistrationBuilder<TLimit, ConcreteReflectionActivatorData, TRegistrationStyle>)?.EnableClassInterceptors ();
+            }
+
+            foreach (var interceptor in interceptors) {
+                registrationBuilder.InterceptedBy (
+                    typeof (RocketAsyncDeterminationInterceptor<>).MakeGenericType (interceptor)
+                );
+            }
+
+            return registrationBuilder;
+        }
+    }
+}

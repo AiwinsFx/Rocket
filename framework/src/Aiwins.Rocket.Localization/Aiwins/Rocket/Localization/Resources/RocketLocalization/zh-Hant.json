@@ -1,0 +1,7 @@
+{
+  "culture": "zh-Hant",
+  "texts": {
+    "DisplayName:Rocket.Localization.DefaultLanguage": "預設語系",
+    "Description:Rocket.Localization.DefaultLanguage": "應用程式的預設語系."
+  }
+}

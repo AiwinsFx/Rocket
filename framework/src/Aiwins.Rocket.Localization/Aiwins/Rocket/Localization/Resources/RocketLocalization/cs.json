@@ -1,0 +1,7 @@
+{
+  "culture": "cs",
+  "texts": {
+    "DisplayName:Rocket.Localization.DefaultLanguage": "Výchozí jazyk",
+    "Description:Rocket.Localization.DefaultLanguage": "Váchozí jazyk aplikace."
+  }
+}

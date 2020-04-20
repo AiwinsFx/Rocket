@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.Ddd.Application</AssemblyName>
+    <PackageId>Aiwins.Rocket.Ddd.Application</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.Authorization\Aiwins.Rocket.Authorization.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Ddd.Application.Contracts\Aiwins.Rocket.Ddd.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Ddd.Domain\Aiwins.Rocket.Ddd.Domain.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Features\Aiwins.Rocket.Features.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Http.Abstractions\Aiwins.Rocket.Http.Abstractions.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Localization\Aiwins.Rocket.Localization.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.ObjectMapping\Aiwins.Rocket.ObjectMapping.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Security\Aiwins.Rocket.Security.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Settings\Aiwins.Rocket.Settings.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Validation\Aiwins.Rocket.Validation.csproj" />
+  </ItemGroup>
+
+</Project>

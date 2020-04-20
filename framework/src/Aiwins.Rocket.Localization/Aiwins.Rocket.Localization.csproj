@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.Localization</AssemblyName>
+    <PackageId>Aiwins.Rocket.Localization</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <None Remove="Aiwins\Rocket\Localization\Resources\**\*.json" />
+    <EmbeddedResource Include="Aiwins\Rocket\Localization\Resources\**\*.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.Localization.Abstractions\Aiwins.Rocket.Localization.Abstractions.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Settings\Aiwins.Rocket.Settings.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.VirtualFileSystem\Aiwins.Rocket.VirtualFileSystem.csproj" />
+  </ItemGroup>
+
+</Project>

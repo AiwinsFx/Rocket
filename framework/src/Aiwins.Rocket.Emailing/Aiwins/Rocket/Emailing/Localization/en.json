@@ -1,0 +1,23 @@
+{
+  "culture": "en",
+  "texts": {
+    "DisplayName:Rocket.Mailing.DefaultFromAddress": "Default from address",
+    "DisplayName:Rocket.Mailing.DefaultFromDisplayName": "Default from display name",
+    "DisplayName:Rocket.Mailing.Smtp.Host": "Host",
+    "DisplayName:Rocket.Mailing.Smtp.Port": "Port",
+    "DisplayName:Rocket.Mailing.Smtp.UserName": "User name",
+    "DisplayName:Rocket.Mailing.Smtp.Password": "Password",
+    "DisplayName:Rocket.Mailing.Smtp.Domain": "Domain",
+    "DisplayName:Rocket.Mailing.Smtp.EnableSsl": "Enable SSL",
+    "DisplayName:Rocket.Mailing.Smtp.UseDefaultCredentials": "Use default credentials",
+    "Description:Rocket.Mailing.DefaultFromAddress": "The default from address",
+    "Description:Rocket.Mailing.DefaultFromDisplayName": "The default from display name",
+    "Description:Rocket.Mailing.Smtp.Host": "The name or IP address of the host used for SMTP transactions.",
+    "Description:Rocket.Mailing.Smtp.Port": "The port used for SMTP transactions.",
+    "Description:Rocket.Mailing.Smtp.UserName": "User name associated with the credentials.",
+    "Description:Rocket.Mailing.Smtp.Password": "The password for the user name associated with the credentials.",
+    "Description:Rocket.Mailing.Smtp.Domain": "The domain or computer name that verifies the credentials.",
+    "Description:Rocket.Mailing.Smtp.EnableSsl": "Whether the SmtpClient uses Secure Sockets Layer (SSL) to encrypt the connection.",
+    "Description:Rocket.Mailing.Smtp.UseDefaultCredentials": "Whether the DefaultCredentials are sent with requests."
+  }
+}

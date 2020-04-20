@@ -1,0 +1,7 @@
+{
+  "culture": "en",
+  "texts": {
+    "DisplayName:Rocket.Localization.DefaultLanguage": "Default language",
+    "Description:Rocket.Localization.DefaultLanguage": "The default language of the application."
+  }
+}

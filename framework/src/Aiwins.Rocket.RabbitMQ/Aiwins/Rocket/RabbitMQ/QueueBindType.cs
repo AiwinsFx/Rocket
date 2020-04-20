@@ -1,0 +1,3 @@
+﻿namespace Aiwins.Rocket.RabbitMQ {
+
+}
