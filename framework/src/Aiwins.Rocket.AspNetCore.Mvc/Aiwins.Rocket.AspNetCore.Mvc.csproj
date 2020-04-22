@@ -1,0 +1,34 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <AssemblyName>Aiwins.Rocket.AspNetCore.Mvc</AssemblyName>
+    <PackageId>Aiwins.Rocket.AspNetCore.Mvc</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <IsPackable>true</IsPackable>
+    <OutputType>Library</OutputType>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.ApiVersioning.Abstractions\Aiwins.Rocket.ApiVersioning.Abstractions.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.AspNetCore.Mvc.Contracts\Aiwins.Rocket.AspNetCore.Mvc.Contracts.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.AspNetCore\Aiwins.Rocket.AspNetCore.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Localization\Aiwins.Rocket.Localization.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.UI\Aiwins.Rocket.UI.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.2" />
+  </ItemGroup>
+
+</Project>
