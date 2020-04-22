@@ -16,6 +16,10 @@
     <RootNamespace />
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Rocket.AspNetCore' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:53375/</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aiwins.Rocket.Auditing\Aiwins.Rocket.Auditing.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Authorization\Aiwins.Rocket.Authorization.csproj" />

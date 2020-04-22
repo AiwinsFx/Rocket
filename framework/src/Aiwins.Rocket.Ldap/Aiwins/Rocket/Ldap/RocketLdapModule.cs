@@ -4,12 +4,12 @@ using Aiwins.Rocket.Modularity;
 
 namespace Aiwins.Rocket.Ldap {
     [DependsOn (
-        typeof (AbpAutofacModule)
+        typeof (RocketAutofacModule)
     )]
-    public class AbpLdapModule : AbpModule {
+    public class RocketLdapModule : RocketModule {
         public override void ConfigureServices (ServiceConfigurationContext context) {
             var configuration = context.Services.GetConfiguration ();
-            Configure<AbpLdapOptions> (configuration.GetSection ("LDAP"));
+            Configure<RocketLdapOptions> (configuration.GetSection ("LDAP"));
         }
     }
 }

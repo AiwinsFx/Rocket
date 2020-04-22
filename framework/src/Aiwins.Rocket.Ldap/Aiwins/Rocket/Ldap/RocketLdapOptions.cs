@@ -1,5 +1,5 @@
 ﻿namespace Aiwins.Rocket.Ldap {
-    public class AbpLdapOptions {
+    public class RocketLdapOptions {
         public string ServerHost { get; set; }
 
         public int ServerPort { get; set; }
@@ -14,7 +14,7 @@
 
         public LdapCredentials Credentials { get; set; }
 
-        public AbpLdapOptions () {
+        public RocketLdapOptions () {
             Credentials = new LdapCredentials ();
         }
     }

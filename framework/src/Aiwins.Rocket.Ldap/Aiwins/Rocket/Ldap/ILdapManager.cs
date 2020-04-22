@@ -4,10 +4,10 @@ using Aiwins.Rocket.Ldap.Modeling;
 namespace Aiwins.Rocket.Ldap {
     public interface ILdapManager {
         /// <summary>
-        /// query the specified organizations.
+        /// 查询组织机构列表。
         /// 
-        /// filter: (&(name=xxx)(objectClass=organizationalUnit)) when name is not null
-        /// filter: (&(name=*)(objectClass=organizationalUnit)) when name is null
+        /// 过滤条件: (&(name=xxx)(objectClass=organizationalUnit)) 指定名称查询
+        /// 过滤条件: (&(name=*)(objectClass=organizationalUnit)) 名称通配符查询
         /// 
         /// </summary>
         /// <param name="name"></param>
@@ -15,9 +15,9 @@ namespace Aiwins.Rocket.Ldap {
         IList<LdapOrganization> GetOrganizations (string name = null);
 
         /// <summary>
-        /// query the specified organization.
+        /// 查询指定的组织机构。
         /// 
-        /// filter: (&(distinguishedName=xxx)(objectClass=organizationalUnit)) when organizationName is not null
+        /// 过滤条件: (&(distinguishedName=xxx)(objectClass=organizationalUnit)) 指定名称查询
         /// 
         /// </summary>
         /// <param name="distinguishedName"></param>
@@ -28,16 +28,16 @@ namespace Aiwins.Rocket.Ldap {
         void AddSubOrganization (string organizationName, string parentDistinguishedName);
 
         /// <summary>
-        /// query the specified users.
+        /// 查询用户列表。
         /// 
-        /// filter: (&(name=xxx)(objectCategory=person)(objectClass=user)) when name is not null
-        /// filter: (&(name=*)(objectCategory=person)(objectClass=user)) when name is null
+        /// 过滤条件: (&(name=xxx)(objectCategory=person)(objectClass=user)) 指定用户名查询
+        /// 过滤条件: (&(name=*)(objectCategory=person)(objectClass=user)) 用户名通配符查询
         ///
-        /// filter: (&(displayName=xxx)(objectCategory=person)(objectClass=user)) when displayName is not null
-        /// filter: (&(displayName=*)(objectCategory=person)(objectClass=user)) when displayName is null
+        /// 过滤条件: (&(displayName=xxx)(objectCategory=person)(objectClass=user)) 指定姓名查询
+        /// 过滤条件: (&(displayName=*)(objectCategory=person)(objectClass=user)) 姓名通配符查询
         ///
-        /// filter: (&(cn=xxx)(objectCategory=person)(objectClass=user)) when commonName is not null
-        /// filter: (&(cn=*)(objectCategory=person)(objectClass=user)) when commonName is null
+        /// 过滤条件: (&(cn=xxx)(objectCategory=person)(objectClass=user)) 指定名称查询
+        /// 过滤条件: (&(cn=*)(objectCategory=person)(objectClass=user)) 名称通配符查询
         /// 
         /// </summary>
         /// <param name="name"></param>
@@ -47,9 +47,9 @@ namespace Aiwins.Rocket.Ldap {
         IList<LdapUser> GetUsers (string name = null, string displayName = null, string commonName = null);
 
         /// <summary>
-        /// query the specified User.
+        /// 查询指定用户。
         /// 
-        /// filter: (&(distinguishedName=xxx)(objectCategory=person)(objectClass=user)) when distinguishedName is not null
+        /// 过滤条件: (&(distinguishedName=xxx)(objectCategory=person)(objectClass=user)) 指定名称查询
         /// 
         /// </summary>
         /// <param name="distinguishedName"></param>
@@ -60,9 +60,9 @@ namespace Aiwins.Rocket.Ldap {
         void AddUserToOrganization (string userName, string password, string parentDistinguishedName);
 
         /// <summary>
-        /// Authenticate 
+        /// 认证
         /// </summary>
-        /// <param name="userDomainName">E.g administrator@yourdomain.com.cn </param>
+        /// <param name="userDomainName">用户名 </param>
         /// <param name="password"></param>
         /// <returns></returns>
         bool Authenticate (string userDomainName, string password);

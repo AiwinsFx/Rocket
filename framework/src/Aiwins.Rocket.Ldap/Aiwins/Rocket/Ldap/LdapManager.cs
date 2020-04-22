@@ -12,7 +12,7 @@ using Aiwins.Rocket.Ldap.Modeling;
 namespace Aiwins.Rocket.Ldap {
     public class LdapManager : ILdapManager, ITransientDependency {
         private readonly string _searchBase;
-        private readonly AbpLdapOptions _ldapOptions;
+        private readonly RocketLdapOptions _ldapOptions;
         private readonly IHybridServiceScopeFactory _hybridServiceScopeFactory;
 
         private readonly string[] _attributes = {
@@ -28,7 +28,7 @@ namespace Aiwins.Rocket.Ldap {
             "mail"
         };
 
-        public LdapManager (IOptions<AbpLdapOptions> ldapSettingsOptions, IHybridServiceScopeFactory hybridServiceScopeFactory) {
+        public LdapManager (IOptions<RocketLdapOptions> ldapSettingsOptions, IHybridServiceScopeFactory hybridServiceScopeFactory) {
             _hybridServiceScopeFactory = hybridServiceScopeFactory;
             _ldapOptions = ldapSettingsOptions.Value;
             _searchBase = _ldapOptions.SearchBase;
@@ -36,10 +36,10 @@ namespace Aiwins.Rocket.Ldap {
 
         #region Organization
         /// <summary>
-        /// query the specified organizations.
+        /// 查询组织机构列表。
         /// 
-        /// filter: (&(name=xxx)(objectClass=organizationalUnit)) when name is not null
-        /// filter: (&(objectClass=organizationalUnit)) when name is null
+        /// 过滤条件: (&(name=xxx)(objectClass=organizationalUnit)) 指定名称查询
+        /// 过滤条件: (&(name=*)(objectClass=organizationalUnit)) 名称通配符查询
         /// 
         /// </summary>
         /// <param name="name"></param>
@@ -52,9 +52,9 @@ namespace Aiwins.Rocket.Ldap {
         }
 
         /// <summary>
-        /// query the specified organization.
+        /// 查询指定的组织机构。
         /// 
-        /// filter: (&(distinguishedName=xxx)(objectClass=organizationalUnit)) when organizationName is not null
+        /// 过滤条件: (&(distinguishedName=xxx)(objectClass=organizationalUnit)) 指定名称查询
         /// 
         /// </summary>
         /// <param name="distinguishedName"></param>
@@ -101,16 +101,16 @@ namespace Aiwins.Rocket.Ldap {
 
         #region User
         /// <summary>
-        /// query the specified users.
+        /// 查询用户列表。
         /// 
-        /// filter: (&(name=xxx)(objectCategory=person)(objectClass=user)) when name is not null
-        /// filter: (&(objectCategory=person)(objectClass=user)) when name is null
+        /// 过滤条件: (&(name=xxx)(objectCategory=person)(objectClass=user)) 指定用户名查询
+        /// 过滤条件: (&(name=*)(objectCategory=person)(objectClass=user)) 用户名通配符查询
         ///
-        /// filter: (&(displayName=xxx)(objectCategory=person)(objectClass=user)) when displayName is not null
-        /// filter: (&(objectCategory=person)(objectClass=user)) when displayName is null
+        /// 过滤条件: (&(displayName=xxx)(objectCategory=person)(objectClass=user)) 指定姓名查询
+        /// 过滤条件: (&(displayName=*)(objectCategory=person)(objectClass=user)) 姓名通配符查询
         ///
-        /// filter: (&(cn=xxx)(objectCategory=person)(objectClass=user)) when commonName is not null
-        /// filter: (&(objectCategory=person)(objectClass=user)) when commonName is null
+        /// 过滤条件: (&(cn=xxx)(objectCategory=person)(objectClass=user)) 指定名称查询
+        /// 过滤条件: (&(cn=*)(objectCategory=person)(objectClass=user)) 名称通配符查询
         /// 
         /// </summary>
         /// <param name="name"></param>
@@ -128,9 +128,9 @@ namespace Aiwins.Rocket.Ldap {
         }
 
         /// <summary>
-        /// query the specified User.
+        /// 查询指定用户。
         /// 
-        /// filter: (&(distinguishedName=xxx)(objectCategory=person)(objectClass=user)) when distinguishedName is not null
+        /// 过滤条件: (&(distinguishedName=xxx)(objectCategory=person)(objectClass=user)) 指定名称查询
         /// 
         /// </summary>
         /// <param name="distinguishedName"></param>
@@ -201,9 +201,9 @@ namespace Aiwins.Rocket.Ldap {
         #region Authenticate
 
         /// <summary>
-        /// Authenticate 
+        /// 认证
         /// </summary>
-        /// <param name="userDomainName">E.g administrator@yourdomain.com.cn </param>
+        /// <param name="userDomainName">用户名 </param>
         /// <param name="password"></param>
         /// <returns></returns>
         public bool Authenticate (string userDomainName, string password) {
@@ -225,7 +225,7 @@ namespace Aiwins.Rocket.Ldap {
         #endregion
 
         private ILdapConnection GetConnection (string bindUserName = null, string bindUserPassword = null) {
-            // bindUserName/bindUserPassword only be used when authenticate
+            // 认证信息绑定
             bindUserName = bindUserName ?? _ldapOptions.Credentials.DomainUserName;
             bindUserPassword = bindUserPassword ?? _ldapOptions.Credentials.Password;
 

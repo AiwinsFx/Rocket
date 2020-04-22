@@ -16,6 +16,10 @@
         <RootNamespace />
     </PropertyGroup>
 
+    <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Rocket.AspNetCore.Serilog' ">
+      <StartAction>Project</StartAction>
+      <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
+    </PropertyGroup>
     <ItemGroup>
         <ProjectReference Include="..\Aiwins.Rocket.AspNetCore\Aiwins.Rocket.AspNetCore.csproj" />
         <ProjectReference Include="..\Aiwins.Rocket.MultiTenancy\Aiwins.Rocket.MultiTenancy.csproj" />

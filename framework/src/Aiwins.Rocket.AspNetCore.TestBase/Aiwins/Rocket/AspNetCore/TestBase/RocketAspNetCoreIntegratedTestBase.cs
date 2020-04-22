@@ -9,47 +9,41 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace Aiwins.Rocket.AspNetCore.TestBase
-{
+namespace Aiwins.Rocket.AspNetCore.TestBase {
     public abstract class RocketAspNetCoreIntegratedTestBase<TStartup> : RocketTestBaseWithServiceProvider
-        where TStartup : class
-    {
+    where TStartup : class {
         protected TestServer Server { get; }
 
         protected HttpClient Client { get; }
 
         protected override IServiceProvider ServiceProvider { get; }
 
-        protected RocketAspNetCoreIntegratedTestBase()
-        {
-            var builder = CreateHostBuilder();
+        protected RocketAspNetCoreIntegratedTestBase () {
+            var builder = CreateHostBuilder ();
 
-            var host = builder.Build();
-            host.Start();
+            var host = builder.Build ();
+            host.Start ();
 
-            Server = host.GetTestServer();
-            Client = host.GetTestClient();
+            Server = host.GetTestServer ();
+            Client = host.GetTestClient ();
 
             ServiceProvider = Server.Services;
 
-            ServiceProvider.GetRequiredService<ITestServerAccessor>().Server = Server;
+            ServiceProvider.GetRequiredService<ITestServerAccessor> ().Server = Server;
         }
 
-        protected virtual IHostBuilder CreateHostBuilder()
-        {
-            return Host.CreateDefaultBuilder()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<TStartup>();
-                    webBuilder.UseTestServer();
+        protected virtual IHostBuilder CreateHostBuilder () {
+            return Host.CreateDefaultBuilder ()
+                .ConfigureWebHostDefaults (webBuilder => {
+                    webBuilder.UseStartup<TStartup> ();
+                    webBuilder.UseTestServer ();
                 })
-                .UseAutofac()
-                .ConfigureServices(ConfigureServices);
+                .UseAutofac ()
+                .ConfigureServices (ConfigureServices);
         }
 
-        protected virtual void ConfigureServices(HostBuilderContext context, IServiceCollection services)
-        {
-            
+        protected virtual void ConfigureServices (HostBuilderContext context, IServiceCollection services) {
+
         }
 
         #region GetUrl
@@ -58,32 +52,28 @@ namespace Aiwins.Rocket.AspNetCore.TestBase
         /// Gets default URL for given controller type.
         /// </summary>
         /// <typeparam name="TController">The type of the controller.</typeparam>
-        protected virtual string GetUrl<TController>()
-        {
-            return "/" + typeof(TController).Name.RemovePostFix("Controller", "AppService", "ApplicationService", "Service");
+        protected virtual string GetUrl<TController> () {
+            return "/" + typeof (TController).Name.RemovePostFix ("Controller", "AppService", "ApplicationService", "Service");
         }
 
         /// <summary>
         /// Gets default URL for given controller type's given action.
         /// </summary>
         /// <typeparam name="TController">The type of the controller.</typeparam>
-        protected virtual string GetUrl<TController>(string actionName)
-        {
-            return GetUrl<TController>() + "/" + actionName;
+        protected virtual string GetUrl<TController> (string actionName) {
+            return GetUrl<TController> () + "/" + actionName;
         }
 
         /// <summary>
         /// Gets default URL for given controller type's given action with query string parameters (as anonymous object).
         /// </summary>
         /// <typeparam name="TController">The type of the controller.</typeparam>
-        protected virtual string GetUrl<TController>(string actionName, object queryStringParamsAsAnonymousObject)
-        {
-            var url = GetUrl<TController>(actionName);
+        protected virtual string GetUrl<TController> (string actionName, object queryStringParamsAsAnonymousObject) {
+            var url = GetUrl<TController> (actionName);
 
-            var dictionary = new RouteValueDictionary(queryStringParamsAsAnonymousObject);
-            if (dictionary.Any())
-            {
-                url += "?" + dictionary.Select(d => $"{d.Key}={d.Value}").JoinAsString("&");
+            var dictionary = new RouteValueDictionary (queryStringParamsAsAnonymousObject);
+            if (dictionary.Any ()) {
+                url += "?" + dictionary.Select (d => $"{d.Key}={d.Value}").JoinAsString ("&");
             }
 
             return url;

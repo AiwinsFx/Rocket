@@ -251,7 +251,7 @@ paket-files/
 .idea/
 *.sln.iml
 
-# ABP
+# Rocket
 build/outputs
 !framework/src/Aiwins.Rocket.AspNetCore.Mvc.UI.Packages/Aiwins/Rocket/AspNetCore/Mvc/UI/Packages/*
 nupkg/push.ps1

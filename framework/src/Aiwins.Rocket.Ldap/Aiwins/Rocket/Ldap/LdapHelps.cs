@@ -12,7 +12,7 @@ namespace Aiwins.Rocket.Ldap {
             }
 
             if (conditions.Keys.Count == 0) {
-                conditions.Add ("objectClass", "*"); // add default condition
+                conditions.Add ("objectClass", "*"); // 添加默认条件
             }
 
             var subFilter = string.Empty;
