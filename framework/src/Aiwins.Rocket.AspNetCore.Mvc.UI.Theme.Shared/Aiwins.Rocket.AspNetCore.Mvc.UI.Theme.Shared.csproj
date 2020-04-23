@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <AssemblyName>Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared</AssemblyName>
+    <PackageId>Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <IsPackable>true</IsPackable>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\**\*.*" />
+    <EmbeddedResource Include="Pages\**\*.cshtml" />
+    <EmbeddedResource Include="Views\**\*.cshtml" />
+    <EmbeddedResource Include="Areas\**\*.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="wwwroot\**\*.*" />
+    <Content Remove="Pages\**\*.cshtml" />
+    <Content Remove="Views\**\*.cshtml" />
+    <Content Remove="Areas\**\*.cshtml" />
+    <Content Remove="compilerconfig.json" />
+    <Content Remove="Properties\launchSettings.json" />
+    <None Include="compilerconfig.json" />
+    <None Include="Properties\launchSettings.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap\Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.AspNetCore.Mvc.UI.Packages\Aiwins.Rocket.AspNetCore.Mvc.UI.Packages.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets\Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets.csproj" />
+  </ItemGroup>
+
+</Project>

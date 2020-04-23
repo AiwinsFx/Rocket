@@ -1,0 +1,16 @@
+﻿@model Aiwins.Rocket.AspNetCore.Mvc.UI.Alerts.AlertList
+@if (Model.Any())
+{
+    <div id="RocketPageAlerts">
+        @foreach (var alertMessage in Model)
+        {
+            <abp-alert alert-type="@alertMessage.Type" dismissible="@alertMessage.Dismissible">
+                @if (alertMessage.Title != null)
+                {
+                    <h4>@alertMessage.Title</h4>
+                }
+                @alertMessage.Text
+            </abp-alert>
+        }
+    </div>
+}

@@ -1,0 +1,73 @@
+﻿@using Aiwins.Rocket.AspNetCore.Mvc.AntiForgery
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Components.LayoutHook
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Layout
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic.Bundling
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic.Themes.Basic.Components.PageAlerts
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Components
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets.Components.WidgetScripts
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets.Components.WidgetStyles
+@inject IRocketAntiForgeryManager RocketAntiForgeryManager
+@inject IBrandingProvider BrandingProvider
+@inject IPageLayout PageLayout
+@{
+    Layout = null;
+    RocketAntiForgeryManager.SetCookie();
+    var containerClass = ViewBag.FluidLayout == true ? "container-fluid" : "container"; //TODO: Better and type-safe options
+
+    var pageTitle = ViewBag.Title == null ? BrandingProvider.AppName : ViewBag.Title; //TODO: Discard to get from Title
+
+    if (PageLayout.Content.Title != null)
+    {
+        if (!string.IsNullOrWhiteSpace(pageTitle))
+        {
+            pageTitle = " | " + pageTitle;
+        }
+
+        pageTitle = PageLayout.Content.Title + pageTitle;
+    }
+}
+
+<!DOCTYPE html>
+
+<html lang="@CultureInfo.CurrentCulture.Name">
+<head>
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.First, StandardLayouts.Empty)
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <title>@pageTitle</title>
+    @if (ViewBag.Description!=null)
+    {
+        <meta name="description" content="@ViewBag.Description" />
+    }
+    <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
+
+    @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
+
+    @await RenderSectionAsync("styles", false)
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
+</head>
+<body class="abp-empty-layout">
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Empty)
+
+    <div class="@containerClass">
+        @(await Component.InvokeAsync<PageAlertsViewComponent>())
+        @RenderBody()
+    </div>
+
+    <abp-script-bundle name="@BasicThemeBundles.Scripts.Global" />
+
+    <script src="~/Rocket/ApplicationConfigurationScript"></script>
+    <script src="~/Rocket/ServiceProxyScript"></script>
+
+    @await RenderSectionAsync("scripts", false)
+
+    @await Component.InvokeAsync(typeof(WidgetScriptsViewComponent))
+
+    @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.Last, StandardLayouts.Empty)
+</body>
+</html>

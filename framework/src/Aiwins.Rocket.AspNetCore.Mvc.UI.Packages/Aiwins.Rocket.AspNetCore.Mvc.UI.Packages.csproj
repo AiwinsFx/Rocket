@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <AssemblyName>Aiwins.Rocket.AspNetCore.Mvc.UI.Packages</AssemblyName>
+    <PackageId>Aiwins.Rocket.AspNetCore.Mvc.UI.Packages</PackageId>
+    <IsPackable>true</IsPackable>
+    <OutputType>Library</OutputType>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.AspNetCore.Mvc.UI.Bundling\Aiwins.Rocket.AspNetCore.Mvc.UI.Bundling.csproj" />
+  </ItemGroup>
+
+</Project>

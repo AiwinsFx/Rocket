@@ -1,0 +1,21 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Pages.Rocket.MultiTenancy
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.MultiTenancy.Localization
+@model TenantSwitchModalModel
+@inject IHtmlLocalizer<RocketUiMultiTenancyResource> L
+@{
+    Layout = null;
+}
+<abp-dynamic-form abp-model="@Model.Input" asp-page="/Rocket/MultiTenancy/TenantSwitchModal">
+    <abp-modal>
+        <abp-modal-header title="@L["SwitchTenant"].Value"></abp-modal-header>
+        <abp-modal-body>
+            <abp-form-content />
+            <p>@L["SwitchTenantHint"]</p>
+        </abp-modal-body>
+        @* TODO: A "Submit" would be better than "Save"! *@
+        <abp-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)"></abp-modal-footer>
+    </abp-modal>
+</abp-dynamic-form>

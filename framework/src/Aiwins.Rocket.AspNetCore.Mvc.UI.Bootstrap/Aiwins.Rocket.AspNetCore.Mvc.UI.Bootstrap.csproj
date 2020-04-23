@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk.Razor">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AddRazorSupportForMvc>true</AddRazorSupportForMvc>
+    <AssemblyName>Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap</AssemblyName>
+    <PackageId>Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <IsPackable>true</IsPackable>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.AspNetCore.Mvc.UI\Aiwins.Rocket.AspNetCore.Mvc.UI.csproj" />
+  </ItemGroup>
+
+</Project>
