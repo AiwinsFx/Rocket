@@ -87,38 +87,38 @@ public class FormElementsDemoModel
     </div>
 </div>
 
-<abp-component-demo-section title="Example" view-path="@FormElementsDemoViewComponent.ViewPath">
-    <abp-input asp-for="@Model.MyInformMeModel.Name" label="Name" />
-    <abp-input asp-for="@Model.MyInformMeModel.Password" label="Password" />
-    <abp-input asp-for="@Model.MyInformMeModel.CheckMeOut" label="Check Me Out" />
-</abp-component-demo-section>
+<rocket-component-demo-section title="Example" view-path="@FormElementsDemoViewComponent.ViewPath">
+    <rocket-input asp-for="@Model.MyInformMeModel.Name" label="Name" />
+    <rocket-input asp-for="@Model.MyInformMeModel.Password" label="Password" />
+    <rocket-input asp-for="@Model.MyInformMeModel.CheckMeOut" label="Check Me Out" />
+</rocket-component-demo-section>
 
-<abp-component-demo-section title="Form controls" view-path="@FormElementsDemoViewComponent.ViewPath">
-    <abp-input asp-for="@Model.MyDetailsModel.EmailAddress" label="Email Address" placeholder="name@example.com" />
-    <abp-select asp-for="@Model.MyDetailsModel.City" asp-items="@Model.CityList" label="City" />
-    <abp-select asp-for="@Model.MyDetailsModel.Cities" asp-items="@Model.CityList" label="Cities" />
-    <abp-input asp-for="@Model.MyDetailsModel.Description" label="Description" />
-</abp-component-demo-section>
+<rocket-component-demo-section title="Form controls" view-path="@FormElementsDemoViewComponent.ViewPath">
+    <rocket-input asp-for="@Model.MyDetailsModel.EmailAddress" label="Email Address" placeholder="name@example.com" />
+    <rocket-select asp-for="@Model.MyDetailsModel.City" asp-items="@Model.CityList" label="City" />
+    <rocket-select asp-for="@Model.MyDetailsModel.Cities" asp-items="@Model.CityList" label="Cities" />
+    <rocket-input asp-for="@Model.MyDetailsModel.Description" label="Description" />
+</rocket-component-demo-section>
 
-<abp-component-demo-section title="Sizing" view-path="@FormElementsDemoViewComponent.ViewPath">
-    <abp-input asp-for="@Model.MyInformMeModel.Name" size="Large" />
-    <abp-input asp-for="@Model.MyInformMeModel.Name" size="Small" />
-</abp-component-demo-section>
+<rocket-component-demo-section title="Sizing" view-path="@FormElementsDemoViewComponent.ViewPath">
+    <rocket-input asp-for="@Model.MyInformMeModel.Name" size="Large" />
+    <rocket-input asp-for="@Model.MyInformMeModel.Name" size="Small" />
+</rocket-component-demo-section>
 
-<abp-component-demo-section title="Disabled And ReadOnly" view-path="@FormElementsDemoViewComponent.ViewPath">
-    <abp-input asp-for="@Model.MyInformMeModel.Name" disabled="true" />
-    <abp-input asp-for="@Model.MyInformMeModel.Name" readonly="true" />
-</abp-component-demo-section>
+<rocket-component-demo-section title="Disabled And ReadOnly" view-path="@FormElementsDemoViewComponent.ViewPath">
+    <rocket-input asp-for="@Model.MyInformMeModel.Name" disabled="true" />
+    <rocket-input asp-for="@Model.MyInformMeModel.Name" readonly="true" />
+</rocket-component-demo-section>
 
-<abp-component-demo-section title="Checkboxes" view-path="@FormElementsDemoViewComponent.ViewPath">
-    <abp-input asp-for="@Model.MyCheckboxModel.DefaultCheckbox" />
-    <abp-input asp-for="@Model.MyCheckboxModel.DisabledCheckbox" disabled="true" />
-</abp-component-demo-section>
+<rocket-component-demo-section title="Checkboxes" view-path="@FormElementsDemoViewComponent.ViewPath">
+    <rocket-input asp-for="@Model.MyCheckboxModel.DefaultCheckbox" />
+    <rocket-input asp-for="@Model.MyCheckboxModel.DisabledCheckbox" disabled="true" />
+</rocket-component-demo-section>
 
-<abp-component-demo-section title="Radios" view-path="@FormElementsDemoViewComponent.ViewPath">
-    <abp-radio asp-for="@Model.MyCityRadioModel.CityRadio" asp-items="@Model.CityList" inline="true" />
-</abp-component-demo-section>
+<rocket-component-demo-section title="Radios" view-path="@FormElementsDemoViewComponent.ViewPath">
+    <rocket-radio asp-for="@Model.MyCityRadioModel.CityRadio" asp-items="@Model.CityList" inline="true" />
+</rocket-component-demo-section>
 
-<abp-component-demo-section title="Enum" view-path="@FormElementsDemoViewComponent.ViewPath">
-    <abp-select asp-for="@Model.MyEnumModel.CarType" />
-</abp-component-demo-section>
+<rocket-component-demo-section title="Enum" view-path="@FormElementsDemoViewComponent.ViewPath">
+    <rocket-select asp-for="@Model.MyEnumModel.CarType" />
+</rocket-component-demo-section>

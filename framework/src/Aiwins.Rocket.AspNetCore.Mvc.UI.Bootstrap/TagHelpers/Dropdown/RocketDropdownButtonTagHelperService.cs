@@ -59,16 +59,16 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Dropdown
 
         protected virtual async Task<string> GetMainButtonAsync(TagHelperContext context, TagHelperOutput output, TagHelperContent content)
         {
-            var abpButtonTagHelper = _serviceProvider.GetRequiredService<RocketButtonTagHelper>();
+            var rocketButtonTagHelper = _serviceProvider.GetRequiredService<RocketButtonTagHelper>();
             
-            abpButtonTagHelper.Icon = TagHelper.Icon;
-            abpButtonTagHelper.Text = TagHelper.Text;
-            abpButtonTagHelper.IconType = TagHelper.IconType;
-            abpButtonTagHelper.Size = TagHelper.Size;
-            abpButtonTagHelper.ButtonType = TagHelper.ButtonType;
+            rocketButtonTagHelper.Icon = TagHelper.Icon;
+            rocketButtonTagHelper.Text = TagHelper.Text;
+            rocketButtonTagHelper.IconType = TagHelper.IconType;
+            rocketButtonTagHelper.Size = TagHelper.Size;
+            rocketButtonTagHelper.ButtonType = TagHelper.ButtonType;
             var attributes = GetAttributesForMainButton(context, output);
 
-            var buttonTag = await abpButtonTagHelper.ProcessAndGetOutputAsync(attributes, context, "button", TagMode.StartTagAndEndTag);
+            var buttonTag = await rocketButtonTagHelper.ProcessAndGetOutputAsync(attributes, context, "button", TagMode.StartTagAndEndTag);
 
             buttonTag.PreContent.SetHtmlContent(content.GetContent());
 
@@ -83,13 +83,13 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Dropdown
 
         protected virtual async Task<string> GetSplitButtonAsync(TagHelperContext context, TagHelperOutput output)
         {
-            var abpButtonTagHelper = _serviceProvider.GetRequiredService<RocketButtonTagHelper>();
+            var rocketButtonTagHelper = _serviceProvider.GetRequiredService<RocketButtonTagHelper>();
 
-            abpButtonTagHelper.Size = TagHelper.Size;
-            abpButtonTagHelper.ButtonType = TagHelper.ButtonType;
+            rocketButtonTagHelper.Size = TagHelper.Size;
+            rocketButtonTagHelper.ButtonType = TagHelper.ButtonType;
             var attributes = GetAttributesForSplitButton(context, output);
 
-            return await abpButtonTagHelper.RenderAsync(attributes, context, _htmlEncoder, "button", TagMode.StartTagAndEndTag);
+            return await rocketButtonTagHelper.RenderAsync(attributes, context, _htmlEncoder, "button", TagMode.StartTagAndEndTag);
         }
 
         protected virtual TagHelperAttributeList GetAttributesForMainButton(TagHelperContext context, TagHelperOutput output)

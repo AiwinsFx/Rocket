@@ -8,7 +8,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Card
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.Attributes.AddClass("card-link");
-            output.Attributes.RemoveAll("abp-card-link");
+            output.Attributes.RemoveAll("rocket-card-link");
         }
     }
 }

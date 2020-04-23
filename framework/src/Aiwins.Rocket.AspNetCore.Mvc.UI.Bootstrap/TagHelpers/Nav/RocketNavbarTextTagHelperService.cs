@@ -8,7 +8,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Nav
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
             output.Attributes.AddClass("navbar-text");
-            output.Attributes.RemoveAll("abp-navbar-text");
+            output.Attributes.RemoveAll("rocket-navbar-text");
         }
     }
 }

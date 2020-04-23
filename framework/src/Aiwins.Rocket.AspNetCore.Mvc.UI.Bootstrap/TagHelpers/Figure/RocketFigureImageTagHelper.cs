@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Figure
 {
-    [HtmlTargetElement("abp-image", ParentTag = "abp-figure")]
+    [HtmlTargetElement("rocket-image", ParentTag = "rocket-figure")]
     public class RocketFigureImageTagHelper : RocketTagHelper<RocketFigureImageTagHelper, RocketFigureImageTagHelperService>
     {
         public RocketFigureImageTagHelper(RocketFigureImageTagHelperService tagHelperService)

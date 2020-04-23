@@ -7,11 +7,11 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Grid
     {
         public override void Process(TagHelperContext context, TagHelperOutput output)
         {
-            if (output.TagName == "abp-row")
+            if (output.TagName == "rocket-row")
             {
                 output.Attributes.AddClass("row");
             }
-            if (output.TagName == "abp-form-row")
+            if (output.TagName == "rocket-form-row")
             {
                 output.Attributes.AddClass("form-row");
             }

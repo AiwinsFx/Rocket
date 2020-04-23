@@ -17,13 +17,13 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Controllers
         private readonly IExceptionToErrorInfoConverter _errorInfoConverter;
         private readonly IHttpExceptionStatusCodeFinder _statusCodeFinder;
         private readonly IStringLocalizer<RocketUiResource> _localizer;
-        private readonly RocketErrorPageOptions _abpErrorPageOptions;
+        private readonly RocketErrorPageOptions _rocketErrorPageOptions;
         private readonly IExceptionNotifier _exceptionNotifier;
 
         public ErrorController(
             IExceptionToErrorInfoConverter exceptionToErrorInfoConverter,
             IHttpExceptionStatusCodeFinder httpExceptionStatusCodeFinder,
-            IOptions<RocketErrorPageOptions> abpErrorPageOptions,
+            IOptions<RocketErrorPageOptions> rocketErrorPageOptions,
             IStringLocalizer<RocketUiResource> localizer, 
             IExceptionNotifier exceptionNotifier)
         {
@@ -31,7 +31,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Controllers
             _statusCodeFinder = httpExceptionStatusCodeFinder;
             _localizer = localizer;
             _exceptionNotifier = exceptionNotifier;
-            _abpErrorPageOptions = abpErrorPageOptions.Value;
+            _rocketErrorPageOptions = rocketErrorPageOptions.Value;
         }
 
         public async Task<IActionResult> Index(int httpStatusCode)
@@ -64,7 +64,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Controllers
 
         private string GetErrorPageUrl(int statusCode)
         {
-            var page = _abpErrorPageOptions.ErrorViewUrls.GetOrDefault(statusCode.ToString());
+            var page = _rocketErrorPageOptions.ErrorViewUrls.GetOrDefault(statusCode.ToString());
 
             if (string.IsNullOrWhiteSpace(page))
             {

@@ -6,10 +6,10 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Form
 {
-    [HtmlTargetElement("abp-dynamic-form", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("rocket-dynamic-form", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class RocketDynamicFormTagHelper : RocketTagHelper<RocketDynamicFormTagHelper, RocketDynamicFormTagHelperService>
     {
-        [HtmlAttributeName("abp-model")]
+        [HtmlAttributeName("rocket-model")]
         public ModelExpression Model { get; set; }
 
         [HtmlAttributeNotBound]

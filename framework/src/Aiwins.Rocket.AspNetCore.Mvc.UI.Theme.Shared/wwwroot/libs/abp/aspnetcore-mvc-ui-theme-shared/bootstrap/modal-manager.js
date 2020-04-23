@@ -2,15 +2,15 @@
  * TODO: Document & prepare typescript definitions
  * TODO: Refactor & test more
  */
-var abp = abp || {};
+var rocket = rocket || {};
 
 $.validator.defaults.ignore = ''; //TODO: Would be better if we can apply only for the form we are working on! Also this should be decided by the form itself!
 
 (function ($) {
 
-    abp.modals = abp.modals || {};
+    rocket.modals = rocket.modals || {};
 
-    abp.ModalManager = (function () {
+    rocket.ModalManager = (function () {
 
         var CallbackList = function () { //TODO: To a seperated file
             var _callbacks = [];
@@ -68,14 +68,14 @@ $.validator.defaults.ignore = ''; //TODO: Would be better if we can apply only f
                 if (_$form.length) {
                     //TODO: data-ajaxForm comparison seems wrong!
                     if (_$form.attr('data-ajaxForm') === undefined || _$form.attr('data-ajaxForm') === false) {
-                        _$form.abpAjaxForm();
+                        _$form.rocketAjaxForm();
                     }
 
                     if (_$form.attr('data-check-form-on-close') === undefined || _$form.attr('data-check-form-on-close') != 'false') {
                         _$form.needConfirmationOnUnsavedClose(_$modal);
                     }
 
-                    _$form.on('abp-ajax-success',
+                    _$form.on('rocket-ajax-success',
                         function () {
                             _publicApi.setResult.apply(_publicApi, arguments);
                             _$modal.modal('hide');
@@ -108,7 +108,7 @@ $.validator.defaults.ignore = ''; //TODO: Would be better if we can apply only f
                     $firstVisibleInput.focus();
                 });
 
-                var modalClass = abp.modals[options.modalClass];
+                var modalClass = rocket.modals[options.modalClass];
                 if (modalClass) {
                     _modalObject = new modalClass();
                     _modalObject.init && _modalObject.init(_publicApi, _args); //TODO: Remove later
@@ -130,7 +130,7 @@ $.validator.defaults.ignore = ''; //TODO: Would be better if we can apply only f
                         };
 
                         if (options.scriptUrl) {
-                            abp.ResourceLoader.loadScript(options.scriptUrl, function () {
+                            rocket.ResourceLoader.loadScript(options.scriptUrl, function () {
                                 _initAndShowModal();
                             });
                         } else {

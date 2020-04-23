@@ -40,7 +40,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Popover
             // data-placement="default" with data-trigger="focus" causes Cannot read property 'indexOf' of undefined at computeAutoPlacement(bootstrap.bundle.js?_v=637146714627330435:2185) error
             if (IsDismissibleOrHoverable() && GetDirectory() == PopoverDirectory.Default)
             {
-                //dataPlacementAsHtml = string.Empty; //bootstrap default placement is right, abp's is top.
+                //dataPlacementAsHtml = string.Empty; //bootstrap default placement is right, rocket's is top.
                 dataPlacementAsHtml = dataPlacementAsHtml.Replace("default", "top");
             }
             var titleAttribute = output.Attributes.FirstOrDefault(at => at.Name == "title");

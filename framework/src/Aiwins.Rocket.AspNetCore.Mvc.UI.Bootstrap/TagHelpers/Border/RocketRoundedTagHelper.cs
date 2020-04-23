@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Border
 {
-    [HtmlTargetElement(Attributes = "abp-rounded")]
+    [HtmlTargetElement(Attributes = "rocket-rounded")]
     public class RocketRoundedTagHelper : RocketTagHelper<RocketRoundedTagHelper, RocketRoundedTagHelperService>
     {
         public RocketRoundedType RocketRounded { get; set; } = RocketRoundedType.Default;

@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bundling.TagHelpers
 {
-    [HtmlTargetElement("abp-style", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("rocket-style", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class RocketStyleTagHelper : RocketBundleItemTagHelper<RocketStyleTagHelper, RocketStyleTagHelperService>, IBundleItemTagHelper
     {
         public RocketStyleTagHelper(RocketStyleTagHelperService service)

@@ -1,7 +1,7 @@
 ﻿(function ($) {
-    abp.widgets = abp.widgets || {};
+    rocket.widgets = rocket.widgets || {};
 
-    abp.WidgetManager = function (opts) {
+    rocket.WidgetManager = function (opts) {
         if (!opts) {
             opts = {};
         } else if (typeof opts === 'string') {
@@ -38,7 +38,7 @@
                 filters = $.extend(filters, opts.filterCallback());
             }
 
-            var widgetApi = $widgetWrapperDiv.data('abp-widget-api');
+            var widgetApi = $widgetWrapperDiv.data('rocket-widget-api');
             if (widgetApi && widgetApi.getFilters) {
                 filters = $.extend(filters, widgetApi.getFilters());
             }
@@ -47,13 +47,13 @@
         };
 
         var init = function () {
-            opts.wrapper.find('.abp-widget-wrapper').each(function () {
+            opts.wrapper.find('.rocket-widget-wrapper').each(function () {
                 var $widgetWrapperDiv = $(this);
                 var widgetName = $widgetWrapperDiv.attr('data-widget-name');
-                var widgetApiClass = abp.widgets[widgetName];
+                var widgetApiClass = rocket.widgets[widgetName];
                 if (widgetApiClass) {
                     var widgetApi = new widgetApiClass($widgetWrapperDiv);
-                    $widgetWrapperDiv.data('abp-widget-api', widgetApi);
+                    $widgetWrapperDiv.data('rocket-widget-api', widgetApi);
                     if (widgetApi.init) {
                         widgetApi.init(getFilters($widgetWrapperDiv));
                     }
@@ -62,12 +62,12 @@
         };
 
         var refresh = function () {
-            opts.wrapper.find('.abp-widget-wrapper').each(function () {
+            opts.wrapper.find('.rocket-widget-wrapper').each(function () {
                 var $widgetWrapperDiv = $(this);
 
                 var refreshUrl = $widgetWrapperDiv.attr('data-refresh-url');
                 if (refreshUrl) {
-                    abp.ajax({
+                    rocket.ajax({
                         url: refreshUrl,
                         type: 'GET',
                         dataType: 'html',
@@ -77,7 +77,7 @@
                         $widgetWrapperDiv.replaceWith($(result));
                     });
                 } else {
-                    var widgetApi = $widgetWrapperDiv.data('abp-widget-api');
+                    var widgetApi = $widgetWrapperDiv.data('rocket-widget-api');
                     if (widgetApi && widgetApi.refresh) {
                         widgetApi.refresh(getFilters($widgetWrapperDiv));
                     }
@@ -99,7 +99,7 @@
             refresh: refresh
         };
 
-        opts.wrapper.data('abp-widget-manager', publicApi);
+        opts.wrapper.data('rocket-widget-manager', publicApi);
 
         return publicApi;
     };

@@ -59,7 +59,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets
         {
             PageWidgetManager.TryAdd(widget);
 
-            var wrapperAttributesBuilder = new StringBuilder($"class=\"abp-widget-wrapper\" data-widget-name=\"{widget.Name}\"");
+            var wrapperAttributesBuilder = new StringBuilder($"class=\"rocket-widget-wrapper\" data-widget-name=\"{widget.Name}\"");
 
             if (widget.RefreshUrl != null)
             {

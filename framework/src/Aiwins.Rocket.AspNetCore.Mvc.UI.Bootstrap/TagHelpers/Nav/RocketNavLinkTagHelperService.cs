@@ -22,7 +22,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Nav
             SetDisabledClass(context, output);
             SetActiveClass(context, output);
 
-            output.Attributes.RemoveAll("abp-nav-link");
+            output.Attributes.RemoveAll("rocket-nav-link");
         }
 
         protected virtual void SetDisabledClass(TagHelperContext context, TagHelperOutput output)

@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Nav
 {
-    [HtmlTargetElement(Attributes = "abp-navbar-brand")]
+    [HtmlTargetElement(Attributes = "rocket-navbar-brand")]
     public class RocketNavbarBrandTagHelper : RocketTagHelper<RocketNavbarBrandTagHelper, RocketNavbarBrandTagHelperService>
     {
 

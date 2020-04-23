@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Card
 {
-    [HtmlTargetElement("a", Attributes = "abp-card-link")]
+    [HtmlTargetElement("a", Attributes = "rocket-card-link")]
     public class RocketCardLinkTagHelper : RocketTagHelper<RocketCardLinkTagHelper, RocketCardLinkTagHelperService>
     {
         public RocketCardLinkTagHelper(RocketCardLinkTagHelperService tagHelperService)

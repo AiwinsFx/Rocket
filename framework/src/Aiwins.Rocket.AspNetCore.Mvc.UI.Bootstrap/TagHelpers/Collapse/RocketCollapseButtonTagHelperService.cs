@@ -12,7 +12,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Collapse
 
             AddCommonAttributes(context, output);
 
-            if (output.TagName == "abp-button" || output.TagName == "button")
+            if (output.TagName == "rocket-button" || output.TagName == "button")
             {
                 AddButtonAttributes(context,output);
             }

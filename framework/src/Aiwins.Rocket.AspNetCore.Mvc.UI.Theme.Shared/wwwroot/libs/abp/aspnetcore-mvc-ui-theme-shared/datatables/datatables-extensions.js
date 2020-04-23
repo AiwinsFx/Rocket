@@ -1,4 +1,4 @@
-﻿var abp = abp;
+﻿var rocket = rocket;
 
 (function ($) {
 
@@ -51,7 +51,7 @@
         },
     *************************************************************************/
     var localize = function (key) {
-        return abp.localization.getResource('RocketUi')(key);
+        return rocket.localization.getResource('RocketUi')(key);
     };
 
     var recordActions = function () {
@@ -64,7 +64,7 @@
                 return true;
             }
 
-            if (abp.utils.isFunction(visibilityField)) {
+            if (rocket.utils.isFunction(visibilityField)) {
                 return visibilityField(record);
             } else {
                 return visibilityField;
@@ -94,7 +94,7 @@
 
                     if (!$(this).closest('li').hasClass('disabled')) {
                         if (fieldItem.confirmMessage) {
-                            abp.message.confirm(fieldItem.confirmMessage({ record: record }))
+                            rocket.message.confirm(fieldItem.confirmMessage({ record: record }))
                                 .done(function (accepted) {
                                     if (accepted) {
                                         fieldItem.action({ record: record });
@@ -272,7 +272,7 @@
     /************************************************************************
     * AJAX extension for datatables                                         *
     *************************************************************************/
-    var datatables = abp.utils.createNamespace(abp, 'libs.datatables');
+    var datatables = rocket.utils.createNamespace(rocket, 'libs.datatables');
 
     var ajaxActions = function () {
         datatables.createAjax = function (serverMethod, inputAction) {

@@ -36,14 +36,14 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Bundling
         {
             context.Files.AddRange(new[]
             {
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/jquery-extensions.js",
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery-form/jquery-form-extensions.js",
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/jquery/widget-manager.js",
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/dom-event-handlers.js",
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/bootstrap/modal-manager.js",
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/datatables/datatables-extensions.js",
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/sweetalert/abp-sweetalert.js",
-                "/libs/abp/aspnetcore-mvc-ui-theme-shared/toastr/abp-toastr.js"
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/jquery/jquery-extensions.js",
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/jquery-form/jquery-form-extensions.js",
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/jquery/widget-manager.js",
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/bootstrap/dom-event-handlers.js",
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/bootstrap/modal-manager.js",
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/datatables/datatables-extensions.js",
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/sweetalert/rocket-sweetalert.js",
+                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/toastr/rocket-toastr.js"
             });
         }
     }

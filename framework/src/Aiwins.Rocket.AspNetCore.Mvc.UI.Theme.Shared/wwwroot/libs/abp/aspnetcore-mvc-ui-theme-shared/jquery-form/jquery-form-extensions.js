@@ -3,7 +3,7 @@
         return;
     }
 
-    $.fn.abpAjaxForm = function (userOptions) {
+    $.fn.rocketAjaxForm = function (userOptions) {
         var $form = $(this);
         userOptions = $.extend({
             formSubmitting: {
@@ -13,7 +13,7 @@
             }
         }, userOptions || {});
 
-        var options = $.extend({}, $.fn.abpAjaxForm.defaults, userOptions);
+        var options = $.extend({}, $.fn.rocketAjaxForm.defaults, userOptions);
 
         options.beforeSubmit = function (arr, $form) {
             if ((userOptions.beforeSubmit && userOptions.beforeSubmit.apply(this, arguments)) === false) {
@@ -43,7 +43,7 @@
 
         options.success = function (responseText, statusText, xhr, $form) {
             userOptions.success && userOptions.success.apply(this, arguments);
-            $form.trigger('abp-ajax-success',
+            $form.trigger('rocket-ajax-success',
                 {
                     responseText: responseText,
                     statusText: statusText,
@@ -58,13 +58,13 @@
             }
 
             if (jqXhr.getResponseHeader('_RocketErrorFormat') === 'true') {
-                abp.ajax.logError(jqXhr.responseJSON.error);
-                var messagePromise = abp.ajax.showError(jqXhr.responseJSON.error);
+                rocket.ajax.logError(jqXhr.responseJSON.error);
+                var messagePromise = rocket.ajax.showError(jqXhr.responseJSON.error);
                 if (jqXhr.status === 401) {
-                    abp.ajax.handleUnAuthorizedRequest(messagePromise);
+                    rocket.ajax.handleUnAuthorizedRequest(messagePromise);
                 }
             } else {
-                abp.ajax.handleErrorStatusCode(jqXhr.status);
+                rocket.ajax.handleErrorStatusCode(jqXhr.status);
             }
         };
 
@@ -77,7 +77,7 @@
                 }
             }
 
-            $form.trigger('abp-ajax-complete',
+            $form.trigger('rocket-ajax-complete',
                 {
                     status: status,
                     jqXhr: jqXhr,
@@ -90,7 +90,7 @@
         return $form.ajaxForm(options);
     };
 
-    $.fn.abpAjaxForm.defaults = {
+    $.fn.rocketAjaxForm.defaults = {
         method: 'POST'
     };
 

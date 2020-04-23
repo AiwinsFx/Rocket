@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Alert
 {
-    [HtmlTargetElement("a", Attributes = "abp-alert-link", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("a", Attributes = "rocket-alert-link", TagStructure = TagStructure.NormalOrSelfClosing)]
     public class RocketAlertLinkTagHelper : RocketTagHelper<RocketAlertLinkTagHelper, RocketAlertLinkTagHelperService>
     {
         public RocketAlertLinkTagHelper(RocketAlertLinkTagHelperService tagHelperService)

@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Border
 {
-    [HtmlTargetElement(Attributes = "abp-border")]
+    [HtmlTargetElement(Attributes = "rocket-border")]
     public class RocketBorderTagHelper : RocketTagHelper<RocketBorderTagHelper, RocketBorderTagHelperService>
     {
         public RocketBorderType RocketBorder { get; set; } = RocketBorderType.Default;

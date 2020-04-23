@@ -4,18 +4,18 @@
     var resourceItems = Model.Widgets.SelectMany(w => w.Styles).ToArray();
     if (resourceItems.Any())
     {
-        <abp-style-bundle>
+        <rocket-style-bundle>
             @foreach (var resourceItem in resourceItems)
             {
                 if (resourceItem.Src != null)
                 {
-                    <abp-style src="@resourceItem.Src" />
+                    <rocket-style src="@resourceItem.Src" />
                 }
                 else
                 {
-                    <abp-style type="@resourceItem.Type" />
+                    <rocket-style type="@resourceItem.Type" />
                 }
             }
-        </abp-style-bundle>
+        </rocket-style-bundle>
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Pagination
 {
-    [HtmlTargetElement("abp-paginator")]
+    [HtmlTargetElement("rocket-paginator")]
     public class RocketPaginationTagHelper : RocketTagHelper<RocketPaginationTagHelper, RocketPaginationTagHelperService>
     {
         public PagerModel Model { get; set; }

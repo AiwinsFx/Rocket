@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Tab
 {
-    [HtmlTargetElement("abp-tab")]
+    [HtmlTargetElement("rocket-tab")]
     public class RocketTabTagHelper : RocketTagHelper<RocketTabTagHelper, RocketTabTagHelperService>
     {
         public string Name { get; set; }

@@ -2,8 +2,8 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Grid
 {
-    [HtmlTargetElement("abp-row")]
-    [HtmlTargetElement("abp-form-row")]
+    [HtmlTargetElement("rocket-row")]
+    [HtmlTargetElement("rocket-form-row")]
     public class RocketRowTagHelper : RocketTagHelper<RocketRowTagHelper, RocketRowTagHelperService>
     {
         public VerticalAlign VAlign { get; set; } = VerticalAlign.Default;

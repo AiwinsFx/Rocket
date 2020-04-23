@@ -2,8 +2,8 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.ProgressBar
 {
-    [HtmlTargetElement("abp-progress-bar")]
-    [HtmlTargetElement("abp-progress-part")]
+    [HtmlTargetElement("rocket-progress-bar")]
+    [HtmlTargetElement("rocket-progress-part")]
     public class RocketProgressBarTagHelper : RocketTagHelper<RocketProgressBarTagHelper, RocketProgressBarTagHelperService>
     {
         public double Value { get; set; }

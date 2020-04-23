@@ -4,7 +4,7 @@
     }
 
     var localize = function (key) {
-        return abp.localization.getResource('RocketUi')(key);
+        return rocket.localization.getResource('RocketUi')(key);
     };
 
     /* A simple jQuery plug-in to make a button busy. */
@@ -154,7 +154,7 @@
 
             if (!formSaved && thereAreUnsavedChanges) {
                 e.preventDefault();
-                abp.message.confirm(localize('AreYouSureYouWantToCancelEditingWarningMessage'),
+                rocket.message.confirm(localize('AreYouSureYouWantToCancelEditingWarningMessage'),
                     function (result) {
                         if (result) {
                             formSaved = true;
@@ -164,7 +164,7 @@
             }
         });
 
-        $(this).on('abp-ajax-success', function () {
+        $(this).on('rocket-ajax-success', function () {
             formSaved = true;
         });
     };

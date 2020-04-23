@@ -2,11 +2,11 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Button
 {
-    [HtmlTargetElement("a", Attributes = "abp-button", TagStructure = TagStructure.NormalOrSelfClosing)]
-    [HtmlTargetElement("input", Attributes = "abp-button", TagStructure = TagStructure.WithoutEndTag)]
+    [HtmlTargetElement("a", Attributes = "rocket-button", TagStructure = TagStructure.NormalOrSelfClosing)]
+    [HtmlTargetElement("input", Attributes = "rocket-button", TagStructure = TagStructure.WithoutEndTag)]
     public class RocketLinkButtonTagHelper : RocketTagHelper<RocketLinkButtonTagHelper, RocketLinkButtonTagHelperService>, IButtonTagHelperBase
     {
-        [HtmlAttributeName("abp-button")]
+        [HtmlAttributeName("rocket-button")]
         public RocketButtonType ButtonType { get; set; }
 
         public RocketButtonSize Size { get; set; } = RocketButtonSize.Default;

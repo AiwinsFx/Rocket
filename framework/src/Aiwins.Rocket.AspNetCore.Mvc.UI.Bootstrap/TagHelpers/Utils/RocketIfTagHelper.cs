@@ -2,10 +2,10 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Utils
 {
-    [HtmlTargetElement(Attributes = "abp-if")]
+    [HtmlTargetElement(Attributes = "rocket-if")]
     public class RocketIfTagHelper : RocketTagHelper
     {
-        [HtmlAttributeName("abp-if")]
+        [HtmlAttributeName("rocket-if")]
         public bool Condition { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)

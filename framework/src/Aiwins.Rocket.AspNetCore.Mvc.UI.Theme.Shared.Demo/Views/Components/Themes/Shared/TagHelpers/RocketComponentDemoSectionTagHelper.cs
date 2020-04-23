@@ -10,8 +10,8 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Demo.Views.Components.The
 {
     public class RocketComponentDemoSectionTagHelper : RocketTagHelper
     {
-        private const string DemoSectionOpeningTag = "<abp-component-demo-section";
-        private const string DemoSectionClosingTag = "</abp-component-demo-section";
+        private const string DemoSectionOpeningTag = "<rocket-component-demo-section";
+        private const string DemoSectionClosingTag = "</rocket-component-demo-section";
 
         public string ViewPath { get; set; }
         public string Title { get; set; }
@@ -29,19 +29,19 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Demo.Views.Components.The
 
             var content = await output.GetChildContentAsync();
 
-            output.PreContent.AppendHtml("<div class=\"abp-component-demo-section\">");
+            output.PreContent.AppendHtml("<div class=\"rocket-component-demo-section\">");
             output.PreContent.AppendHtml($"<h2>{Title}</h2>");
-            output.PreContent.AppendHtml("<div class=\"abp-component-demo-section-body\">");
+            output.PreContent.AppendHtml("<div class=\"rocket-component-demo-section-body\">");
             /* component rendering here */
-            output.PostContent.AppendHtml("</div>"); //abp-component-demo-section-body
+            output.PostContent.AppendHtml("</div>"); //rocket-component-demo-section-body
             AppendRawSource(output);
             AppendBootstrapSource(output, content);
-            output.PostContent.AppendHtml("</div>"); //abp-component-demo-section
+            output.PostContent.AppendHtml("</div>"); //rocket-component-demo-section
         }
 
         private static void AppendBootstrapSource(TagHelperOutput output, TagHelperContent content)
         {
-            output.PostContent.AppendHtml("<div class=\"abp-component-demo-section-bs-source\">");
+            output.PostContent.AppendHtml("<div class=\"rocket-component-demo-section-bs-source\">");
             output.PostContent.AppendHtml("<h3>Bootstrap</h3>");
             output.PostContent.AppendHtml("<pre>");
             output.PostContent.Append(content.GetContent());
@@ -51,7 +51,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Demo.Views.Components.The
 
         private void AppendRawSource(TagHelperOutput output)
         {
-            output.PostContent.AppendHtml("<div class=\"abp-component-demo-section-raw-source\">");
+            output.PostContent.AppendHtml("<div class=\"rocket-component-demo-section-raw-source\">");
             output.PostContent.AppendHtml("<h3>ABP Tag Helpers</h3>");
             output.PostContent.AppendHtml("<pre>");
             output.PostContent.Append(GetRawDemoSource());

@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Nav
 {
-    [HtmlTargetElement(Attributes = "abp-nav-link")]
+    [HtmlTargetElement(Attributes = "rocket-nav-link")]
     public class RocketNavLinkTagHelper : RocketTagHelper<RocketNavLinkTagHelper, RocketNavLinkTagHelperService>
     {
         public bool? Active { get; set; } 

@@ -4,11 +4,11 @@ using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Button;
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Collapse
 {
 
-    [HtmlTargetElement("abp-button", Attributes = "abp-collapse-id")]
-    [HtmlTargetElement("a", Attributes = "abp-collapse-id")]
+    [HtmlTargetElement("rocket-button", Attributes = "rocket-collapse-id")]
+    [HtmlTargetElement("a", Attributes = "rocket-collapse-id")]
     public class RocketCollapseButtonTagHelper : RocketTagHelper<RocketCollapseButtonTagHelper, RocketCollapseButtonTagHelperService>
     {
-        [HtmlAttributeName("abp-collapse-id")]
+        [HtmlAttributeName("rocket-collapse-id")]
         public string BodyId { get; set; }
 
         public RocketCollapseButtonTagHelper(RocketCollapseButtonTagHelperService tagHelperService)

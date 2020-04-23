@@ -56,7 +56,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.ProgressBar
 
         protected virtual void SetParentElement(TagHelperContext context, TagHelperOutput output)
         {
-            if (output.TagName == "abp-progress-part")
+            if (output.TagName == "rocket-progress-part")
             {
                 return;
             }

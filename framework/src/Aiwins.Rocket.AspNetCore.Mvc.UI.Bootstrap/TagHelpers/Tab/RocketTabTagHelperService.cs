@@ -55,7 +55,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Tab
             var classAttributesAsString = attributes.Where(a => a.Name == "class").ToList().Select(a => a.Name).JoinAsString(" ");
             var otherAttributesAsString = attributes.Where(a => a.Name != "class").ToList().ToHtmlAttributesAsString();
 
-            return "<div class=\"tab-pane fade " + classAttributesAsString + " " + RocketTabItemShowActivePlaceholder + "\" id=\"" + id + "\" role=\"tabpanel\" aria-labelledby=\"" + headerId + "\" " + otherAttributesAsString + ">" +
+            return "<div class=\"tab-pane fade " + classAttributesAsString + " " + RocketTabItemShowActivePlaceholder + "\" id=\"" + id + "\" role=\"trocketanel\" aria-labelledby=\"" + headerId + "\" " + otherAttributesAsString + ">" +
                    content +
                    "</div>";
         }

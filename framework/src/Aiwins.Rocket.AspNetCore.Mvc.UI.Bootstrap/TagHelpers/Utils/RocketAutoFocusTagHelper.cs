@@ -2,10 +2,10 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Utils
 {
-    [HtmlTargetElement(Attributes = "abp-auto-focus")]
+    [HtmlTargetElement(Attributes = "rocket-auto-focus")]
     public class RocketAutoFocusTagHelper : RocketTagHelper
     {
-        [HtmlAttributeName("abp-auto-focus")]
+        [HtmlAttributeName("rocket-auto-focus")]
         public bool AutoFocus { get; set; }
 
         public override void Process(TagHelperContext context, TagHelperOutput output)

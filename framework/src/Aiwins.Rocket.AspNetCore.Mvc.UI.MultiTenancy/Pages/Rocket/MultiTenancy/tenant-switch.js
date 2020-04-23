@@ -1,6 +1,6 @@
 ﻿(function($) {
 
-    var tenantSwitchModal = new abp.ModalManager(abp.appPath + 'Rocket/MultiTenancy/TenantSwitchModal');
+    var tenantSwitchModal = new rocket.ModalManager(rocket.appPath + 'Rocket/MultiTenancy/TenantSwitchModal');
 
     $(function() {
         $('#RocketTenantSwitchLink').click(function(e) {

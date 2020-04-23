@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
 {
-    [HtmlTargetElement("abp-modal-footer")]
+    [HtmlTargetElement("rocket-modal-footer")]
     public class RocketModalFooterTagHelper : RocketTagHelper<RocketModalFooterTagHelper, RocketModalFooterTagHelperService>
     {
         public RocketModalButtons Buttons { get; set; }

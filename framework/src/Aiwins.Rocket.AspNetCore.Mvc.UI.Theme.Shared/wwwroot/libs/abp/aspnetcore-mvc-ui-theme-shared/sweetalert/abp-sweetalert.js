@@ -1,4 +1,4 @@
-﻿var abp = abp || {};
+﻿var rocket = rocket || {};
 (function ($) {
     if (!sweetAlert || !$) {
         return;
@@ -6,8 +6,8 @@
 
     /* DEFAULTS *************************************************/
 
-    abp.libs = abp.libs || {};
-    abp.libs.sweetAlert = {
+    rocket.libs = rocket.libs || {};
+    rocket.libs.sweetAlert = {
         config: {
             'default': {
 
@@ -42,8 +42,8 @@
 
         var opts = $.extend(
             {},
-            abp.libs.sweetAlert.config['default'],
-            abp.libs.sweetAlert.config[type],
+            rocket.libs.sweetAlert.config['default'],
+            rocket.libs.sweetAlert.config[type],
             {
                 title: title,
                 text: message
@@ -57,23 +57,23 @@
         });
     };
 
-    abp.message.info = function (message, title) {
+    rocket.message.info = function (message, title) {
         return showMessage('info', message, title);
     };
 
-    abp.message.success = function (message, title) {
+    rocket.message.success = function (message, title) {
         return showMessage('success', message, title);
     };
 
-    abp.message.warn = function (message, title) {
+    rocket.message.warn = function (message, title) {
         return showMessage('warn', message, title);
     };
 
-    abp.message.error = function (message, title) {
+    rocket.message.error = function (message, title) {
         return showMessage('error', message, title);
     };
 
-    abp.message.confirm = function (message, titleOrCallback, callback, closeOnEsc) {
+    rocket.message.confirm = function (message, titleOrCallback, callback, closeOnEsc) {
 
         var userOpts = {
             text: message
@@ -90,8 +90,8 @@
 
         var opts = $.extend(
             {},
-            abp.libs.sweetAlert.config['default'],
-            abp.libs.sweetAlert.config.confirm,
+            rocket.libs.sweetAlert.config['default'],
+            rocket.libs.sweetAlert.config.confirm,
             userOpts
         );
 
@@ -103,11 +103,11 @@
         });
     };
 
-    abp.event.on('abp.configurationInitialized', function () {
-        var l = abp.localization.getResource('RocketUi');
+    rocket.event.on('rocket.configurationInitialized', function () {
+        var l = rocket.localization.getResource('RocketUi');
 
-        abp.libs.sweetAlert.config.confirm.title = l('AreYouSure');
-        abp.libs.sweetAlert.config.confirm.buttons = [l('Cancel'), l('Yes')];
+        rocket.libs.sweetAlert.config.confirm.title = l('AreYouSure');
+        rocket.libs.sweetAlert.config.confirm.buttons = [l('Cancel'), l('Yes')];
     });
 
 })(jQuery);

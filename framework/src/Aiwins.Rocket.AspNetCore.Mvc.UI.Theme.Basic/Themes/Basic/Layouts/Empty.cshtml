@@ -43,7 +43,7 @@
     {
         <meta name="description" content="@ViewBag.Description" />
     }
-    <abp-style-bundle name="@BasicThemeBundles.Styles.Global" />
+    <rocket-style-bundle name="@BasicThemeBundles.Styles.Global" />
 
     @await Component.InvokeAsync(typeof(WidgetStylesViewComponent))
 
@@ -51,7 +51,7 @@
 
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Head.Last, StandardLayouts.Empty)
 </head>
-<body class="abp-empty-layout">
+<body class="rocket-empty-layout">
     @await Component.InvokeLayoutHookAsync(LayoutHooks.Body.First, StandardLayouts.Empty)
 
     <div class="@containerClass">
@@ -59,7 +59,7 @@
         @RenderBody()
     </div>
 
-    <abp-script-bundle name="@BasicThemeBundles.Scripts.Global" />
+    <rocket-script-bundle name="@BasicThemeBundles.Scripts.Global" />
 
     <script src="~/Rocket/ApplicationConfigurationScript"></script>
     <script src="~/Rocket/ServiceProxyScript"></script>

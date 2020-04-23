@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\configureawait.props" />
+  <Import Project="..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.UI</AssemblyName>
+    <PackageId>Aiwins.Rocket.UI</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\**\*.json" />
+    <Content Remove="Localization\**\*.json" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.Localization\Aiwins.Rocket.Localization.csproj" />
+  </ItemGroup>
+
+</Project>

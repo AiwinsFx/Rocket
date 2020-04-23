@@ -37,7 +37,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bundling.TagHelpers
                     .Replace("/", ".");
             }
 
-            throw new RocketException("abp-script tag helper requires to set either src or type!");
+            throw new RocketException("rocket-script tag helper requires to set either src or type!");
         }
 
         public BundleTagHelperItem CreateBundleTagHelperItem()
@@ -52,7 +52,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bundling.TagHelpers
                 return new BundleTagHelperFileItem(Src);
             }
 
-            throw new RocketException("abp-script tag helper requires to set either src or type!");
+            throw new RocketException("rocket-script tag helper requires to set either src or type!");
         }
 
         protected abstract string GetFileExtension();

@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Razor.TagHelpers;
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Form
 {
-    [HtmlTargetElement("abp-radio")]
+    [HtmlTargetElement("rocket-radio")]
     public class RocketRadioInputTagHelper : RocketTagHelper<RocketRadioInputTagHelper, RocketRadioInputTagHelperService>
     {
         public ModelExpression AspFor { get; set; }

@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Blockquote
 {
-    [HtmlTargetElement("footer", ParentTag = "abp-blockquote")]
+    [HtmlTargetElement("footer", ParentTag = "rocket-blockquote")]
     public class RocketBlockquoteFooterTagHelper : RocketTagHelper<RocketBlockquoteFooterTagHelper, RocketBlockquoteFooterTagHelperService>
     {
         public RocketBlockquoteFooterTagHelper(RocketBlockquoteFooterTagHelperService tagHelperService)

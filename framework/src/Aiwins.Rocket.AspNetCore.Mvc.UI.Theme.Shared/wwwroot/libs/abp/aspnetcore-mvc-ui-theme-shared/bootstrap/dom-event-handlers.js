@@ -12,13 +12,13 @@
                 var confirmText = $form.attr('data-confirm');
                 if (confirmText) {
                     $form.submit(function (e) {
-                        if (!$form.data('abp-confirmed')) {
+                        if (!$form.data('rocket-confirmed')) {
                             e.preventDefault();
-                            abp.message.confirm(confirmText).done(function (accepted) {
+                            rocket.message.confirm(confirmText).done(function (accepted) {
                                 if (accepted) {
-                                    $form.data('abp-confirmed', true);
+                                    $form.data('rocket-confirmed', true);
                                     $form.submit();
-                                    $form.data('abp-confirmed', undefined);
+                                    $form.data('rocket-confirmed', undefined);
                                 }
                             });
                         }
@@ -26,7 +26,7 @@
                 }
 
                 if ($form.attr('data-ajaxForm') === 'true') {
-                    $form.abpAjaxForm();
+                    $form.rocketAjaxForm();
                 }
             });
         }
@@ -45,13 +45,13 @@
             }
 
             var scriptObject = new scriptClass();
-            $el.data('abp-script-object', scriptObject);
+            $el.data('rocket-script-object', scriptObject);
 
             scriptObject.initDom && scriptObject.initDom($el);
         });
     }
 
-    abp.dom.onNodeAdded(function (args) {
+    rocket.dom.onNodeAdded(function (args) {
         args.$el.findWithSelf('[data-toggle="tooltip"]').tooltip({
             container: 'body'
         });
@@ -67,7 +67,7 @@
         initializeScript(args.$el);
     });
 
-    abp.dom.onNodeRemoved(function (args) {
+    rocket.dom.onNodeRemoved(function (args) {
         args.$el.findWithSelf('[data-toggle="tooltip"]').each(function () {
             $('#' + $(this).attr('aria-describedby')).remove();
         });

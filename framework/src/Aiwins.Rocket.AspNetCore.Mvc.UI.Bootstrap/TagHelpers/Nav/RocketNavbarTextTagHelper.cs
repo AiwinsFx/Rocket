@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Nav
 {
-    [HtmlTargetElement("span", Attributes = "abp-navbar-text")]
+    [HtmlTargetElement("span", Attributes = "rocket-navbar-text")]
     public class RocketNavbarTextTagHelper : RocketTagHelper<RocketNavbarTextTagHelper, RocketNavbarTextTagHelperService>
     {
         public RocketNavbarTextTagHelper(RocketNavbarTextTagHelperService tagHelperService)

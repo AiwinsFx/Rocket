@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Tab
 {
-    [HtmlTargetElement("abp-tab-link", TagStructure = TagStructure.WithoutEndTag)]
+    [HtmlTargetElement("rocket-tab-link", TagStructure = TagStructure.WithoutEndTag)]
     public class RocketTabLinkTagHelper : RocketTagHelper<RocketTabLinkTagHelper, RocketTabLinkTagHelperService>
     {
         public string Name { get; set; }

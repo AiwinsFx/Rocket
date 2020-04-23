@@ -1,15 +1,15 @@
 @using Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Demo.Views.Components.Themes.Shared.Demos.ModalsDemo
 @using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
 
-<abp-component-demo-section title="Example" view-path="@ModalsDemoViewComponent.ViewPath">
+<rocket-component-demo-section title="Example" view-path="@ModalsDemoViewComponent.ViewPath">
 
-    <abp-button button-type="Primary" data-toggle="modal" data-target="#myModal">Launch modal</abp-button>
+    <rocket-button button-type="Primary" data-toggle="modal" data-target="#myModal">Launch modal</rocket-button>
 
-    <abp-modal centered="true" size="Large" id="myModal">
-        <abp-modal-header title="Modal title"></abp-modal-header>
-        <abp-modal-body>
+    <rocket-modal centered="true" size="Large" id="myModal">
+        <rocket-modal-header title="Modal title"></rocket-modal-header>
+        <rocket-modal-body>
             Woohoo, you're reading this text in a modal!
-        </abp-modal-body>
-        <abp-modal-footer buttons="@(RocketModalButtons.Save|RocketModalButtons.Close)"></abp-modal-footer>
-    </abp-modal>
-</abp-component-demo-section>
+        </rocket-modal-body>
+        <rocket-modal-footer buttons="@(RocketModalButtons.Save|RocketModalButtons.Close)"></rocket-modal-footer>
+    </rocket-modal>
+</rocket-component-demo-section>
