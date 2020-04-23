@@ -91,6 +91,23 @@ namespace Aiwins.Rocket.Reflection {
         }
 
         /// <summary>
+        /// 获取类成员的特性信息
+        /// </summary>
+        /// <typeparam name="TAttribute">特性类型</typeparam>
+        /// <param name="memberInfo">成员信息</param>
+        /// <param name="inherit">是否获取基类的特性</param>
+        public static IEnumerable<TAttribute> GetAttributesOfMemberOrDeclaringType<TAttribute>(MemberInfo memberInfo, bool inherit = true)
+            where TAttribute : class
+        {
+            var customAttributes = memberInfo.GetCustomAttributes(true).OfType<TAttribute>();
+            var declaringTypeCustomAttributes =
+                memberInfo.DeclaringType?.GetTypeInfo().GetCustomAttributes(true).OfType<TAttribute>();
+            return declaringTypeCustomAttributes != null
+                ? customAttributes.Concat(declaringTypeCustomAttributes).Distinct()
+                : customAttributes;
+        }
+
+        /// <summary>
         /// 获取给定对象的属性值
         /// </summary>
         public static object GetValueByPath (object obj, Type objectType, string propertyPath) {
