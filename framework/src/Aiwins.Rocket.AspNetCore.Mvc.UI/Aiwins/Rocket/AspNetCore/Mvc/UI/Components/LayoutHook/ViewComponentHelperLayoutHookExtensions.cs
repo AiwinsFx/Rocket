@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Components.LayoutHook
 {
     public static class ViewComponentHelperLayoutHookExtensions
     {

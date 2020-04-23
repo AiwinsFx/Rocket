@@ -137,7 +137,7 @@ namespace Aiwins.Rocket.EntityFrameworkCore {
             }
 
             ChangeTracker.CascadeDeleteTiming = CascadeTiming.OnSaveChanges;
-            ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
+            // ChangeTracker.DeleteOrphansTiming = CascadeTiming.OnSaveChanges;
 
             ChangeTracker.Tracked += ChangeTracker_Tracked;
         }

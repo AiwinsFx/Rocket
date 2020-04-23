@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Layout
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Layout
 {
     public class ContentLayout
     {

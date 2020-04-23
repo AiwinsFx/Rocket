@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Components.LayoutHook
 {
     public class LayoutHookInfo
     {

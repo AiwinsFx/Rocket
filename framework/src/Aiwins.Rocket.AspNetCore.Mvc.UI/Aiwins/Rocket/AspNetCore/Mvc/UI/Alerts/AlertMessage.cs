@@ -1,6 +1,6 @@
 ﻿using JetBrains.Annotations;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Alerts
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Alerts
 {
     public class AlertMessage
     {

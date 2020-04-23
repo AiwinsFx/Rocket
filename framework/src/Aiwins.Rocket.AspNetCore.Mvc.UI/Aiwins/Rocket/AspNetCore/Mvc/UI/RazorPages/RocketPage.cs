@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.Razor.Internal;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Volo.Abp.Users;
+using Aiwins.Rocket.Users;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.RazorPages
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.RazorPages
 {
-    public abstract class AbpPage : Page
+    public abstract class RocketPage : Page
     {
         [RazorInject]
         public ICurrentUser CurrentUser { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
 {
     public class ThemeDictionary : Dictionary<Type, ThemeInfo>
     {
@@ -15,7 +15,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
         {
             if (ContainsKey(themeType))
             {
-                throw new AbpException("This theme is already added before: " + themeType.AssemblyQualifiedName);
+                throw new RocketException("This theme is already added before: " + themeType.AssemblyQualifiedName);
             }
 
             return this[themeType] = new ThemeInfo(themeType);

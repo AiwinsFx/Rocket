@@ -1,6 +1,6 @@
-﻿using Volo.Abp.DependencyInjection;
+﻿using Aiwins.Rocket.DependencyInjection;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Layout
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Layout
 {
     public class PageLayout : IPageLayout, IScopedDependency
     {

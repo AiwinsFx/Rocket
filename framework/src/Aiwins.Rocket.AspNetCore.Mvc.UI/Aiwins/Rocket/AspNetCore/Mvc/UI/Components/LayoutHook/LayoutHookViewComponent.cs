@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Components.LayoutHook
 {
-    public class LayoutHookViewComponent : AbpViewComponent
+    public class LayoutHookViewComponent : RocketViewComponent
     {
-        protected AbpLayoutHookOptions Options { get; }
+        protected RocketLayoutHookOptions Options { get; }
 
-        public LayoutHookViewComponent(IOptions<AbpLayoutHookOptions> options)
+        public LayoutHookViewComponent(IOptions<RocketLayoutHookOptions> options)
         {
             Options = options.Value;
         }
@@ -19,7 +19,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Components.LayoutHook
             var hooks = Options.Hooks.GetOrDefault(name)?.ToArray() ?? Array.Empty<LayoutHookInfo>();
 
             return View(
-                "~/Volo/Abp/AspNetCore/Mvc/UI/Components/LayoutHook/Default.cshtml",
+                "~/Aiwins/Rocket/AspNetCore/Mvc/UI/Components/LayoutHook/Default.cshtml",
                 new LayoutHookViewModel(hooks, layout)
             );
         }

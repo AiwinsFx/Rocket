@@ -95,18 +95,14 @@ namespace Aiwins.Rocket.Http.Client.DynamicProxying {
         }
 
         private async Task<T> MakeRequestAndGetResultAsync<T> (IRocketMethodInvocation invocation) {
-            var responseAsString = await MakeRequestAsync (invocation);
-
-            //TODO: Think on that
-            if (TypeHelper.IsPrimitiveExtended (typeof (T), true)) {
-                if (typeof (DateTime).IsAssignableFrom (typeof (T))) {
-                    return (T) (object) DateTime.Parse (responseAsString.Trim ('\"'), CultureInfo.InvariantCulture);
-                } else {
-                    return (T) Convert.ChangeType (responseAsString, typeof (T));
-                }
+            var responseAsString = await MakeRequestAsync(invocation);
+            
+            if (typeof(T) == typeof(string))
+            {
+                return (T)Convert.ChangeType(responseAsString, typeof(T));
             }
 
-            return JsonSerializer.Deserialize<T> (responseAsString);
+            return JsonSerializer.Deserialize<T>(responseAsString);
         }
 
         private async Task<string> MakeRequestAsync (IRocketMethodInvocation invocation) {

@@ -1,4 +1,4 @@
-﻿namespace Volo.Abp.AspNetCore.Mvc.UI.Alerts
+﻿namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Alerts
 {
     public enum AlertType
     {

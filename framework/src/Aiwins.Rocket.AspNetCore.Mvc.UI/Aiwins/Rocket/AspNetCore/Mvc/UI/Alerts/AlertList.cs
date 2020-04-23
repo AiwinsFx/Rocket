@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Alerts
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Alerts
 {
     public class AlertList : List<AlertMessage>
     {

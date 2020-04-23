@@ -8,19 +8,19 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using System;
 using System.Threading.Tasks;
-using Volo.Abp.AspNetCore.Mvc.UI.Alerts;
-using Volo.Abp.AspNetCore.Mvc.Validation;
-using Volo.Abp.Guids;
-using Volo.Abp.MultiTenancy;
-using Volo.Abp.ObjectMapping;
-using Volo.Abp.Settings;
-using Volo.Abp.Timing;
-using Volo.Abp.Uow;
-using Volo.Abp.Users;
+using Aiwins.Rocket.AspNetCore.Mvc.UI.Alerts;
+using Aiwins.Rocket.AspNetCore.Mvc.Validation;
+using Aiwins.Rocket.Guids;
+using Aiwins.Rocket.MultiTenancy;
+using Aiwins.Rocket.ObjectMapping;
+using Aiwins.Rocket.Settings;
+using Aiwins.Rocket.Timing;
+using Aiwins.Rocket.Uow;
+using Aiwins.Rocket.Users;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.RazorPages
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.RazorPages
 {
-    public abstract class AbpPageModel : PageModel
+    public abstract class RocketPageModel : PageModel
     {
         public IServiceProvider ServiceProvider { get; set; }
         protected readonly object ServiceProviderLock = new object();
@@ -92,7 +92,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.RazorPages
                 {
                     if (LocalizationResourceType == null)
                     {
-                        throw new AbpException($"{nameof(LocalizationResourceType)} should be set before using the {nameof(L)} object!");
+                        throw new RocketException($"{nameof(LocalizationResourceType)} should be set before using the {nameof(L)} object!");
                     }
 
                     _localizer = StringLocalizerFactory.Create(LocalizationResourceType);

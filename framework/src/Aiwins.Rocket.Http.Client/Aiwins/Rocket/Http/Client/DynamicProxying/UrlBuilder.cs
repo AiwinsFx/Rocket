@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using Aiwins.Rocket.Http.Modeling;
 using Aiwins.Rocket.Http.ProxyScripting.Generators;
+using Aiwins.Rocket.Localization;
 using Aiwins.Rocket.Reflection;
 using JetBrains.Annotations;
 
@@ -83,11 +84,13 @@ namespace Aiwins.Rocket.Http.Client.DynamicProxying {
         }
 
         private static string ConvertValueToString ([NotNull] object value) {
-            if (value is DateTime dateTimeValue) {
-                return dateTimeValue.ToUniversalTime ().ToString ("u");
-            }
+            using (CultureHelper.Use (CultureInfo.InvariantCulture)) {
+                if (value is DateTime dateTimeValue) {
+                    return dateTimeValue.ToUniversalTime ().ToString ("u");
+                }
 
-            return value.ToString ();
+                return value.ToString ();
+            }
         }
     }
 }

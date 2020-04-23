@@ -1,14 +1,14 @@
 ﻿using System.Linq;
 using Microsoft.Extensions.Options;
-using Volo.Abp.DependencyInjection;
+using Aiwins.Rocket.DependencyInjection;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
 {
     public class DefaultThemeSelector : IThemeSelector, ITransientDependency
     {
-        protected AbpThemingOptions Options { get; }
+        protected RocketThemingOptions Options { get; }
 
-        public DefaultThemeSelector(IOptions<AbpThemingOptions> options)
+        public DefaultThemeSelector(IOptions<RocketThemingOptions> options)
         {
             Options = options.Value;
         }
@@ -17,7 +17,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
         {
             if (!Options.Themes.Any())
             {
-                throw new AbpException($"No theme registered! Use {nameof(AbpThemingOptions)} to register themes.");
+                throw new RocketException($"No theme registered! Use {nameof(RocketThemingOptions)} to register themes.");
             }
 
             if (Options.DefaultThemeName == null)
@@ -28,7 +28,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
             var themeInfo = Options.Themes.Values.FirstOrDefault(t => t.Name == Options.DefaultThemeName);
             if (themeInfo == null)
             {
-                throw new AbpException("Default theme is configured but it's not found in the registered themes: " + Options.DefaultThemeName);
+                throw new RocketException("Default theme is configured but it's not found in the registered themes: " + Options.DefaultThemeName);
             }
 
             return themeInfo;

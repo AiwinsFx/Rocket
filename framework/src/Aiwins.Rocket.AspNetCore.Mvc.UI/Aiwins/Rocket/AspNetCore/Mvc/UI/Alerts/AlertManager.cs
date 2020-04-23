@@ -1,6 +1,6 @@
-﻿using Volo.Abp.DependencyInjection;
+﻿using Aiwins.Rocket.DependencyInjection;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Alerts
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Alerts
 {
     public class AlertManager : IAlertManager, IScopedDependency
     {

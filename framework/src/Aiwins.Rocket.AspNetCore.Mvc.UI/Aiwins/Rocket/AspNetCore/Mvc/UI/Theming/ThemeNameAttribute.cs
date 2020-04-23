@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
 {
     [AttributeUsage(AttributeTargets.Class)]
     public class ThemeNameAttribute : Attribute

@@ -1,7 +1,7 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
 {
     public class ThemeInfo
     {
@@ -15,7 +15,7 @@ namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
 
             if (!typeof(ITheme).IsAssignableFrom(themeType))
             {
-                throw new AbpException($"Given {nameof(themeType)} ({themeType.AssemblyQualifiedName}) should be type of {typeof(ITheme).AssemblyQualifiedName}");
+                throw new RocketException($"Given {nameof(themeType)} ({themeType.AssemblyQualifiedName}) should be type of {typeof(ITheme).AssemblyQualifiedName}");
             }
 
             ThemeType = themeType;

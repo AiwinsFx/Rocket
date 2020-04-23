@@ -1,27 +1,27 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.Modularity;
-using Volo.Abp.UI.Navigation;
-using Volo.Abp.VirtualFileSystem;
+using Aiwins.Rocket.Modularity;
+using Aiwins.Rocket.UI.Navigation;
+using Aiwins.Rocket.VirtualFileSystem;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI
 {
-    [DependsOn(typeof(AbpAspNetCoreMvcModule))]
-    [DependsOn(typeof(AbpUiNavigationModule))]
-    public class AbpAspNetCoreMvcUiModule : AbpModule
+    [DependsOn(typeof(RocketAspNetCoreMvcModule))]
+    [DependsOn(typeof(RocketUiNavigationModule))]
+    public class RocketAspNetCoreMvcUiModule : RocketModule
     {
         public override void PreConfigureServices(ServiceConfigurationContext context)
         {
             PreConfigure<IMvcBuilder>(mvcBuilder =>
             {
-                mvcBuilder.AddApplicationPartIfNotExists(typeof(AbpAspNetCoreMvcUiModule).Assembly);
+                mvcBuilder.AddApplicationPartIfNotExists(typeof(RocketAspNetCoreMvcUiModule).Assembly);
             });
         }
 
         public override void ConfigureServices(ServiceConfigurationContext context)
         {
-            Configure<AbpVirtualFileSystemOptions>(options =>
+            Configure<RocketVirtualFileSystemOptions>(options =>
             {
-                options.FileSets.AddEmbedded<AbpAspNetCoreMvcUiModule>();
+                options.FileSets.AddEmbedded<RocketAspNetCoreMvcUiModule>();
             });
         }
     }

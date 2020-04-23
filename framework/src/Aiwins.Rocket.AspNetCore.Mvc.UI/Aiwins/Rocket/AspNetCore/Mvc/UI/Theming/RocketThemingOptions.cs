@@ -1,12 +1,12 @@
-﻿namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
+﻿namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
 {
-    public class AbpThemingOptions
+    public class RocketThemingOptions
     {
         public ThemeDictionary Themes { get; }
 
         public string DefaultThemeName { get; set; }
 
-        public AbpThemingOptions()
+        public RocketThemingOptions()
         {
             Themes = new ThemeDictionary();
         }

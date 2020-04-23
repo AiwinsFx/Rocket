@@ -10,8 +10,9 @@ namespace Microsoft.Extensions.DependencyInjection {
             return services;
         }
 
-        internal static List<IConventionalRegistrar> GetConventionalRegistrars (this IServiceCollection services) {
-            return GetOrCreateRegistrarList (services);
+        public static List<IConventionalRegistrar> GetConventionalRegistrars(this IServiceCollection services)
+        {
+            return GetOrCreateRegistrarList(services);
         }
 
         private static ConventionalRegistrarList GetOrCreateRegistrarList (IServiceCollection services) {

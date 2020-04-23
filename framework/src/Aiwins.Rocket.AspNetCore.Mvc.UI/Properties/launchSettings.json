@@ -15,7 +15,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "Volo.Abp.AspNetCore.Mvc.UI": {
+    "Aiwins.Rocket.AspNetCore.Mvc.UI": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "http://localhost:5000",

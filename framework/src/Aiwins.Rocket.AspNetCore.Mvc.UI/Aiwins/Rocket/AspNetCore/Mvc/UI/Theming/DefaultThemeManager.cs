@@ -1,13 +1,13 @@
 ﻿using System;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using Volo.Abp.DependencyInjection;
+using Aiwins.Rocket.DependencyInjection;
 
-namespace Volo.Abp.AspNetCore.Mvc.UI.Theming
+namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
 {
     public class DefaultThemeManager : IThemeManager, IScopedDependency, IServiceProviderAccessor
     {
-        private const string CurrentThemeHttpContextKey = "__AbpCurrentTheme";
+        private const string CurrentThemeHttpContextKey = "__RocketCurrentTheme";
 
         public IServiceProvider ServiceProvider { get; }
         public ITheme CurrentTheme => GetCurrentTheme();
