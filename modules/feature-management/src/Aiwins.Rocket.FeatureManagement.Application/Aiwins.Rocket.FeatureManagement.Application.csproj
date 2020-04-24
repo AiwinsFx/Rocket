@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AutoMapper\Aiwins.Rocket.AutoMapper.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.FeatureManagement.Application.Contracts\Aiwins.Rocket.FeatureManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.FeatureManagement.Domain\Aiwins.Rocket.FeatureManagement.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

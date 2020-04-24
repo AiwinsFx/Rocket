@@ -1,0 +1,29 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Rocket.Identity.Localization
+@model Aiwins.Rocket.Identity.Web.Pages.Identity.Roles.EditModalModel
+@inject IHtmlLocalizer<IdentityResource> L
+@{
+    Layout = null;
+}
+<form asp-page="/Identity/Roles/EditModal">
+    <rocket-modal>
+        <rocket-modal-header title="@L["Edit"].Value"></rocket-modal-header>
+        <rocket-modal-body>
+            <rocket-input asp-for="Role.Id" />
+            <rocket-input asp-for="Role.ConcurrencyStamp" />
+            @if (Model.Role.IsStatic)
+            {
+                <rocket-input asp-for="Role.Name" readonly="true" />
+            }
+            else
+            {
+                <rocket-input asp-for="Role.Name" />
+            }
+            <rocket-input asp-for="Role.IsDefault" />
+            <rocket-input asp-for="Role.IsPublic" />
+        </rocket-modal-body>
+        <rocket-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)"></rocket-modal-footer>
+    </rocket-modal>
+</form>

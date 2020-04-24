@@ -1,0 +1,38 @@
+﻿@page
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Layout
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Aiwins.Rocket.SettingManagement.Localization
+@using Aiwins.Rocket.SettingManagement.Web.Navigation
+@using Aiwins.Rocket.SettingManagement.Web.Pages.SettingManagement
+@model IndexModel
+@inject IHtmlLocalizer<RocketSettingManagementResource> L
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Settings"].Value;
+    PageLayout.Content.MenuItemName = SettingManagementMenuNames.GroupName;
+}
+@section scripts {
+    <rocket-script-bundle name="@typeof(IndexModel).FullName">
+        <rocket-script src="/Pages/SettingManagement/Index.js" />
+    </rocket-script-bundle>
+}
+
+<div id="SettingManagementWrapper">
+    <rocket-card>
+        <rocket-card-body>
+            <rocket-tabs tab-style="PillVertical" vertical-header-size="_3">
+                @foreach (var group in Model.SettingPageCreationContext.Groups)
+                {
+                    <rocket-tab title="@group.DisplayName">
+                        <h2>@group.DisplayName</h2>
+                        <hr class="my-4" />
+                        @await Component.InvokeAsync(group.ComponentType, new
+                        {
+                            parameter = group.Parameter
+                        })
+                    </rocket-tab>
+                }
+            </rocket-tabs>
+        </rocket-card-body>
+    </rocket-card>
+</div>

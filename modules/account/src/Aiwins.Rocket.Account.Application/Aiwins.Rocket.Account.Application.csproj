@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.Account.Application</AssemblyName>
+    <PackageId>Aiwins.Rocket.Account.Application</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Text.Encodings.Web" Version="4.7.0" />
+    <ProjectReference Include="..\Aiwins.Rocket.Account.Application.Contracts\Aiwins.Rocket.Account.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\identity\src\Aiwins.Rocket.Identity.Application\Aiwins.Rocket.Identity.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.UI.Navigation\Aiwins.Rocket.UI.Navigation.csproj" />
+  </ItemGroup>
+
+</Project>

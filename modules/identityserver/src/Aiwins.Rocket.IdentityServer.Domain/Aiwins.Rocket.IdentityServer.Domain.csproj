@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.IdentityServer.Domain</AssemblyName>
+    <PackageId>Aiwins.Rocket.IdentityServer.Domain</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.IdentityServer.Domain.Shared\Aiwins.Rocket.IdentityServer.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.Domain\Aiwins.Rocket.Identity.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AutoMapper\Aiwins.Rocket.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Security\Aiwins.Rocket.Security.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Caching\Aiwins.Rocket.Caching.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Validation\Aiwins.Rocket.Validation.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.BackgroundWorkers\Aiwins.Rocket.BackgroundWorkers.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="IdentityServer4" Version="3.0.2" />
+    <PackageReference Include="IdentityServer4.AspNetIdentity" Version="3.0.2" />
+  </ItemGroup>
+
+</Project>

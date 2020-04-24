@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Aiwins\Rocket\FeatureManagement\Localization\Domain\*.json" />
+    <content Remove="Aiwins\Rocket\FeatureManagement\Localization\Domain\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Validation\Aiwins.Rocket.Validation.csproj" />
+  </ItemGroup>
+
+</Project>

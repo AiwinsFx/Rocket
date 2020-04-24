@@ -1,0 +1,39 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Rocket.Identity.Localization
+@model Aiwins.Rocket.Identity.Web.Pages.Identity.Users.EditModalModel
+@inject IHtmlLocalizer<IdentityResource> L
+@{
+    Layout = null;
+}
+<form method="post" asp-page="/Identity/Users/EditModal">
+    <rocket-modal>
+        <rocket-modal-header title="@L["Edit"].Value"></rocket-modal-header>
+        <rocket-modal-body>
+            <rocket-tabs name="create-user-modal-tabs">
+                <rocket-tab title="@L["UserInformations"].Value">
+                    @* TODO: Can we use dynamic form? *@
+                    <input asp-for="UserInfo.Id" />
+                    <input asp-for="UserInfo.ConcurrencyStamp" />
+                    <rocket-input asp-for="UserInfo.UserName" />
+                    <rocket-input asp-for="UserInfo.Name" />
+                    <rocket-input asp-for="UserInfo.Surname" />
+                    <rocket-input asp-for="UserInfo.Password" />
+                    <rocket-input asp-for="UserInfo.Email" />
+                    <rocket-input asp-for="UserInfo.PhoneNumber" />
+                    <rocket-input asp-for="UserInfo.LockoutEnabled" />
+                    <rocket-input asp-for="UserInfo.TwoFactorEnabled" />
+                </rocket-tab>
+                <rocket-tab title="@L["Roles"].Value">
+                    @for (var i = 0; i < Model.Roles.Length; i++)
+                    {
+                        <rocket-input asp-for="@Model.Roles[i].IsAssigned" label="@Model.Roles[i].Name" />
+                        <input asp-for="@Model.Roles[i].Name" />
+                    }
+                </rocket-tab>
+            </rocket-tabs>
+        </rocket-modal-body>
+        <rocket-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)"></rocket-modal-footer>
+    </rocket-modal>
+</form>

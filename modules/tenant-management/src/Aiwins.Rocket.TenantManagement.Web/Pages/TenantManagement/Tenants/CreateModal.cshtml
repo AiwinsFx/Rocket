@@ -1,0 +1,23 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Rocket.TenantManagement.Localization
+@using Aiwins.Rocket.TenantManagement.Web.Pages.TenantManagement.Tenants
+@model CreateModalModel
+@inject IStringLocalizer<RocketTenantManagementResource> L
+@{
+    Layout = null;
+}
+<form method="post" asp-page="/TenantManagement/Tenants/CreateModal">
+    <rocket-modal>
+        <rocket-modal-header title="@L["NewTenant"]"></rocket-modal-header>
+        <rocket-modal-body>
+            <rocket-input asp-for="Tenant.Name" />
+
+            <rocket-input asp-for="Tenant.AdminEmailAddress" />
+
+            <rocket-input asp-for="Tenant.AdminPassword" />
+        </rocket-modal-body>
+        <rocket-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)"></rocket-modal-footer>
+    </rocket-modal>
+</form>

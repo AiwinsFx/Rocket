@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.Identity.Domain.Shared</AssemblyName>
+    <PackageId>Aiwins.Rocket.Identity.Domain.Shared</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Aiwins\Rocket\Identity\Localization\*.json" />
+    <Content Remove="Aiwins\Rocket\Identity\Localization\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\users\src\Aiwins.Rocket.Users.Domain.Shared\Aiwins.Rocket.Users.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Validation\Aiwins.Rocket.Validation.csproj" />
+  </ItemGroup>
+
+</Project>

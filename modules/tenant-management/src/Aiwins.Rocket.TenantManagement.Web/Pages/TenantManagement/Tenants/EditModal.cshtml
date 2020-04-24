@@ -1,0 +1,20 @@
+﻿@page
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Rocket.TenantManagement.Localization
+@using Aiwins.Rocket.TenantManagement.Web.Pages.TenantManagement.Tenants
+@model EditModalModel
+@inject IHtmlLocalizer<RocketTenantManagementResource> L
+@{
+    Layout = null;
+}
+<form method="post" asp-page="/TenantManagement/Tenants/EditModal" autocomplete="off">
+    <rocket-modal>
+        <rocket-modal-header title="@L["Edit"].Value"></rocket-modal-header>
+        <rocket-modal-body>
+            <input asp-for="Tenant.Id" />
+            <rocket-input asp-for="Tenant.Name" label="@L["TenantName"].Value" />
+        </rocket-modal-body>
+        <rocket-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)"></rocket-modal-footer>
+    </rocket-modal>
+</form>

@@ -1,0 +1,8 @@
+﻿{
+  "culture": "pt-BR",
+  "texts": {
+    "Aiwins.IdentityServer:DuplicateIdentityResourceName": "O nome da Identity Resource já existe: {Name}",
+    "Aiwins.IdentityServer:DuplicateApiResourceName": "O nome da Api Resource já existe: {Name}",
+    "Aiwins.IdentityServer:DuplicateClientId": "ClientId já existe: {ClientId}"
+  }
+}

@@ -1,0 +1,57 @@
+﻿@page
+@using Aiwins.Rocket.Account.Web.Pages.Account
+@using Aiwins.Rocket.Identity.Settings
+@using Aiwins.Rocket.Settings
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Theming
+@inject ISettingProvider SettingManager
+@inject IThemeManager ThemeManager
+@inherits Aiwins.Rocket.Account.Web.Pages.Account.AccountPage
+@model ManageModel
+@{
+    Layout = ThemeManager.CurrentTheme.GetApplicationLayout();
+    var isUserNameUpdateEnabled = string.Equals(await SettingManager.GetOrNullAsync(IdentitySettingNames.User.IsUserNameUpdateEnabled), "true",
+        StringComparison.OrdinalIgnoreCase);
+
+    var isEmailUpdateEnabled = string.Equals(await SettingManager.GetOrNullAsync(IdentitySettingNames.User.IsEmailUpdateEnabled), "true",
+        StringComparison.OrdinalIgnoreCase);
+}
+@section scripts {
+    <rocket-script-bundle name="@typeof(ManageModel).FullName">
+        <rocket-script src="/Pages/Account/Manage.js" />
+    </rocket-script-bundle>
+}
+<rocket-card>
+    <rocket-card-body>
+        <rocket-tabs tab-style="PillVertical">
+            <rocket-tab title="@L["ChangePassword"].Value">
+                <h4>@L["ChangePassword"].Value</h4><hr />
+                <rocket-dynamic-form rocket-model="@Model.ChangePasswordInfoModel" id="ChangePasswordForm">
+                    <rocket-form-content />
+                    <rocket-button type="submit" button-type="Primary" text="@L["Submit"].Value" />
+                </rocket-dynamic-form>
+            </rocket-tab>
+            <rocket-tab title="@L["PersonalSettings"].Value">
+                <h4>@L["PersonalSettings"].Value</h4><hr />
+                <form method="post" id="PersonalSettingsForm">
+
+                    <rocket-input asp-for="PersonalSettingsInfoModel.UserName" readonly="!isUserNameUpdateEnabled" />
+
+                    <rocket-row>
+                        <rocket-column size-md="_6">
+                            <rocket-input asp-for="PersonalSettingsInfoModel.Name" />
+                        </rocket-column>
+                        <rocket-column size-md="_6">
+                            <rocket-input asp-for="PersonalSettingsInfoModel.Surname" />
+                        </rocket-column>
+                    </rocket-row>
+
+                    <rocket-input asp-for="PersonalSettingsInfoModel.Email" readonly="!isEmailUpdateEnabled" />
+
+                    <rocket-input asp-for="PersonalSettingsInfoModel.PhoneNumber" />
+
+                    <rocket-button type="submit" button-type="Primary" text="@L["Submit"].Value" />
+                </form>
+            </rocket-tab>
+        </rocket-tabs>
+    </rocket-card-body>
+</rocket-card>

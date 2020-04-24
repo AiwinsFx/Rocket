@@ -1,0 +1,53 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Layout
+@using Aiwins.Rocket.Identity
+@using Aiwins.Rocket.Identity.Localization
+@using Aiwins.Rocket.Identity.Web.Navigation
+@using Aiwins.Rocket.Identity.Web.Pages.Identity.Roles
+@model IndexModel
+@inject IHtmlLocalizer<IdentityResource> L
+@inject IAuthorizationService Authorization
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Roles"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:IdentityManagement"].Value);
+    PageLayout.Content.MenuItemName = IdentityMenuNames.Roles;
+}
+@section styles {
+    <rocket-style-bundle name="@typeof(IndexModel).FullName">
+        <rocket-style src="/Pages/RocketPermissionManagement/permission-management-modal.css" />
+    </rocket-style-bundle>
+}
+@section scripts {
+    <rocket-script-bundle name="@typeof(IndexModel).FullName">
+        <rocket-script src="/Pages/RocketPermissionManagement/permission-management-modal.js" />
+        <rocket-script src="/Pages/identity/roles/index.js" />
+    </rocket-script-bundle>
+}
+<rocket-card id="IdentityRolesWrapper">
+    <rocket-card-header>
+        <rocket-row>
+            <rocket-column size-md="_6">
+                <rocket-card-title>@L["Roles"]</rocket-card-title>
+            </rocket-column>
+            <rocket-column size-md="_6" class="text-right">
+                @if (await Authorization.IsGrantedAsync(IdentityPermissions.Roles.Create))
+                {
+                    <rocket-button button-type="Primary" name="CreateRole" text="@L["NewRole"].Value" icon="plus" />
+                }
+            </rocket-column>
+        </rocket-row>
+    </rocket-card-header>
+    <rocket-card-body>
+        <rocket-table striped-rows="true" class="nowrap">
+            <thead>
+                <tr>
+                    <th>@L["Actions"]</th>
+                    <th>@L["RoleName"]</th>
+                </tr>
+            </thead>
+        </rocket-table>
+    </rocket-card-body>
+</rocket-card>

@@ -1,0 +1,49 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Layout
+@using Aiwins.Rocket.TenantManagement
+@using Aiwins.Rocket.TenantManagement.Localization
+@using Aiwins.Rocket.TenantManagement.Web.Navigation
+@using Aiwins.Rocket.TenantManagement.Web.Pages.TenantManagement.Tenants
+@model IndexModel
+@inject IHtmlLocalizer<RocketTenantManagementResource> L
+@inject IAuthorizationService Authorization
+@inject IPageLayout PageLayout
+@{
+    PageLayout.Content.Title = L["Tenants"].Value;
+    PageLayout.Content.BreadCrumb.Add(L["Menu:TenantManagement"].Value);
+    PageLayout.Content.MenuItemName = TenantManagementMenuNames.Tenants;
+}
+@section scripts {
+    <rocket-script-bundle name="@typeof(IndexModel).FullName">
+        <rocket-script src="/Pages/FeatureManagement/feature-management-modal.js" />
+        <rocket-script src="/Pages/TenantManagement/Tenants/ConnectionStringsModal.js" />
+        <rocket-script src="/Pages/TenantManagement/Tenants/Index.js" />
+    </rocket-script-bundle>
+}
+<rocket-card id="TenantsWrapper">
+    <rocket-card-header>
+        <rocket-row>
+            <rocket-column size-md="_6">
+                <rocket-card-title>@L["Tenants"]</rocket-card-title>
+            </rocket-column>
+            <rocket-column size-md="_6" class="text-right">
+                @if (await Authorization.IsGrantedAsync(TenantManagementPermissions.Tenants.Create))
+                {
+                    <rocket-button button-type="Primary" name="CreateTenant" icon="plus" text="@L["NewTenant"].Value" />
+                }
+            </rocket-column>
+        </rocket-row>
+    </rocket-card-header>
+    <rocket-card-body>
+        <rocket-table striped-rows="true" class="nowrap">
+            <thead>
+                <tr>
+                    <th>@L["Actions"]</th>
+                    <th>@L["TenantName"]</th>
+                </tr>
+            </thead>
+        </rocket-table>
+    </rocket-card-body>
+</rocket-card>

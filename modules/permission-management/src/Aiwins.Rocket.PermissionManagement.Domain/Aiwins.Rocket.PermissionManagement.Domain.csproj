@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.PermissionManagement.Domain</AssemblyName>
+    <PackageId>Aiwins.Rocket.PermissionManagement.Domain</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.PermissionManagement.Domain.Shared\Aiwins.Rocket.PermissionManagement.Domain.Shared.csproj" />
+
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Authorization\Aiwins.Rocket.Authorization.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Caching\Aiwins.Rocket.Caching.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Ddd.Domain\Aiwins.Rocket.Ddd.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Json\Aiwins.Rocket.Json.csproj" />    
+  </ItemGroup>
+
+</Project>

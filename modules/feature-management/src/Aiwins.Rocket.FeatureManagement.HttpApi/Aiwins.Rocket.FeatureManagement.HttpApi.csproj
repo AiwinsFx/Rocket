@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc\Aiwins.Rocket.AspNetCore.Mvc.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.FeatureManagement.Application.Contracts\Aiwins.Rocket.FeatureManagement.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

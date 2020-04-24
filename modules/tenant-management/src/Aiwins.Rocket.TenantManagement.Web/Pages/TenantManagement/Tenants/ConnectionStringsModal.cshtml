@@ -1,0 +1,26 @@
+﻿@page
+@using Microsoft.Extensions.Localization
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Rocket.TenantManagement.Localization
+@using Aiwins.Rocket.TenantManagement.Web.Pages.TenantManagement.Tenants
+@model ConnectionStringsModal
+@inject IStringLocalizer<RocketTenantManagementResource> L
+@{
+    Layout = null;
+}
+<form method="post" asp-page="/TenantManagement/Tenants/ConnectionStringsModal">
+    <rocket-modal>
+        <rocket-modal-header title="@L["ConnectionStrings"]"></rocket-modal-header>
+        <rocket-modal-body>
+            <rocket-input asp-for="Tenant.Id"></rocket-input>
+            
+            <rocket-input asp-for="Tenant.UseSharedDatabase"></rocket-input>
+
+            <div id="Tenant_DefaultConnectionString_Wrap" class="@(Model.Tenant.UseSharedDatabase ? "d-none" : "")" >
+                <rocket-input asp-for="Tenant.DefaultConnectionString"></rocket-input>
+            </div>
+
+        </rocket-modal-body>
+        <rocket-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)"></rocket-modal-footer>
+    </rocket-modal>
+</form>

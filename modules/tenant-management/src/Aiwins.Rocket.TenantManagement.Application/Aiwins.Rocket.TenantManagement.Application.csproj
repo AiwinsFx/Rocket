@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.TenantManagement.Application</AssemblyName>
+    <PackageId>Aiwins.Rocket.TenantManagement.Application</PackageId>
+    <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
+    <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
+    <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
+    <GenerateAssemblyProductAttribute>false</GenerateAssemblyProductAttribute>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.TenantManagement.Application.Contracts\Aiwins.Rocket.TenantManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.TenantManagement.Domain\Aiwins.Rocket.TenantManagement.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.UI\Aiwins.Rocket.UI.csproj" />
+  </ItemGroup>
+
+</Project>

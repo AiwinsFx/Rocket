@@ -1,0 +1,19 @@
+﻿@page
+@model Aiwins.Rocket.Account.Web.Pages.Account.RegisterModel
+@inherits Aiwins.Rocket.Account.Web.Pages.Account.AccountPage
+
+    <div class="card mt-3 shadow-sm rounded">
+        <div class="card-body p-5">
+            <h4>@L["Register"]</h4>
+            <strong>
+                @L["AlreadyRegistered"]
+                <a href="@Url.Page("./Login", new {returnUrl = Model.ReturnUrl, returnUrlHash = Model.ReturnUrlHash})" class="text-decoration-none">@L["Login"]</a>
+            </strong>
+            <form method="post" class="mt-4">
+                <rocket-input asp-for="Input.UserName" auto-focus="true" />
+                <rocket-input asp-for="Input.EmailAddress" />
+                <rocket-input asp-for="Input.Password" />
+                <rocket-button button-type="Primary" type="submit" class="btn-lg btn-block mt-4">@L["Register"]</rocket-button>
+            </form>
+        </div>
+    </div>

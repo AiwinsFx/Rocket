@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.BackgroundJobs.Domain.Shared\Aiwins.Rocket.BackgroundJobs.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AutoMapper\Aiwins.Rocket.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Ddd.Domain\Aiwins.Rocket.Ddd.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.BackgroundJobs\Aiwins.Rocket.BackgroundJobs.csproj" />
+  </ItemGroup>
+
+</Project>

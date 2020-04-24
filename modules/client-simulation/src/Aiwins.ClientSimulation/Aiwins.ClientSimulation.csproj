@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Aiwins.ClientSimulation</AssemblyName>
+    <PackageId>Aiwins.ClientSimulation</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Http.Client.IdentityModel\Aiwins.Rocket.Http.Client.IdentityModel.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,108 @@
+﻿@page "{handler?}"
+@{
+    Layout = null;
+}
+@using Aiwins.ClientSimulation
+@using Aiwins.ClientSimulation.Clients
+@using Aiwins.ClientSimulation.Pages.ClientSimulation
+@model Aiwins.ClientSimulation.Pages.ClientSimulation.SimulationAreaModel
+<rocket-alert alert-type="Primary">
+    <form class="d-inline" id="StartButtonForm" method="post" asp-page-handler="Start" data-ajaxForm="true">
+        <rocket-button button-type="Primary" type="submit" disabled="@(Model.Snapshot.State != SimulationState.Stopped)">Start</rocket-button>
+    </form>
+    <form class="d-inline" id="StopButtonForm" method="post" asp-page-handler="Stop" data-ajaxForm="true">
+        <rocket-button button-type="Primary" type="submit" disabled="@(Model.Snapshot.State != SimulationState.Started)">Stop</rocket-button>
+    </form>
+    <span class="ml-3">
+        @Model.Snapshot.State
+    </span>
+</rocket-alert>
+<rocket-card class="mt-3">
+    <rocket-card-header>
+        Clients
+    </rocket-card-header>
+    <rocket-card-body>
+        @foreach (var client in Model.Snapshot.Clients)
+        {
+            <span class="simulation-client simulation-client-@client.State.ToString().ToLowerInvariant()">
+                <span class="simulation-client-icon">
+                    @if (client.State == ClientState.Running)
+                    {
+                        <i class="fa fa-play"></i>
+                    }
+                    else if (client.State == ClientState.Stopping)
+                    {
+                        <i class="fa fa-eject"></i>
+                    }
+                    else if (client.State == ClientState.Stopped)
+                    {
+                        <i class="fa fa-stop"></i>
+                    }
+                </span>
+                <span class="simulation-client-scenario">
+                    @client.Scenario.DisplayText
+                </span>
+                <span class="simulation-client-scenario-current-step">
+                    @if (client.State != ClientState.Stopped)
+                    {
+                        <text>| @client.Scenario.CurrentStep.DisplayText</text>
+                    }
+                </span>
+            </span>
+        }
+    </rocket-card-body>
+</rocket-card>
+<rocket-card class="mt-3">
+    <rocket-card-header>
+        Scenarios
+    </rocket-card-header>
+    <rocket-card-body>
+            @foreach (var scenario in Model.Snapshot.Scenarios)
+            {
+                    <rocket-card class="simulation-scenario">
+                        <rocket-card-header>
+                            @scenario.DisplayText
+                        </rocket-card-header>
+                        <rocket-card-body>
+                            <rocket-table>
+                                <thead>
+                                <tr>
+                                    <th>Step</th>
+                                    <th>Execution</th>
+                                    <th>Success</th>
+                                    <th>Fail</th>
+                                    <th>Min</th>
+                                    <th>Max</th>
+                                    <th>Avg</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                @foreach (var step in scenario.Steps)
+                                {
+                                    <tr>
+                                        <th>@step.DisplayText</th>
+                                        <th>@step.ExecutionCount</th>
+                                        <th>@step.SuccessCount</th>
+                                        <th>
+                                            @if (step.FailCount > 0)
+                                            {
+                                                <span class="step-positive-fail-count">@step.FailCount</span>
+                                            }
+                                            else
+                                            {
+                                                <text>@step.FailCount</text>
+                                            }
+                                        </th>
+                                        <th>@step.MinExecutionDuration.ToString("0.0") ms</th>
+                                        <th>@step.MaxExecutionDuration.ToString("0.0") ms</th>
+                                        <th>@step.AvgExecutionDuration.ToString("0.0") ms</th>
+                                    </tr>
+                                }
+                                </tbody>
+                            </rocket-table>
+                    
+                        </rocket-card-body>
+                    </rocket-card>
+            }
+    </rocket-card-body>
+</rocket-card>
