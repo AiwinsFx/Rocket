@@ -24,6 +24,11 @@ namespace Aiwins.Rocket.Authorization.Permissions {
         public MultiTenancySides MultiTenancySide { get; set; }
 
         /// <summary>
+        /// 数据权限的范围
+        /// </summary>
+        public List<PermissionScope> Scopes { get; set; }
+
+        /// <summary>
         /// 权限提供集合
         /// 集合为空，则不限制提供者
         /// </summary>
@@ -77,6 +82,7 @@ namespace Aiwins.Rocket.Authorization.Permissions {
 
             Properties = new Dictionary<string, object> ();
             Providers = new List<string> ();
+            Scopes = new List<PermissionScope> ();
             _children = new List<PermissionDefinition> ();
         }
 
@@ -96,6 +102,14 @@ namespace Aiwins.Rocket.Authorization.Permissions {
             _children.Add (child);
 
             return child;
+        }
+
+        public virtual PermissionDefinition WithScopes (params PermissionScope[] scopes) {
+            if (!scopes.IsNullOrEmpty ()) {
+                Scopes.AddRange (scopes);
+            }
+
+            return this;
         }
 
         public virtual PermissionDefinition WithProperty (string key, object value) {
