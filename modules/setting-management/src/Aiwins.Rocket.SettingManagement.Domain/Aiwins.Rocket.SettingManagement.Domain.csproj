@@ -4,9 +4,9 @@
   <Import Project="..\..\..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <AssemblyName>Volo.Abp.SettingManagement.Domain</AssemblyName>
-    <PackageId>Volo.Abp.SettingManagement.Domain</PackageId>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <AssemblyName>Aiwins.Rocket.SettingManagement.Domain</AssemblyName>
+    <PackageId>Aiwins.Rocket.SettingManagement.Domain</PackageId>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>
@@ -15,11 +15,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Volo.Abp.SettingManagement.Domain.Shared\Volo.Abp.SettingManagement.Domain.Shared.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.SettingManagement.Domain.Shared\Aiwins.Rocket.SettingManagement.Domain.Shared.csproj" />
 
-    <ProjectReference Include="..\..\..\..\framework\src\Volo.Abp.Ddd.Domain\Volo.Abp.Ddd.Domain.csproj" />
-    <ProjectReference Include="..\..\..\..\framework\src\Volo.Abp.Settings\Volo.Abp.Settings.csproj" />
-    <ProjectReference Include="..\..\..\..\framework\src\Volo.Abp.Caching\Volo.Abp.Caching.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Ddd.Domain\Aiwins.Rocket.Ddd.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Settings\Aiwins.Rocket.Settings.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Caching\Aiwins.Rocket.Caching.csproj" />
   </ItemGroup>
 
 </Project>

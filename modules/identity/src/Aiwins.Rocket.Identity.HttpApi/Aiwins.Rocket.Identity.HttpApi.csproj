@@ -16,6 +16,10 @@
     <RootNamespace />
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Rocket.Identity.HttpApi' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:53979/</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\Aiwins.Rocket.Identity.Application.Contracts\Aiwins.Rocket.Identity.Application.Contracts.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc\Aiwins.Rocket.AspNetCore.Mvc.csproj" />

@@ -1,7 +1,7 @@
-﻿using Volo.Abp.DependencyInjection;
-using Volo.Abp.Settings;
+﻿using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public class GlobalSettingManagementProvider : SettingManagementProvider, ITransientDependency
     {

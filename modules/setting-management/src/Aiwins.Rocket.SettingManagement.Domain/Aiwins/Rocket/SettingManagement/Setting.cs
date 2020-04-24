@@ -1,8 +1,8 @@
 ﻿using System;
 using JetBrains.Annotations;
-using Volo.Abp.Domain.Entities;
+using Aiwins.Rocket.Domain.Entities;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public class Setting : Entity<Guid>, IAggregateRoot<Guid>
     {

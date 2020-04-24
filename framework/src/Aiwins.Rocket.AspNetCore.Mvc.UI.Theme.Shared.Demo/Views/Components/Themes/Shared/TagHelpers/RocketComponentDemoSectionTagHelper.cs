@@ -52,7 +52,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Demo.Views.Components.The
         private void AppendRawSource(TagHelperOutput output)
         {
             output.PostContent.AppendHtml("<div class=\"rocket-component-demo-section-raw-source\">");
-            output.PostContent.AppendHtml("<h3>ABP Tag Helpers</h3>");
+            output.PostContent.AppendHtml("<h3>ROCKET Tag Helpers</h3>");
             output.PostContent.AppendHtml("<pre>");
             output.PostContent.Append(GetRawDemoSource());
             output.PostContent.AppendHtml("</pre>");

@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Volo.Abp.Settings;
+using Aiwins.Rocket.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public interface ISettingManagementStore
     {

@@ -1,7 +1,7 @@
 ﻿using System;
-using Volo.Abp.MultiTenancy;
+using Aiwins.Rocket.MultiTenancy;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     [Serializable]
     [IgnoreMultiTenancy]

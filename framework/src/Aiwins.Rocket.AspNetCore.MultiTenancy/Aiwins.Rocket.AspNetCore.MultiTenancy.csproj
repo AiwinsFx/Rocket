@@ -18,6 +18,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Rocket.AspNetCore.MultiTenancy' ">
     <StartAction>Project</StartAction>
+    <ExternalConsole>true</ExternalConsole>
     <ApplicationURL>http://localhost:53763/</ApplicationURL>
   </PropertyGroup>
   <ItemGroup>

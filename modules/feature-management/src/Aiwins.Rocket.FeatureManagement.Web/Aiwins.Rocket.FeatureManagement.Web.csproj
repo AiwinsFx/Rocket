@@ -11,6 +11,10 @@
     <RootNamespace>Aiwins.Rocket.FeatureManagement</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Rocket.FeatureManagement.Web' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:56994/</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\**\*.cshtml" />
     <EmbeddedResource Include="Pages\**\*.js" />

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Volo.Abp.Domain.Repositories;
+using Aiwins.Rocket.Domain.Repositories;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public interface ISettingRepository : IBasicRepository<Setting, Guid>
     {

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using JetBrains.Annotations;
-using Volo.Abp.Settings;
-using Volo.Abp.Users;
+using Aiwins.Rocket.Settings;
+using Aiwins.Rocket.Users;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     //TODO: Consider to move to another package?
 

@@ -1,17 +1,17 @@
-﻿using Volo.Abp.Caching;
-using Volo.Abp.Domain;
-using Volo.Abp.Modularity;
-using Volo.Abp.Settings;
+﻿using Aiwins.Rocket.Caching;
+using Aiwins.Rocket.Domain;
+using Aiwins.Rocket.Modularity;
+using Aiwins.Rocket.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     [DependsOn(
-        typeof(AbpSettingsModule),
-        typeof(AbpDddDomainModule),
-        typeof(AbpSettingManagementDomainSharedModule), 
-        typeof(AbpCachingModule)
+        typeof(RocketSettingsModule),
+        typeof(RocketDddDomainModule),
+        typeof(RocketSettingManagementDomainSharedModule), 
+        typeof(RocketCachingModule)
         )]
-    public class AbpSettingManagementDomainModule : AbpModule
+    public class RocketSettingManagementDomainModule : RocketModule
     {
         public override void ConfigureServices(ServiceConfigurationContext context)
         {

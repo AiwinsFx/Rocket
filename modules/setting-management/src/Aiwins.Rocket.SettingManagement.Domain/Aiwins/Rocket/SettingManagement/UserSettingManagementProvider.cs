@@ -1,8 +1,8 @@
-﻿using Volo.Abp.DependencyInjection;
-using Volo.Abp.Settings;
-using Volo.Abp.Users;
+﻿using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.Settings;
+using Aiwins.Rocket.Users;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public class UserSettingManagementProvider : SettingManagementProvider, ITransientDependency
     {

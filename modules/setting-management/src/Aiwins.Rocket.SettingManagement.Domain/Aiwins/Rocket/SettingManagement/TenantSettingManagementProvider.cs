@@ -1,8 +1,8 @@
-﻿using Volo.Abp.DependencyInjection;
-using Volo.Abp.MultiTenancy;
-using Volo.Abp.Settings;
+﻿using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.MultiTenancy;
+using Aiwins.Rocket.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public class TenantSettingManagementProvider : SettingManagementProvider, ITransientDependency
     {

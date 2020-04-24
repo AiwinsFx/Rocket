@@ -13,6 +13,10 @@
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.ClientSimulation.Web' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:51024/</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Http.Client.IdentityModel.Web\Aiwins.Rocket.Http.Client.IdentityModel.Web.csproj" />

@@ -1,13 +1,13 @@
-﻿using Volo.Abp.Data;
+﻿using Aiwins.Rocket.Data;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
-    public static class AbpSettingManagementDbProperties
+    public static class RocketSettingManagementDbProperties
     {
-        public static string DbTablePrefix { get; set; } = AbpCommonDbProperties.DbTablePrefix;
+        public static string DbTablePrefix { get; set; } = RocketCommonDbProperties.DbTablePrefix;
 
-        public static string DbSchema { get; set; } = AbpCommonDbProperties.DbSchema;
+        public static string DbSchema { get; set; } = RocketCommonDbProperties.DbSchema;
 
-        public const string ConnectionStringName = "AbpSettingManagement";
+        public const string ConnectionStringName = "RocketSettingManagement";
     }
 }

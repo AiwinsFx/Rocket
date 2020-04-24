@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using Volo.Abp.Caching;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Domain.Entities.Events;
-using Volo.Abp.EventBus;
+using Aiwins.Rocket.Caching;
+using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.Domain.Entities.Events;
+using Aiwins.Rocket.EventBus;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public class SettingCacheItemInvalidator : ILocalEventHandler<EntityChangedEventData<Setting>>, ITransientDependency
     {

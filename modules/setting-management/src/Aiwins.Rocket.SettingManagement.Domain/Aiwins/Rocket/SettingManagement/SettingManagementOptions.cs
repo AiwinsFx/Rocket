@@ -1,6 +1,6 @@
-﻿using Volo.Abp.Collections;
+﻿using Aiwins.Rocket.Collections;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public class SettingManagementOptions
     {

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Volo.Abp.Caching;
-using Volo.Abp.DependencyInjection;
-using Volo.Abp.Guids;
-using Volo.Abp.Settings;
+using Aiwins.Rocket.Caching;
+using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.Guids;
+using Aiwins.Rocket.Settings;
 
-namespace Volo.Abp.SettingManagement
+namespace Aiwins.Rocket.SettingManagement
 {
     public class SettingManagementStore : ISettingManagementStore, ITransientDependency
     {

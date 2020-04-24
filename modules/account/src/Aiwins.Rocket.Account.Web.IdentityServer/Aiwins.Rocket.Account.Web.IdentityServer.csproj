@@ -16,6 +16,10 @@
     <OutputType>Library</OutputType>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Rocket.Account.Web.IdentityServer' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:49584/</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\**\*.cshtml" />
     <EmbeddedResource Include="Pages\**\*.css" />
