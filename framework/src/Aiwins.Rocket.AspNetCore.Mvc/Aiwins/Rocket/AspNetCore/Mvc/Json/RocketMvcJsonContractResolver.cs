@@ -26,7 +26,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.Json {
         }
 
         protected virtual void ModifyProperty (MemberInfo member, JsonProperty property) {
-            if (property.PropertyType != typeof (DateTime) && property.PropertyType != typeof (DateTime?)) {
+            if (property.PropertyType != typeof (DateTimeOffset) && property.PropertyType != typeof (DateTimeOffset?)) {
                 return;
             }
 

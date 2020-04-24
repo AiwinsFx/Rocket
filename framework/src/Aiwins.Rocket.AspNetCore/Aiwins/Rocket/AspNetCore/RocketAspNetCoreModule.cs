@@ -1,10 +1,12 @@
 ﻿using Aiwins.Rocket.AspNetCore.Auditing;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Authorization;
+using Aiwins.Rocket.Domain;
 using Aiwins.Rocket.Http;
 using Aiwins.Rocket.Localization;
 using Aiwins.Rocket.Modularity;
 using Aiwins.Rocket.Security;
+using Aiwins.Rocket.UI;
 using Aiwins.Rocket.Uow;
 using Aiwins.Rocket.Validation;
 using Aiwins.Rocket.VirtualFileSystem;
@@ -22,7 +24,9 @@ namespace Aiwins.Rocket.AspNetCore {
         typeof (RocketUnitOfWorkModule),
         typeof (RocketHttpModule),
         typeof (RocketAuthorizationModule),
+        typeof (RocketDddDomainModule), //TODO: Can we remove this?
         typeof (RocketLocalizationModule),
+        typeof (RocketUiModule), //TODO: Can we remove this?
         typeof (RocketValidationModule)
     )]
     public class RocketAspNetCoreModule : RocketModule {

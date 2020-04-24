@@ -85,6 +85,10 @@ namespace Aiwins.Rocket.Http.Client.DynamicProxying {
 
         private static string ConvertValueToString ([NotNull] object value) {
             using (CultureHelper.Use (CultureInfo.InvariantCulture)) {
+                if (value is DateTimeOffset dateTimeOffsetValue) {
+                    return dateTimeOffsetValue.ToUniversalTime ().ToString ("u");
+                }
+                
                 if (value is DateTime dateTimeValue) {
                     return dateTimeValue.ToUniversalTime ().ToString ("u");
                 }
