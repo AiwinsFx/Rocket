@@ -1,0 +1,12 @@
+{
+  "name": "@rocket/ng.tenant-management.config",
+  "version": "1.0.0",
+  "homepage": "https://rocket.io",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rocketframework/rocket.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

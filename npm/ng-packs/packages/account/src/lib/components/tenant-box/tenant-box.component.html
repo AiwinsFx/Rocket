@@ -1,0 +1,51 @@
+<div class="card shadow-sm rounded mb-3">
+  <div class="card-body px-5">
+    <div class="row">
+      <div class="col">
+        <span style="font-size: 0.8em;" class="text-uppercase text-muted">{{
+          'RocketUiMultiTenancy::Tenant' | rocketLocalization
+        }}</span
+        ><br />
+        <h6 class="m-0 d-inline-block">
+          <span>
+            {{ tenantName || ('RocketUiMultiTenancy::NotSelected' | rocketLocalization) }}
+          </span>
+        </h6>
+      </div>
+      <div class="col-auto">
+        <a
+          id="RocketTenantSwitchLink"
+          href="javascript:void(0);"
+          class="btn btn-sm mt-3 btn-outline-primary"
+          (click)="onSwitch()"
+          >{{ 'RocketUiMultiTenancy::Switch' | rocketLocalization }}</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<rocket-modal size="md" [(visible)]="isModalVisible" [busy]="inProgress">
+  <ng-template #rocketHeader>
+    <h5>Switch Tenant</h5>
+  </ng-template>
+  <ng-template #rocketBody>
+    <form (ngSubmit)="save()">
+      <div class="mt-2">
+        <div class="form-group">
+          <label for="name">{{ 'RocketUiMultiTenancy::Name' | rocketLocalization }}</label>
+          <input [(ngModel)]="tenant.name" type="text" id="name" name="tenant" class="form-control" autofocus />
+        </div>
+        <p>{{ 'RocketUiMultiTenancy::SwitchTenantHint' | rocketLocalization }}</p>
+      </div>
+    </form>
+  </ng-template>
+  <ng-template #rocketFooter>
+    <button #rocketClose type="button" class="btn btn-secondary">
+      {{ 'RocketTenantManagement::Cancel' | rocketLocalization }}
+    </button>
+    <rocket-button buttonType="button" buttonClass="btn btn-primary" (click)="save()">
+      <i class="fa fa-check mr-1"></i> <span>{{ 'RocketTenantManagement::Save' | rocketLocalization }}</span>
+    </rocket-button>
+  </ng-template>
+</rocket-modal>

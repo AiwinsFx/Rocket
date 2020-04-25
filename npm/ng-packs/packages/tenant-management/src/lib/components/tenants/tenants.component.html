@@ -1,0 +1,216 @@
+<div id="wrapper" class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col col-md-6">
+        <h5 class="card-title">{{ 'RocketTenantManagement::Tenants' | rocketLocalization }}</h5>
+      </div>
+      <div class="text-right col col-md-6">
+        <button
+          *rocketPermission="'RocketTenantManagement.Tenants.Create'"
+          id="create-tenants"
+          class="btn btn-primary"
+          type="button"
+          (click)="addTenant()"
+        >
+          <i class="fa fa-plus mr-1"></i>
+          <span>{{ 'RocketTenantManagement::NewTenant' | rocketLocalization }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div id="data-tables-table-filter" class="data-tables-filter">
+      <label
+        ><input
+          type="search"
+          class="form-control form-control-sm"
+          [placeholder]="'RocketUi::PagerSearch' | rocketLocalization"
+          (input.debounce)="onSearch($event.target.value)"
+      /></label>
+    </div>
+    <rocket-table
+      *ngIf="[150, 0] as columnWidths"
+      [rocketLoading]="loading"
+      [rocketLoadingDelay]="500"
+      [rocketTableSort]="{ key: sortKey, order: sortOrder }"
+      [colgroupTemplate]="tableColGroup"
+      [headerTemplate]="tableHeader"
+      [bodyTemplate]="tableBody"
+      [value]="data$ | async"
+      [rocketTableSort]="{ key: sortKey, order: sortOrder }"
+      [rows]="pageQuery.maxResultCount"
+      [totalRecords]="totalCount$ | async"
+      [scrollable]="true"
+      (pageChange)="onPageChange($event)"
+    >
+      <ng-template #tableColGroup>
+        <colgroup>
+          <col *ngFor="let width of columnWidths" [ngStyle]="{ 'width.px': width || undefined }" />
+        </colgroup>
+      </ng-template>
+      <ng-template #tableHeader let-columns>
+        <tr>
+          <th>{{ 'RocketTenantManagement::Actions' | rocketLocalization }}</th>
+          <th (click)="sortOrderIcon.sort('name')">
+            {{ 'RocketTenantManagement::TenantName' | rocketLocalization }}
+            <rocket-sort-order-icon
+              #sortOrderIcon
+              sortKey="name"
+              [(selectedSortKey)]="sortKey"
+              [(order)]="sortOrder"
+            >
+            </rocket-sort-order-icon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template #tableBody let-data>
+        <tr>
+          <td class="text-center">
+            <div ngbDropdown container="body" class="d-inline-block">
+              <button
+                class="btn btn-primary btn-sm dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                ngbDropdownToggle
+              >
+                <i class="fa fa-cog mr-1"></i>{{ 'RocketTenantManagement::Actions' | rocketLocalization }}
+              </button>
+              <div ngbDropdownMenu>
+                <button
+                  *rocketPermission="'RocketTenantManagement.Tenants.Update'"
+                  ngbDropdownItem
+                  (click)="editTenant(data.id)"
+                >
+                  {{ 'RocketTenantManagement::Edit' | rocketLocalization }}
+                </button>
+                <button
+                  *rocketPermission="'RocketTenantManagement.Tenants.ManageConnectionStrings'"
+                  ngbDropdownItem
+                  (click)="onEditConnectionString(data.id)"
+                >
+                  {{ 'RocketTenantManagement::Permission:ManageConnectionStrings' | rocketLocalization }}
+                </button>
+                <button
+                  *rocketPermission="'RocketTenantManagement.Tenants.ManageFeatures'"
+                  ngbDropdownItem
+                  (click)="openFeaturesModal(data.id)"
+                >
+                  {{ 'RocketTenantManagement::Permission:ManageFeatures' | rocketLocalization }}
+                </button>
+                <button
+                  *rocketPermission="'RocketTenantManagement.Tenants.Delete'"
+                  ngbDropdownItem
+                  (click)="delete(data.id, data.name)"
+                >
+                  {{ 'RocketTenantManagement::Delete' | rocketLocalization }}
+                </button>
+              </div>
+            </div>
+          </td>
+          <td>{{ data.name }}</td>
+        </tr>
+      </ng-template>
+    </rocket-table>
+  </div>
+</div>
+
+<rocket-modal size="md" [(visible)]="isModalVisible" [busy]="modalBusy">
+  <ng-template #rocketHeader>
+    <h3>{{ selectedModalContent.title | rocketLocalization }}</h3>
+  </ng-template>
+
+  <ng-template #rocketBody>
+    <ng-container *ngTemplateOutlet="selectedModalContent?.template"></ng-container>
+  </ng-template>
+
+  <ng-template #rocketFooter>
+    <button #rocketClose type="button" class="btn btn-secondary">
+      {{ 'RocketTenantManagement::Cancel' | rocketLocalization }}
+    </button>
+    <rocket-button iconClass="fa fa-check" (click)="save()" [disabled]="isDisabledSaveButton">{{
+      'RocketIdentity::Save' | rocketLocalization
+    }}</rocket-button>
+  </ng-template>
+</rocket-modal>
+
+<ng-template #tenantModalTemplate>
+  <form [formGroup]="tenantForm" (ngSubmit)="save()" validateOnSubmit>
+    <div class="mt-2">
+      <div class="form-group">
+        <label for="name">{{ 'RocketTenantManagement::TenantName' | rocketLocalization }}</label>
+        <input type="text" id="name" class="form-control" formControlName="name" autofocus />
+      </div>
+      <div class="form-group" *ngIf="tenantForm.controls.adminEmailAddress">
+        <label for="name">{{
+          'RocketTenantManagement::DisplayName:AdminEmailAddress' | rocketLocalization
+        }}</label>
+        <input
+          autocomplete="email"
+          type="email"
+          id="admin-email-address"
+          class="form-control"
+          formControlName="adminEmailAddress"
+        />
+      </div>
+      <div class="form-group" *ngIf="tenantForm.controls.adminPassword">
+        <label for="name">{{
+          'RocketTenantManagement::DisplayName:AdminPassword' | rocketLocalization
+        }}</label>
+        <input
+          autocomplete="new-password"
+          type="password"
+          id="admin-password"
+          class="form-control"
+          formControlName="adminPassword"
+        />
+      </div>
+    </div>
+  </form>
+</ng-template>
+
+<ng-template #connectionStringModalTemplate>
+  <form [formGroup]="defaultConnectionStringForm" (ngSubmit)="save()" validateOnSubmit>
+    <div class="form-group">
+      <div class="custom-checkbox custom-control mb-2">
+        <input
+          id="useSharedDatabase"
+          type="checkbox"
+          class="custom-control-input"
+          formControlName="useSharedDatabase"
+          autofocus
+          (ngModelChange)="onSharedDatabaseChange($event)"
+        />
+        <label for="useSharedDatabase" class="custom-control-label">{{
+          'RocketTenantManagement::DisplayName:UseSharedDatabase' | rocketLocalization
+        }}</label>
+      </div>
+    </div>
+    <div class="form-group" *ngIf="!useSharedDatabase">
+      <label for="defaultConnectionString">{{
+        'RocketTenantManagement::DisplayName:DefaultConnectionString' | rocketLocalization
+      }}</label>
+      <input
+        type="text"
+        id="defaultConnectionString"
+        class="form-control"
+        formControlName="defaultConnectionString"
+      />
+    </div>
+  </form>
+</ng-template>
+
+<rocket-feature-management
+  *rocketReplaceableTemplate="{
+    inputs: {
+      providerName: { value: 'T' },
+      providerKey: { value: providerKey },
+      visible: { value: visibleFeatures, twoWay: true }
+    },
+    outputs: { visibleChange: onVisibleFeaturesChange },
+    componentKey: featureManagementKey
+  }"
+  [(visible)]="visibleFeatures"
+  providerName="T"
+  [providerKey]="providerKey"
+>
+</rocket-feature-management>
