@@ -4,7 +4,7 @@
   "homepage": "https://rocket.io",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rocketframework/rocket.git"
+    "url": "https://github.com/aiwinsfx/rocket.git"
   },
   "dependencies": {
     "@rocket/ng.theme.shared": "^1.0.0"

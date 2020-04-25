@@ -5,7 +5,7 @@ using System.Linq;
 namespace Aiwins.Rocket.DynamicProxy {
     /// <summary>
     /// Castle的动态代理类特性会对一些组件产生性能问题，例如Asp-net-core-MVC的控制器。
-    /// 有关讨论，请参见：https://github.com/castleproject/Core/issues/486 https://github.com/rocketframework/rocket/issues/3180
+    /// 有关讨论，请参见：https://github.com/castleproject/Core/issues/486 https://github.com/aiwinsfx/rocket/issues/3180
     /// Rocket框架可以为某些需要动态代理类的组件（UOW、审计、授权等）启用拦截器，但会导致应用程序性能下降。
     /// 我们需要为控制器使用其他方法来实现拦截，例如中间件或MVC/页面过滤器。
     /// 因此，我们提供一些被忽略的类型以避免启用动态代理类。
