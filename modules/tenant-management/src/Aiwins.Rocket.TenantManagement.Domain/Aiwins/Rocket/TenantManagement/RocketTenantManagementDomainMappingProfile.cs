@@ -1,22 +1,16 @@
-﻿using AutoMapper;
-using Aiwins.Rocket.Data;
+﻿using Aiwins.Rocket.Data;
 using Aiwins.Rocket.MultiTenancy;
+using AutoMapper;
 
-namespace Aiwins.Rocket.TenantManagement
-{
-    public class RocketTenantManagementDomainMappingProfile : Profile
-    {
-        public RocketTenantManagementDomainMappingProfile()
-        {
-            CreateMap<Tenant, TenantConfiguration>()
-                .ForMember(ti => ti.ConnectionStrings, opts =>
-                {
-                    opts.MapFrom((tenant, ti) =>
-                    {
-                        var connStrings = new ConnectionStrings();
+namespace Aiwins.Rocket.TenantManagement {
+    public class RocketTenantManagementDomainMappingProfile : Profile {
+        public RocketTenantManagementDomainMappingProfile () {
+            CreateMap<Tenant, TenantConfiguration> ()
+                .ForMember (ti => ti.ConnectionStrings, opts => {
+                    opts.MapFrom ((tenant, ti) => {
+                        var connStrings = new ConnectionStrings ();
 
-                        foreach (var connectionString in tenant.ConnectionStrings)
-                        {
+                        foreach (var connectionString in tenant.ConnectionStrings) {
                             connStrings[connectionString.Name] = connectionString.Value;
                         }
 
@@ -24,7 +18,7 @@ namespace Aiwins.Rocket.TenantManagement
                     });
                 });
 
-            CreateMap<Tenant, TenantEto>();
+            CreateMap<Tenant, TenantEto> ();
         }
     }
 }

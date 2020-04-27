@@ -8,7 +8,7 @@ namespace Aiwins.Rocket.Application.Dtos {
     [Serializable]
     public abstract class CreationAuditedEntityDto : EntityDto, ICreationAuditedObject {
         /// <inheritdoc />
-        public DateTimeOffset CreationTime { get; set; }
+        public DateTime CreationTime { get; set; }
 
         /// <inheritdoc />
         public Guid? CreatorId { get; set; }
@@ -21,7 +21,7 @@ namespace Aiwins.Rocket.Application.Dtos {
     [Serializable]
     public abstract class CreationAuditedEntityDto<TPrimaryKey> : EntityDto<TPrimaryKey>, ICreationAuditedObject {
         /// <inheritdoc />
-        public DateTimeOffset CreationTime { get; set; }
+        public DateTime CreationTime { get; set; }
 
         /// <inheritdoc />
         public Guid? CreatorId { get; set; }

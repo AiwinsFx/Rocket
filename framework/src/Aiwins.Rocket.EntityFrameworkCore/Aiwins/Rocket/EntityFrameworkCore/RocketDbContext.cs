@@ -409,8 +409,8 @@ namespace Aiwins.Rocket.EntityFrameworkCore {
 
                 var dateTimePropertyInfos = typeof (TEntity).GetProperties ()
                     .Where (property =>
-                        (property.PropertyType == typeof (DateTimeOffset) ||
-                            property.PropertyType == typeof (DateTimeOffset?)) &&
+                        (property.PropertyType == typeof (DateTime) ||
+                            property.PropertyType == typeof (DateTime?)) &&
                         property.CanWrite &&
                         !property.IsDefined (typeof (DisableDateTimeNormalizationAttribute), true)
                     ).ToList ();

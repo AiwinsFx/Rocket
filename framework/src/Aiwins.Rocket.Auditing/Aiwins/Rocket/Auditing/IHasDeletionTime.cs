@@ -10,6 +10,6 @@ namespace Aiwins.Rocket.Auditing {
         /// <summary>
         /// 删除时间
         /// </summary>
-        DateTimeOffset? DeletionTime { get; set; }
+        DateTime? DeletionTime { get; set; }
     }
 }

@@ -26,11 +26,11 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ModelBinding {
                 return;
             }
 
-            if (_type == typeof (DateTimeOffset)) {
-                var dateTime = (DateTimeOffset) bindingContext.Result.Model;
+            if (_type == typeof (DateTime)) {
+                var dateTime = (DateTime) bindingContext.Result.Model;
                 bindingContext.Result = ModelBindingResult.Success (_clock.Normalize (dateTime));
             } else {
-                var dateTime = (DateTimeOffset?) bindingContext.Result.Model;
+                var dateTime = (DateTime?) bindingContext.Result.Model;
                 if (dateTime != null) {
                     bindingContext.Result = ModelBindingResult.Success (_clock.Normalize (dateTime.Value));
                 }

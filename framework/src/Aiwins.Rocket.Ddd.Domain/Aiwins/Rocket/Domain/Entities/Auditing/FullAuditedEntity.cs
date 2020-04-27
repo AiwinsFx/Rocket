@@ -14,7 +14,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing {
         public virtual Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public virtual DateTimeOffset? DeletionTime { get; set; }
+        public virtual DateTime? DeletionTime { get; set; }
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing {
         public virtual Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public virtual DateTimeOffset? DeletionTime { get; set; }
+        public virtual DateTime? DeletionTime { get; set; }
 
         protected FullAuditedEntity () {
 

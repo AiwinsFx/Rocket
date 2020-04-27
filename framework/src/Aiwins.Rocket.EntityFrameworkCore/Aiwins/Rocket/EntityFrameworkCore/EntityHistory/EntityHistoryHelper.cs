@@ -108,7 +108,7 @@ namespace Aiwins.Rocket.EntityFrameworkCore.EntityHistory {
             return multiTenantEntity.TenantId;
         }
 
-        private DateTimeOffset GetChangeTime (EntityChangeInfo entityChange) {
+        private DateTime GetChangeTime (EntityChangeInfo entityChange) {
             var entity = entityChange.EntityEntry.As<EntityEntry> ().Entity;
             switch (entityChange.ChangeType) {
                 case EntityChangeType.Created:

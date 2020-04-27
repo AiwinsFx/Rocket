@@ -56,7 +56,7 @@ public class DetailedModel
 
     [DataType(DataType.Date)]
     [Display(Name = "Day")]
-    public DateTimeOffset Day { get; set; }
+    public DateTime Day { get; set; }
 
     [SelectItems(nameof(CountryList))]
     [Display(Name = "Country")]
@@ -72,7 +72,7 @@ public class DetailedModel
         Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
         IsActive = true;
         Age = 65;
-        Day = DateTimeOffset.Now;
+        Day = DateTime.Now;
         MyCarType = CarType.Coupe;
         YourCarType = CarType.Sedan;
         Country = "RU";

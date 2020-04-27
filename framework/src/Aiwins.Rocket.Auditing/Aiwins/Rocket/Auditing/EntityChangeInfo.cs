@@ -6,7 +6,7 @@ using Aiwins.Rocket.Data;
 namespace Aiwins.Rocket.Auditing {
     [Serializable]
     public class EntityChangeInfo : IHasExtraProperties {
-        public DateTimeOffset ChangeTime { get; set; }
+        public DateTime ChangeTime { get; set; }
 
         public EntityChangeType ChangeType { get; set; }
 

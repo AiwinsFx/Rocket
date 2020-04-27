@@ -8,6 +8,6 @@ namespace Aiwins.Rocket.Auditing {
         /// <summary>
         /// 最近更新时间
         /// </summary>
-        DateTimeOffset? LastModificationTime { get; set; }
+        DateTime? LastModificationTime { get; set; }
     }
 }

@@ -25,17 +25,17 @@ namespace Aiwins.Rocket.BackgroundJobs {
         /// <summary>
         /// 创建时间
         /// </summary>
-        public virtual DateTimeOffset CreationTime { get; set; }
+        public virtual DateTime CreationTime { get; set; }
 
         /// <summary>
         /// 下次重试时间
         /// </summary>
-        public virtual DateTimeOffset NextTryTime { get; set; }
+        public virtual DateTime NextTryTime { get; set; }
 
         /// <summary>
         /// 最后一次重试时间
         /// </summary>
-        public virtual DateTimeOffset? LastTryTime { get; set; }
+        public virtual DateTime? LastTryTime { get; set; }
 
         /// <summary>
         /// 如果作业连续失败且不会再次执行，则设置为true

@@ -8,6 +8,6 @@ namespace Aiwins.Rocket.Auditing {
         /// <summary>
         /// 创建时间
         /// </summary>
-        DateTimeOffset CreationTime { get; set; }
+        DateTime CreationTime { get; set; }
     }
 }

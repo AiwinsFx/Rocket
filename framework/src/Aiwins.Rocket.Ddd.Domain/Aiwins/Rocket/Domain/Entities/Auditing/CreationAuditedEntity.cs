@@ -8,7 +8,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing {
     [Serializable]
     public abstract class CreationAuditedEntity : Entity, ICreationAuditedObject {
         /// <inheritdoc />
-        public virtual DateTimeOffset CreationTime { get; set; }
+        public virtual DateTime CreationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? CreatorId { get; set; }
@@ -21,7 +21,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing {
     [Serializable]
     public abstract class CreationAuditedEntity<TKey> : Entity<TKey>, ICreationAuditedObject {
         /// <inheritdoc />
-        public virtual DateTimeOffset CreationTime { get; set; }
+        public virtual DateTime CreationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? CreatorId { get; set; }

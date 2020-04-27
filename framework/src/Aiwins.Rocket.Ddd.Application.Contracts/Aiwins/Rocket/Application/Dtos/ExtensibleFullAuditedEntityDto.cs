@@ -17,7 +17,7 @@ namespace Aiwins.Rocket.Application.Dtos {
         public Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public DateTimeOffset? DeletionTime { get; set; }
+        public DateTime? DeletionTime { get; set; }
     }
 
     /// <summary>
@@ -33,6 +33,6 @@ namespace Aiwins.Rocket.Application.Dtos {
         public Guid? DeleterId { get; set; }
 
         /// <inheritdoc />
-        public DateTimeOffset? DeletionTime { get; set; }
+        public DateTime? DeletionTime { get; set; }
     }
 }

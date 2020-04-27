@@ -60,7 +60,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Demo.Views.Components.The
 
             [DataType(DataType.Date)]
             [Display(Name = "Day")]
-            public DateTimeOffset Day { get; set; }
+            public DateTime Day { get; set; }
 
             [SelectItems(nameof(CountryList))]
             [Display(Name = "Country")]
@@ -76,7 +76,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Demo.Views.Components.The
                 Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.";
                 IsActive = true;
                 Age = 65;
-                Day = DateTimeOffset.Now;
+                Day = DateTime.Now;
                 MyCarType = CarType.Coupe;
                 YourCarType = CarType.Sedan;
                 Country = "RU";

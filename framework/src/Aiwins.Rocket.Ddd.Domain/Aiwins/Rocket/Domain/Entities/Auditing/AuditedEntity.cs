@@ -8,7 +8,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing {
     [Serializable]
     public abstract class AuditedEntity : CreationAuditedEntity, IAuditedObject {
         /// <inheritdoc />
-        public virtual DateTimeOffset? LastModificationTime { get; set; }
+        public virtual DateTime? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? LastModifierId { get; set; }
@@ -21,7 +21,7 @@ namespace Aiwins.Rocket.Domain.Entities.Auditing {
     [Serializable]
     public abstract class AuditedEntity<TKey> : CreationAuditedEntity<TKey>, IAuditedObject {
         /// <inheritdoc />
-        public virtual DateTimeOffset? LastModificationTime { get; set; }
+        public virtual DateTime? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public virtual Guid? LastModifierId { get; set; }

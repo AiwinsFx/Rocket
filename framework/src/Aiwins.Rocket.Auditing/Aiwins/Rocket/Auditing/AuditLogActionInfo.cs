@@ -11,7 +11,7 @@ namespace Aiwins.Rocket.Auditing {
 
         public string Parameters { get; set; }
 
-        public DateTimeOffset ExecutionTime { get; set; }
+        public DateTime ExecutionTime { get; set; }
 
         public int ExecutionDuration { get; set; }
 

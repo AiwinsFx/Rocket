@@ -16,18 +16,6 @@ namespace Aiwins.Rocket.Timing {
 
         public virtual bool SupportsMultipleTimezone => Options.Kind == DateTimeKind.Utc;
 
-        public virtual DateTimeOffset Normalize (DateTimeOffset dateTime) {
-            if (Kind == DateTimeKind.Local) {
-                return dateTime.ToLocalTime ();
-            }
-
-            if (Kind == DateTimeKind.Utc) {
-                return dateTime.ToUniversalTime ();
-            }
-
-            return dateTime;
-        }
-
         public virtual DateTime Normalize (DateTime dateTime) {
             if (Kind == DateTimeKind.Unspecified || Kind == dateTime.Kind) {
                 return dateTime;
@@ -42,6 +30,18 @@ namespace Aiwins.Rocket.Timing {
             }
 
             return DateTime.SpecifyKind (dateTime, Kind);
+        }
+
+        public virtual DateTimeOffset Normalize (DateTimeOffset dateTime) {
+            if (Kind == DateTimeKind.Local) {
+                return dateTime.ToLocalTime ();
+            }
+
+            if (Kind == DateTimeKind.Utc) {
+                return dateTime.ToUniversalTime ();
+            }
+
+            return dateTime;
         }
     }
 }

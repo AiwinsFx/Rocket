@@ -18,17 +18,17 @@ namespace Aiwins.Rocket.Timing {
         bool SupportsMultipleTimezone { get; }
 
         /// <summary>
-        /// 时间转换 <see cref="DateTimeOffset"/>.
-        /// </summary>
-        /// <param name="dateTime">待转换的时间</param>
-        /// <returns>转换后的时间</returns>
-        DateTimeOffset Normalize (DateTimeOffset dateTime);
-
-        /// <summary>
         /// 时间转换 <see cref="DateTime"/>.
         /// </summary>
         /// <param name="dateTime">待转换的时间</param>
         /// <returns>转换后的时间</returns>
         DateTime Normalize (DateTime dateTime);
+
+        /// <summary>
+        /// 时间转换 <see cref="DateTimeOffset"/>.
+        /// </summary>
+        /// <param name="dateTime">待转换的时间</param>
+        /// <returns>转换后的时间</returns>
+        DateTimeOffset Normalize (DateTimeOffset dateTime);
     }
 }

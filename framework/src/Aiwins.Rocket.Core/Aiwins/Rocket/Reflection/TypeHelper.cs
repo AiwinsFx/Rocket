@@ -104,7 +104,7 @@ namespace Aiwins.Rocket.Reflection {
 
             return type == typeof (string) ||
                 type == typeof (decimal) ||
-                type == typeof (DateTimeOffset) ||
+                type == typeof (DateTime) ||
                 type == typeof (DateTimeOffset) ||
                 type == typeof (TimeSpan) ||
                 type == typeof (Guid);

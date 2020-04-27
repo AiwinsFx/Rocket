@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc.ModelBinding.Metadata;
 namespace Aiwins.Rocket.AspNetCore.Mvc.ModelBinding {
     public class RocketDateTimeModelBinderProvider : IModelBinderProvider {
         public IModelBinder GetBinder (ModelBinderProviderContext context) {
-            if (context.Metadata.ModelType != typeof (DateTimeOffset) &&
-                context.Metadata.ModelType != typeof (DateTimeOffset?)) {
+            if (context.Metadata.ModelType != typeof (DateTime) &&
+                context.Metadata.ModelType != typeof (DateTime?)) {
                 return null;
             }
 

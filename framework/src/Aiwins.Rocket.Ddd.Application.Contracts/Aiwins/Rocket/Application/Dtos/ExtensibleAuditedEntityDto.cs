@@ -10,7 +10,7 @@ namespace Aiwins.Rocket.Application.Dtos {
     [Serializable]
     public abstract class ExtensibleAuditedEntityDto : ExtensibleCreationAuditedEntityDto, IAuditedObject {
         /// <inheritdoc />
-        public DateTimeOffset? LastModificationTime { get; set; }
+        public DateTime? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public Guid? LastModifierId { get; set; }
@@ -24,7 +24,7 @@ namespace Aiwins.Rocket.Application.Dtos {
     [Serializable]
     public abstract class ExtensibleAuditedEntityDto<TPrimaryKey> : ExtensibleCreationAuditedEntityDto<TPrimaryKey>, IAuditedObject {
         /// <inheritdoc />
-        public DateTimeOffset? LastModificationTime { get; set; }
+        public DateTime? LastModificationTime { get; set; }
 
         /// <inheritdoc />
         public Guid? LastModifierId { get; set; }

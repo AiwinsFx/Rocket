@@ -79,7 +79,7 @@ namespace Aiwins.Rocket.BackgroundJobs {
             }
         }
 
-        protected virtual DateTimeOffset? CalculateNextTryTime (BackgroundJobInfo jobInfo, IClock clock) {
+        protected virtual DateTime? CalculateNextTryTime (BackgroundJobInfo jobInfo, IClock clock) {
             var nextWaitDuration = WorkerOptions.DefaultFirstWaitDuration * (Math.Pow (WorkerOptions.DefaultWaitFactor, jobInfo.TryCount - 1));
             var nextTryDate = jobInfo.LastTryTime?.AddSeconds (nextWaitDuration) ??
                 clock.Now.AddSeconds (nextWaitDuration);
