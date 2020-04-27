@@ -18,5 +18,7 @@ namespace Aiwins.Rocket.DynamicProxy {
         object ReturnValue { get; set; }
 
         Task ProceedAsync ();
+        
+        bool IsAsync();
     }
 }

@@ -15,6 +15,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Rocket.Core\Aiwins.Rocket.Core.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Ddd.Domain\Aiwins.Rocket.Ddd.Domain.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Json\Aiwins.Rocket.Json.csproj" />
   </ItemGroup>

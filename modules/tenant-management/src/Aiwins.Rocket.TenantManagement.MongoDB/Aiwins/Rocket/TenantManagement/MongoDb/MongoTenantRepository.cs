@@ -52,7 +52,7 @@ namespace Aiwins.Rocket.TenantManagement.MongoDB
                 .WhereIf<Tenant, IMongoQueryable<Tenant>>(
                     !filter.IsNullOrWhiteSpace(),
                     u =>
-                        u.Name.Contains(filter)
+                        u.Name.Contains (filter) || u.FullPySpelling.Contains(filter) || u.FirstPySpelling.Contains(filter)
                 )
                 .OrderBy(sorting ?? nameof(Tenant.Name))
                 .As<IMongoQueryable<Tenant>>()
@@ -66,7 +66,7 @@ namespace Aiwins.Rocket.TenantManagement.MongoDB
                 .WhereIf<Tenant, IMongoQueryable<Tenant>>(
                     !filter.IsNullOrWhiteSpace(),
                     u =>
-                        u.Name.Contains(filter)
+                        u.Name.Contains (filter) || u.FullPySpelling.Contains(filter) || u.FirstPySpelling.Contains(filter)
                 ).CountAsync(cancellationToken: cancellationToken);
         }
     }

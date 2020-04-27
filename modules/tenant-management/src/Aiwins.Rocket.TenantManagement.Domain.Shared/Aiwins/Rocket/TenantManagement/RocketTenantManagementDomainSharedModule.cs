@@ -15,7 +15,7 @@ namespace Aiwins.Rocket.TenantManagement {
 
             Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<RocketTenantManagementResource> ("en")
+                    .Add<RocketTenantManagementResource> ("zh-Hans")
                     .AddBaseTypes (
                         typeof (RocketValidationResource)
                     ).AddVirtualJson ("/Aiwins/Rocket/TenantManagement/Localization/Resources");

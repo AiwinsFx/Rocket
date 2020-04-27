@@ -4,10 +4,10 @@ using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.DynamicProxy;
 
 namespace Aiwins.Rocket.Caching {
-    public static class LocalCacheInterceptorRegistrar {
+    public static class DistributedCacheInterceptorRegistrar {
         public static void RegisterIfNeeded (IOnServiceRegistredContext context) {
             if (ShouldIntercept (context.ImplementationType)) {
-                context.Interceptors.TryAdd<LocalCacheInterceptor> ();
+                context.Interceptors.TryAdd<DistributedCacheInterceptor> ();
             }
         }
 
@@ -16,7 +16,7 @@ namespace Aiwins.Rocket.Caching {
                 return false;
             }
 
-            if (type.GetMethods ().Any (m => m.IsDefined (typeof (LocalCacheAttribute), true))) {
+            if (type.GetMethods ().Any (m => m.IsDefined (typeof (DistributedCacheAttribute), true))) {
                 return true;
             }
 

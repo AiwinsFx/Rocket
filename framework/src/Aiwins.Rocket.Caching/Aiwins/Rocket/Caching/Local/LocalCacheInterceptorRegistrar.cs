@@ -3,11 +3,11 @@ using System.Linq;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.DynamicProxy;
 
-namespace Aiwins.Rocket.Auditing {
-    public static class AuditingInterceptorRegistrar {
+namespace Aiwins.Rocket.Caching {
+    public static class LocalCacheInterceptorRegistrar {
         public static void RegisterIfNeeded (IOnServiceRegistredContext context) {
             if (ShouldIntercept (context.ImplementationType)) {
-                context.Interceptors.TryAdd<AuditingInterceptor> ();
+                context.Interceptors.TryAdd<LocalCacheInterceptor> ();
             }
         }
 
@@ -16,30 +16,7 @@ namespace Aiwins.Rocket.Auditing {
                 return false;
             }
 
-            if (ShouldAuditTypeByDefault (type)) {
-                return true;
-            }
-
-            if (type.GetMethods ().Any (m => m.IsDefined (typeof (AuditedAttribute), true))) {
-                return true;
-            }
-
-            return false;
-        }
-
-        //TODO: Move to a better place
-        public static bool ShouldAuditTypeByDefault (Type type) {
-            //TODO: In an inheritance chain, it would be better to check the attributes on the top class first.
-
-            if (type.IsDefined (typeof (AuditedAttribute), true)) {
-                return true;
-            }
-
-            if (type.IsDefined (typeof (DisableAuditingAttribute), true)) {
-                return false;
-            }
-
-            if (typeof (IAuditingEnabled).IsAssignableFrom (type)) {
+            if (type.GetMethods ().Any (m => m.IsDefined (typeof (LocalCacheAttribute), true))) {
                 return true;
             }
 

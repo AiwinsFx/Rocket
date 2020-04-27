@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 
-namespace Penguin.Core.Utility {
+namespace Aiwins.Rocket.Caching {
     public static class CacheKeyGenerator {
         /// <summary>
         /// 键值分隔符.

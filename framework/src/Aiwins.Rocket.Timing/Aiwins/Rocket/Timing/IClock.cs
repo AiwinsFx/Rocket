@@ -5,7 +5,7 @@ namespace Aiwins.Rocket.Timing {
         /// <summary>
         /// 获取现在的时间。
         /// </summary>
-        DateTimeOffset Now { get; }
+        DateTime Now { get; }
 
         /// <summary>
         /// 获取时区

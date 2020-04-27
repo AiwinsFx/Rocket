@@ -4,77 +4,65 @@ using System.Linq;
 using System.Linq.Dynamic.Core;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Aiwins.Rocket.Domain.Repositories.EntityFrameworkCore;
 using Aiwins.Rocket.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 
-namespace Aiwins.Rocket.TenantManagement.EntityFrameworkCore
-{
-    public class EfCoreTenantRepository : EfCoreRepository<ITenantManagementDbContext, Tenant, Guid>, ITenantRepository
-    {
-        public EfCoreTenantRepository(IDbContextProvider<ITenantManagementDbContext> dbContextProvider)
-            : base(dbContextProvider)
-        {
+namespace Aiwins.Rocket.TenantManagement.EntityFrameworkCore {
+    public class EfCoreTenantRepository : EfCoreRepository<ITenantManagementDbContext, Tenant, Guid>, ITenantRepository {
+        public EfCoreTenantRepository (IDbContextProvider<ITenantManagementDbContext> dbContextProvider) : base (dbContextProvider) {
 
         }
 
-        public virtual async Task<Tenant> FindByNameAsync(
+        public virtual async Task<Tenant> FindByNameAsync (
             string name,
             bool includeDetails = true,
-            CancellationToken cancellationToken = default)
-        {
+            CancellationToken cancellationToken = default) {
             return await DbSet
-                .IncludeDetails(includeDetails)
-                .FirstOrDefaultAsync(t => t.Name == name, GetCancellationToken(cancellationToken));
+                .IncludeDetails (includeDetails)
+                .FirstOrDefaultAsync (t => t.Name == name, GetCancellationToken (cancellationToken));
         }
 
-        public virtual Tenant FindByName(string name, bool includeDetails = true)
-        {
+        public virtual Tenant FindByName (string name, bool includeDetails = true) {
             return DbSet
-                .IncludeDetails(includeDetails)
-                .FirstOrDefault(t => t.Name == name);
+                .IncludeDetails (includeDetails)
+                .FirstOrDefault (t => t.Name == name);
         }
 
-        public virtual Tenant FindById(Guid id, bool includeDetails = true)
-        {
+        public virtual Tenant FindById (Guid id, bool includeDetails = true) {
             return DbSet
-                .IncludeDetails(includeDetails)
-                .FirstOrDefault(t => t.Id == id);
+                .IncludeDetails (includeDetails)
+                .FirstOrDefault (t => t.Id == id);
         }
 
-        public virtual async Task<List<Tenant>> GetListAsync(
+        public virtual async Task<List<Tenant>> GetListAsync (
             string sorting = null,
             int maxResultCount = int.MaxValue,
             int skipCount = 0,
             string filter = null,
             bool includeDetails = false,
-            CancellationToken cancellationToken = default)
-        {
+            CancellationToken cancellationToken = default) {
             return await DbSet
-                .IncludeDetails(includeDetails)
-                .WhereIf(
-                    !filter.IsNullOrWhiteSpace(),
+                .IncludeDetails (includeDetails)
+                .WhereIf (!filter.IsNullOrWhiteSpace (),
                     u =>
-                        u.Name.Contains(filter)
+                    u.Name.Contains (filter) || u.FullPySpelling.Contains(filter) || u.FirstPySpelling.Contains(filter)
                 )
-                .OrderBy(sorting ?? nameof(Tenant.Name))
-                .PageBy(skipCount, maxResultCount)
-                .ToListAsync(GetCancellationToken(cancellationToken));
+                .OrderBy (sorting ?? nameof (Tenant.Name))
+                .PageBy (skipCount, maxResultCount)
+                .ToListAsync (GetCancellationToken (cancellationToken));
         }
 
-        public virtual async Task<long> GetCountAsync(string filter = null, CancellationToken cancellationToken = default)
-        {
+        public virtual async Task<long> GetCountAsync (string filter = null, CancellationToken cancellationToken = default) {
             return await this
-                .WhereIf(
-                    !filter.IsNullOrWhiteSpace(),
+                .WhereIf (!filter.IsNullOrWhiteSpace (),
                     u =>
-                        u.Name.Contains(filter)
-                ).CountAsync(cancellationToken: cancellationToken);
+                    u.Name.Contains (filter) || u.FullPySpelling.Contains(filter) || u.FirstPySpelling.Contains(filter)
+                ).CountAsync (cancellationToken: cancellationToken);
         }
 
-        public override IQueryable<Tenant> WithDetails()
-        {
-            return GetQueryable().IncludeDetails();
+        public override IQueryable<Tenant> WithDetails () {
+            return GetQueryable ().IncludeDetails ();
         }
     }
 }

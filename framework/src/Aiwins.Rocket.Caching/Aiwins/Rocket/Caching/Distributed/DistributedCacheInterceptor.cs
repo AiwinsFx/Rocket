@@ -1,24 +1,27 @@
 ﻿using System;
-using System.Collections.Concurrent;
-using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Threading.Tasks;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.DynamicProxy;
 using Aiwins.Rocket.Reflection;
+using Microsoft.Extensions.Caching.Distributed;
 using Microsoft.Extensions.Caching.Memory;
 using Nito.AsyncEx;
 
 namespace Aiwins.Rocket.Caching {
-    public class LocalCacheInterceptor : RocketInterceptor, ISingletonDependency {
-        private static readonly MethodInfo TaskResultMethod;
-        private static readonly IMemoryCache Cache;
+    public class DistributedCacheInterceptor : RocketInterceptor, ISingletonDependency {
+        private readonly IDistributedCache _cache;
+        private readonly IDistributedCacheSerializer _serializer;
+        private static readonly MethodInfo _taskResultMethod = typeof (Task).GetMethods ().FirstOrDefault (p => p.Name == nameof (Task.FromResult) && p.ContainsGenericParameters);
         private readonly AsyncLock _lock = new AsyncLock ();
 
-        static LocalCacheInterceptor () {
-            TaskResultMethod = typeof (Task).GetMethods ().FirstOrDefault (p => p.Name == nameof (Task.FromResult) && p.ContainsGenericParameters);
-            Cache = new MemoryCache (new MemoryCacheOptions ());
+        public DistributedCacheInterceptor (
+            IDistributedCache cache,
+            IDistributedCacheSerializer serializer
+        ) {
+            _cache = cache;
+            _serializer = serializer;
         }
 
         public override async Task InterceptAsync (IRocketMethodInvocation invocation) {
@@ -27,24 +30,25 @@ namespace Aiwins.Rocket.Caching {
             if (parameters.Any (it => it.IsIn || it.IsOut)) {
                 await invocation.ProceedAsync ();
             } else {
-                // var localCacheAttribute = (LocalCacheAttribute) Attribute.GetCustomAttribute (invocation.Method, typeof (LocalCacheAttribute), false);
-                var localCacheAttribute = ReflectionHelper.GetSingleAttributeOrDefault<LocalCacheAttribute> (invocation.Method);
-                var cacheKey = CacheKeyGenerator.GetCacheKey (invocation.Method, invocation.Arguments, localCacheAttribute.Prefix);
+                var distributedCacheAttribute = ReflectionHelper.GetSingleAttributeOrDefault<LocalCacheAttribute> (invocation.Method);
+                var cacheKey = CacheKeyGenerator.GetCacheKey (invocation.Method, invocation.Arguments, distributedCacheAttribute.Prefix);
                 var returnType = invocation.Method.ReturnType.GetGenericArguments ().First ();
                 try {
-                    var resultValue = Cache.Get (cacheKey);
-                    if (resultValue != null) {
-                        invocation.ReturnValue = invocation.IsAsync () ? TaskResultMethod.MakeGenericMethod (returnType).Invoke (null, new object[] { resultValue }) : resultValue;
+                    var cacheValue = await _cache.GetAsync (cacheKey);
+                    if (cacheValue != null) {
+                        var resultValue = _serializer.Deserialize (cacheValue, returnType);
+                        invocation.ReturnValue = invocation.IsAsync () ? _taskResultMethod.MakeGenericMethod (returnType).Invoke (null, new object[] { resultValue }) : resultValue;
                     } else {
-                        if (!localCacheAttribute.ThreadLock) {
-                            await GetResultAndSetCache (invocation, cacheKey, localCacheAttribute.Expiration);
+                        if (!distributedCacheAttribute.ThreadLock) {
+                            await GetResultAndSetCache (invocation, cacheKey, distributedCacheAttribute.Expiration);
                         } else {
                             using (await _lock.LockAsync ()) {
-                                resultValue = Cache.Get (cacheKey);
-                                if (resultValue != null) {
-                                    invocation.ReturnValue = invocation.IsAsync () ? TaskResultMethod.MakeGenericMethod (returnType).Invoke (null, new object[] { resultValue }) : resultValue;
+                                cacheValue = await _cache.GetAsync (cacheKey);
+                                if (cacheValue != null) {
+                                    var resultValue = _serializer.Deserialize (cacheValue, returnType);
+                                    invocation.ReturnValue = invocation.IsAsync () ? _taskResultMethod.MakeGenericMethod (returnType).Invoke (null, new object[] { resultValue }) : resultValue;
                                 } else {
-                                    await GetResultAndSetCache (invocation, cacheKey, localCacheAttribute.Expiration);
+                                    await GetResultAndSetCache (invocation, cacheKey, distributedCacheAttribute.Expiration);
                                 }
                             }
                         }
@@ -66,7 +70,7 @@ namespace Aiwins.Rocket.Caching {
         public async Task GetResultAndSetCache (IRocketMethodInvocation invocation, string cacheKey, long expiration) {
             await invocation.ProceedAsync ().ContinueWith (task => {
                 if (invocation.ReturnValue != null)
-                    Cache.Set (cacheKey, invocation.ReturnValue, TimeSpan.FromMinutes (expiration));
+                    _cache.SetAsync (cacheKey, _serializer.Serialize (invocation.ReturnValue), new DistributedCacheEntryOptions ().SetSlidingExpiration (TimeSpan.FromMinutes (expiration)));
             });
         }
     }

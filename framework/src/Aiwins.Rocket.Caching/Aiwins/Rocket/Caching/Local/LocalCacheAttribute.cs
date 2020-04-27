@@ -2,7 +2,7 @@
 
 namespace Aiwins.Rocket.Caching {
     [AttributeUsage (AttributeTargets.Method)]
-    public class MemoryCacheAttribute : Attribute {
+    public class LocalCacheAttribute : Attribute {
         public string Prefix { get; set; }
         /// <summary>
         /// 缓存有限期，单位：分钟。默认值：60。

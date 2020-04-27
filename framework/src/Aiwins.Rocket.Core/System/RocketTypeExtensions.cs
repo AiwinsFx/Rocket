@@ -1,9 +1,15 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections.Concurrent;
+using System.Collections.Generic;
+using System.Reflection;
+using System.Threading.Tasks;
 using Aiwins.Rocket;
 using JetBrains.Annotations;
 
 namespace System {
     public static class RocketTypeExtensions {
+        private static readonly ConcurrentDictionary<TypeInfo, bool> isTaskOfTCache = new ConcurrentDictionary<TypeInfo, bool> ();
+        private static readonly ConcurrentDictionary<TypeInfo, bool> isValueTaskOfTCache = new ConcurrentDictionary<TypeInfo, bool> ();
+
         public static string GetFullNameWithAssemblyName (this Type type) {
             return type.FullName + ", " + type.Assembly.GetName ().Name;
         }
@@ -56,6 +62,34 @@ namespace System {
 
             AddTypeAndBaseTypesRecursively (types, type.BaseType, includeObject);
             types.Add (type);
+        }
+
+        public static bool IsTask (this TypeInfo typeInfo) {
+            if (typeInfo == null) {
+                throw new ArgumentNullException (nameof (typeInfo));
+            }
+            return typeInfo.AsType () == typeof (Task);
+        }
+
+        public static bool IsTaskWithResult (this TypeInfo typeInfo) {
+            if (typeInfo == null) {
+                throw new ArgumentNullException (nameof (typeInfo));
+            }
+            return isTaskOfTCache.GetOrAdd (typeInfo, Info => Info.IsGenericType && typeof (Task).GetTypeInfo ().IsAssignableFrom (Info));
+        }
+
+        public static bool IsValueTask (this TypeInfo typeInfo) {
+            if (typeInfo == null) {
+                throw new ArgumentNullException (nameof (typeInfo));
+            }
+            return typeInfo.AsType () == typeof (ValueTask);
+        }
+
+        public static bool IsValueTaskWithResult (this TypeInfo typeInfo) {
+            if (typeInfo == null) {
+                throw new ArgumentNullException (nameof (typeInfo));
+            }
+            return isValueTaskOfTCache.GetOrAdd (typeInfo, Info => Info.IsGenericType && Info.GetGenericTypeDefinition () == typeof (ValueTask<>));
         }
     }
 }

@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 
 namespace Aiwins.Rocket {
     /// <summary>
-    /// 此异常信息可以直接展示给用户层
+    /// 此异常信息可以直接展示给用户
     /// </summary>
     [Serializable]
     public class UserFriendlyException : BusinessException, IUserFriendlyException {

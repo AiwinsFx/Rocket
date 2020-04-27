@@ -13,6 +13,11 @@ namespace Aiwins.Rocket.Caching {
         typeof (RocketMultiTenancyModule),
         typeof (RocketJsonModule))]
     public class RocketCachingModule : RocketModule {
+        public override void PreConfigureServices (ServiceConfigurationContext context) {
+            context.Services.OnRegistred (LocalCacheInterceptorRegistrar.RegisterIfNeeded);
+            context.Services.OnRegistred (DistributedCacheInterceptorRegistrar.RegisterIfNeeded);
+        }
+        
         public override void ConfigureServices (ServiceConfigurationContext context) {
             context.Services.AddMemoryCache ();
             context.Services.AddDistributedMemoryCache ();

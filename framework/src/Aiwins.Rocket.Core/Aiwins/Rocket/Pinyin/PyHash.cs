@@ -1,6 +1,6 @@
-namespace Penguin.Core.Utility.Pinyin {
+namespace Aiwins.Rocket.Pinyin {
     public class PyHash {
-        internal static short[][] hashes = new short[][] {
+        internal static short[][] Hashes = new short[][] {
             new short[] { 23, 70, 96, 128, 154, 165, 172, 195 },
             new short[] { 25, 35, 87, 108, 120, 128, 132, 137, 168, 180, 325, 334, 336, 353, 361, 380 },
             new short[] { 23, 34, 46, 81, 82, 87, 134, 237, 255, 288, 317, 322, 354, 359 },

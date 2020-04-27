@@ -13,6 +13,7 @@ using Aiwins.Rocket.EventBus.Local;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MongoDB;
 using Aiwins.Rocket.MultiTenancy;
+using Aiwins.Rocket.Pinyin;
 using Aiwins.Rocket.Reflection;
 using Aiwins.Rocket.Threading;
 using MongoDB.Driver;
@@ -69,6 +70,9 @@ namespace Aiwins.Rocket.Domain.Repositories.MongoDB {
             bool autoSave = false,
             CancellationToken cancellationToken = default) {
             SetModificationAuditProperties (entity);
+
+            // 更新实体对象拼音简写
+            SetNewPySpelling(entity);
 
             if (entity is ISoftDelete softDeleteEntity && softDeleteEntity.IsDeleted) {
                 SetDeletionAuditProperties (entity);
@@ -180,7 +184,9 @@ namespace Aiwins.Rocket.Domain.Repositories.MongoDB {
 
         protected virtual async Task ApplyRocketConceptsForAddedEntityAsync (TEntity entity) {
             CheckAndSetId (entity);
+            SetNewPySpelling(entity);
             SetCreationAuditProperties (entity);
+
             await TriggerEntityCreateEvents (entity);
             await TriggerDomainEventsAsync (entity);
         }
@@ -259,6 +265,16 @@ namespace Aiwins.Rocket.Domain.Repositories.MongoDB {
 
                 generatesDomainEventsEntity.ClearDistributedEvents ();
             }
+        }
+
+        protected virtual void SetNewPySpelling (TEntity entity) {
+            if (!(entity is IPySpelling pySpellingEntity)) {
+                return;
+            }
+
+            // 当创建实现了IPySpelling实体对象对拼音简写属性赋值
+            pySpellingEntity.FullPySpelling = pySpellingEntity.Name.IsNullOrEmpty () ? string.Empty : pySpellingEntity.Name.FullPySpelling ();
+            pySpellingEntity.FirstPySpelling = pySpellingEntity.Name.IsNullOrEmpty () ? string.Empty : pySpellingEntity.Name.FirstPySpelling ();
         }
 
         /// <summary>

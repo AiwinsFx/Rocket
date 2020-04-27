@@ -29,7 +29,7 @@ namespace Aiwins.Rocket.TenantManagement {
         protected virtual async Task ValidateNameAsync (string name, Guid? expectedId = null) {
             var tenant = await TenantRepository.FindByNameAsync (name);
             if (tenant != null && tenant.Id != expectedId) {
-                throw new UserFriendlyException ("Duplicate tenancy name: " + name); //TODO: A domain exception would be better..?
+                throw new UserFriendlyException ("Duplicate tenancy name: " + name);
             }
         }
     }

@@ -18,6 +18,7 @@ using Aiwins.Rocket.EntityFrameworkCore.ValueConverters;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MultiTenancy;
 using Aiwins.Rocket.ObjectExtending;
+using Aiwins.Rocket.Pinyin;
 using Aiwins.Rocket.Reflection;
 using Aiwins.Rocket.Timing;
 using Aiwins.Rocket.Uow;
@@ -240,12 +241,14 @@ namespace Aiwins.Rocket.EntityFrameworkCore {
 
         protected virtual void ApplyRocketConceptsForAddedEntity (EntityEntry entry, EntityChangeReport changeReport) {
             CheckAndSetId (entry);
+            SetNewPySpelling (entry);
             SetConcurrencyStampIfNull (entry);
             SetCreationAuditProperties (entry);
             changeReport.ChangedEntities.Add (new EntityChangeEntry (entry.Entity, EntityChangeType.Created));
         }
 
         protected virtual void ApplyRocketConceptsForModifiedEntity (EntityEntry entry, EntityChangeReport changeReport) {
+            UpdatePySpelling (entry);
             UpdateConcurrencyStamp (entry);
             SetModificationAuditProperties (entry);
 
@@ -292,6 +295,29 @@ namespace Aiwins.Rocket.EntityFrameworkCore {
                 changeReport.DistributedEvents.AddRange (distributedEvents.Select (eventData => new DomainEventEntry (entityAsObj, eventData)));
                 generatesDomainEventsEntity.ClearDistributedEvents ();
             }
+        }
+
+        protected virtual void UpdatePySpelling (EntityEntry entry) {
+            var entity = entry.Entity as IPySpelling;
+            if (entity == null) {
+                return;
+            }
+            // 当更新实体对象Name属性的时候更新拼音简写属性，检查Name属性值是否发生了更新
+            if (Entry (entity).Property (x => x.Name).CurrentValue != Entry (entity).Property (x => x.Name).OriginalValue) {
+                entity.FullPySpelling = entity.Name.IsNullOrEmpty () ? string.Empty : entity.Name.FullPySpelling ();
+                entity.FirstPySpelling = entity.Name.IsNullOrEmpty () ? string.Empty : entity.Name.FirstPySpelling ();
+            }
+        }
+
+        protected virtual void SetNewPySpelling (EntityEntry entry) {
+            var entity = entry.Entity as IPySpelling;
+            if (entity == null) {
+                return;
+            }
+
+            // 当创建实现了IPySpelling实体对象对拼音简写属性赋值
+            entity.FullPySpelling = entity.Name.IsNullOrEmpty () ? string.Empty : entity.Name.FullPySpelling ();
+            entity.FirstPySpelling = entity.Name.IsNullOrEmpty () ? string.Empty : entity.Name.FirstPySpelling ();
         }
 
         protected virtual void UpdateConcurrencyStamp (EntityEntry entry) {

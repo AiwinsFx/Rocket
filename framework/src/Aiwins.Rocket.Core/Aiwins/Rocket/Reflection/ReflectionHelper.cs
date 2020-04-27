@@ -96,15 +96,14 @@ namespace Aiwins.Rocket.Reflection {
         /// <typeparam name="TAttribute">特性类型</typeparam>
         /// <param name="memberInfo">成员信息</param>
         /// <param name="inherit">是否获取基类的特性</param>
-        public static IEnumerable<TAttribute> GetAttributesOfMemberOrDeclaringType<TAttribute>(MemberInfo memberInfo, bool inherit = true)
-            where TAttribute : class
-        {
-            var customAttributes = memberInfo.GetCustomAttributes(true).OfType<TAttribute>();
+        public static IEnumerable<TAttribute> GetAttributesOfMemberOrDeclaringType<TAttribute> (MemberInfo memberInfo, bool inherit = true)
+        where TAttribute : class {
+            var customAttributes = memberInfo.GetCustomAttributes (true).OfType<TAttribute> ();
             var declaringTypeCustomAttributes =
-                memberInfo.DeclaringType?.GetTypeInfo().GetCustomAttributes(true).OfType<TAttribute>();
-            return declaringTypeCustomAttributes != null
-                ? customAttributes.Concat(declaringTypeCustomAttributes).Distinct()
-                : customAttributes;
+                memberInfo.DeclaringType?.GetTypeInfo ().GetCustomAttributes (true).OfType<TAttribute> ();
+            return declaringTypeCustomAttributes != null ?
+                customAttributes.Concat (declaringTypeCustomAttributes).Distinct () :
+                customAttributes;
         }
 
         /// <summary>
@@ -187,6 +186,22 @@ namespace Aiwins.Rocket.Reflection {
             Recursively (publicConstants, type, 1);
 
             return publicConstants.ToArray ();
+        }
+
+        public static bool IsReturnTask (this MethodInfo methodInfo) {
+            if (methodInfo == null) {
+                throw new ArgumentNullException (nameof (methodInfo));
+            }
+            var returnType = methodInfo.ReturnType.GetTypeInfo ();
+            return returnType.IsTaskWithResult ();
+        }
+
+        public static bool IsReturnValueTask (this MethodInfo methodInfo) {
+            if (methodInfo == null) {
+                throw new ArgumentNullException (nameof (methodInfo));
+            }
+            var returnType = methodInfo.ReturnType.GetTypeInfo ();
+            return returnType.IsValueTaskWithResult ();
         }
     }
 }

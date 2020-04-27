@@ -10,7 +10,7 @@ namespace Aiwins.Rocket.Timing {
             Options = options.Value;
         }
 
-        public virtual DateTimeOffset Now => Options.Kind == DateTimeKind.Utc ? DateTimeOffset.UtcNow : DateTimeOffset.Now;
+        public virtual DateTime Now => Options.Kind == DateTimeKind.Utc ? DateTime.UtcNow : DateTime.Now;
 
         public virtual DateTimeKind Kind => Options.Kind;
 
