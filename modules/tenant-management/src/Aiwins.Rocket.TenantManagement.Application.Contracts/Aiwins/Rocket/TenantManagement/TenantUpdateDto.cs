@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.TenantManagement
-{
-    public class TenantUpdateDto : TenantCreateOrUpdateDtoBase
-    {
+﻿namespace Aiwins.Rocket.TenantManagement {
+    public class TenantUpdateDto : TenantCreateOrUpdateDtoBase {
 
     }
 }

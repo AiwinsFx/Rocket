@@ -12,20 +12,23 @@ namespace Aiwins.Rocket.Authorization.Permissions {
 
         }
 
-        public override async Task<PermissionGrantResult> CheckAsync (PermissionValueCheckContext context) {
+        public override async Task<PermissionGrantResult> GetResultAsync (PermissionValueCheckContext context) {
             var roles = context.Principal?.FindAll (RocketClaimTypes.Role).Select (c => c.Value).ToArray ();
 
             if (roles == null || !roles.Any ()) {
                 return PermissionGrantResult.Undefined;
             }
 
+            var permissionGrantResult = PermissionGrantResult.Undefined;
+
             foreach (var role in roles) {
-                if (await PermissionStore.IsGrantedAsync (context.Permission.Name, Name, role)) {
-                    return PermissionGrantResult.Granted;
+                var result = await PermissionStore.GetResultAsync (context.Permission.Name, Name, role);
+                if (result?.GrantType == PermissionGrantType.Granted && result?.ScopeType > permissionGrantResult.ScopeType) {
+                    permissionGrantResult = result;
                 }
             }
 
-            return PermissionGrantResult.Undefined;
+            return permissionGrantResult;
         }
     }
 }

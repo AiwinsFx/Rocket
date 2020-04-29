@@ -23,6 +23,10 @@ namespace Aiwins.Rocket.TenantManagement.EntityFrameworkCore {
 
                 b.Property (t => t.Name).IsRequired ().HasMaxLength (TenantConsts.MaxNameLength);
 
+                b.Property (t => t.FirstPySpelling).HasMaxLength (TenantConsts.MaxNameLength / 2);
+
+                b.Property (t => t.FullPySpelling).HasMaxLength (TenantConsts.MaxNameLength * 2);
+
                 b.HasMany (u => u.ConnectionStrings).WithOne ().HasForeignKey (uc => uc.TenantId).IsRequired ();
 
                 b.HasIndex (u => u.Name);

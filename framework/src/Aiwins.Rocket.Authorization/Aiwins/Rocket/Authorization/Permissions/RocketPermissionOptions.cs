@@ -6,6 +6,8 @@ namespace Aiwins.Rocket.Authorization.Permissions {
 
         public ITypeList<IPermissionValueProvider> ValueProviders { get; }
 
+        public PermissionPolicy PermissionPolicy { get; set; }
+
         public RocketPermissionOptions () {
             DefinitionProviders = new TypeList<IPermissionDefinitionProvider> ();
             ValueProviders = new TypeList<IPermissionValueProvider> ();

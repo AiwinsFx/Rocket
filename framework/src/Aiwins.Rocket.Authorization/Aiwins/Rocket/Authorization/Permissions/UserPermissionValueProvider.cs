@@ -11,16 +11,14 @@ namespace Aiwins.Rocket.Authorization.Permissions {
 
         }
 
-        public override async Task<PermissionGrantResult> CheckAsync (PermissionValueCheckContext context) {
+        public override async Task<PermissionGrantResult> GetResultAsync (PermissionValueCheckContext context) {
             var userId = context.Principal?.FindFirst (RocketClaimTypes.UserId)?.Value;
 
             if (userId == null) {
                 return PermissionGrantResult.Undefined;
             }
 
-            return await PermissionStore.IsGrantedAsync (context.Permission.Name, Name, userId) ?
-                PermissionGrantResult.Granted :
-                PermissionGrantResult.Undefined;
+            return await PermissionStore.GetResultAsync (context.Permission.Name, Name, userId);
         }
     }
 }

@@ -26,6 +26,7 @@ namespace Aiwins.Rocket.Authorization {
             context.Services.AddSingleton<IAuthorizationHandler, PermissionRequirementHandler> ();
 
             Configure<RocketPermissionOptions> (options => {
+                options.PermissionPolicy = PermissionPolicy.User;
                 options.ValueProviders.Add<UserPermissionValueProvider> ();
                 options.ValueProviders.Add<RolePermissionValueProvider> ();
                 options.ValueProviders.Add<ClientPermissionValueProvider> ();

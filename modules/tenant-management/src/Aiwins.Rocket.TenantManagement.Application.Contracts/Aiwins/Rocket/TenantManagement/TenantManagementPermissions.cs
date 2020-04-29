@@ -1,13 +1,10 @@
 ﻿using Aiwins.Rocket.Reflection;
 
-namespace Aiwins.Rocket.TenantManagement
-{
-    public static class TenantManagementPermissions
-    {
+namespace Aiwins.Rocket.TenantManagement {
+    public static class TenantManagementPermissions {
         public const string GroupName = "RocketTenantManagement";
 
-        public static class Tenants
-        {
+        public static class Tenants {
             public const string Default = GroupName + ".Tenants";
             public const string Create = Default + ".Create";
             public const string Update = Default + ".Update";
@@ -16,9 +13,8 @@ namespace Aiwins.Rocket.TenantManagement
             public const string ManageConnectionStrings = Default + ".ManageConnectionStrings";
         }
 
-        public static string[] GetAll()
-        {
-            return ReflectionHelper.GetPublicConstantsRecursively(typeof(TenantManagementPermissions));
+        public static string[] GetAll () {
+            return ReflectionHelper.GetPublicConstantsRecursively (typeof (TenantManagementPermissions));
         }
     }
 }

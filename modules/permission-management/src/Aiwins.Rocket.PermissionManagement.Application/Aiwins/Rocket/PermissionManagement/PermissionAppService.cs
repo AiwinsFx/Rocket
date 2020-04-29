@@ -6,7 +6,6 @@ using Aiwins.Rocket.Application.Services;
 using Aiwins.Rocket.Authorization.Permissions;
 using Aiwins.Rocket.MultiTenancy;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 
 namespace Aiwins.Rocket.PermissionManagement {
@@ -62,10 +61,12 @@ namespace Aiwins.Rocket.PermissionManagement {
                     var grantInfo = await PermissionManager.GetAsync (permission.Name, providerName, providerKey);
 
                     grantInfoDto.IsGranted = grantInfo.IsGranted;
+                    grantInfoDto.Scope = grantInfo.Scope;
 
                     foreach (var provider in grantInfo.Providers) {
                         grantInfoDto.GrantedProviders.Add (new ProviderInfoDto {
                             ProviderName = provider.Name,
+                                ProviderScope = provider.Scope,
                                 ProviderKey = provider.Key,
                         });
                     }
@@ -85,7 +86,7 @@ namespace Aiwins.Rocket.PermissionManagement {
             await CheckProviderPolicy (providerName);
 
             foreach (var permissionDto in input.Permissions) {
-                await PermissionManager.SetAsync (permissionDto.Name, providerName, providerKey, permissionDto.IsGranted);
+                await PermissionManager.SetAsync (permissionDto.Name, providerName, providerKey, permissionDto.Scope);
             }
         }
 

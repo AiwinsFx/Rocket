@@ -4,8 +4,8 @@ using JetBrains.Annotations;
 
 namespace Aiwins.Rocket.Authorization.Permissions {
     public interface IPermissionChecker {
-        Task<bool> IsGrantedAsync ([NotNull] string name);
+        Task<PermissionGrantResult> GetResultAsync ([NotNull] string name);
 
-        Task<bool> IsGrantedAsync ([CanBeNull] ClaimsPrincipal claimsPrincipal, [NotNull] string name);
+        Task<PermissionGrantResult> GetResultAsync ([CanBeNull] ClaimsPrincipal claimsPrincipal, [NotNull] string name);
     }
 }

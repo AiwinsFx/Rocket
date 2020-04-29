@@ -13,7 +13,8 @@ namespace Aiwins.Rocket.Authorization {
         protected override async Task HandleRequirementAsync (
             AuthorizationHandlerContext context,
             PermissionRequirement requirement) {
-            if (await _permissionChecker.IsGrantedAsync (context.User, requirement.PermissionName)) {
+            var result = await _permissionChecker.GetResultAsync (context.User, requirement.PermissionName);
+            if (result.GrantType == PermissionGrantType.Granted) {
                 context.Succeed (requirement);
             }
         }

@@ -11,6 +11,6 @@ namespace Aiwins.Rocket.Authorization.Permissions {
             PermissionStore = permissionStore;
         }
 
-        public abstract Task<PermissionGrantResult> CheckAsync (PermissionValueCheckContext context);
+        public abstract Task<PermissionGrantResult> GetResultAsync (PermissionValueCheckContext context);
     }
 }

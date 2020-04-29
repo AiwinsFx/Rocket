@@ -7,7 +7,7 @@ namespace Aiwins.Rocket.PermissionManagement {
         Task SeedAsync (
             string providerName,
             string providerKey,
-            IEnumerable<string> grantedPermissions,
+            Dictionary<string, string> permissions,
             Guid? tenantId = null
         );
     }

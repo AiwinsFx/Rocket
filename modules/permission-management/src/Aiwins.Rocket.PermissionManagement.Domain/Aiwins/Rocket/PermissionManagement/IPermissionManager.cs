@@ -2,18 +2,14 @@
 using System.Threading.Tasks;
 using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.PermissionManagement
-{
-    //TODO: Write extension methods for simple IsGranted check
+namespace Aiwins.Rocket.PermissionManagement {
+    public interface IPermissionManager {
+        Task<PermissionWithGrantedProviders> GetAsync (string permissionName, string providerName, string providerKey);
 
-    public interface IPermissionManager
-    {
-        Task<PermissionWithGrantedProviders> GetAsync(string permissionName, string providerName, string providerKey);
+        Task<List<PermissionWithGrantedProviders>> GetAllAsync ([NotNull] string providerName, [NotNull] string providerKey);
 
-        Task<List<PermissionWithGrantedProviders>> GetAllAsync([NotNull] string providerName, [NotNull] string providerKey);
+        Task SetAsync (string permissionName, string providerName,string providerScope, string providerKey);
 
-        Task SetAsync(string permissionName, string providerName, string providerKey, bool isGranted);
-
-        Task<PermissionGrant> UpdateProviderKeyAsync(PermissionGrant permissionGrant, string providerKey);
+        Task<PermissionGrant> UpdateProviderKeyAsync (PermissionGrant permissionGrant, string providerKey);
     }
 }
