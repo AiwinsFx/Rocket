@@ -1,11 +1,9 @@
 ﻿using System;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Domain.Entities;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.FeatureManagement
-{
-    public class FeatureValue : Entity<Guid>, IAggregateRoot<Guid>
-    {
+namespace Aiwins.Rocket.FeatureManagement {
+    public class FeatureValue : Entity<Guid>, IAggregateRoot<Guid> {
         [NotNull]
         public virtual string Name { get; protected set; }
 
@@ -18,24 +16,18 @@ namespace Aiwins.Rocket.FeatureManagement
         [CanBeNull]
         public virtual string ProviderKey { get; protected set; }
 
-        protected FeatureValue()
-        {
+        protected FeatureValue () {
 
         }
 
-        public FeatureValue(
-            Guid id,
-            [NotNull] string name,
-            [NotNull] string value,
-            [NotNull] string providerName,
-            [CanBeNull] string providerKey)
-        {
-            Check.NotNull(name, nameof(name));
+        public FeatureValue (
+            Guid id, [NotNull] string name, [NotNull] string value, [NotNull] string providerName, [CanBeNull] string providerKey) {
+            Check.NotNull (name, nameof (name));
 
             Id = id;
-            Name = Check.NotNullOrWhiteSpace(name, nameof(name));
-            Value = Check.NotNullOrWhiteSpace(value, nameof(value));
-            ProviderName = Check.NotNullOrWhiteSpace(providerName, nameof(providerName));
+            Name = Check.NotNullOrWhiteSpace (name, nameof (name));
+            Value = Check.NotNullOrWhiteSpace (value, nameof (value));
+            ProviderName = Check.NotNullOrWhiteSpace (providerName, nameof (providerName));
             ProviderKey = providerKey;
         }
     }

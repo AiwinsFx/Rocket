@@ -1,14 +1,10 @@
-﻿using JetBrains.Annotations;
-using Aiwins.Rocket.MongoDB;
+﻿using Aiwins.Rocket.MongoDB;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.FeatureManagement.MongoDB
-{
-    public class FeatureManagementMongoModelBuilderConfigurationOptions : RocketMongoModelBuilderConfigurationOptions
-    {
-        public FeatureManagementMongoModelBuilderConfigurationOptions(
-            [NotNull] string collectionPrefix = "")
-            : base(collectionPrefix)
-        {
+namespace Aiwins.Rocket.FeatureManagement.MongoDB {
+    public class FeatureManagementMongoModelBuilderConfigurationOptions : RocketMongoModelBuilderConfigurationOptions {
+        public FeatureManagementMongoModelBuilderConfigurationOptions (
+            [NotNull] string collectionPrefix = "") : base (collectionPrefix) {
 
         }
     }

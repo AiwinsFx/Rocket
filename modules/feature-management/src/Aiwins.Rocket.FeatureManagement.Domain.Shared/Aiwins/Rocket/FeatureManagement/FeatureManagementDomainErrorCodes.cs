@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.FeatureManagement
-{
-    public static class FeatureManagementDomainErrorCodes
-    {
-        
+﻿namespace Aiwins.Rocket.FeatureManagement {
+    public static class FeatureManagementDomainErrorCodes {
+
     }
 }

@@ -2,22 +2,20 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Aiwins.Rocket.AspNetCore.Mvc.UI.RazorPages;
 using Aiwins.Rocket.Validation.StringValues;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Aiwins.Rocket.FeatureManagement.Web.Pages.FeatureManagement
-{
-    public class FeatureManagementModal : RocketPageModel
-    {
+namespace Aiwins.Rocket.FeatureManagement.Web.Pages.FeatureManagement {
+    public class FeatureManagementModal : RocketPageModel {
         [Required]
         [HiddenInput]
-        [BindProperty(SupportsGet = true)]
+        [BindProperty (SupportsGet = true)]
         public string ProviderName { get; set; }
 
         [Required]
         [HiddenInput]
-        [BindProperty(SupportsGet = true)]
+        [BindProperty (SupportsGet = true)]
         public string ProviderKey { get; set; }
 
         [BindProperty]
@@ -27,44 +25,36 @@ namespace Aiwins.Rocket.FeatureManagement.Web.Pages.FeatureManagement
 
         protected IFeatureAppService FeatureAppService { get; }
 
-        public FeatureManagementModal(IFeatureAppService featureAppService)
-        {
-            ObjectMapperContext = typeof(RocketFeatureManagementWebModule);
+        public FeatureManagementModal (IFeatureAppService featureAppService) {
+            ObjectMapperContext = typeof (RocketFeatureManagementWebModule);
 
             FeatureAppService = featureAppService;
         }
 
-        public virtual async Task OnGetAsync()
-        {
-            FeatureListDto = await FeatureAppService.GetAsync(ProviderName, ProviderKey);
+        public virtual async Task OnGetAsync () {
+            FeatureListDto = await FeatureAppService.GetAsync (ProviderName, ProviderKey);
         }
 
-        public virtual async Task<IActionResult> OnPostAsync()
-        {
-            var features = new UpdateFeaturesDto
-            {
-                Features = Features.Select(f => new UpdateFeatureDto
-                {
-                    Name = f.Name,
-                    Value = f.Type == nameof(ToggleStringValueType) ? f.BoolValue.ToString() : f.Value
-                }).ToList()
+        public virtual async Task<IActionResult> OnPostAsync () {
+            var features = new UpdateFeaturesDto {
+                Features = Features.Select (f => new UpdateFeatureDto {
+                Name = f.Name,
+                Value = f.Type == nameof (ToggleStringValueType) ? f.BoolValue.ToString () : f.Value
+                }).ToList ()
             };
 
-            await FeatureAppService.UpdateAsync(ProviderName, ProviderKey, features);
+            await FeatureAppService.UpdateAsync (ProviderName, ProviderKey, features);
 
-            return NoContent();
+            return NoContent ();
         }
 
-
-        public class ProviderInfoViewModel
-        {
+        public class ProviderInfoViewModel {
             public string ProviderName { get; set; }
 
             public string ProviderKey { get; set; }
         }
 
-        public class FeatureViewModel
-        {
+        public class FeatureViewModel {
             public string Name { get; set; }
 
             public string Value { get; set; }

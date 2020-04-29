@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.FeatureManagement
-{
-    public static class FeatureValueConsts
-    {
+﻿namespace Aiwins.Rocket.FeatureManagement {
+    public static class FeatureValueConsts {
         public const int MaxNameLength = 128;
 
         public const int MaxProviderNameLength = 64;

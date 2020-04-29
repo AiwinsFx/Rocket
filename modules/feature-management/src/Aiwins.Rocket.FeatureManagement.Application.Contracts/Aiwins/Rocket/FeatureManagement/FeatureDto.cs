@@ -1,10 +1,8 @@
 ﻿using System.Collections.Generic;
 using Aiwins.Rocket.Validation.StringValues;
 
-namespace Aiwins.Rocket.FeatureManagement
-{
-    public class FeatureDto
-    {
+namespace Aiwins.Rocket.FeatureManagement {
+    public class FeatureDto {
         public string Name { get; set; }
 
         public string DisplayName { get; set; }
