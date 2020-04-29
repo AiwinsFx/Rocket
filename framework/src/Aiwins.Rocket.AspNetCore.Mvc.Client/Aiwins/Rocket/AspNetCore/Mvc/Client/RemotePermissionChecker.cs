@@ -11,15 +11,15 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.Client {
             ConfigurationClient = configurationClient;
         }
 
-        public async Task<bool> IsGrantedAsync (string name) {
+        public async Task<PermissionGrantResult> GetResultAsync (string name) {
             var configuration = await ConfigurationClient.GetAsync ();
 
-            return configuration.Auth.GrantedPolicies.ContainsKey (name);
+            return configuration.Auth.GrantedPolicies.ContainsKey (name) ? PermissionGrantResult.Granted : PermissionGrantResult.Prohibited;
         }
 
-        public async Task<bool> IsGrantedAsync (ClaimsPrincipal claimsPrincipal, string name) {
+        public async Task<PermissionGrantResult> GetResultAsync (ClaimsPrincipal claimsPrincipal, string name) {
             /* This provider always works for the current principal. */
-            return await IsGrantedAsync (name);
+            return await GetResultAsync (name);
         }
     }
 }

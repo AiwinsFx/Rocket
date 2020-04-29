@@ -55,13 +55,14 @@ namespace Aiwins.Rocket.PermissionManagement {
                         DisplayName = permission.DisplayName.Localize (StringLocalizerFactory),
                         ParentName = permission.Parent?.Name,
                         AllowedProviders = permission.Providers,
+                        Scopes = permission.Scopes.Where (m => !m.MultiTenancySide.HasFlag (multiTenancySide)).Select (m => new PermissionScopeDto () { Name = m.Name, DisplayName = m.DisplayName }).ToList (),
                         GrantedProviders = new List<ProviderInfoDto> ()
                     };
 
                     var grantInfo = await PermissionManager.GetAsync (permission.Name, providerName, providerKey);
 
                     grantInfoDto.IsGranted = grantInfo.IsGranted;
-                    grantInfoDto.Scope = grantInfo.Scope;
+                    grantInfoDto.SelectedScope = grantInfo.Scope;
 
                     foreach (var provider in grantInfo.Providers) {
                         grantInfoDto.GrantedProviders.Add (new ProviderInfoDto {

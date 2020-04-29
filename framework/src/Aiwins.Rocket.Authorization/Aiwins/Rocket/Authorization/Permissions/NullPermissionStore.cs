@@ -1,6 +1,5 @@
 ﻿using System.Threading.Tasks;
 using Aiwins.Rocket.DependencyInjection;
-using Aiwins.Rocket.Threading;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 
@@ -12,8 +11,8 @@ namespace Aiwins.Rocket.Authorization.Permissions {
             Logger = NullLogger<NullPermissionStore>.Instance;
         }
 
-        public Task<bool> IsGrantedAsync (string name, string providerName, string providerKey) {
-            return TaskCache.FalseResult;
+        public Task<PermissionGrantResult> GetResultAsync (string name, string providerName, string providerKey) {
+            return Task.FromResult(PermissionGrantResult.Prohibited);
         }
     }
 }

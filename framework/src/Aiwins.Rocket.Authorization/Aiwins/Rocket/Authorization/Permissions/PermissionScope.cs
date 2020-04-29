@@ -26,8 +26,8 @@ namespace Aiwins.Rocket.Authorization.Permissions {
         Prohibited = 0,     // 禁止
         Owner = 1,          // 个人
         Domain = 2,         // 管辖
-        Area = 4,           // 区域
-        All = 8,            // 全部
-        Granted = Owner | Domain | Area | All // 允许
+        All = 4,            // 全部
+        Platform = 8,       // 平台
+        Granted = Owner | Domain | All | Platform // 允许
     }
 }

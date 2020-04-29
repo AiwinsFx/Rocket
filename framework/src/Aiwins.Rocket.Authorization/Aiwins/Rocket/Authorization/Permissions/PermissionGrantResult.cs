@@ -7,7 +7,7 @@ namespace Aiwins.Rocket.Authorization.Permissions {
         public PermissionScopeType ScopeType { get; set; }
         public static PermissionGrantResult Undefined = new PermissionGrantResult { GrantType = PermissionGrantType.Undefined, ScopeType = PermissionScopeType.Prohibited };
         public static PermissionGrantResult Prohibited = new PermissionGrantResult { GrantType = PermissionGrantType.Prohibited, ScopeType = PermissionScopeType.Prohibited };
-        public static PermissionGrantResult Granted = new PermissionGrantResult { GrantType = PermissionGrantType.Granted, ScopeType = PermissionScopeType.Prohibited };
+        public static PermissionGrantResult Granted = new PermissionGrantResult { GrantType = PermissionGrantType.Granted, ScopeType = PermissionScopeType.Granted };
 
         public PermissionGrantResult (bool isGrant, [NotNull] string scope) {
             GrantType = isGrant ? PermissionGrantType.Granted : PermissionGrantType.Prohibited;

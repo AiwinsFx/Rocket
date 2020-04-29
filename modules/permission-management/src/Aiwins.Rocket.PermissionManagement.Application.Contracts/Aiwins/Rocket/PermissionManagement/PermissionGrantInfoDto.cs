@@ -10,9 +10,11 @@ namespace Aiwins.Rocket.PermissionManagement {
 
         public bool IsGranted { get; set; }
 
-        public string Scope { get; set; }
+        public string SelectedScope { get; set; }
 
         public List<string> AllowedProviders { get; set; }
+
+        public List<PermissionScopeDto> Scopes { get; set; }
 
         public List<ProviderInfoDto> GrantedProviders { get; set; }
     }

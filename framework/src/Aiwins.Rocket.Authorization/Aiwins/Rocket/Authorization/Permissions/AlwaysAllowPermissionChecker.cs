@@ -10,12 +10,12 @@ namespace Aiwins.Rocket.Authorization.Permissions {
     /// 对于测试非常实用
     /// </summary>
     public class AlwaysAllowPermissionChecker : IPermissionChecker {
-        public Task<string> GetResultAsync (string name) {
-            return Task.FromResult(nameof (PermissionScopeType.Granted));
+        public Task<PermissionGrantResult> GetResultAsync (string name) {
+            return Task.FromResult(PermissionGrantResult.Granted);
         }
 
-        public Task<string> GetResultAsync (ClaimsPrincipal claimsPrincipal, string name) {
-            return Task.FromResult(nameof (PermissionScopeType.Granted));
+        public Task<PermissionGrantResult> GetResultAsync (ClaimsPrincipal claimsPrincipal, string name) {
+            return Task.FromResult(PermissionGrantResult.Granted);
         }
     }
 }
