@@ -4,7 +4,7 @@ using Aiwins.Rocket.MultiTenancy;
 using JetBrains.Annotations;
 
 namespace Aiwins.Rocket.PermissionManagement {
-    public class PermissionGrant : FullAuditedAggregateRoot<Guid>, IMultiTenant {
+    public class PermissionGrant : Entity<Guid>, IAggregateRoot<Guid>, IMultiTenant {
         public virtual Guid? TenantId { get; protected set; }
 
         [NotNull]
@@ -24,7 +24,7 @@ namespace Aiwins.Rocket.PermissionManagement {
         }
 
         public PermissionGrant (
-            Guid id, [NotNull] string name, [NotNull] string providerName,[NotNull] string providerScope, [CanBeNull] string providerKey,
+            Guid id, [NotNull] string name, [NotNull] string providerName, [NotNull] string providerScope, [CanBeNull] string providerKey,
             Guid? tenantId = null) {
             Check.NotNull (name, nameof (name));
 

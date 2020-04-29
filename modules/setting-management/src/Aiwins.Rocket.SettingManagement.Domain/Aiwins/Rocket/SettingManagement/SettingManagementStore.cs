@@ -6,75 +6,62 @@ using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.Settings;
 
-namespace Aiwins.Rocket.SettingManagement
-{
-    public class SettingManagementStore : ISettingManagementStore, ITransientDependency
-    {
+namespace Aiwins.Rocket.SettingManagement {
+    public class SettingManagementStore : ISettingManagementStore, ITransientDependency {
         protected IDistributedCache<SettingCacheItem> Cache { get; }
         protected ISettingRepository SettingRepository { get; }
         protected IGuidGenerator GuidGenerator { get; }
 
-        public SettingManagementStore(
-            ISettingRepository settingRepository, 
-            IGuidGenerator guidGenerator, 
-            IDistributedCache<SettingCacheItem> cache)
-        {
+        public SettingManagementStore (
+            ISettingRepository settingRepository,
+            IGuidGenerator guidGenerator,
+            IDistributedCache<SettingCacheItem> cache) {
             SettingRepository = settingRepository;
             GuidGenerator = guidGenerator;
             Cache = cache;
         }
 
-        public virtual async Task<string> GetOrNullAsync(string name, string providerName, string providerKey)
-        {
-            var cacheItem = await GetCacheItemAsync(name, providerName, providerKey);
+        public virtual async Task<string> GetOrNullAsync (string name, string providerName, string providerKey) {
+            var cacheItem = await GetCacheItemAsync (name, providerName, providerKey);
             return cacheItem.Value;
         }
 
-        public virtual async Task SetAsync(string name, string value, string providerName, string providerKey)
-        {
-            var setting = await SettingRepository.FindAsync(name, providerName, providerKey);
-            if (setting == null)
-            {
-                setting = new Setting(GuidGenerator.Create(), name, value, providerName, providerKey);
-                await SettingRepository.InsertAsync(setting);
-            }
-            else
-            {
+        public virtual async Task SetAsync (string name, string value, string providerName, string providerKey) {
+            var setting = await SettingRepository.FindAsync (name, providerName, providerKey);
+            if (setting == null) {
+                setting = new Setting (GuidGenerator.Create (), name, value, providerName, providerKey);
+                await SettingRepository.InsertAsync (setting);
+            } else {
                 setting.Value = value;
-                await SettingRepository.UpdateAsync(setting);
+                await SettingRepository.UpdateAsync (setting);
             }
         }
 
-        public virtual async Task<List<SettingValue>> GetListAsync(string providerName, string providerKey)
-        {
-            var settings = await SettingRepository.GetListAsync(providerName, providerKey);
-            return settings.Select(s => new SettingValue(s.Name, s.Value)).ToList();
+        public virtual async Task<List<SettingValue>> GetListAsync (string providerName, string providerKey) {
+            var settings = await SettingRepository.GetListAsync (providerName, providerKey);
+            return settings.Select (s => new SettingValue (s.Name, s.Value)).ToList ();
         }
 
-        public virtual async Task DeleteAsync(string name, string providerName, string providerKey)
-        {
-            var setting = await SettingRepository.FindAsync(name, providerName, providerKey);
-            if (setting != null)
-            {
-                await SettingRepository.DeleteAsync(setting);
+        public virtual async Task DeleteAsync (string name, string providerName, string providerKey) {
+            var setting = await SettingRepository.FindAsync (name, providerName, providerKey);
+            if (setting != null) {
+                await SettingRepository.DeleteAsync (setting);
             }
         }
 
-        protected virtual async Task<SettingCacheItem> GetCacheItemAsync(string name, string providerName, string providerKey)
-        {
-            var cacheKey = CalculateCacheKey(name, providerName, providerKey);
-            var cacheItem = await Cache.GetAsync(cacheKey);
+        protected virtual async Task<SettingCacheItem> GetCacheItemAsync (string name, string providerName, string providerKey) {
+            var cacheKey = CalculateCacheKey (name, providerName, providerKey);
+            var cacheItem = await Cache.GetAsync (cacheKey);
 
-            if (cacheItem != null)
-            {
+            if (cacheItem != null) {
                 return cacheItem;
             }
 
-            var setting = await SettingRepository.FindAsync(name, providerName, providerKey);
+            var setting = await SettingRepository.FindAsync (name, providerName, providerKey);
 
-            cacheItem = new SettingCacheItem(setting?.Value);
+            cacheItem = new SettingCacheItem (setting?.Value);
 
-            await Cache.SetAsync(
+            await Cache.SetAsync (
                 cacheKey,
                 cacheItem
             );
@@ -82,9 +69,8 @@ namespace Aiwins.Rocket.SettingManagement
             return cacheItem;
         }
 
-        protected virtual string CalculateCacheKey(string name, string providerName, string providerKey)
-        {
-            return SettingCacheItem.CalculateCacheKey(name, providerName, providerKey);
+        protected virtual string CalculateCacheKey (string name, string providerName, string providerKey) {
+            return SettingCacheItem.CalculateCacheKey (name, providerName, providerKey);
         }
     }
 }

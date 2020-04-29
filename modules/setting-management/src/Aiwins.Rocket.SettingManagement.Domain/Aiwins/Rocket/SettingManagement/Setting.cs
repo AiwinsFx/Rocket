@@ -1,11 +1,9 @@
 ﻿using System;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Domain.Entities;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.SettingManagement
-{
-    public class Setting : Entity<Guid>, IAggregateRoot<Guid>
-    {
+namespace Aiwins.Rocket.SettingManagement {
+    public class Setting : Entity<Guid>, IAggregateRoot<Guid> {
         [NotNull]
         public virtual string Name { get; protected set; }
 
@@ -18,20 +16,14 @@ namespace Aiwins.Rocket.SettingManagement
         [CanBeNull]
         public virtual string ProviderKey { get; protected set; }
 
-        protected Setting()
-        {
+        protected Setting () {
 
         }
 
-        public Setting(
-            Guid id, 
-            [NotNull] string name, 
-            [NotNull] string value, 
-            [CanBeNull] string providerName = null, 
-            [CanBeNull] string providerKey = null)
-        {
-            Check.NotNull(name, nameof(name));
-            Check.NotNull(value, nameof(value));
+        public Setting (
+            Guid id, [NotNull] string name, [NotNull] string value, [CanBeNull] string providerName = null, [CanBeNull] string providerKey = null) {
+            Check.NotNull (name, nameof (name));
+            Check.NotNull (value, nameof (value));
 
             Id = id;
             Name = name;
@@ -40,8 +32,7 @@ namespace Aiwins.Rocket.SettingManagement
             ProviderKey = providerKey;
         }
 
-        public override string ToString()
-        {
+        public override string ToString () {
             return $"{base.ToString()}, Name = {Name}, Value = {Value}, ProviderName = {ProviderName}, ProviderKey = {ProviderKey}";
         }
     }

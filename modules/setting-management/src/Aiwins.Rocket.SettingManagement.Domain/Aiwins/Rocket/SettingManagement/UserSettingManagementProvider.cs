@@ -2,30 +2,24 @@
 using Aiwins.Rocket.Settings;
 using Aiwins.Rocket.Users;
 
-namespace Aiwins.Rocket.SettingManagement
-{
-    public class UserSettingManagementProvider : SettingManagementProvider, ITransientDependency
-    {
+namespace Aiwins.Rocket.SettingManagement {
+    public class UserSettingManagementProvider : SettingManagementProvider, ITransientDependency {
         public override string Name => UserSettingValueProvider.ProviderName;
 
         protected ICurrentUser CurrentUser { get; }
 
-        public UserSettingManagementProvider(
+        public UserSettingManagementProvider (
             ISettingManagementStore settingManagementStore,
-            ICurrentUser currentUser)
-            : base(settingManagementStore)
-        {
+            ICurrentUser currentUser) : base (settingManagementStore) {
             CurrentUser = currentUser;
         }
 
-        protected override string NormalizeProviderKey(string providerKey)
-        {
-            if (providerKey != null)
-            {
+        protected override string NormalizeProviderKey (string providerKey) {
+            if (providerKey != null) {
                 return providerKey;
             }
 
-            return CurrentUser.Id?.ToString();
+            return CurrentUser.Id?.ToString ();
         }
     }
 }

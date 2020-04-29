@@ -4,6 +4,8 @@
 
         public const int MaxProviderNameLength = 64;
 
+        public const int MaxProviderScopeLength = 16;
+
         public const int MaxProviderKeyLength = 64;
     }
 }

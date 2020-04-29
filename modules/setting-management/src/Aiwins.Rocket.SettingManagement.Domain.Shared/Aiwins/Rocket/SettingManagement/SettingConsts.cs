@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.SettingManagement
-{
-    public static class SettingConsts
-    {
+﻿namespace Aiwins.Rocket.SettingManagement {
+    public static class SettingConsts {
         public const int MaxNameLength = 128;
         public const int MaxValueLength = 2048;
         public const int MaxProviderNameLength = 64;
