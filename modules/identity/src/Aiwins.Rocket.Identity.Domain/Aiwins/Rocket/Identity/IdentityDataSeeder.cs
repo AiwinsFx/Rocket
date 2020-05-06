@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.Uow;
+using Microsoft.AspNetCore.Identity;
 
-namespace Aiwins.Rocket.Identity
-{
-    public class IdentityDataSeeder : ITransientDependency, IIdentityDataSeeder
-    {
+namespace Aiwins.Rocket.Identity {
+    public class IdentityDataSeeder : ITransientDependency, IIdentityDataSeeder {
         protected IGuidGenerator GuidGenerator { get; }
         protected IIdentityRoleRepository RoleRepository { get; }
         protected IIdentityUserRepository UserRepository { get; }
@@ -16,14 +14,13 @@ namespace Aiwins.Rocket.Identity
         protected IdentityUserManager UserManager { get; }
         protected IdentityRoleManager RoleManager { get; }
 
-        public IdentityDataSeeder(
+        public IdentityDataSeeder (
             IGuidGenerator guidGenerator,
             IIdentityRoleRepository roleRepository,
             IIdentityUserRepository userRepository,
             ILookupNormalizer lookupNormalizer,
             IdentityUserManager userManager,
-            IdentityRoleManager roleManager)
-        {
+            IdentityRoleManager roleManager) {
             GuidGenerator = guidGenerator;
             RoleRepository = roleRepository;
             UserRepository = userRepository;
@@ -33,60 +30,55 @@ namespace Aiwins.Rocket.Identity
         }
 
         [UnitOfWork]
-        public virtual async Task<IdentityDataSeedResult> SeedAsync(
-            string adminEmail,
+        public virtual async Task<IdentityDataSeedResult> SeedAsync (
+            string adminPhoneNumber,
             string adminPassword,
-            Guid? tenantId = null)
-        {
-            Check.NotNullOrWhiteSpace(adminEmail, nameof(adminEmail));
-            Check.NotNullOrWhiteSpace(adminPassword, nameof(adminPassword));
+            Guid? tenantId = null) {
+            Check.NotNullOrWhiteSpace (adminPhoneNumber, nameof (adminPhoneNumber));
+            Check.NotNullOrWhiteSpace (adminPassword, nameof (adminPassword));
 
-            var result = new IdentityDataSeedResult();
+            var result = new IdentityDataSeedResult ();
 
             //"admin" user
             const string adminUserName = "admin";
-            var adminUser = await UserRepository.FindByNormalizedUserNameAsync(
-                LookupNormalizer.NormalizeName(adminUserName)
+            var adminUser = await UserRepository.FindByNormalizedUserNameAsync (
+                LookupNormalizer.NormalizeName (adminUserName)
             );
 
-            if (adminUser != null)
-            {
+            if (adminUser != null) {
                 return result;
             }
 
-            adminUser = new IdentityUser(
-                GuidGenerator.Create(),
+            adminUser = new IdentityUser (
+                GuidGenerator.Create (),
                 adminUserName,
-                adminEmail,
+                adminPhoneNumber,
                 tenantId
-            )
-            {
+            ) {
                 Name = adminUserName
             };
 
-            (await UserManager.CreateAsync(adminUser, adminPassword)).CheckErrors();
+            (await UserManager.CreateAsync (adminUser, adminPassword)).CheckErrors ();
             result.CreatedAdminUser = true;
 
             //"admin" role
             const string adminRoleName = "admin";
-            var adminRole = await RoleRepository.FindByNormalizedNameAsync(LookupNormalizer.NormalizeName(adminRoleName));
-            if (adminRole == null)
-            {
-                adminRole = new IdentityRole(
-                    GuidGenerator.Create(),
-                    adminRoleName,
-                    tenantId
-                )
-                {
-                    IsStatic = true,
-                    IsPublic = true
+            var adminRole = await RoleRepository.FindByNormalizedNameAsync (LookupNormalizer.NormalizeName (adminRoleName));
+            if (adminRole == null) {
+                adminRole = new IdentityRole (
+                GuidGenerator.Create (),
+                adminRoleName,
+                tenantId
+                ) {
+                IsStatic = true,
+                IsPublic = true
                 };
 
-                (await RoleManager.CreateAsync(adminRole)).CheckErrors();
+                (await RoleManager.CreateAsync (adminRole)).CheckErrors ();
                 result.CreatedAdminRole = true;
             }
 
-            (await UserManager.AddToRoleAsync(adminUser, adminRoleName)).CheckErrors();
+            (await UserManager.AddToRoleAsync (adminUser, adminRoleName)).CheckErrors ();
 
             return result;
         }

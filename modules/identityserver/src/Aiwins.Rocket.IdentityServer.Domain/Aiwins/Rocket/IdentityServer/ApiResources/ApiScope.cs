@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Domain.Entities;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.IdentityServer.ApiResources
-{
-    public class ApiScope : Entity
-    {
+namespace Aiwins.Rocket.IdentityServer.ApiResources {
+    public class ApiScope : Entity {
         public virtual Guid ApiResourceId { get; protected set; }
 
         [NotNull]
@@ -25,26 +23,22 @@ namespace Aiwins.Rocket.IdentityServer.ApiResources
 
         public virtual List<ApiScopeClaim> UserClaims { get; protected set; }
 
-        protected ApiScope()
-        {
+        protected ApiScope () {
 
         }
 
-        public virtual bool Equals(Guid apiResourceId, [NotNull] string name)
-        {
+        public virtual bool Equals (Guid apiResourceId, [NotNull] string name) {
             return ApiResourceId == apiResourceId && Name == name;
         }
 
-        protected internal ApiScope(
-            Guid apiResourceId, 
-            [NotNull] string name, 
-            string displayName = null, 
-            string description = null, 
-            bool required = false, 
-            bool emphasize = false, 
-            bool showInDiscoveryDocument = true)
-        {
-            Check.NotNull(name, nameof(name));
+        protected internal ApiScope (
+            Guid apiResourceId, [NotNull] string name,
+            string displayName = null,
+            string description = null,
+            bool required = false,
+            bool emphasize = false,
+            bool showInDiscoveryDocument = true) {
+            Check.NotNull (name, nameof (name));
 
             ApiResourceId = apiResourceId;
             Name = name;
@@ -54,31 +48,26 @@ namespace Aiwins.Rocket.IdentityServer.ApiResources
             Emphasize = emphasize;
             ShowInDiscoveryDocument = showInDiscoveryDocument;
 
-            UserClaims = new List<ApiScopeClaim>();
+            UserClaims = new List<ApiScopeClaim> ();
         }
 
-        public virtual void AddUserClaim([NotNull] string type)
-        {
-            UserClaims.Add(new ApiScopeClaim(ApiResourceId, Name, type));
+        public virtual void AddUserClaim ([NotNull] string type) {
+            UserClaims.Add (new ApiScopeClaim (ApiResourceId, Name, type));
         }
 
-        public virtual void RemoveAllUserClaims()
-        {
-            UserClaims.Clear();
+        public virtual void RemoveAllUserClaims () {
+            UserClaims.Clear ();
         }
 
-        public virtual void RemoveClaim(string type)
-        {
-            UserClaims.RemoveAll(r => r.Type == type);
+        public virtual void RemoveClaim (string type) {
+            UserClaims.RemoveAll (r => r.Type == type);
         }
 
-        public virtual ApiScopeClaim FindClaim(string type)
-        {
-            return UserClaims.FirstOrDefault(r => r.Name == Name && r.Type == type);
+        public virtual ApiScopeClaim FindClaim (string type) {
+            return UserClaims.FirstOrDefault (r => r.Name == Name && r.Type == type);
         }
 
-        public override object[] GetKeys()
-        {
+        public override object[] GetKeys () {
             return new object[] { ApiResourceId, Name };
         }
     }

@@ -1,42 +1,36 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Aiwins.Rocket.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Roles
-{
-    public class EditModalModel : IdentityPageModel
-    {
+namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Roles {
+    public class EditModalModel : IdentityPageModel {
         [BindProperty]
         public RoleInfoModel Role { get; set; }
 
         protected IIdentityRoleAppService IdentityRoleAppService { get; }
 
-        public EditModalModel(IIdentityRoleAppService identityRoleAppService)
-        {
+        public EditModalModel (IIdentityRoleAppService identityRoleAppService) {
             IdentityRoleAppService = identityRoleAppService;
         }
 
-        public virtual async Task OnGetAsync(Guid id)
-        {
-            Role = ObjectMapper.Map<IdentityRoleDto, RoleInfoModel>(
-                await IdentityRoleAppService.GetAsync(id)
+        public virtual async Task OnGetAsync (Guid id) {
+            Role = ObjectMapper.Map<IdentityRoleDto, RoleInfoModel> (
+                await IdentityRoleAppService.GetAsync (id)
             );
         }
 
-        public virtual async Task<IActionResult> OnPostAsync()
-        {
-            ValidateModel();
+        public virtual async Task<IActionResult> OnPostAsync () {
+            ValidateModel ();
 
-            var input = ObjectMapper.Map<RoleInfoModel, IdentityRoleUpdateDto>(Role);
-            await IdentityRoleAppService.UpdateAsync(Role.Id, input);
+            var input = ObjectMapper.Map<RoleInfoModel, IdentityRoleUpdateDto> (Role);
+            await IdentityRoleAppService.UpdateAsync (Role.Id, input);
 
-            return NoContent();
+            return NoContent ();
         }
 
-        public class RoleInfoModel : IHasConcurrencyStamp
-        {
+        public class RoleInfoModel : IHasConcurrencyStamp {
             [HiddenInput]
             public Guid Id { get; set; }
 
@@ -44,16 +38,16 @@ namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Roles
             public string ConcurrencyStamp { get; set; }
 
             [Required]
-            [StringLength(IdentityRoleConsts.MaxNameLength)]
-            [Display(Name = "DisplayName:RoleName")]
+            [StringLength (IdentityRoleConsts.MaxNameLength)]
+            [Display (Name = "DisplayName:RoleName")]
             public string Name { get; set; }
 
-            [Display(Name = "DisplayName:IsDefault")]
+            [Display (Name = "DisplayName:IsDefault")]
             public bool IsDefault { get; set; }
 
             public bool IsStatic { get; set; }
 
-            [Display(Name = "DisplayName:IsPublic")]
+            [Display (Name = "DisplayName:IsPublic")]
             public bool IsPublic { get; set; }
         }
     }

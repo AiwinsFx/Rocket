@@ -1,5 +1,5 @@
 ﻿using System;
-using Aiwins.Rocket.Domain.Entities.Auditing;
+using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MultiTenancy;
 using JetBrains.Annotations;
 

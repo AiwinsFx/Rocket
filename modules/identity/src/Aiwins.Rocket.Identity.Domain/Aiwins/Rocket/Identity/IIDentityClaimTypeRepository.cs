@@ -3,10 +3,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Aiwins.Rocket.Domain.Repositories;
 
-namespace Aiwins.Rocket.Identity
-{
-    public interface IIdentityClaimTypeRepository : IBasicRepository<IdentityClaimType, Guid>
-    {
+namespace Aiwins.Rocket.Identity {
+    public interface IIdentityClaimTypeRepository : IBasicRepository<IdentityClaimType, Guid> {
         /// <summary>
         /// Checks if there is a <see cref="IdentityClaimType"/> entity with given name.
         /// </summary>
@@ -15,8 +13,8 @@ namespace Aiwins.Rocket.Identity
         /// An Id value to ignore on checking.
         /// If there is an entity with given <paramref name="ignoredId"/> it's ignored.
         /// </param>
-        Task<bool> AnyAsync(string name, Guid? ignoredId = null);
+        Task<bool> AnyAsync (string name, Guid? ignoredId = null);
 
-        Task<List<IdentityClaimType>> GetListAsync(string sorting, int maxResultCount, int skipCount, string filter);
+        Task<List<IdentityClaimType>> GetListAsync (string sorting, int maxResultCount, int skipCount, string filter);
     }
 }

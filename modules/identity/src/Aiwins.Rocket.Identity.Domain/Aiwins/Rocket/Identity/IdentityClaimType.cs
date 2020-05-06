@@ -1,11 +1,9 @@
-﻿using JetBrains.Annotations;
-using System;
+﻿using System;
 using Aiwins.Rocket.Domain.Entities;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Identity
-{
-    public class IdentityClaimType : AggregateRoot<Guid>
-    {
+namespace Aiwins.Rocket.Identity {
+    public class IdentityClaimType : AggregateRoot<Guid> {
         public virtual string Name { get; protected set; }
 
         public virtual bool Required { get; set; }
@@ -20,23 +18,17 @@ namespace Aiwins.Rocket.Identity
 
         public virtual IdentityClaimValueType ValueType { get; protected set; }
 
-        protected IdentityClaimType()
-        {
+        protected IdentityClaimType () {
 
         }
 
-        public IdentityClaimType(
-            Guid id,
-            [NotNull] string name,
+        public IdentityClaimType (
+            Guid id, [NotNull] string name,
             bool required = false,
-            bool isStatic = false,
-            [CanBeNull] string regex = null,
-            [CanBeNull] string regexDescription = null,
-            [CanBeNull] string description = null,
-            IdentityClaimValueType valueType = IdentityClaimValueType.String)
-        {
+            bool isStatic = false, [CanBeNull] string regex = null, [CanBeNull] string regexDescription = null, [CanBeNull] string description = null,
+            IdentityClaimValueType valueType = IdentityClaimValueType.String) {
             Id = id;
-            Name = Check.NotNull(name, nameof(name));
+            Name = Check.NotNull (name, nameof (name));
             Required = required;
             IsStatic = isStatic;
             Regex = regex;

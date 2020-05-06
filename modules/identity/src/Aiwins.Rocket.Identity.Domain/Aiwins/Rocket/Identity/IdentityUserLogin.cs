@@ -1,16 +1,14 @@
 using System;
-using JetBrains.Annotations;
-using Microsoft.AspNetCore.Identity;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MultiTenancy;
+using JetBrains.Annotations;
+using Microsoft.AspNetCore.Identity;
 
-namespace Aiwins.Rocket.Identity
-{
+namespace Aiwins.Rocket.Identity {
     /// <summary>
     /// Represents a login and its associated provider for a user.
     /// </summary>
-    public class IdentityUserLogin : Entity, IMultiTenant
-    {
+    public class IdentityUserLogin : Entity, IMultiTenant {
         public virtual Guid? TenantId { get; protected set; }
 
         /// <summary>
@@ -33,20 +31,16 @@ namespace Aiwins.Rocket.Identity
         /// </summary>
         public virtual string ProviderDisplayName { get; protected set; }
 
-        protected IdentityUserLogin()
-        {
-            
+        protected IdentityUserLogin () {
+
         }
 
-        protected internal IdentityUserLogin(
-            Guid userId, 
-            [NotNull] string loginProvider, 
-            [NotNull] string providerKey, 
+        protected internal IdentityUserLogin (
+            Guid userId, [NotNull] string loginProvider, [NotNull] string providerKey,
             string providerDisplayName,
-            Guid? tenantId)
-        {
-            Check.NotNull(loginProvider, nameof(loginProvider));
-            Check.NotNull(providerKey, nameof(providerKey));
+            Guid? tenantId) {
+            Check.NotNull (loginProvider, nameof (loginProvider));
+            Check.NotNull (providerKey, nameof (providerKey));
 
             UserId = userId;
             LoginProvider = loginProvider;
@@ -55,27 +49,21 @@ namespace Aiwins.Rocket.Identity
             TenantId = tenantId;
         }
 
-        protected internal IdentityUserLogin(
-            Guid userId, 
-            [NotNull] UserLoginInfo login,
-            Guid? tenantId)
-            : this(
-                  userId, 
-                  login.LoginProvider, 
-                  login.ProviderKey, 
-                  login.ProviderDisplayName,
-                  tenantId)
-        {
+        protected internal IdentityUserLogin (
+            Guid userId, [NotNull] UserLoginInfo login,
+            Guid? tenantId) : this (
+            userId,
+            login.LoginProvider,
+            login.ProviderKey,
+            login.ProviderDisplayName,
+            tenantId) { }
+
+        public virtual UserLoginInfo ToUserLoginInfo () {
+            return new UserLoginInfo (LoginProvider, ProviderKey, ProviderDisplayName);
         }
 
-        public virtual UserLoginInfo ToUserLoginInfo()
-        {
-            return new UserLoginInfo(LoginProvider, ProviderKey, ProviderDisplayName);
-        }
-
-        public override object[] GetKeys()
-        {
-            return new object[] {UserId, LoginProvider};
+        public override object[] GetKeys () {
+            return new object[] { UserId, LoginProvider };
         }
     }
 }

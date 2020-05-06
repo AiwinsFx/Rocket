@@ -1,15 +1,13 @@
 using System;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MultiTenancy;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Identity
-{
+namespace Aiwins.Rocket.Identity {
     /// <summary>
     /// Represents an authentication token for a user.
     /// </summary>
-    public class IdentityUserToken : Entity, IMultiTenant
-    {
+    public class IdentityUserToken : Entity, IMultiTenant {
         public virtual Guid? TenantId { get; protected set; }
 
         /// <summary>
@@ -32,20 +30,16 @@ namespace Aiwins.Rocket.Identity
         /// </summary>
         public virtual string Value { get; set; }
 
-        protected IdentityUserToken()
-        {
-            
+        protected IdentityUserToken () {
+
         }
 
-        protected internal IdentityUserToken(
-            Guid userId, 
-            [NotNull] string loginProvider, 
-            [NotNull] string name, 
+        protected internal IdentityUserToken (
+            Guid userId, [NotNull] string loginProvider, [NotNull] string name,
             string value,
-            Guid? tenantId)
-        {
-            Check.NotNull(loginProvider, nameof(loginProvider));
-            Check.NotNull(name, nameof(name));
+            Guid? tenantId) {
+            Check.NotNull (loginProvider, nameof (loginProvider));
+            Check.NotNull (name, nameof (name));
 
             UserId = userId;
             LoginProvider = loginProvider;
@@ -54,8 +48,7 @@ namespace Aiwins.Rocket.Identity
             TenantId = tenantId;
         }
 
-        public override object[] GetKeys()
-        {
+        public override object[] GetKeys () {
             return new object[] { UserId, LoginProvider, Name };
         }
     }

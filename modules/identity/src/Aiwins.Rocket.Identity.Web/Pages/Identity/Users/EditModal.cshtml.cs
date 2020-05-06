@@ -3,15 +3,13 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Application.Dtos;
+using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Entities;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users
-{
-    public class EditModalModel : IdentityPageModel
-    {
+namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users {
+    public class EditModalModel : IdentityPageModel {
         [BindProperty]
         public UserInfoViewModel UserInfo { get; set; }
 
@@ -21,41 +19,35 @@ namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users
         protected IIdentityUserAppService IdentityUserAppService { get; }
         protected IIdentityRoleAppService IdentityRoleAppService { get; }
 
-        public EditModalModel(IIdentityUserAppService identityUserAppService, IIdentityRoleAppService identityRoleAppService)
-        {
+        public EditModalModel (IIdentityUserAppService identityUserAppService, IIdentityRoleAppService identityRoleAppService) {
             IdentityUserAppService = identityUserAppService;
             IdentityRoleAppService = identityRoleAppService;
         }
 
-        public virtual async Task OnGetAsync(Guid id)
-        {
-            UserInfo = ObjectMapper.Map<IdentityUserDto, UserInfoViewModel>(await IdentityUserAppService.GetAsync(id));
+        public virtual async Task OnGetAsync (Guid id) {
+            UserInfo = ObjectMapper.Map<IdentityUserDto, UserInfoViewModel> (await IdentityUserAppService.GetAsync (id));
 
-            Roles = ObjectMapper.Map<IReadOnlyList<IdentityRoleDto>, AssignedRoleViewModel[]>((await IdentityRoleAppService.GetAllListAsync()).Items);
+            Roles = ObjectMapper.Map<IReadOnlyList<IdentityRoleDto>, AssignedRoleViewModel[]> ((await IdentityRoleAppService.GetAllListAsync ()).Items);
 
-            var userRoleNames = (await IdentityUserAppService.GetRolesAsync(UserInfo.Id)).Items.Select(r => r.Name).ToList();
-            foreach (var role in Roles)
-            {
-                if (userRoleNames.Contains(role.Name))
-                {
+            var userRoleNames = (await IdentityUserAppService.GetRolesAsync (UserInfo.Id)).Items.Select (r => r.Name).ToList ();
+            foreach (var role in Roles) {
+                if (userRoleNames.Contains (role.Name)) {
                     role.IsAssigned = true;
                 }
             }
         }
 
-        public virtual async Task<IActionResult> OnPostAsync()
-        {
-            ValidateModel();
+        public virtual async Task<IActionResult> OnPostAsync () {
+            ValidateModel ();
 
-            var input = ObjectMapper.Map<UserInfoViewModel, IdentityUserUpdateDto>(UserInfo);
-            input.RoleNames = Roles.Where(r => r.IsAssigned).Select(r => r.Name).ToArray();
-            await IdentityUserAppService.UpdateAsync(UserInfo.Id, input);
+            var input = ObjectMapper.Map<UserInfoViewModel, IdentityUserUpdateDto> (UserInfo);
+            input.RoleNames = Roles.Where (r => r.IsAssigned).Select (r => r.Name).ToArray ();
+            await IdentityUserAppService.UpdateAsync (UserInfo.Id, input);
 
-            return NoContent();
+            return NoContent ();
         }
 
-        public class UserInfoViewModel : IHasConcurrencyStamp
-        {
+        public class UserInfoViewModel : IHasConcurrencyStamp {
             [HiddenInput]
             public Guid Id { get; set; }
 
@@ -63,26 +55,26 @@ namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users
             public string ConcurrencyStamp { get; set; }
 
             [Required]
-            [StringLength(IdentityUserConsts.MaxUserNameLength)]
+            [StringLength (IdentityUserConsts.MaxUserNameLength)]
             public string UserName { get; set; }
 
-            [StringLength(IdentityUserConsts.MaxNameLength)]
+            [StringLength (IdentityUserConsts.MaxNameLength)]
             public string Name { get; set; }
 
-            [StringLength(IdentityUserConsts.MaxSurnameLength)]
+            [StringLength (IdentityUserConsts.MaxSurnameLength)]
             public string Surname { get; set; }
 
-            [StringLength(IdentityUserConsts.MaxPasswordLength)]
-            [DataType(DataType.Password)]
+            [StringLength (IdentityUserConsts.MaxPasswordLength)]
+            [DataType (DataType.Password)]
             [DisableAuditing]
             public string Password { get; set; }
 
             [Required]
             [EmailAddress]
-            [StringLength(IdentityUserConsts.MaxEmailLength)]
+            [StringLength (IdentityUserConsts.MaxEmailLength)]
             public string Email { get; set; }
 
-            [StringLength(IdentityUserConsts.MaxPhoneNumberLength)]
+            [StringLength (IdentityUserConsts.MaxPhoneNumberLength)]
             public string PhoneNumber { get; set; }
 
             public bool TwoFactorEnabled { get; set; }
@@ -90,8 +82,7 @@ namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users
             public bool LockoutEnabled { get; set; }
         }
 
-        public class AssignedRoleViewModel
-        {
+        public class AssignedRoleViewModel {
             [Required]
             [HiddenInput]
             public string Name { get; set; }

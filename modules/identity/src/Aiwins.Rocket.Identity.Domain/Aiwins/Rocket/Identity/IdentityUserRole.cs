@@ -2,13 +2,11 @@ using System;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MultiTenancy;
 
-namespace Aiwins.Rocket.Identity
-{
+namespace Aiwins.Rocket.Identity {
     /// <summary>
     /// Represents the link between a user and a role.
     /// </summary>
-    public class IdentityUserRole : Entity, IMultiTenant
-    {
+    public class IdentityUserRole : Entity, IMultiTenant {
         public virtual Guid? TenantId { get; protected set; }
 
         /// <summary>
@@ -21,20 +19,17 @@ namespace Aiwins.Rocket.Identity
         /// </summary>
         public virtual Guid RoleId { get; protected set; }
 
-        protected IdentityUserRole()
-        {
-            
+        protected IdentityUserRole () {
+
         }
 
-        protected internal IdentityUserRole(Guid userId, Guid roleId, Guid? tenantId)
-        {
+        protected internal IdentityUserRole (Guid userId, Guid roleId, Guid? tenantId) {
             UserId = userId;
             RoleId = roleId;
             TenantId = tenantId;
         }
 
-        public override object[] GetKeys()
-        {
+        public override object[] GetKeys () {
             return new object[] { UserId, RoleId };
         }
     }

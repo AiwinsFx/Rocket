@@ -7,7 +7,7 @@ namespace Aiwins.Rocket.Identity
     public interface IIdentityDataSeeder
     {
         Task<IdentityDataSeedResult> SeedAsync(
-            [NotNull] string adminEmail,
+            [NotNull] string adminPhoneNumber,
             [NotNull] string adminPassword,
             Guid? tenantId = null);
     }

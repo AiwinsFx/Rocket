@@ -1,9 +1,7 @@
 ﻿using Aiwins.Rocket.Data;
 
-namespace Aiwins.Rocket.Identity
-{
-    public static class RocketIdentityDbProperties
-    {
+namespace Aiwins.Rocket.Identity {
+    public static class RocketIdentityDbProperties {
         public static string DbTablePrefix { get; set; } = RocketCommonDbProperties.DbTablePrefix;
 
         public static string DbSchema { get; set; } = RocketCommonDbProperties.DbSchema;

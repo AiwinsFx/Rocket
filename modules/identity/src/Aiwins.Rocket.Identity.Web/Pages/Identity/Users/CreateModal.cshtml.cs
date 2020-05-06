@@ -2,14 +2,12 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Application.Dtos;
+using Aiwins.Rocket.Auditing;
+using Microsoft.AspNetCore.Mvc;
 
-namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users
-{
-    public class CreateModalModel : IdentityPageModel
-    {
+namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users {
+    public class CreateModalModel : IdentityPageModel {
         [BindProperty]
         public UserInfoViewModel UserInfo { get; set; }
 
@@ -19,62 +17,57 @@ namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users
         protected IIdentityUserAppService IdentityUserAppService { get; }
         protected IIdentityRoleAppService IdentityRoleAppService { get; }
 
-        public CreateModalModel(IIdentityUserAppService identityUserAppService, IIdentityRoleAppService identityRoleAppService)
-        {
+        public CreateModalModel (IIdentityUserAppService identityUserAppService, IIdentityRoleAppService identityRoleAppService) {
             IdentityUserAppService = identityUserAppService;
             IdentityRoleAppService = identityRoleAppService;
         }
 
-        public virtual async Task OnGetAsync()
-        {
-            UserInfo = new UserInfoViewModel();
+        public virtual async Task OnGetAsync () {
+            UserInfo = new UserInfoViewModel ();
 
-            var roleDtoList = (await IdentityRoleAppService.GetAllListAsync()).Items;
+            var roleDtoList = (await IdentityRoleAppService.GetAllListAsync ()).Items;
 
-            Roles = ObjectMapper.Map<IReadOnlyList<IdentityRoleDto>, AssignedRoleViewModel[]>(roleDtoList);
+            Roles = ObjectMapper.Map<IReadOnlyList<IdentityRoleDto>, AssignedRoleViewModel[]> (roleDtoList);
 
-            foreach (var role in Roles)
-            {
+            foreach (var role in Roles) {
                 role.IsAssigned = role.IsDefault;
             }
         }
 
-        public virtual async Task<NoContentResult> OnPostAsync()
-        {
-            ValidateModel();
+        public virtual async Task<NoContentResult> OnPostAsync () {
+            ValidateModel ();
 
-            var input = ObjectMapper.Map<UserInfoViewModel, IdentityUserCreateDto>(UserInfo);
-            input.RoleNames = Roles.Where(r => r.IsAssigned).Select(r => r.Name).ToArray();
+            var input = ObjectMapper.Map<UserInfoViewModel, IdentityUserCreateDto> (UserInfo);
+            input.RoleNames = Roles.Where (r => r.IsAssigned).Select (r => r.Name).ToArray ();
 
-            await IdentityUserAppService.CreateAsync(input);
+            await IdentityUserAppService.CreateAsync (input);
 
-            return NoContent();
+            return NoContent ();
         }
 
-        public class UserInfoViewModel
-        {
+        public class UserInfoViewModel {
             [Required]
-            [StringLength(IdentityUserConsts.MaxUserNameLength)]
+            [StringLength (IdentityUserConsts.MaxUserNameLength)]
             public string UserName { get; set; }
 
-            [StringLength(IdentityUserConsts.MaxNameLength)]
+            [StringLength (IdentityUserConsts.MaxNameLength)]
             public string Name { get; set; }
 
-            [StringLength(IdentityUserConsts.MaxSurnameLength)]
+            [StringLength (IdentityUserConsts.MaxSurnameLength)]
             public string Surname { get; set; }
 
             [Required]
-            [StringLength(IdentityUserConsts.MaxPasswordLength)]
-            [DataType(DataType.Password)]
+            [StringLength (IdentityUserConsts.MaxPasswordLength)]
+            [DataType (DataType.Password)]
             [DisableAuditing]
             public string Password { get; set; }
 
             [Required]
             [EmailAddress]
-            [StringLength(IdentityUserConsts.MaxEmailLength)]
+            [StringLength (IdentityUserConsts.MaxEmailLength)]
             public string Email { get; set; }
 
-            [StringLength(IdentityUserConsts.MaxPhoneNumberLength)]
+            [StringLength (IdentityUserConsts.MaxPhoneNumberLength)]
             public string PhoneNumber { get; set; }
 
             public bool TwoFactorEnabled { get; set; } = true;
@@ -82,8 +75,7 @@ namespace Aiwins.Rocket.Identity.Web.Pages.Identity.Users
             public bool LockoutEnabled { get; set; } = true;
         }
 
-        public class AssignedRoleViewModel
-        {
+        public class AssignedRoleViewModel {
             [Required]
             [HiddenInput]
             public string Name { get; set; }

@@ -6,10 +6,12 @@ using Aiwins.Rocket.Authorization.Permissions;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MultiTenancy;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
 
 namespace Aiwins.Rocket.PermissionManagement {
     public class PermissionManager : IPermissionManager, ISingletonDependency {
+        protected RocketPermissionOptions PermissionOptions { get; }
         protected IPermissionGrantRepository PermissionGrantRepository { get; }
 
         protected IPermissionDefinitionManager PermissionDefinitionManager { get; }
@@ -18,20 +20,34 @@ namespace Aiwins.Rocket.PermissionManagement {
 
         protected ICurrentTenant CurrentTenant { get; }
 
+        protected IReadOnlyList<IPermissionManagementProvider> Providers => _lazyProviders.Value.OrderBy (m => m.Name).ToList ();
+
         protected PermissionManagementOptions Options { get; }
+
+        private readonly Lazy<List<IPermissionManagementProvider>> _lazyProviders;
 
         public PermissionManager (
             IPermissionDefinitionManager permissionDefinitionManager,
             IPermissionGrantRepository permissionGrantRepository,
             IServiceProvider serviceProvider,
             IGuidGenerator guidGenerator,
+            IOptions<RocketPermissionOptions> permissionOptions,
             IOptions<PermissionManagementOptions> options,
             ICurrentTenant currentTenant) {
             GuidGenerator = guidGenerator;
             CurrentTenant = currentTenant;
             PermissionGrantRepository = permissionGrantRepository;
             PermissionDefinitionManager = permissionDefinitionManager;
+            PermissionOptions = permissionOptions.Value;
             Options = options.Value;
+
+            _lazyProviders = new Lazy<List<IPermissionManagementProvider>> (
+                () => Options
+                .Providers
+                .Select (c => serviceProvider.GetRequiredService (c) as IPermissionManagementProvider)
+                .ToList (),
+                true
+            );
         }
 
         public virtual async Task<PermissionWithGrantedProviders> GetAsync (string permissionName, string providerName, string providerKey) {
@@ -64,11 +80,12 @@ namespace Aiwins.Rocket.PermissionManagement {
                 return;
             }
 
-            if (providerScope != nameof (PermissionScopeType.Prohibited)) {
-                await GrantAsync (permissionName, providerName, providerKey, providerScope);
-            } else {
-                await RevokeAsync (permissionName, providerName, providerKey);
+            var provider = Providers.FirstOrDefault (m => m.Name == providerName);
+            if (provider == null) {
+                throw new RocketException ("Unknown permission management provider: " + providerName);
             }
+
+            await provider.SetAsync (permissionName, providerKey, providerScope);
         }
 
         public virtual async Task<PermissionGrant> UpdateProviderKeyAsync (PermissionGrant permissionGrant, string providerKey) {
@@ -87,56 +104,35 @@ namespace Aiwins.Rocket.PermissionManagement {
                 return result;
             }
 
-            var providerResult = await CheckAsync (permission.Name, providerName, providerKey);
+            // 可选权限策略:一、获取最大权限；二、以用户权限为主
+            // 当前权限策略:以用户权限为主（用户权限 > 角色权限 > 客户端权限）
+            // 对权限提供程序排序，用户权限放到最后赋值，覆盖前者权限
+            foreach (var provider in Providers) {
+                var providerResult = await provider.CheckAsync (permission.Name, providerName, providerKey);
 
-            if (providerResult.IsGranted) {
-                result.IsGranted = true;
-                result.Scope = providerResult.ProviderScope;
-                result.Providers.Add (new PermissionValueProviderInfo (providerName, providerResult.ProviderScope, providerResult.ProviderKey));
+                if (providerResult.IsGranted) {
+                    result.IsGranted = true;
+                    // 以用户权限为主，将用户权限解析程序放到最后赋值，覆盖前者权限（用户权限 > 角色权限 > 客户端权限）
+                    if (PermissionOptions.PermissionPolicy == PermissionPolicy.User) {
+                        result.Scope = providerResult.ProviderScope;
+                    } else {
+                        // 以最大权限为主
+                        var providerScope = PermissionScopeType.Prohibited;
+                        if (Enum.TryParse (providerResult.ProviderScope, out PermissionScopeType ps)) providerScope = ps;
+                        
+                        var resultScope = PermissionScopeType.Prohibited;
+                        if (Enum.TryParse (result.Scope, out PermissionScopeType rs)) resultScope = rs;
+
+                        if (providerScope > resultScope) {
+                            result.Scope = providerResult.ProviderScope;
+                        }
+                    }
+
+                    result.Providers.Add (new PermissionValueProviderInfo (provider.Name, providerResult.ProviderScope, providerResult.ProviderKey));
+                }
             }
 
             return result;
-        }
-
-        protected virtual async Task GrantAsync (string permissionName, string providerName, string providerScope, string providerKey) {
-            var permissionGrant = await PermissionGrantRepository.FindAsync (permissionName, providerName, providerKey);
-            if (permissionGrant != null) {
-                if (permissionGrant.ProviderScope == providerScope)
-                    return;
-                permissionGrant.ProviderScope = providerScope;
-                await PermissionGrantRepository.UpdateAsync (permissionGrant);
-            }
-
-            await PermissionGrantRepository.InsertAsync (
-                new PermissionGrant (
-                    GuidGenerator.Create (),
-                    permissionName,
-                    providerName,
-                    providerScope,
-                    providerKey,
-                    CurrentTenant.Id
-                )
-            );
-        }
-
-        protected virtual async Task RevokeAsync (string permissionName, string providerName, string providerKey) {
-            var permissionGrant = await PermissionGrantRepository.FindAsync (permissionName, providerName, providerKey);
-            if (permissionGrant == null) {
-                return;
-            }
-
-            await PermissionGrantRepository.DeleteAsync (permissionGrant);
-        }
-
-        protected virtual async Task<PermissionGrantInfo> CheckAsync (string name, string providerName, string providerKey) {
-
-            var permissionGrant = await PermissionGrantRepository.FindAsync (name, providerName, providerKey);
-
-            return new PermissionGrantInfo (
-                permissionGrant != null,
-                permissionGrant?.ProviderScope??nameof (PermissionScopeType.Prohibited),
-                providerKey
-            );
         }
     }
 }

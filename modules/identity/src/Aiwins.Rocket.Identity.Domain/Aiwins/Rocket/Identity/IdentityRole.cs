@@ -3,19 +3,17 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Claims;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MultiTenancy;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Identity
-{
+namespace Aiwins.Rocket.Identity {
     /// <summary>
     /// Represents a role in the identity system
     /// </summary>
-    public class IdentityRole : AggregateRoot<Guid>, IMultiTenant
-    {
+    public class IdentityRole : AggregateRoot<Guid>, IMultiTenant {
         public virtual Guid? TenantId { get; protected set; }
 
         /// <summary>
@@ -48,76 +46,67 @@ namespace Aiwins.Rocket.Identity
         /// A user can see other user's public roles
         /// </summary>
         public virtual bool IsPublic { get; set; }
-        
+
         /// <summary>
         /// Initializes a new instance of <see cref="IdentityRole"/>.
         /// </summary>
-        protected IdentityRole() { }
+        protected IdentityRole () { }
 
-        public IdentityRole(Guid id, [NotNull] string name, Guid? tenantId = null)
-        {
-            Check.NotNull(name, nameof(name));
+        public IdentityRole (Guid id, [NotNull] string name, Guid? tenantId = null) {
+            Check.NotNull (name, nameof (name));
 
             Id = id;
             Name = name;
             TenantId = tenantId;
-            NormalizedName = name.ToUpperInvariant();
-            ConcurrencyStamp = Guid.NewGuid().ToString();
+            NormalizedName = name.ToUpperInvariant ();
+            ConcurrencyStamp = Guid.NewGuid ().ToString ();
 
-            Claims = new Collection<IdentityRoleClaim>();
+            Claims = new Collection<IdentityRoleClaim> ();
         }
 
-        public virtual void AddClaim([NotNull] IGuidGenerator guidGenerator, [NotNull] Claim claim)
-        {
-            Check.NotNull(guidGenerator, nameof(guidGenerator));
-            Check.NotNull(claim, nameof(claim));
+        public virtual void AddClaim ([NotNull] IGuidGenerator guidGenerator, [NotNull] Claim claim) {
+            Check.NotNull (guidGenerator, nameof (guidGenerator));
+            Check.NotNull (claim, nameof (claim));
 
-            Claims.Add(new IdentityRoleClaim(guidGenerator.Create(), Id, claim, TenantId));
+            Claims.Add (new IdentityRoleClaim (guidGenerator.Create (), Id, claim, TenantId));
         }
 
-        public virtual void AddClaims([NotNull] IGuidGenerator guidGenerator, [NotNull] IEnumerable<Claim> claims)
-        {
-            Check.NotNull(guidGenerator, nameof(guidGenerator));
-            Check.NotNull(claims, nameof(claims));
+        public virtual void AddClaims ([NotNull] IGuidGenerator guidGenerator, [NotNull] IEnumerable<Claim> claims) {
+            Check.NotNull (guidGenerator, nameof (guidGenerator));
+            Check.NotNull (claims, nameof (claims));
 
-            foreach (var claim in claims)
-            {
-                AddClaim(guidGenerator, claim);
+            foreach (var claim in claims) {
+                AddClaim (guidGenerator, claim);
             }
         }
 
-        public virtual IdentityRoleClaim FindClaim([NotNull] Claim claim)
-        {
-            Check.NotNull(claim, nameof(claim));
+        public virtual IdentityRoleClaim FindClaim ([NotNull] Claim claim) {
+            Check.NotNull (claim, nameof (claim));
 
-            return Claims.FirstOrDefault(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
+            return Claims.FirstOrDefault (c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
         }
 
-        public virtual void RemoveClaim([NotNull] Claim claim)
-        {
-            Check.NotNull(claim, nameof(claim));
+        public virtual void RemoveClaim ([NotNull] Claim claim) {
+            Check.NotNull (claim, nameof (claim));
 
-            Claims.RemoveAll(c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
+            Claims.RemoveAll (c => c.ClaimType == claim.Type && c.ClaimValue == claim.Value);
         }
 
-        public virtual void ChangeName(string name)
-        {
-            Check.NotNullOrWhiteSpace(name, nameof(name));
+        public virtual void ChangeName (string name) {
+            Check.NotNullOrWhiteSpace (name, nameof (name));
 
             var oldName = Name;
             Name = name;
 
-            AddLocalEvent(
-                new IdentityRoleNameChangedEvent
-                {
+            AddLocalEvent (
+                new IdentityRoleNameChangedEvent {
                     IdentityRole = this,
-                    OldName = oldName
+                        OldName = oldName
                 }
             );
         }
 
-        public override string ToString()
-        {
+        public override string ToString () {
             return $"{base.ToString()}, Name = {Name}";
         }
     }
