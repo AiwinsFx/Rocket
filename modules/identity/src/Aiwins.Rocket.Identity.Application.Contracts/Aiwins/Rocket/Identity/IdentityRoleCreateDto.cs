@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Identity
-{
-    public class IdentityRoleCreateDto : IdentityRoleCreateOrUpdateDtoBase
-    {
+﻿namespace Aiwins.Rocket.Identity {
+    public class IdentityRoleCreateDto : IdentityRoleCreateOrUpdateDtoBase {
 
     }
 }

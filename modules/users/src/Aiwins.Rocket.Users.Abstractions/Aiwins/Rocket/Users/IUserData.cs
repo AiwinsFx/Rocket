@@ -1,10 +1,8 @@
 using System;
 using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Users
-{
-    public interface IUserData
-    {
+namespace Aiwins.Rocket.Users {
+    public interface IUserData {
         Guid Id { get; }
 
         Guid? TenantId { get; }

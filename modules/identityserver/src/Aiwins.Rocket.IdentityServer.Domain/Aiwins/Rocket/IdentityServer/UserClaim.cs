@@ -1,20 +1,16 @@
-﻿using JetBrains.Annotations;
-using Aiwins.Rocket.Domain.Entities;
+﻿using Aiwins.Rocket.Domain.Entities;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.IdentityServer
-{
-    public abstract class UserClaim : Entity
-    {
+namespace Aiwins.Rocket.IdentityServer {
+    public abstract class UserClaim : Entity {
         public virtual string Type { get; protected set; }
 
-        protected UserClaim()
-        {
+        protected UserClaim () {
 
         }
 
-        protected UserClaim([NotNull] string type)
-        {
-            Check.NotNull(type, nameof(type));
+        protected UserClaim ([NotNull] string type) {
+            Check.NotNull (type, nameof (type));
 
             Type = type;
         }

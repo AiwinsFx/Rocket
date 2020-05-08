@@ -1,17 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Aiwins.Rocket.Data;
+﻿using Aiwins.Rocket.Data;
 using Aiwins.Rocket.EntityFrameworkCore;
 using Aiwins.Rocket.IdentityServer.ApiResources;
 using Aiwins.Rocket.IdentityServer.Clients;
 using Aiwins.Rocket.IdentityServer.Devices;
 using Aiwins.Rocket.IdentityServer.Grants;
 using Aiwins.Rocket.IdentityServer.IdentityResources;
+using Microsoft.EntityFrameworkCore;
 
-namespace Aiwins.Rocket.IdentityServer.EntityFrameworkCore
-{
-    [ConnectionStringName(RocketIdentityServerDbProperties.ConnectionStringName)]
-    public interface IIdentityServerDbContext : IEfCoreDbContext
-    {
+namespace Aiwins.Rocket.IdentityServer.EntityFrameworkCore {
+    [ConnectionStringName (RocketIdentityServerDbProperties.ConnectionStringName)]
+    public interface IIdentityServerDbContext : IEfCoreDbContext {
         DbSet<ApiResource> ApiResources { get; set; }
 
         DbSet<ApiSecret> ApiSecrets { get; set; }

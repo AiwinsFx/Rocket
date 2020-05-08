@@ -1,11 +1,9 @@
 ﻿using System;
 using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.IdentityServer.ApiResources
-{
+namespace Aiwins.Rocket.IdentityServer.ApiResources {
     [Serializable]
-    public class ApiResourceEto
-    {
+    public class ApiResourceEto {
         public Guid Id { get; set; }
 
         [NotNull]

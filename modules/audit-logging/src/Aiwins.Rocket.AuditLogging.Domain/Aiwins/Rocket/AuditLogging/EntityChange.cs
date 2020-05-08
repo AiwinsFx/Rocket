@@ -7,11 +7,9 @@ using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MultiTenancy;
 
-namespace Aiwins.Rocket.AuditLogging
-{
+namespace Aiwins.Rocket.AuditLogging {
     [DisableAuditing]
-    public class EntityChange : Entity<Guid>, IMultiTenant, IHasExtraProperties
-    {
+    public class EntityChange : Entity<Guid>, IMultiTenant, IHasExtraProperties {
         public virtual Guid AuditLogId { get; protected set; }
 
         public virtual Guid? TenantId { get; protected set; }
@@ -30,35 +28,33 @@ namespace Aiwins.Rocket.AuditLogging
 
         public virtual Dictionary<string, object> ExtraProperties { get; protected set; }
 
-        protected EntityChange()
-        {
-            ExtraProperties = new Dictionary<string, object>();
+        protected EntityChange () {
+            ExtraProperties = new Dictionary<string, object> ();
         }
 
-        public EntityChange(
-            IGuidGenerator guidGenerator, 
-            Guid auditLogId, 
+        public EntityChange (
+            IGuidGenerator guidGenerator,
+            Guid auditLogId,
             EntityChangeInfo entityChangeInfo,
-            Guid? tenantId = null)
-        {
-            Id = guidGenerator.Create();
+            Guid? tenantId = null) {
+            Id = guidGenerator.Create ();
             AuditLogId = auditLogId;
             TenantId = tenantId;
             ChangeTime = entityChangeInfo.ChangeTime;
             ChangeType = entityChangeInfo.ChangeType;
-            EntityId = entityChangeInfo.EntityId.Truncate(EntityChangeConsts.MaxEntityTypeFullNameLength);
-            EntityTypeFullName = entityChangeInfo.EntityTypeFullName.TruncateFromBeginning(EntityChangeConsts.MaxEntityTypeFullNameLength);
+            EntityId = entityChangeInfo.EntityId.Truncate (EntityChangeConsts.MaxEntityTypeFullNameLength);
+            EntityTypeFullName = entityChangeInfo.EntityTypeFullName.TruncateFromBeginning (EntityChangeConsts.MaxEntityTypeFullNameLength);
 
             PropertyChanges = entityChangeInfo
-                                  .PropertyChanges?
-                                  .Select(p => new EntityPropertyChange(guidGenerator, Id, p, tenantId))
-                                  .ToList()
-                              ?? new List<EntityPropertyChange>();
+                .PropertyChanges?
+                .Select (p => new EntityPropertyChange (guidGenerator, Id, p, tenantId))
+                .ToList () ??
+                new List<EntityPropertyChange> ();
 
             ExtraProperties = entityChangeInfo
-                                  .ExtraProperties?
-                                  .ToDictionary(pair => pair.Key, pair => pair.Value)
-                              ?? new Dictionary<string, object>();
+                .ExtraProperties?
+                .ToDictionary (pair => pair.Key, pair => pair.Value) ??
+                new Dictionary<string, object> ();
         }
     }
 }

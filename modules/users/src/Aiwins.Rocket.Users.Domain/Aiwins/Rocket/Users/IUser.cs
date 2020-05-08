@@ -1,19 +1,17 @@
 using System;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MultiTenancy;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Users
-{
-    public interface IUser : IAggregateRoot<Guid>, IMultiTenant
-    {
+namespace Aiwins.Rocket.Users {
+    public interface IUser : IAggregateRoot<Guid>, IMultiTenant {
         string UserName { get; }
 
         [CanBeNull]
         string Email { get; }
 
         [CanBeNull]
-        string Name  { get; }
+        string Name { get; }
 
         [CanBeNull]
         string Surname { get; }

@@ -97,7 +97,8 @@
     "Description:Rocket.Identity.SignIn.RequireConfirmedEmail": "登录时是否需要验证的电子邮箱.",
     "Description:Rocket.Identity.SignIn.RequireConfirmedPhoneNumber": "登录时是否需要验证的手机号码.",
     "Description:Rocket.Identity.User.IsUserNameUpdateEnabled": "是否允许用户更新用户名.",
-    "Description:Rocket.Identity.User.IsEmailUpdateEnabled": "是否允许用户更新电子邮箱."
+    "Description:Rocket.Identity.User.IsEmailUpdateEnabled": "是否允许用户更新电子邮箱.",
+    "Description:Rocket.Identity.User.IsPhoneNumberUpdateEnabled": "是否允许使用者更新手机号."
 
   }
 }

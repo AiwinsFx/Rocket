@@ -10,7 +10,7 @@ namespace Aiwins.Rocket.PermissionManagement.IdentityServer {
     public class RocketPermissionManagementDomainIdentityServerModule : RocketModule {
         public override void ConfigureServices (ServiceConfigurationContext context) {
             Configure<PermissionManagementOptions> (options => {
-                options.ManagementProviders.Add<ClientPermissionManagementProvider> ();
+                options.Providers.Add<ClientPermissionManagementProvider> ();
 
                 options.ProviderPolicies[ClientPermissionValueProvider.ProviderName] = "IdentityServer.Client.ManagePermissions";
             });

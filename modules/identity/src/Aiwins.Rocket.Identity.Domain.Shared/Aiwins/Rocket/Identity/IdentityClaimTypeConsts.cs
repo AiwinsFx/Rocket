@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Identity
-{
-    public class IdentityClaimTypeConsts
-    {
+﻿namespace Aiwins.Rocket.Identity {
+    public class IdentityClaimTypeConsts {
         public const int MaxNameLength = 256;
         public const int MaxRegexLength = 512;
         public const int MaxRegexDescriptionLength = 128;

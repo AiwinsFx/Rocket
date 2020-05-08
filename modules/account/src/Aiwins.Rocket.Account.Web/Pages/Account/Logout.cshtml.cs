@@ -1,31 +1,26 @@
 ﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Aiwins.Rocket.Account.Web.Pages.Account
-{
-    public class LogoutModel : AccountPageModel
-    {
+namespace Aiwins.Rocket.Account.Web.Pages.Account {
+    public class LogoutModel : AccountPageModel {
         [HiddenInput]
-        [BindProperty(SupportsGet = true)]
+        [BindProperty (SupportsGet = true)]
         public string ReturnUrl { get; set; }
 
         [HiddenInput]
-        [BindProperty(SupportsGet = true)]
+        [BindProperty (SupportsGet = true)]
         public string ReturnUrlHash { get; set; }
 
-        public virtual async Task<IActionResult> OnGetAsync()
-        {
-            await SignInManager.SignOutAsync();
-            if (ReturnUrl != null)
-            {
-                return RedirectSafely(ReturnUrl, ReturnUrlHash);
+        public virtual async Task<IActionResult> OnGetAsync () {
+            await SignInManager.SignOutAsync ();
+            if (ReturnUrl != null) {
+                return RedirectSafely (ReturnUrl, ReturnUrlHash);
             }
 
-            return RedirectToPage("/Account/Login");
+            return RedirectToPage ("/Account/Login");
         }
 
-        public virtual Task OnPostAsync()
-        {
+        public virtual Task OnPostAsync () {
             return Task.CompletedTask;
         }
     }

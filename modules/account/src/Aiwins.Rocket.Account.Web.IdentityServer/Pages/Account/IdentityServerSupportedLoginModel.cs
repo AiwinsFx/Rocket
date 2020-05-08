@@ -1,11 +1,3 @@
-using IdentityModel;
-using IdentityServer4.Events;
-using IdentityServer4.Models;
-using IdentityServer4.Services;
-using IdentityServer4.Stores;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
 using System;
 using System.Diagnostics;
 using System.Linq;
@@ -17,186 +9,167 @@ using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.MultiTenancy;
 using Aiwins.Rocket.Settings;
 using Aiwins.Rocket.Uow;
+using IdentityModel;
+using IdentityServer4.Events;
+using IdentityServer4.Models;
+using IdentityServer4.Services;
+using IdentityServer4.Stores;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 
-namespace Aiwins.Rocket.Account.Web.Pages.Account
-{
-    [ExposeServices(typeof(LoginModel))]
-    public class IdentityServerSupportedLoginModel : LoginModel
-    {
+namespace Aiwins.Rocket.Account.Web.Pages.Account {
+    [ExposeServices (typeof (LoginModel))]
+    public class IdentityServerSupportedLoginModel : LoginModel {
         protected IIdentityServerInteractionService Interaction { get; }
         protected IClientStore ClientStore { get; }
         protected IEventService IdentityServerEvents { get; }
 
-        public IdentityServerSupportedLoginModel(
+        public IdentityServerSupportedLoginModel (
             IAuthenticationSchemeProvider schemeProvider,
-            IOptions<RocketAccountOptions> accountOptions, 
-            IIdentityServerInteractionService interaction, 
-            IClientStore clientStore, 
-            IEventService identityServerEvents)
-            :base(
-                schemeProvider, 
-                accountOptions)
-        {
+            IOptions<RocketAccountOptions> accountOptions,
+            IIdentityServerInteractionService interaction,
+            IClientStore clientStore,
+            IEventService identityServerEvents) : base (
+            schemeProvider,
+            accountOptions) {
             Interaction = interaction;
             ClientStore = clientStore;
             IdentityServerEvents = identityServerEvents;
         }
 
-        public override async Task<IActionResult> OnGetAsync()
-        {
-            LoginInput = new LoginInputModel();
+        public override async Task<IActionResult> OnGetAsync () {
+            LoginInput = new LoginInputModel ();
 
-            var context = await Interaction.GetAuthorizationContextAsync(ReturnUrl);
+            var context = await Interaction.GetAuthorizationContextAsync (ReturnUrl);
 
-            if (context != null)
-            {
+            if (context != null) {
                 LoginInput.UserNameOrEmailAddress = context.LoginHint;
 
                 //TODO: Reference AspNetCore MultiTenancy module and use options to get the tenant key!
                 var tenant = context.Parameters[TenantResolverConsts.DefaultTenantKey];
-                if (!string.IsNullOrEmpty(tenant))
-                {
-                    CurrentTenant.Change(Guid.Parse(tenant));
-                    Response.Cookies.Append(TenantResolverConsts.DefaultTenantKey, tenant);
+                if (!string.IsNullOrEmpty (tenant)) {
+                    CurrentTenant.Change (Guid.Parse (tenant));
+                    Response.Cookies.Append (TenantResolverConsts.DefaultTenantKey, tenant);
                 }
             }
 
-            if (context?.IdP != null)
-            {
+            if (context?.IdP != null) {
                 LoginInput.UserNameOrEmailAddress = context.LoginHint;
-                ExternalProviders = new[] { new ExternalProviderModel { AuthenticationScheme = context.IdP } };
-                return Page();
+                ExternalProviders = new [] { new ExternalProviderModel { AuthenticationScheme = context.IdP } };
+                return Page ();
             }
 
-            var providers = await GetExternalProviders();
-            ExternalProviders = providers.ToList();
+            var providers = await GetExternalProviders ();
+            ExternalProviders = providers.ToList ();
 
-            EnableLocalLogin = await SettingProvider.IsTrueAsync(AccountSettingNames.EnableLocalLogin);
+            EnableLocalLogin = await SettingProvider.IsTrueAsync (AccountSettingNames.EnableLocalLogin);
 
-            if (context?.ClientId != null)
-            {
-                var client = await ClientStore.FindEnabledClientByIdAsync(context.ClientId);
-                if (client != null)
-                {
+            if (context?.ClientId != null) {
+                var client = await ClientStore.FindEnabledClientByIdAsync (context.ClientId);
+                if (client != null) {
                     EnableLocalLogin = client.EnableLocalLogin;
 
-                    if (client.IdentityProviderRestrictions != null && client.IdentityProviderRestrictions.Any())
-                    {
-                        providers = providers.Where(provider => client.IdentityProviderRestrictions.Contains(provider.AuthenticationScheme)).ToList();
+                    if (client.IdentityProviderRestrictions != null && client.IdentityProviderRestrictions.Any ()) {
+                        providers = providers.Where (provider => client.IdentityProviderRestrictions.Contains (provider.AuthenticationScheme)).ToList ();
                     }
                 }
             }
 
-            if (IsExternalLoginOnly)
-            {
-                return await base.OnPostExternalLogin(providers.First().AuthenticationScheme);
+            if (IsExternalLoginOnly) {
+                return await base.OnPostExternalLogin (providers.First ().AuthenticationScheme);
             }
 
-            return Page();
+            return Page ();
         }
 
         [UnitOfWork] //TODO: Will be removed when we implement action filter
-        public override async Task<IActionResult> OnPostAsync(string action)
-        {
-            if (action == "Cancel")
-            {
-                var context = await Interaction.GetAuthorizationContextAsync(ReturnUrl);
-                if (context == null)
-                {
-                    return Redirect("~/");
+        public override async Task<IActionResult> OnPostAsync (string action) {
+            if (action == "Cancel") {
+                var context = await Interaction.GetAuthorizationContextAsync (ReturnUrl);
+                if (context == null) {
+                    return Redirect ("~/");
                 }
 
-                await Interaction.GrantConsentAsync(context, ConsentResponse.Denied);
+                await Interaction.GrantConsentAsync (context, ConsentResponse.Denied);
 
-                return Redirect(ReturnUrl);
+                return Redirect (ReturnUrl);
             }
 
-            await CheckLocalLoginAsync();
+            await CheckLocalLoginAsync ();
 
-            ValidateModel();
+            ValidateModel ();
 
-            ExternalProviders = await GetExternalProviders();
-            
-            EnableLocalLogin = await SettingProvider.IsTrueAsync(AccountSettingNames.EnableLocalLogin);
+            ExternalProviders = await GetExternalProviders ();
 
-            await ReplaceEmailToUsernameOfInputIfNeeds();
+            EnableLocalLogin = await SettingProvider.IsTrueAsync (AccountSettingNames.EnableLocalLogin);
 
-            var result = await SignInManager.PasswordSignInAsync(
+            await ReplaceEmailToUsernameOfInputIfNeeds ();
+
+            var result = await SignInManager.PasswordSignInAsync (
                 LoginInput.UserNameOrEmailAddress,
                 LoginInput.Password,
                 LoginInput.RememberMe,
                 true
             );
 
-            if (result.RequiresTwoFactor)
-            {
-                return RedirectToPage("./SendSecurityCode", new
-                {
+            if (result.RequiresTwoFactor) {
+                return RedirectToPage ("./SendSecurityCode", new {
                     returnUrl = ReturnUrl,
-                    returnUrlHash = ReturnUrlHash,
-                    rememberMe = LoginInput.RememberMe
+                        returnUrlHash = ReturnUrlHash,
+                        rememberMe = LoginInput.RememberMe
                 });
             }
 
-            if (result.IsLockedOut)
-            {
-                Alerts.Warning(L["UserLockedOutMessage"]);
-                return Page();
+            if (result.IsLockedOut) {
+                Alerts.Warning (L["UserLockedOutMessage"]);
+                return Page ();
             }
 
-            if (result.IsNotAllowed)
-            {
-                Alerts.Warning(L["LoginIsNotAllowed"]);
-                return Page();
+            if (result.IsNotAllowed) {
+                Alerts.Warning (L["LoginIsNotAllowed"]);
+                return Page ();
             }
 
-            if (!result.Succeeded)
-            {
-                Alerts.Danger(L["InvalidUserNameOrPassword"]);
-                return Page();
+            if (!result.Succeeded) {
+                Alerts.Danger (L["InvalidUserNameOrPassword"]);
+                return Page ();
             }
 
             //TODO: Find a way of getting user's id from the logged in user and do not query it again like that!
-            var user = await UserManager.FindByNameAsync(LoginInput.UserNameOrEmailAddress) ??
-                       await UserManager.FindByEmailAsync(LoginInput.UserNameOrEmailAddress);
+            var user = await UserManager.FindByNameAsync (LoginInput.UserNameOrEmailAddress) ??
+                await UserManager.FindByEmailAsync (LoginInput.UserNameOrEmailAddress);
 
-            Debug.Assert(user != null, nameof(user) + " != null");
-            await IdentityServerEvents.RaiseAsync(new UserLoginSuccessEvent(user.UserName, user.Id.ToString(), user.UserName)); //TODO: Use user's name once implemented
+            Debug.Assert (user != null, nameof (user) + " != null");
+            await IdentityServerEvents.RaiseAsync (new UserLoginSuccessEvent (user.UserName, user.Id.ToString (), user.UserName)); //TODO: Use user's name once implemented
 
-            return RedirectSafely(ReturnUrl, ReturnUrlHash);
+            return RedirectSafely (ReturnUrl, ReturnUrlHash);
         }
 
         [UnitOfWork]
-        public override async Task<IActionResult> OnPostExternalLogin(string provider)
-        {
-            if (AccountOptions.WindowsAuthenticationSchemeName == provider)
-            {
-                return await ProcessWindowsLoginAsync();
+        public override async Task<IActionResult> OnPostExternalLogin (string provider) {
+            if (AccountOptions.WindowsAuthenticationSchemeName == provider) {
+                return await ProcessWindowsLoginAsync ();
             }
 
-            return await base.OnPostExternalLogin(provider);
+            return await base.OnPostExternalLogin (provider);
         }
 
-        private async Task<IActionResult> ProcessWindowsLoginAsync()
-        {
-            var result = await HttpContext.AuthenticateAsync(AccountOptions.WindowsAuthenticationSchemeName);
-            if (!(result?.Principal is WindowsPrincipal windowsPrincipal))
-            {
-                return Challenge(AccountOptions.WindowsAuthenticationSchemeName);
+        private async Task<IActionResult> ProcessWindowsLoginAsync () {
+            var result = await HttpContext.AuthenticateAsync (AccountOptions.WindowsAuthenticationSchemeName);
+            if (!(result?.Principal is WindowsPrincipal windowsPrincipal)) {
+                return Challenge (AccountOptions.WindowsAuthenticationSchemeName);
             }
 
-            var props = new AuthenticationProperties
-            {
-                RedirectUri = Url.Page("./Login", pageHandler: "ExternalLoginCallback", values: new { ReturnUrl, ReturnUrlHash }),
-                Items =
-                {
-                    {"scheme", AccountOptions.WindowsAuthenticationSchemeName},
+            var props = new AuthenticationProperties {
+                RedirectUri = Url.Page ("./Login", pageHandler: "ExternalLoginCallback", values : new { ReturnUrl, ReturnUrlHash }),
+                Items = { { "scheme", AccountOptions.WindowsAuthenticationSchemeName },
                 }
             };
 
-            var identity = new ClaimsIdentity(AccountOptions.WindowsAuthenticationSchemeName);
-            identity.AddClaim(new Claim(JwtClaimTypes.Subject, windowsPrincipal.Identity.Name));
-            identity.AddClaim(new Claim(JwtClaimTypes.Name, windowsPrincipal.Identity.Name));
+            var identity = new ClaimsIdentity (AccountOptions.WindowsAuthenticationSchemeName);
+            identity.AddClaim (new Claim (JwtClaimTypes.Subject, windowsPrincipal.Identity.Name));
+            identity.AddClaim (new Claim (JwtClaimTypes.Name, windowsPrincipal.Identity.Name));
 
             //TODO: Consider to add Windows groups the the identity
             //if (_accountOptions.IncludeWindowsGroups)
@@ -210,13 +183,13 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account
             //    }
             //}
 
-            await HttpContext.SignInAsync(
+            await HttpContext.SignInAsync (
                 IdentityServer4.IdentityServerConstants.ExternalCookieAuthenticationScheme,
-                new ClaimsPrincipal(identity),
+                new ClaimsPrincipal (identity),
                 props
             );
 
-            return RedirectSafely(props.RedirectUri);
+            return RedirectSafely (props.RedirectUri);
         }
     }
 }

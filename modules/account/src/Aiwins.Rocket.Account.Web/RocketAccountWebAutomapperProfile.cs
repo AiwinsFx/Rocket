@@ -2,13 +2,10 @@
 using Aiwins.Rocket.Identity;
 using AutoMapper;
 
-namespace Aiwins.Rocket.Account.Web
-{
-    public class RocketAccountWebAutoMapperProfile : Profile
-    {
-        public RocketAccountWebAutoMapperProfile()
-        {
-            CreateMap<ProfileDto, PersonalSettingsInfoModel>();
+namespace Aiwins.Rocket.Account.Web {
+    public class RocketAccountWebAutoMapperProfile : Profile {
+        public RocketAccountWebAutoMapperProfile () {
+            CreateMap<ProfileDto, PersonalSettingsInfoModel> ();
         }
     }
 }

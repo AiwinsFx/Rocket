@@ -1,10 +1,8 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.IdentityServer.Devices
-{
+namespace Aiwins.Rocket.IdentityServer.Devices {
     [Serializable]
-    public class DeviceFlowCodesEto
-    {
+    public class DeviceFlowCodesEto {
         public Guid Id { get; set; }
 
         public string DeviceCode { get; set; }

@@ -6,11 +6,9 @@ using Aiwins.Rocket.Data;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MultiTenancy;
 
-namespace Aiwins.Rocket.AuditLogging
-{
+namespace Aiwins.Rocket.AuditLogging {
     [DisableAuditing]
-    public class AuditLogAction : Entity<Guid>, IMultiTenant, IHasExtraProperties
-    {
+    public class AuditLogAction : Entity<Guid>, IMultiTenant, IHasExtraProperties {
         public virtual Guid? TenantId { get; protected set; }
 
         public virtual Guid AuditLogId { get; protected set; }
@@ -26,23 +24,21 @@ namespace Aiwins.Rocket.AuditLogging
         public virtual int ExecutionDuration { get; protected set; }
 
         public virtual Dictionary<string, object> ExtraProperties { get; protected set; }
-        
-        protected AuditLogAction()
-        {
-            ExtraProperties = new Dictionary<string, object>();
+
+        protected AuditLogAction () {
+            ExtraProperties = new Dictionary<string, object> ();
         }
 
-        public AuditLogAction(Guid id, Guid auditLogId, AuditLogActionInfo actionInfo, Guid? tenantId = null)
-        {
+        public AuditLogAction (Guid id, Guid auditLogId, AuditLogActionInfo actionInfo, Guid? tenantId = null) {
 
             Id = id;
             TenantId = tenantId;
             AuditLogId = auditLogId;
             ExecutionTime = actionInfo.ExecutionTime;
             ExecutionDuration = actionInfo.ExecutionDuration;
-            ExtraProperties = actionInfo.ExtraProperties.ToDictionary(pair => pair.Key, pair => pair.Value);
-            ServiceName = actionInfo.ServiceName.TruncateFromBeginning(AuditLogActionConsts.MaxServiceNameLength);
-            MethodName = actionInfo.MethodName.TruncateFromBeginning(AuditLogActionConsts.MaxMethodNameLength);
+            ExtraProperties = actionInfo.ExtraProperties.ToDictionary (pair => pair.Key, pair => pair.Value);
+            ServiceName = actionInfo.ServiceName.TruncateFromBeginning (AuditLogActionConsts.MaxServiceNameLength);
+            MethodName = actionInfo.MethodName.TruncateFromBeginning (AuditLogActionConsts.MaxMethodNameLength);
             Parameters = actionInfo.Parameters.Length > AuditLogActionConsts.MaxParametersLength ? "" : actionInfo.Parameters;
         }
     }

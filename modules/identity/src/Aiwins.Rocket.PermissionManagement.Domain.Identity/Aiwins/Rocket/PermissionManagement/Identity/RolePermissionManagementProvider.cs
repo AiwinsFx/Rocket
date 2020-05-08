@@ -22,27 +22,41 @@ namespace Aiwins.Rocket.PermissionManagement.Identity {
             UserRoleFinder = userRoleFinder;
         }
 
-        public override async Task<PermissionValueProviderGrantInfo> CheckAsync (string name, string providerName, string providerKey) {
+        public override async Task<PermissionGrantInfo> CheckAsync (string name, string providerName, string providerKey) {
             if (providerName == Name) {
-                return new PermissionValueProviderGrantInfo (
-                    await PermissionGrantRepository.FindAsync (name, providerName, providerKey) != null,
+                var permissionGrant = await PermissionGrantRepository.FindAsync (name, providerName, providerKey);
+
+                return new PermissionGrantInfo (
+                    permissionGrant != null,
+                    permissionGrant?.ProviderScope??nameof (PermissionScopeType.Prohibited),
                     providerKey
                 );
             }
 
+            var permissionGrantResult = PermissionGrantInfo.NonGranted;
+
             if (providerName == UserPermissionValueProvider.ProviderName) {
                 var userId = Guid.Parse (providerKey);
-                var roleNames = await UserRoleFinder.GetRolesAsync (userId);
+                var roles = await UserRoleFinder.GetRolesAsync (userId);
 
-                foreach (var roleName in roleNames) {
-                    var permissionGrant = await PermissionGrantRepository.FindAsync (name, Name, roleName);
-                    if (permissionGrant != null) {
-                        return new PermissionValueProviderGrantInfo (true, roleName);
+                foreach (var role in roles) {
+                    var result = await PermissionGrantRepository.FindAsync (name, Name, role);
+                    if (result == null) continue;
+
+                    // 以角色的最大权限为主
+                    var permissionGrantScope = PermissionScopeType.Prohibited;
+                    if (Enum.TryParse (permissionGrantResult.ProviderScope, out PermissionScopeType ps)) permissionGrantScope = ps;
+
+                    var resultScope = PermissionScopeType.Prohibited;
+                    if (Enum.TryParse (result.ProviderScope, out PermissionScopeType rs)) resultScope = rs;
+
+                    if (resultScope > permissionGrantScope) {
+                        permissionGrantResult = new PermissionGrantInfo (true, result.ProviderScope, role);
                     }
                 }
             }
 
-            return PermissionValueProviderGrantInfo.NonGranted;
+            return permissionGrantResult;
         }
     }
 }

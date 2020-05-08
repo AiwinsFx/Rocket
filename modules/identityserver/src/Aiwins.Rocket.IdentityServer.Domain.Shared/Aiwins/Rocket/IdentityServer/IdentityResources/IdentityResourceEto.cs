@@ -1,10 +1,8 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.IdentityServer.IdentityResources
-{
+namespace Aiwins.Rocket.IdentityServer.IdentityResources {
     [Serializable]
-    public class IdentityResourceEto
-    {
+    public class IdentityResourceEto {
         public Guid Id { get; set; }
 
         public string Name { get; set; }

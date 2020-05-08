@@ -1,10 +1,8 @@
 using System.IdentityModel.Tokens.Jwt;
 using Aiwins.Rocket.Security.Claims;
 
-namespace Aiwins.Rocket.IdentityServer
-{
-    public class RocketIdentityServerBuilderOptions
-    {
+namespace Aiwins.Rocket.IdentityServer {
+    public class RocketIdentityServerBuilderOptions {
         /// <summary>
         /// Updates <see cref="JwtSecurityTokenHandler.DefaultInboundClaimTypeMap"/> to be compatible with identity server claims.
         /// Default: true.

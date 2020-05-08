@@ -1,13 +1,11 @@
 ﻿using System;
+using Aiwins.Rocket.Domain.Entities;
 using IdentityServer4;
 using IdentityServer4.Models;
 using JetBrains.Annotations;
-using Aiwins.Rocket.Domain.Entities;
 
-namespace Aiwins.Rocket.IdentityServer
-{
-    public abstract class Secret : Entity
-    {
+namespace Aiwins.Rocket.IdentityServer {
+    public abstract class Secret : Entity {
         public virtual string Type { get; protected set; }
 
         public virtual string Value { get; set; }
@@ -16,18 +14,16 @@ namespace Aiwins.Rocket.IdentityServer
 
         public virtual DateTime? Expiration { get; set; }
 
-        protected Secret()
-        {
+        protected Secret () {
 
         }
 
-        protected Secret(
-            [NotNull] string value, 
-            DateTime? expiration = null, 
-            string type = IdentityServerConstants.SecretTypes.SharedSecret, 
-            string description = null)
-        {
-            Check.NotNull(value, nameof(value));
+        protected Secret (
+            [NotNull] string value,
+            DateTime? expiration = null,
+            string type = IdentityServerConstants.SecretTypes.SharedSecret,
+            string description = null) {
+            Check.NotNull (value, nameof (value));
 
             Value = value;
             Expiration = expiration;

@@ -10,8 +10,8 @@ namespace Aiwins.Rocket.PermissionManagement.Identity {
     public class RocketPermissionManagementDomainIdentityModule : RocketModule {
         public override void ConfigureServices (ServiceConfigurationContext context) {
             Configure<PermissionManagementOptions> (options => {
-                options.ManagementProviders.Add<UserPermissionManagementProvider> ();
-                options.ManagementProviders.Add<RolePermissionManagementProvider> ();
+                options.Providers.Add<UserPermissionManagementProvider> ();
+                options.Providers.Add<RolePermissionManagementProvider> ();
 
                 //TODO: Can we prevent duplication of permission names without breaking the design and making the system complicated
                 options.ProviderPolicies[UserPermissionValueProvider.ProviderName] = "RocketIdentity.Users.ManagePermissions";

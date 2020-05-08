@@ -6,12 +6,12 @@ using Aiwins.Rocket.Domain.Repositories;
 namespace Aiwins.Rocket.Identity {
     public interface IIdentityClaimTypeRepository : IBasicRepository<IdentityClaimType, Guid> {
         /// <summary>
-        /// Checks if there is a <see cref="IdentityClaimType"/> entity with given name.
+        /// 判断是否存在给定名字 <see cref="IdentityClaimType"/> 实体对象
         /// </summary>
-        /// <param name="name">Name to check</param>
+        /// <param name="name">名称</param>
         /// <param name="ignoredId">
-        /// An Id value to ignore on checking.
-        /// If there is an entity with given <paramref name="ignoredId"/> it's ignored.
+        /// 可忽略的实体对象标识
+        /// 如果存在给定的对象实体 <paramref name="ignoredId"/> 则忽略它
         /// </param>
         Task<bool> AnyAsync (string name, Guid? ignoredId = null);
 

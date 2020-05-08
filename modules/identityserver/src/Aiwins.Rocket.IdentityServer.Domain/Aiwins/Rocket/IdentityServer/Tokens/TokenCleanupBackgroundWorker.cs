@@ -1,34 +1,28 @@
 ﻿using System.Threading.Tasks;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
 using Aiwins.Rocket.BackgroundWorkers;
 using Aiwins.Rocket.Threading;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Options;
 
-namespace Aiwins.Rocket.IdentityServer.Tokens
-{
-    public class TokenCleanupBackgroundWorker : AsyncPeriodicBackgroundWorkerBase
-    {
+namespace Aiwins.Rocket.IdentityServer.Tokens {
+    public class TokenCleanupBackgroundWorker : AsyncPeriodicBackgroundWorkerBase {
         protected TokenCleanupOptions Options { get; }
 
-        public TokenCleanupBackgroundWorker(
-            RocketTimer timer, 
+        public TokenCleanupBackgroundWorker (
+            RocketTimer timer,
             IServiceScopeFactory serviceScopeFactory,
-            IOptions<TokenCleanupOptions> options)
-            : base(
-                timer, 
-                serviceScopeFactory)
-        {
+            IOptions<TokenCleanupOptions> options) : base (
+            timer,
+            serviceScopeFactory) {
             Options = options.Value;
             timer.Period = Options.CleanupPeriod;
         }
 
-        protected override async Task DoWorkAsync(PeriodicBackgroundWorkerContext workerContext)
-        {
+        protected override async Task DoWorkAsync (PeriodicBackgroundWorkerContext workerContext) {
             await workerContext
                 .ServiceProvider
-                .GetRequiredService<TokenCleanupService>()
-                .CleanAsync()
-                ;
+                .GetRequiredService<TokenCleanupService> ()
+                .CleanAsync ();
         }
     }
 }

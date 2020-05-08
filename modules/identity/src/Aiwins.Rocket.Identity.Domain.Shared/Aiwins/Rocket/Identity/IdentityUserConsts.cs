@@ -1,9 +1,7 @@
 ﻿using Aiwins.Rocket.Users;
 
-namespace Aiwins.Rocket.Identity
-{
-    public static class IdentityUserConsts
-    {
+namespace Aiwins.Rocket.Identity {
+    public static class IdentityUserConsts {
         public const int MaxUserNameLength = RocketUserConsts.MaxUserNameLength;
 
         public const int MaxNameLength = RocketUserConsts.MaxNameLength;

@@ -1,17 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Aiwins.Rocket.Data;
+﻿using Aiwins.Rocket.Data;
 using Aiwins.Rocket.EntityFrameworkCore;
 using Aiwins.Rocket.IdentityServer.ApiResources;
 using Aiwins.Rocket.IdentityServer.Clients;
 using Aiwins.Rocket.IdentityServer.Devices;
 using Aiwins.Rocket.IdentityServer.Grants;
 using Aiwins.Rocket.IdentityServer.IdentityResources;
+using Microsoft.EntityFrameworkCore;
 
-namespace Aiwins.Rocket.IdentityServer.EntityFrameworkCore
-{
-    [ConnectionStringName(RocketIdentityServerDbProperties.ConnectionStringName)]
-    public class IdentityServerDbContext : RocketDbContext<IdentityServerDbContext>, IIdentityServerDbContext
-    {
+namespace Aiwins.Rocket.IdentityServer.EntityFrameworkCore {
+    [ConnectionStringName (RocketIdentityServerDbProperties.ConnectionStringName)]
+    public class IdentityServerDbContext : RocketDbContext<IdentityServerDbContext>, IIdentityServerDbContext {
         public DbSet<ApiResource> ApiResources { get; set; }
 
         public DbSet<ApiSecret> ApiSecrets { get; set; }
@@ -50,17 +48,14 @@ namespace Aiwins.Rocket.IdentityServer.EntityFrameworkCore
 
         public DbSet<DeviceFlowCodes> DeviceFlowCodes { get; set; }
 
-        public IdentityServerDbContext(DbContextOptions<IdentityServerDbContext> options)
-            : base(options)
-        {
+        public IdentityServerDbContext (DbContextOptions<IdentityServerDbContext> options) : base (options) {
 
         }
 
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            base.OnModelCreating(builder);
+        protected override void OnModelCreating (ModelBuilder builder) {
+            base.OnModelCreating (builder);
 
-            builder.ConfigureIdentityServer();
+            builder.ConfigureIdentityServer ();
         }
     }
 }

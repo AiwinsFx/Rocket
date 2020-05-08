@@ -1,10 +1,8 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.IdentityServer.Grants
-{
+namespace Aiwins.Rocket.IdentityServer.Grants {
     [Serializable]
-    public class PersistedGrantEto
-    {
+    public class PersistedGrantEto {
         public Guid Id { get; set; }
 
         public string Key { get; set; }

@@ -1,24 +1,20 @@
 ﻿using System;
 using Aiwins.Rocket.MongoDB;
 
-namespace Aiwins.Rocket.BackgroundJobs.MongoDB
-{
-    public static class BackgroundJobsMongoDbContextExtensions
-    {
-        public static void ConfigureBackgroundJobs(
+namespace Aiwins.Rocket.BackgroundJobs.MongoDB {
+    public static class BackgroundJobsMongoDbContextExtensions {
+        public static void ConfigureBackgroundJobs (
             this IMongoModelBuilder builder,
-            Action<RocketMongoModelBuilderConfigurationOptions> optionsAction = null)
-        {
-            Check.NotNull(builder, nameof(builder));
+            Action<RocketMongoModelBuilderConfigurationOptions> optionsAction = null) {
+            Check.NotNull (builder, nameof (builder));
 
-            var options = new BackgroundJobsMongoModelBuilderConfigurationOptions(
+            var options = new BackgroundJobsMongoModelBuilderConfigurationOptions (
                 BackgroundJobsDbProperties.DbTablePrefix
             );
 
-            optionsAction?.Invoke(options);
+            optionsAction?.Invoke (options);
 
-            builder.Entity<BackgroundJobRecord>(b =>
-            {
+            builder.Entity<BackgroundJobRecord> (b => {
                 b.CollectionName = options.CollectionPrefix + "BackgroundJobs";
             });
         }

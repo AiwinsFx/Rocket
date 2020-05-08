@@ -1,17 +1,12 @@
-﻿using JetBrains.Annotations;
-using Aiwins.Rocket.EntityFrameworkCore.Modeling;
+﻿using Aiwins.Rocket.EntityFrameworkCore.Modeling;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Identity.EntityFrameworkCore
-{
-    public class RocketAuditLoggingModelBuilderConfigurationOptions : RocketModelBuilderConfigurationOptions
-    {
-        public RocketAuditLoggingModelBuilderConfigurationOptions(
-            [NotNull] string tablePrefix,
-            [CanBeNull] string schema)
-            : base(
-                tablePrefix, 
-                schema)
-        {
+namespace Aiwins.Rocket.Identity.EntityFrameworkCore {
+    public class RocketAuditLoggingModelBuilderConfigurationOptions : RocketModelBuilderConfigurationOptions {
+        public RocketAuditLoggingModelBuilderConfigurationOptions (
+            [NotNull] string tablePrefix, [CanBeNull] string schema) : base (
+            tablePrefix,
+            schema) {
 
         }
     }

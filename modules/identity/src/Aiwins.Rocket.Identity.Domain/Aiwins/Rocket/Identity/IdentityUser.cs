@@ -126,16 +126,15 @@ namespace Aiwins.Rocket.Identity {
             ExtraProperties = new Dictionary<string, object> ();
         }
 
-        public IdentityUser (Guid id, [NotNull] string userName, [NotNull] string email, Guid? tenantId = null) {
+        public IdentityUser (Guid id, [NotNull] string userName, [NotNull] string phoneNumber, Guid? tenantId = null) {
             Check.NotNull (userName, nameof (userName));
-            Check.NotNull (email, nameof (email));
+            Check.NotNull (phoneNumber, nameof (phoneNumber));
 
             Id = id;
             TenantId = tenantId;
             UserName = userName;
             NormalizedUserName = userName.ToUpperInvariant ();
-            Email = email;
-            NormalizedEmail = email.ToUpperInvariant ();
+            PhoneNumber = phoneNumber;
             ConcurrencyStamp = Guid.NewGuid ().ToString ();
             SecurityStamp = Guid.NewGuid ().ToString ();
 

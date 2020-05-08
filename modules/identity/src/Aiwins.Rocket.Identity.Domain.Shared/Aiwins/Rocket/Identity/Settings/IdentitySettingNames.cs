@@ -1,11 +1,8 @@
-﻿namespace Aiwins.Rocket.Identity.Settings
-{
-    public static class IdentitySettingNames
-    {
+﻿namespace Aiwins.Rocket.Identity.Settings {
+    public static class IdentitySettingNames {
         private const string Prefix = "Rocket.Identity";
 
-        public static class Password
-        {
+        public static class Password {
             private const string PasswordPrefix = Prefix + ".Password";
 
             public const string RequiredLength = PasswordPrefix + ".RequiredLength";
@@ -16,8 +13,7 @@
             public const string RequireDigit = PasswordPrefix + ".RequireDigit";
         }
 
-        public static class Lockout
-        {
+        public static class Lockout {
             private const string LockoutPrefix = Prefix + ".Lockout";
 
             public const string AllowedForNewUsers = LockoutPrefix + ".AllowedForNewUsers";
@@ -25,8 +21,7 @@
             public const string MaxFailedAccessAttempts = LockoutPrefix + ".MaxFailedAccessAttempts";
         }
 
-        public static class SignIn
-        {
+        public static class SignIn {
             private const string SignInPrefix = Prefix + ".SignIn";
 
             public const string RequireConfirmedEmail = SignInPrefix + ".RequireConfirmedEmail";
@@ -34,12 +29,12 @@
             public const string RequireConfirmedPhoneNumber = SignInPrefix + ".RequireConfirmedPhoneNumber";
         }
 
-        public static class User
-        {
+        public static class User {
             private const string UserPrefix = Prefix + ".User";
 
             public const string IsUserNameUpdateEnabled = UserPrefix + ".IsUserNameUpdateEnabled";
             public const string IsEmailUpdateEnabled = UserPrefix + ".IsEmailUpdateEnabled";
+            public const string IsPhoneNumberUpdateEnabled = UserPrefix + ".IsPhoneNumberUpdateEnabled";
         }
     }
 }

@@ -90,6 +90,11 @@ namespace Aiwins.Rocket.Identity {
                     IdentitySettingNames.User.IsEmailUpdateEnabled,
                     true.ToString (), L ("DisplayName:Rocket.Identity.User.IsEmailUpdateEnabled"),
                     L ("Description:Rocket.Identity.User.IsEmailUpdateEnabled"),
+                    true),
+                new SettingDefinition (
+                    IdentitySettingNames.User.IsPhoneNumberUpdateEnabled,
+                    true.ToString (), L ("DisplayName:Rocket.Identity.User.IsPhoneNumberUpdateEnabled"),
+                    L ("Description:Rocket.Identity.User.IsPhoneNumberUpdateEnabled"),
                     true)
             );
         }

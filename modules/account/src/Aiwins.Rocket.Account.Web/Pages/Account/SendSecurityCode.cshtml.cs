@@ -6,21 +6,17 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Aiwins.Rocket.Account.Web.Pages.Account
-{
-    public class SendSecurityCodeModel : AccountPageModel
-    {
+namespace Aiwins.Rocket.Account.Web.Pages.Account {
+    public class SendSecurityCodeModel : AccountPageModel {
         public List<SelectListItem> Providers { get; set; }
-        
-        public virtual async Task<IActionResult> OnGetAsync()
-        {
-            var user = await SignInManager.GetTwoFactorAuthenticationUserAsync();
-            if (user == null)
-            {
-                return RedirectToPage("./Login");
+
+        public virtual async Task<IActionResult> OnGetAsync () {
+            var user = await SignInManager.GetTwoFactorAuthenticationUserAsync ();
+            if (user == null) {
+                return RedirectToPage ("./Login");
             }
 
-            return Page();
+            return Page ();
 
             //CheckCurrentTenant(await SignInManager.GetVerifiedTenantIdAsync());
 
@@ -41,8 +37,7 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account
             //);
         }
 
-        public virtual Task OnPostAsync()
-        {
+        public virtual Task OnPostAsync () {
             return Task.CompletedTask;
         }
     }

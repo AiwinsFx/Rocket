@@ -3,10 +3,8 @@ using Aiwins.Rocket.Application.Dtos;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MultiTenancy;
 
-namespace Aiwins.Rocket.Identity
-{
-    public class IdentityUserDto : ExtensibleFullAuditedEntityDto<Guid>, IMultiTenant, IHasConcurrencyStamp
-    {
+namespace Aiwins.Rocket.Identity {
+    public class IdentityUserDto : ExtensibleFullAuditedEntityDto<Guid>, IMultiTenant, IHasConcurrencyStamp {
         public Guid? TenantId { get; set; }
 
         public string UserName { get; set; }

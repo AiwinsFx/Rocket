@@ -1,11 +1,9 @@
 ﻿using System;
 using Aiwins.Rocket.EventBus;
 
-namespace Aiwins.Rocket.Users
-{
-    [EventName("Aiwins.Rocket.Users.User")]
-    public class UserEto : IUserData
-    {
+namespace Aiwins.Rocket.Users {
+    [EventName ("Aiwins.Rocket.Users.User")]
+    public class UserEto : IUserData {
         public Guid Id { get; set; }
 
         public Guid? TenantId { get; set; }

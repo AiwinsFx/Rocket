@@ -1,35 +1,29 @@
 ﻿using System;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Domain.Entities;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.IdentityServer.Clients
-{
-    public class ClientPostLogoutRedirectUri : Entity
-    {
+namespace Aiwins.Rocket.IdentityServer.Clients {
+    public class ClientPostLogoutRedirectUri : Entity {
         public virtual Guid ClientId { get; protected set; }
 
         public virtual string PostLogoutRedirectUri { get; protected set; }
-        
-        protected ClientPostLogoutRedirectUri()
-        {
+
+        protected ClientPostLogoutRedirectUri () {
 
         }
 
-        public virtual bool Equals(Guid clientId, [NotNull] string uri)
-        {
+        public virtual bool Equals (Guid clientId, [NotNull] string uri) {
             return ClientId == clientId && PostLogoutRedirectUri == uri;
         }
 
-        protected internal ClientPostLogoutRedirectUri(Guid clientId, [NotNull] string postLogoutRedirectUri)
-        {
-            Check.NotNull(postLogoutRedirectUri, nameof(postLogoutRedirectUri));
+        protected internal ClientPostLogoutRedirectUri (Guid clientId, [NotNull] string postLogoutRedirectUri) {
+            Check.NotNull (postLogoutRedirectUri, nameof (postLogoutRedirectUri));
 
             ClientId = clientId;
             PostLogoutRedirectUri = postLogoutRedirectUri;
         }
 
-        public override object[] GetKeys()
-        {
+        public override object[] GetKeys () {
             return new object[] { ClientId, PostLogoutRedirectUri };
         }
     }

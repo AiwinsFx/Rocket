@@ -99,6 +99,7 @@
     "Description:Rocket.Identity.SignIn.EnablePhoneNumberConfirmation": "Whether the phoneNumber can be confirmed by the user.",
     "Description:Rocket.Identity.SignIn.RequireConfirmedPhoneNumber": "Whether a confirmed telephone number is required to sign in.",
     "Description:Rocket.Identity.User.IsUserNameUpdateEnabled": "Whether the username can be updated by the user.",
-    "Description:Rocket.Identity.User.IsEmailUpdateEnabled": "Whether the email can be updated by the user."
+    "Description:Rocket.Identity.User.IsEmailUpdateEnabled": "Whether the email can be updated by the user.",
+    "Description:Rocket.Identity.User.IsPhoneNumberUpdateEnabled": "Whether the phoneNumber can be updated by the user."
   }
 }

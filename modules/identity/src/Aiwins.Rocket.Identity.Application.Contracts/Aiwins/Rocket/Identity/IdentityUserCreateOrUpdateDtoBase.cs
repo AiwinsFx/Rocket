@@ -1,27 +1,25 @@
 ﻿using System.ComponentModel.DataAnnotations;
-using JetBrains.Annotations;
 using Aiwins.Rocket.ObjectExtending;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Identity
-{
-    public abstract class IdentityUserCreateOrUpdateDtoBase : ExtensibleObject
-    {
+namespace Aiwins.Rocket.Identity {
+    public abstract class IdentityUserCreateOrUpdateDtoBase : ExtensibleObject {
         [Required]
-        [StringLength(IdentityUserConsts.MaxUserNameLength)]
+        [StringLength (IdentityUserConsts.MaxUserNameLength)]
         public string UserName { get; set; }
 
-        [StringLength(IdentityUserConsts.MaxNameLength)]
+        [StringLength (IdentityUserConsts.MaxNameLength)]
         public string Name { get; set; }
 
-        [StringLength(IdentityUserConsts.MaxSurnameLength)]
+        [StringLength (IdentityUserConsts.MaxSurnameLength)]
         public string Surname { get; set; }
 
         [Required]
         [EmailAddress]
-        [StringLength(IdentityUserConsts.MaxEmailLength)]
+        [StringLength (IdentityUserConsts.MaxEmailLength)]
         public string Email { get; set; }
 
-        [StringLength(IdentityUserConsts.MaxPhoneNumberLength)]
+        [StringLength (IdentityUserConsts.MaxPhoneNumberLength)]
         public string PhoneNumber { get; set; }
 
         public bool TwoFactorEnabled { get; set; }

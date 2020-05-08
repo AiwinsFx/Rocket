@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.IdentityServer.Grants
-{
-    public class PersistedGrantConsts
-    {
+﻿namespace Aiwins.Rocket.IdentityServer.Grants {
+    public class PersistedGrantConsts {
         public const int KeyMaxLength = 200;
         public const int TypeMaxLength = 50;
         public const int SubjectIdMaxLength = 200;

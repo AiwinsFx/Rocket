@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Repositories;
 
-namespace Aiwins.Rocket.AuditLogging
-{
-    public interface IAuditLogRepository : IRepository<AuditLog, Guid>
-    {
-        Task<List<AuditLog>> GetListAsync(
+namespace Aiwins.Rocket.AuditLogging {
+    public interface IAuditLogRepository : IRepository<AuditLog, Guid> {
+        Task<List<AuditLog>> GetListAsync (
             string sorting = null,
             int maxResultCount = 50,
             int skipCount = 0,
@@ -28,7 +26,7 @@ namespace Aiwins.Rocket.AuditLogging
             bool includeDetails = false,
             CancellationToken cancellationToken = default);
 
-        Task<long> GetCountAsync(
+        Task<long> GetCountAsync (
             DateTime? startTime = null,
             DateTime? endTime = null,
             string httpMethod = null,
@@ -42,13 +40,13 @@ namespace Aiwins.Rocket.AuditLogging
             HttpStatusCode? httpStatusCode = null,
             CancellationToken cancellationToken = default);
 
-        Task<Dictionary<DateTime, double>> GetAverageExecutionDurationPerDayAsync(
+        Task<Dictionary<DateTime, double>> GetAverageExecutionDurationPerDayAsync (
             DateTime startDate,
             DateTime endDate);
 
-        Task<EntityChange> GetEntityChange(Guid entityChangeId);
+        Task<EntityChange> GetEntityChange (Guid entityChangeId);
 
-        Task<List<EntityChange>> GetEntityChangeListAsync(
+        Task<List<EntityChange>> GetEntityChangeListAsync (
             string sorting = null,
             int maxResultCount = 50,
             int skipCount = 0,
@@ -61,7 +59,7 @@ namespace Aiwins.Rocket.AuditLogging
             bool includeDetails = false,
             CancellationToken cancellationToken = default);
 
-        Task<long> GetEntityChangeCountAsync(
+        Task<long> GetEntityChangeCountAsync (
             Guid? auditLogId = null,
             DateTime? startTime = null,
             DateTime? endTime = null,

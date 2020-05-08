@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.AuditLogging
-{
-    public class EntityPropertyChangeConsts
-    {
+﻿namespace Aiwins.Rocket.AuditLogging {
+    public class EntityPropertyChangeConsts {
         public const int MaxNewValueLength = 512;
 
         public const int MaxOriginalValueLength = 512;

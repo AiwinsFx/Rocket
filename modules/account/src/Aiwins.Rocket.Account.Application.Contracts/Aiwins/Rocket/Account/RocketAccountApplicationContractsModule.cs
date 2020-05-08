@@ -6,31 +6,25 @@ using Aiwins.Rocket.Modularity;
 using Aiwins.Rocket.Validation.Localization;
 using Aiwins.Rocket.VirtualFileSystem;
 
-namespace Aiwins.Rocket.Account
-{
-    [DependsOn(
-        typeof(RocketIdentityApplicationContractsModule)
+namespace Aiwins.Rocket.Account {
+    [DependsOn (
+        typeof (RocketIdentityApplicationContractsModule)
     )]
-    public class RocketAccountApplicationContractsModule : RocketModule
-    {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<RocketVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.AddEmbedded<RocketAccountApplicationContractsModule>();
+    public class RocketAccountApplicationContractsModule : RocketModule {
+        public override void ConfigureServices (ServiceConfigurationContext context) {
+            Configure<RocketVirtualFileSystemOptions> (options => {
+                options.FileSets.AddEmbedded<RocketAccountApplicationContractsModule> ();
             });
 
-            Configure<RocketLocalizationOptions>(options =>
-            {
+            Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<AccountResource>("en")
-                    .AddBaseTypes(typeof(RocketValidationResource))
-                    .AddVirtualJson("/Aiwins/Rocket/Account/Localization/Resources");
+                    .Add<AccountResource> ("en")
+                    .AddBaseTypes (typeof (RocketValidationResource))
+                    .AddVirtualJson ("/Aiwins/Rocket/Account/Localization/Resources");
             });
 
-            Configure<RocketExceptionLocalizationOptions>(options =>
-            {
-                options.MapCodeNamespace("Aiwins.Account", typeof(AccountResource));
+            Configure<RocketExceptionLocalizationOptions> (options => {
+                options.MapCodeNamespace ("Aiwins.Account", typeof (AccountResource));
             });
         }
     }

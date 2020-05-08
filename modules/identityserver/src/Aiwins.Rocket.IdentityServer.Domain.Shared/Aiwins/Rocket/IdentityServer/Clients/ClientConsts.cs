@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.IdentityServer.Clients
-{
-    public class ClientConsts
-    {
+﻿namespace Aiwins.Rocket.IdentityServer.Clients {
+    public class ClientConsts {
         public const int ClientIdMaxLength = 200;
 
         public const int ProtocolTypeMaxLength = 200;

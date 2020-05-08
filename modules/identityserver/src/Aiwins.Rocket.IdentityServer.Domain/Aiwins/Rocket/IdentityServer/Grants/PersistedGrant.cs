@@ -1,10 +1,8 @@
 ﻿using System;
 using Aiwins.Rocket.Domain.Entities;
 
-namespace Aiwins.Rocket.IdentityServer.Grants
-{
-    public class PersistedGrant : AggregateRoot<Guid>
-    {
+namespace Aiwins.Rocket.IdentityServer.Grants {
+    public class PersistedGrant : AggregateRoot<Guid> {
         public virtual string Key { get; set; }
 
         public virtual string Type { get; set; }
@@ -19,13 +17,11 @@ namespace Aiwins.Rocket.IdentityServer.Grants
 
         public virtual string Data { get; set; }
 
-        protected PersistedGrant()
-        {
-            
+        protected PersistedGrant () {
+
         }
 
-        public PersistedGrant(Guid id)
-        {
+        public PersistedGrant (Guid id) {
             Id = id;
         }
     }

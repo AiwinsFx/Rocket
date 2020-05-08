@@ -23,7 +23,9 @@ namespace Aiwins.Rocket.Authorization.Permissions {
 
             foreach (var role in roles) {
                 var result = await PermissionStore.GetResultAsync (context.Permission.Name, Name, role);
-                if (result?.GrantType == PermissionGrantType.Granted && result?.ScopeType > permissionGrantResult.ScopeType) {
+                if (result == null) continue;
+
+                if (result.ScopeType > permissionGrantResult.ScopeType) {
                     permissionGrantResult = result;
                 }
             }

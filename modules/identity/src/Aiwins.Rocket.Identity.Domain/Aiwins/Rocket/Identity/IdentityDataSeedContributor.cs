@@ -12,7 +12,7 @@ namespace Aiwins.Rocket.Identity {
 
         public virtual Task SeedAsync (DataSeedContext context) {
             return IdentityDataSeeder.SeedAsync (
-                context["AdminEmail"] as string ?? "admin@rocket.io",
+                context["AdminPhoneNumber"] as string ?? "18638215945",
                 context["AdminPassword"] as string ?? "1q2w3E*",
                 context.TenantId
             );

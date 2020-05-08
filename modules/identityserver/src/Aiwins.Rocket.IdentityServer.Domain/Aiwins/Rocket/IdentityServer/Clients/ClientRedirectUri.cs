@@ -1,35 +1,29 @@
 ﻿using System;
-using JetBrains.Annotations;
 using Aiwins.Rocket.Domain.Entities;
+using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.IdentityServer.Clients
-{
-    public class ClientRedirectUri : Entity
-    {
+namespace Aiwins.Rocket.IdentityServer.Clients {
+    public class ClientRedirectUri : Entity {
         public virtual Guid ClientId { get; protected set; }
 
         public virtual string RedirectUri { get; protected set; }
 
-        protected ClientRedirectUri()
-        {
+        protected ClientRedirectUri () {
 
         }
 
-        public virtual bool Equals(Guid clientId, [NotNull] string uri)
-        {
+        public virtual bool Equals (Guid clientId, [NotNull] string uri) {
             return ClientId == clientId && RedirectUri == uri;
         }
 
-        protected internal ClientRedirectUri(Guid clientId, [NotNull] string redirectUri)
-        {
-            Check.NotNull(redirectUri, nameof(redirectUri));
+        protected internal ClientRedirectUri (Guid clientId, [NotNull] string redirectUri) {
+            Check.NotNull (redirectUri, nameof (redirectUri));
 
             ClientId = clientId;
             RedirectUri = redirectUri;
         }
 
-        public override object[] GetKeys()
-        {
+        public override object[] GetKeys () {
             return new object[] { ClientId, RedirectUri };
         }
     }

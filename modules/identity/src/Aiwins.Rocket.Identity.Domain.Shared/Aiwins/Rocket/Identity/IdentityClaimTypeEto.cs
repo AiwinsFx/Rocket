@@ -1,12 +1,10 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Identity
-{
+namespace Aiwins.Rocket.Identity {
     [Serializable]
-    public class IdentityClaimTypeEto
-    {
+    public class IdentityClaimTypeEto {
         public Guid Id { get; set; }
-        
+
         public string Name { get; set; }
 
         public bool Required { get; set; }

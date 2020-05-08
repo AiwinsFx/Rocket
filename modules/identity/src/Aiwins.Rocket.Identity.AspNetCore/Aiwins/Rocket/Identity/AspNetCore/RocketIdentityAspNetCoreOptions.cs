@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Identity.AspNetCore
-{
-    public class RocketIdentityAspNetCoreOptions
-    {
+﻿namespace Aiwins.Rocket.Identity.AspNetCore {
+    public class RocketIdentityAspNetCoreOptions {
         /// <summary>
         /// Default: true.
         /// </summary>

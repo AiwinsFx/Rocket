@@ -3,24 +3,22 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Aiwins.Rocket.AspNetCore.Mvc.UI.RazorPages;
+using Aiwins.Rocket.UI;
 using IdentityServer4.Models;
 using IdentityServer4.Services;
 using IdentityServer4.Stores;
 using Microsoft.AspNetCore.Mvc;
-using Aiwins.Rocket.AspNetCore.Mvc.UI.RazorPages;
-using Aiwins.Rocket.UI;
 
-namespace Aiwins.Rocket.Account.Web.Pages
-{
+namespace Aiwins.Rocket.Account.Web.Pages {
     //TODO: Move this into the Account folder!!!
-    public class ConsentModel : RocketPageModel
-    {
+    public class ConsentModel : RocketPageModel {
         [HiddenInput]
-        [BindProperty(SupportsGet = true)]
+        [BindProperty (SupportsGet = true)]
         public string ReturnUrl { get; set; }
 
         [HiddenInput]
-        [BindProperty(SupportsGet = true)]
+        [BindProperty (SupportsGet = true)]
         public string ReturnUrlHash { get; set; }
 
         [BindProperty]
@@ -32,103 +30,83 @@ namespace Aiwins.Rocket.Account.Web.Pages
         private readonly IClientStore _clientStore;
         private readonly IResourceStore _resourceStore;
 
-        public ConsentModel(
+        public ConsentModel (
             IIdentityServerInteractionService interaction,
             IClientStore clientStore,
-            IResourceStore resourceStore)
-        {
+            IResourceStore resourceStore) {
             _interaction = interaction;
             _clientStore = clientStore;
             _resourceStore = resourceStore;
         }
 
-        public virtual async Task OnGet()
-        {
-            var request = await _interaction.GetAuthorizationContextAsync(ReturnUrl);
-            if (request == null)
-            {
-                throw new ApplicationException($"No consent request matching request: {ReturnUrl}");
+        public virtual async Task OnGet () {
+            var request = await _interaction.GetAuthorizationContextAsync (ReturnUrl);
+            if (request == null) {
+                throw new ApplicationException ($"No consent request matching request: {ReturnUrl}");
             }
 
-            var client = await _clientStore.FindEnabledClientByIdAsync(request.ClientId);
-            if (client == null)
-            {
-                throw new ApplicationException($"Invalid client id: {request.ClientId}");
+            var client = await _clientStore.FindEnabledClientByIdAsync (request.ClientId);
+            if (client == null) {
+                throw new ApplicationException ($"Invalid client id: {request.ClientId}");
             }
 
-            var resources = await _resourceStore.FindEnabledResourcesByScopeAsync(request.ScopesRequested);
-            if (resources == null || (!resources.IdentityResources.Any() && !resources.ApiResources.Any()))
-            {
-                throw new ApplicationException($"No scopes matching: {request.ScopesRequested.Aggregate((x, y) => x + ", " + y)}");
+            var resources = await _resourceStore.FindEnabledResourcesByScopeAsync (request.ScopesRequested);
+            if (resources == null || (!resources.IdentityResources.Any () && !resources.ApiResources.Any ())) {
+                throw new ApplicationException ($"No scopes matching: {request.ScopesRequested.Aggregate((x, y) => x + ", " + y)}");
             }
 
-            ClientInfo = new ClientInfoModel(client);
-            ConsentInput = new ConsentInputModel
-            {
+            ClientInfo = new ClientInfoModel (client);
+            ConsentInput = new ConsentInputModel {
                 RememberConsent = true,
-                IdentityScopes = resources.IdentityResources.Select(x => CreateScopeViewModel(x, true)).ToList(),
-                ApiScopes = resources.ApiResources.SelectMany(x => x.Scopes).Select(x => CreateScopeViewModel(x, true)).ToList()
+                IdentityScopes = resources.IdentityResources.Select (x => CreateScopeViewModel (x, true)).ToList (),
+                ApiScopes = resources.ApiResources.SelectMany (x => x.Scopes).Select (x => CreateScopeViewModel (x, true)).ToList ()
             };
 
-            if (resources.OfflineAccess)
-            {
-                ConsentInput.ApiScopes.Add(GetOfflineAccessScope(true));
+            if (resources.OfflineAccess) {
+                ConsentInput.ApiScopes.Add (GetOfflineAccessScope (true));
             }
         }
 
-        public virtual async Task<IActionResult> OnPost(string userDecision)
-        {
-            var result = await ProcessConsentAsync();
+        public virtual async Task<IActionResult> OnPost (string userDecision) {
+            var result = await ProcessConsentAsync ();
 
-            if (result.IsRedirect)
-            {
-                return Redirect(result.RedirectUri);
+            if (result.IsRedirect) {
+                return Redirect (result.RedirectUri);
             }
 
-            if (result.HasValidationError)
-            {
+            if (result.HasValidationError) {
                 //ModelState.AddModelError("", result.ValidationError);
-                throw new ApplicationException("Error: " + result.ValidationError);
+                throw new ApplicationException ("Error: " + result.ValidationError);
             }
 
-            throw new ApplicationException("Unknown Error!");
+            throw new ApplicationException ("Unknown Error!");
         }
 
-        protected virtual async Task<ConsentModel.ProcessConsentResult> ProcessConsentAsync()
-        {
-            var result = new ConsentModel.ProcessConsentResult();
+        protected virtual async Task<ConsentModel.ProcessConsentResult> ProcessConsentAsync () {
+            var result = new ConsentModel.ProcessConsentResult ();
 
             ConsentResponse grantedConsent;
 
-            if (ConsentInput.UserDecision == "no")
-            {
+            if (ConsentInput.UserDecision == "no") {
                 grantedConsent = ConsentResponse.Denied;
-            }
-            else
-            {
-                if (!ConsentInput.IdentityScopes.IsNullOrEmpty() || !ConsentInput.ApiScopes.IsNullOrEmpty())
-                {
-                    grantedConsent = new ConsentResponse
-                    {
+            } else {
+                if (!ConsentInput.IdentityScopes.IsNullOrEmpty () || !ConsentInput.ApiScopes.IsNullOrEmpty ()) {
+                    grantedConsent = new ConsentResponse {
                         RememberConsent = ConsentInput.RememberConsent,
-                        ScopesConsented = ConsentInput.GetAllowedScopeNames()
+                        ScopesConsented = ConsentInput.GetAllowedScopeNames ()
                     };
-                }
-                else
-                {
-                    throw new UserFriendlyException("You must pick at least one permission"); //TODO: How to handle this
+                } else {
+                    throw new UserFriendlyException ("You must pick at least one permission"); //TODO: How to handle this
                 }
             }
 
-            if (grantedConsent != null)
-            {
-                var request = await _interaction.GetAuthorizationContextAsync(ReturnUrl);
-                if (request == null)
-                {
+            if (grantedConsent != null) {
+                var request = await _interaction.GetAuthorizationContextAsync (ReturnUrl);
+                if (request == null) {
                     return result;
                 }
 
-                await _interaction.GrantConsentAsync(request, grantedConsent);
+                await _interaction.GrantConsentAsync (request, grantedConsent);
 
                 result.RedirectUri = ReturnUrl; //TODO: ReturnUrlHash?
             }
@@ -136,46 +114,39 @@ namespace Aiwins.Rocket.Account.Web.Pages
             return result;
         }
 
-        protected virtual ConsentModel.ScopeViewModel CreateScopeViewModel(IdentityResource identity, bool check)
-        {
-            return new ConsentModel.ScopeViewModel
-            {
+        protected virtual ConsentModel.ScopeViewModel CreateScopeViewModel (IdentityResource identity, bool check) {
+            return new ConsentModel.ScopeViewModel {
                 Name = identity.Name,
-                DisplayName = identity.DisplayName,
-                Description = identity.Description,
-                Emphasize = identity.Emphasize,
-                Required = identity.Required,
-                Checked = check || identity.Required
+                    DisplayName = identity.DisplayName,
+                    Description = identity.Description,
+                    Emphasize = identity.Emphasize,
+                    Required = identity.Required,
+                    Checked = check || identity.Required
             };
         }
 
-        protected virtual ConsentModel.ScopeViewModel CreateScopeViewModel(Scope scope, bool check)
-        {
-            return new ConsentModel.ScopeViewModel
-            {
+        protected virtual ConsentModel.ScopeViewModel CreateScopeViewModel (Scope scope, bool check) {
+            return new ConsentModel.ScopeViewModel {
                 Name = scope.Name,
-                DisplayName = scope.DisplayName,
-                Description = scope.Description,
-                Emphasize = scope.Emphasize,
-                Required = scope.Required,
-                Checked = check || scope.Required
+                    DisplayName = scope.DisplayName,
+                    Description = scope.Description,
+                    Emphasize = scope.Emphasize,
+                    Required = scope.Required,
+                    Checked = check || scope.Required
             };
         }
 
-        protected virtual ConsentModel.ScopeViewModel GetOfflineAccessScope(bool check)
-        {
-            return new ConsentModel.ScopeViewModel
-            {
+        protected virtual ConsentModel.ScopeViewModel GetOfflineAccessScope (bool check) {
+            return new ConsentModel.ScopeViewModel {
                 Name = IdentityServer4.IdentityServerConstants.StandardScopes.OfflineAccess,
-                DisplayName = "Offline Access", //TODO: Localize
-                Description = "Access to your applications and resources, even when you are offline",
-                Emphasize = true,
-                Checked = check
+                    DisplayName = "Offline Access", //TODO: Localize
+                    Description = "Access to your applications and resources, even when you are offline",
+                    Emphasize = true,
+                    Checked = check
             };
         }
 
-        public class ConsentInputModel
-        {
+        public class ConsentInputModel {
             public List<ConsentModel.ScopeViewModel> IdentityScopes { get; set; }
 
             public List<ConsentModel.ScopeViewModel> ApiScopes { get; set; }
@@ -185,16 +156,14 @@ namespace Aiwins.Rocket.Account.Web.Pages
 
             public bool RememberConsent { get; set; }
 
-            public List<string> GetAllowedScopeNames()
-            {
-                var identityScopes = IdentityScopes ?? new List<ConsentModel.ScopeViewModel>();
-                var apiScopes = IdentityScopes ?? new List<ConsentModel.ScopeViewModel>();
-                return identityScopes.Union(apiScopes).Where(s => s.Checked).Select(s => s.Name).ToList();
+            public List<string> GetAllowedScopeNames () {
+                var identityScopes = IdentityScopes ?? new List<ConsentModel.ScopeViewModel> ();
+                var apiScopes = IdentityScopes ?? new List<ConsentModel.ScopeViewModel> ();
+                return identityScopes.Union (apiScopes).Where (s => s.Checked).Select (s => s.Name).ToList ();
             }
         }
 
-        public class ScopeViewModel
-        {
+        public class ScopeViewModel {
             [Required]
             [HiddenInput]
             public string Name { get; set; }
@@ -210,8 +179,7 @@ namespace Aiwins.Rocket.Account.Web.Pages
             public bool Required { get; set; }
         }
 
-        public class ProcessConsentResult
-        {
+        public class ProcessConsentResult {
             public bool IsRedirect => RedirectUri != null;
             public string RedirectUri { get; set; }
 
@@ -219,8 +187,7 @@ namespace Aiwins.Rocket.Account.Web.Pages
             public string ValidationError { get; set; }
         }
 
-        public class ClientInfoModel
-        {
+        public class ClientInfoModel {
             public string ClientName { get; set; }
 
             public string ClientUrl { get; set; }
@@ -229,8 +196,7 @@ namespace Aiwins.Rocket.Account.Web.Pages
 
             public bool AllowRememberConsent { get; set; }
 
-            public ClientInfoModel(Client client)
-            {
+            public ClientInfoModel (Client client) {
                 //TODO: Automap
                 ClientName = client.ClientId;
                 ClientUrl = client.ClientUri;

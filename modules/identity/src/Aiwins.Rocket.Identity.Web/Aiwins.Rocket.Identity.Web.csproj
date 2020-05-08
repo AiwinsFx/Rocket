@@ -34,9 +34,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Aiwins.Rocket.Identity.HttpApi\Aiwins.Rocket.Identity.HttpApi.csproj" />
-
-    <ProjectReference Include="..\..\..\permission-management\src\Aiwins.Rocket.PermissionManagement.Web\Aiwins.Rocket.PermissionManagement.Web.csproj" />
-
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap\Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AutoMapper\Aiwins.Rocket.AutoMapper.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.csproj" />

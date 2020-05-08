@@ -7,33 +7,27 @@ using Aiwins.Rocket.Validation;
 using Aiwins.Rocket.Validation.Localization;
 using Aiwins.Rocket.VirtualFileSystem;
 
-namespace Aiwins.Rocket.Identity
-{
-    [DependsOn(
-        typeof(RocketUsersDomainSharedModule),
-        typeof(RocketValidationModule)
-        )]
-    public class RocketIdentityDomainSharedModule : RocketModule
-    {
-        public override void ConfigureServices(ServiceConfigurationContext context)
-        {
-            Configure<RocketVirtualFileSystemOptions>(options =>
-            {
-                options.FileSets.AddEmbedded<RocketIdentityDomainSharedModule>();
+namespace Aiwins.Rocket.Identity {
+    [DependsOn (
+        typeof (RocketUsersDomainSharedModule),
+        typeof (RocketValidationModule)
+    )]
+    public class RocketIdentityDomainSharedModule : RocketModule {
+        public override void ConfigureServices (ServiceConfigurationContext context) {
+            Configure<RocketVirtualFileSystemOptions> (options => {
+                options.FileSets.AddEmbedded<RocketIdentityDomainSharedModule> ();
             });
 
-            Configure<RocketLocalizationOptions>(options =>
-            {
+            Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<IdentityResource>("en")
-                    .AddBaseTypes(
-                        typeof(RocketValidationResource)
-                    ).AddVirtualJson("/Aiwins/Rocket/Identity/Localization");
+                    .Add<IdentityResource> ("zh-Hans")
+                    .AddBaseTypes (
+                        typeof (RocketValidationResource)
+                    ).AddVirtualJson ("/Aiwins/Rocket/Identity/Localization");
             });
 
-            Configure<RocketExceptionLocalizationOptions>(options =>
-            {
-                options.MapCodeNamespace("Aiwins.Rocket.Identity", typeof(IdentityResource));
+            Configure<RocketExceptionLocalizationOptions> (options => {
+                options.MapCodeNamespace ("Aiwins.Rocket.Identity", typeof (IdentityResource));
             });
         }
     }

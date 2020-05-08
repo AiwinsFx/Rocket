@@ -2,10 +2,8 @@
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Entities;
 
-namespace Aiwins.Rocket.BackgroundJobs
-{
-    public class BackgroundJobRecord : AggregateRoot<Guid>, IHasCreationTime
-    {
+namespace Aiwins.Rocket.BackgroundJobs {
+    public class BackgroundJobRecord : AggregateRoot<Guid>, IHasCreationTime {
         /// <summary>
         /// Type of the job.
         /// It's AssemblyQualifiedName of job type.
@@ -48,15 +46,12 @@ namespace Aiwins.Rocket.BackgroundJobs
         /// </summary>
         public virtual BackgroundJobPriority Priority { get; set; }
 
-        protected BackgroundJobRecord()
-        {
-            
+        protected BackgroundJobRecord () {
+
         }
 
-        public BackgroundJobRecord(Guid id)
-            : base(id)
-        {
-            
+        public BackgroundJobRecord (Guid id) : base (id) {
+
         }
     }
 }

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
 using Aiwins.Rocket.EntityFrameworkCore;
 using Aiwins.Rocket.EntityFrameworkCore.Modeling;
 using Aiwins.Rocket.EntityFrameworkCore.ValueComparers;
@@ -10,328 +9,292 @@ using Aiwins.Rocket.IdentityServer.Clients;
 using Aiwins.Rocket.IdentityServer.Devices;
 using Aiwins.Rocket.IdentityServer.Grants;
 using Aiwins.Rocket.IdentityServer.IdentityResources;
+using Microsoft.EntityFrameworkCore;
 
-namespace Aiwins.Rocket.IdentityServer.EntityFrameworkCore
-{
-    public static class IdentityServerDbContextModelCreatingExtensions
-    {
-        public static void ConfigureIdentityServer(
+namespace Aiwins.Rocket.IdentityServer.EntityFrameworkCore {
+    public static class IdentityServerDbContextModelCreatingExtensions {
+        public static void ConfigureIdentityServer (
             this ModelBuilder builder,
-            Action<IdentityServerModelBuilderConfigurationOptions> optionsAction = null)
-        {
-            Check.NotNull(builder, nameof(builder));
+            Action<IdentityServerModelBuilderConfigurationOptions> optionsAction = null) {
+            Check.NotNull (builder, nameof (builder));
 
-            var options = new IdentityServerModelBuilderConfigurationOptions(
+            var options = new IdentityServerModelBuilderConfigurationOptions (
                 RocketIdentityServerDbProperties.DbTablePrefix,
                 RocketIdentityServerDbProperties.DbSchema
             );
 
-            optionsAction?.Invoke(options);
+            optionsAction?.Invoke (options);
 
-            builder.Entity<Client>(b =>
-            {
-                b.ToTable(options.TablePrefix + "Clients", options.Schema);
+            builder.Entity<Client> (b => {
+                b.ToTable (options.TablePrefix + "Clients", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.Property(x => x.ClientId).HasMaxLength(ClientConsts.ClientIdMaxLength).IsRequired();
-                b.Property(x => x.ProtocolType).HasMaxLength(ClientConsts.ProtocolTypeMaxLength).IsRequired();
-                b.Property(x => x.ClientName).HasMaxLength(ClientConsts.ClientNameMaxLength);
-                b.Property(x => x.ClientUri).HasMaxLength(ClientConsts.ClientUriMaxLength);
-                b.Property(x => x.LogoUri).HasMaxLength(ClientConsts.LogoUriMaxLength);
-                b.Property(x => x.Description).HasMaxLength(ClientConsts.DescriptionMaxLength);
-                b.Property(x => x.FrontChannelLogoutUri).HasMaxLength(ClientConsts.FrontChannelLogoutUriMaxLength);
-                b.Property(x => x.BackChannelLogoutUri).HasMaxLength(ClientConsts.BackChannelLogoutUriMaxLength);
-                b.Property(x => x.ClientClaimsPrefix).HasMaxLength(ClientConsts.ClientClaimsPrefixMaxLength);
-                b.Property(x => x.PairWiseSubjectSalt).HasMaxLength(ClientConsts.PairWiseSubjectSaltMaxLength);
-                b.Property(x => x.UserCodeType).HasMaxLength(ClientConsts.UserCodeTypeMaxLength);
+                b.Property (x => x.ClientId).HasMaxLength (ClientConsts.ClientIdMaxLength).IsRequired ();
+                b.Property (x => x.ProtocolType).HasMaxLength (ClientConsts.ProtocolTypeMaxLength).IsRequired ();
+                b.Property (x => x.ClientName).HasMaxLength (ClientConsts.ClientNameMaxLength);
+                b.Property (x => x.ClientUri).HasMaxLength (ClientConsts.ClientUriMaxLength);
+                b.Property (x => x.LogoUri).HasMaxLength (ClientConsts.LogoUriMaxLength);
+                b.Property (x => x.Description).HasMaxLength (ClientConsts.DescriptionMaxLength);
+                b.Property (x => x.FrontChannelLogoutUri).HasMaxLength (ClientConsts.FrontChannelLogoutUriMaxLength);
+                b.Property (x => x.BackChannelLogoutUri).HasMaxLength (ClientConsts.BackChannelLogoutUriMaxLength);
+                b.Property (x => x.ClientClaimsPrefix).HasMaxLength (ClientConsts.ClientClaimsPrefixMaxLength);
+                b.Property (x => x.PairWiseSubjectSalt).HasMaxLength (ClientConsts.PairWiseSubjectSaltMaxLength);
+                b.Property (x => x.UserCodeType).HasMaxLength (ClientConsts.UserCodeTypeMaxLength);
 
-                b.HasMany(x => x.AllowedScopes).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.ClientSecrets).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.AllowedGrantTypes).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.AllowedCorsOrigins).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.RedirectUris).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.PostLogoutRedirectUris).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.IdentityProviderRestrictions).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.Claims).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
-                b.HasMany(x => x.Properties).WithOne().HasForeignKey(x => x.ClientId).IsRequired();
+                b.HasMany (x => x.AllowedScopes).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.ClientSecrets).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.AllowedGrantTypes).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.AllowedCorsOrigins).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.RedirectUris).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.PostLogoutRedirectUris).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.IdentityProviderRestrictions).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.Claims).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
+                b.HasMany (x => x.Properties).WithOne ().HasForeignKey (x => x.ClientId).IsRequired ();
 
-                b.HasIndex(x => x.ClientId);
+                b.HasIndex (x => x.ClientId);
             });
 
-            builder.Entity<ClientGrantType>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientGrantTypes", options.Schema);
+            builder.Entity<ClientGrantType> (b => {
+                b.ToTable (options.TablePrefix + "ClientGrantTypes", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.GrantType });
+                b.HasKey (x => new { x.ClientId, x.GrantType });
 
-                b.Property(x => x.GrantType).HasMaxLength(ClientGrantTypeConsts.GrantTypeMaxLength).IsRequired();
+                b.Property (x => x.GrantType).HasMaxLength (ClientGrantTypeConsts.GrantTypeMaxLength).IsRequired ();
             });
 
-            builder.Entity<ClientRedirectUri>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientRedirectUris", options.Schema);
+            builder.Entity<ClientRedirectUri> (b => {
+                b.ToTable (options.TablePrefix + "ClientRedirectUris", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.RedirectUri });
+                b.HasKey (x => new { x.ClientId, x.RedirectUri });
 
-                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql)
-                {
-                    b.Property(x => x.RedirectUri).HasMaxLength(300).IsRequired();
-                }
-                else
-                {
-                    b.Property(x => x.RedirectUri).HasMaxLength(ClientRedirectUriConsts.RedirectUriMaxLength).IsRequired();
+                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql) {
+                    b.Property (x => x.RedirectUri).HasMaxLength (300).IsRequired ();
+                } else {
+                    b.Property (x => x.RedirectUri).HasMaxLength (ClientRedirectUriConsts.RedirectUriMaxLength).IsRequired ();
                 }
             });
 
-            builder.Entity<ClientPostLogoutRedirectUri>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientPostLogoutRedirectUris", options.Schema);
+            builder.Entity<ClientPostLogoutRedirectUri> (b => {
+                b.ToTable (options.TablePrefix + "ClientPostLogoutRedirectUris", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.PostLogoutRedirectUri });
+                b.HasKey (x => new { x.ClientId, x.PostLogoutRedirectUri });
 
-                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql)
-                {
-                    b.Property(x => x.PostLogoutRedirectUri).HasMaxLength(300).IsRequired();
-                }
-                else
-                {
-                    b.Property(x => x.PostLogoutRedirectUri).HasMaxLength(ClientPostLogoutRedirectUriConsts.PostLogoutRedirectUriMaxLength).IsRequired();
+                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql) {
+                    b.Property (x => x.PostLogoutRedirectUri).HasMaxLength (300).IsRequired ();
+                } else {
+                    b.Property (x => x.PostLogoutRedirectUri).HasMaxLength (ClientPostLogoutRedirectUriConsts.PostLogoutRedirectUriMaxLength).IsRequired ();
                 }
             });
 
-            builder.Entity<ClientScope>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientScopes", options.Schema);
+            builder.Entity<ClientScope> (b => {
+                b.ToTable (options.TablePrefix + "ClientScopes", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.Scope });
+                b.HasKey (x => new { x.ClientId, x.Scope });
 
-                b.Property(x => x.Scope).HasMaxLength(ClientScopeConsts.ScopeMaxLength).IsRequired();
+                b.Property (x => x.Scope).HasMaxLength (ClientScopeConsts.ScopeMaxLength).IsRequired ();
             });
 
-            builder.Entity<ClientSecret>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientSecrets", options.Schema);
+            builder.Entity<ClientSecret> (b => {
+                b.ToTable (options.TablePrefix + "ClientSecrets", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.Type, x.Value });
+                b.HasKey (x => new { x.ClientId, x.Type, x.Value });
 
-                b.Property(x => x.Type).HasMaxLength(SecretConsts.TypeMaxLength).IsRequired();
+                b.Property (x => x.Type).HasMaxLength (SecretConsts.TypeMaxLength).IsRequired ();
 
-                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql)
-                {
-                    b.Property(x => x.Value).HasMaxLength(300).IsRequired();
-                }
-                else
-                {
-                    b.Property(x => x.Value).HasMaxLength(SecretConsts.ValueMaxLength).IsRequired();
+                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql) {
+                    b.Property (x => x.Value).HasMaxLength (300).IsRequired ();
+                } else {
+                    b.Property (x => x.Value).HasMaxLength (SecretConsts.ValueMaxLength).IsRequired ();
                 }
 
-                b.Property(x => x.Description).HasMaxLength(SecretConsts.DescriptionMaxLength);
+                b.Property (x => x.Description).HasMaxLength (SecretConsts.DescriptionMaxLength);
             });
 
-            builder.Entity<ClientClaim>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientClaims", options.Schema);
+            builder.Entity<ClientClaim> (b => {
+                b.ToTable (options.TablePrefix + "ClientClaims", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.Type, x.Value });
+                b.HasKey (x => new { x.ClientId, x.Type, x.Value });
 
-                b.Property(x => x.Type).HasMaxLength(ClientClaimConsts.TypeMaxLength).IsRequired();
-                b.Property(x => x.Value).HasMaxLength(ClientClaimConsts.ValueMaxLength).IsRequired();
+                b.Property (x => x.Type).HasMaxLength (ClientClaimConsts.TypeMaxLength).IsRequired ();
+                b.Property (x => x.Value).HasMaxLength (ClientClaimConsts.ValueMaxLength).IsRequired ();
             });
 
-            builder.Entity<ClientIdPRestriction>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientIdPRestrictions", options.Schema);
+            builder.Entity<ClientIdPRestriction> (b => {
+                b.ToTable (options.TablePrefix + "ClientIdPRestrictions", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.Provider });
+                b.HasKey (x => new { x.ClientId, x.Provider });
 
-                b.Property(x => x.Provider).HasMaxLength(ClientIdPRestrictionConsts.ProviderMaxLength).IsRequired();
+                b.Property (x => x.Provider).HasMaxLength (ClientIdPRestrictionConsts.ProviderMaxLength).IsRequired ();
             });
 
-            builder.Entity<ClientCorsOrigin>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientCorsOrigins", options.Schema);
+            builder.Entity<ClientCorsOrigin> (b => {
+                b.ToTable (options.TablePrefix + "ClientCorsOrigins", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.Origin });
+                b.HasKey (x => new { x.ClientId, x.Origin });
 
-                b.Property(x => x.Origin).HasMaxLength(ClientCorsOriginConsts.OriginMaxLength).IsRequired();
+                b.Property (x => x.Origin).HasMaxLength (ClientCorsOriginConsts.OriginMaxLength).IsRequired ();
             });
 
-            builder.Entity<ClientProperty>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ClientProperties", options.Schema);
+            builder.Entity<ClientProperty> (b => {
+                b.ToTable (options.TablePrefix + "ClientProperties", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ClientId, x.Key });
+                b.HasKey (x => new { x.ClientId, x.Key });
 
-                b.Property(x => x.Key).HasMaxLength(ClientPropertyConsts.KeyMaxLength).IsRequired();
-                b.Property(x => x.Value).HasMaxLength(ClientPropertyConsts.ValueMaxLength).IsRequired();
+                b.Property (x => x.Key).HasMaxLength (ClientPropertyConsts.KeyMaxLength).IsRequired ();
+                b.Property (x => x.Value).HasMaxLength (ClientPropertyConsts.ValueMaxLength).IsRequired ();
             });
 
-            builder.Entity<PersistedGrant>(b =>
-            {
-                b.ToTable(options.TablePrefix + "PersistedGrants", options.Schema);
+            builder.Entity<PersistedGrant> (b => {
+                b.ToTable (options.TablePrefix + "PersistedGrants", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.Property(x => x.Key).HasMaxLength(PersistedGrantConsts.KeyMaxLength).ValueGeneratedNever();
-                b.Property(x => x.Type).HasMaxLength(PersistedGrantConsts.TypeMaxLength).IsRequired();
-                b.Property(x => x.SubjectId).HasMaxLength(PersistedGrantConsts.SubjectIdMaxLength);
-                b.Property(x => x.ClientId).HasMaxLength(PersistedGrantConsts.ClientIdMaxLength).IsRequired();
-                b.Property(x => x.CreationTime).IsRequired();
+                b.Property (x => x.Key).HasMaxLength (PersistedGrantConsts.KeyMaxLength).ValueGeneratedNever ();
+                b.Property (x => x.Type).HasMaxLength (PersistedGrantConsts.TypeMaxLength).IsRequired ();
+                b.Property (x => x.SubjectId).HasMaxLength (PersistedGrantConsts.SubjectIdMaxLength);
+                b.Property (x => x.ClientId).HasMaxLength (PersistedGrantConsts.ClientIdMaxLength).IsRequired ();
+                b.Property (x => x.CreationTime).IsRequired ();
 
-                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql)
-                {
-                    b.Property(x => x.Data).HasMaxLength(10000).IsRequired();
-                }
-                else
-                {
-                    b.Property(x => x.Data).HasMaxLength(PersistedGrantConsts.DataMaxLength).IsRequired();
+                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql) {
+                    b.Property (x => x.Data).HasMaxLength (10000).IsRequired ();
+                } else {
+                    b.Property (x => x.Data).HasMaxLength (PersistedGrantConsts.DataMaxLength).IsRequired ();
                 }
 
-                b.HasKey(x => x.Key); //TODO: What about Id!!!
+                b.HasKey (x => x.Key); //TODO: What about Id!!!
 
-                b.HasIndex(x => new { x.SubjectId, x.ClientId, x.Type });
-                b.HasIndex(x => x.Expiration);
+                b.HasIndex (x => new { x.SubjectId, x.ClientId, x.Type });
+                b.HasIndex (x => x.Expiration);
             });
 
-            builder.Entity<IdentityResource>(b =>
-            {
-                b.ToTable(options.TablePrefix + "IdentityResources", options.Schema);
+            builder.Entity<IdentityResource> (b => {
+                b.ToTable (options.TablePrefix + "IdentityResources", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.Property(x => x.Name).HasMaxLength(IdentityResourceConsts.NameMaxLength).IsRequired();
-                b.Property(x => x.DisplayName).HasMaxLength(IdentityResourceConsts.DisplayNameMaxLength);
-                b.Property(x => x.Description).HasMaxLength(IdentityResourceConsts.DescriptionMaxLength);
-                b.Property(x => x.Properties)
-                    .HasConversion(new RocketJsonValueConverter<Dictionary<string, string>>())
-                    .Metadata.SetValueComparer(new RocketDictionaryValueComparer<string, string>());
+                b.Property (x => x.Name).HasMaxLength (IdentityResourceConsts.NameMaxLength).IsRequired ();
+                b.Property (x => x.DisplayName).HasMaxLength (IdentityResourceConsts.DisplayNameMaxLength);
+                b.Property (x => x.Description).HasMaxLength (IdentityResourceConsts.DescriptionMaxLength);
+                b.Property (x => x.Properties)
+                    .HasConversion (new RocketJsonValueConverter<Dictionary<string, string>> ())
+                    .Metadata.SetValueComparer (new RocketDictionaryValueComparer<string, string> ());
 
-                b.HasMany(x => x.UserClaims).WithOne().HasForeignKey(x => x.IdentityResourceId).IsRequired();
+                b.HasMany (x => x.UserClaims).WithOne ().HasForeignKey (x => x.IdentityResourceId).IsRequired ();
             });
 
-            builder.Entity<IdentityClaim>(b =>
-            {
-                b.ToTable(options.TablePrefix + "IdentityClaims", options.Schema);
+            builder.Entity<IdentityClaim> (b => {
+                b.ToTable (options.TablePrefix + "IdentityClaims", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.IdentityResourceId, x.Type });
+                b.HasKey (x => new { x.IdentityResourceId, x.Type });
 
-                b.Property(x => x.Type).HasMaxLength(UserClaimConsts.TypeMaxLength).IsRequired();
+                b.Property (x => x.Type).HasMaxLength (UserClaimConsts.TypeMaxLength).IsRequired ();
             });
 
-            builder.Entity<ApiResource>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ApiResources", options.Schema);
+            builder.Entity<ApiResource> (b => {
+                b.ToTable (options.TablePrefix + "ApiResources", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.Property(x => x.Name).HasMaxLength(ApiResourceConsts.NameMaxLength).IsRequired();
-                b.Property(x => x.DisplayName).HasMaxLength(ApiResourceConsts.DisplayNameMaxLength);
-                b.Property(x => x.Description).HasMaxLength(ApiResourceConsts.DescriptionMaxLength);
-                b.Property(x => x.Properties)
-                    .HasConversion(new RocketJsonValueConverter<Dictionary<string, string>>())
-                    .Metadata.SetValueComparer(new RocketDictionaryValueComparer<string, string>());
+                b.Property (x => x.Name).HasMaxLength (ApiResourceConsts.NameMaxLength).IsRequired ();
+                b.Property (x => x.DisplayName).HasMaxLength (ApiResourceConsts.DisplayNameMaxLength);
+                b.Property (x => x.Description).HasMaxLength (ApiResourceConsts.DescriptionMaxLength);
+                b.Property (x => x.Properties)
+                    .HasConversion (new RocketJsonValueConverter<Dictionary<string, string>> ())
+                    .Metadata.SetValueComparer (new RocketDictionaryValueComparer<string, string> ());
 
-                b.HasMany(x => x.Secrets).WithOne().HasForeignKey(x => x.ApiResourceId).IsRequired();
-                b.HasMany(x => x.Scopes).WithOne().HasForeignKey(x => x.ApiResourceId).IsRequired();
-                b.HasMany(x => x.UserClaims).WithOne().HasForeignKey(x => x.ApiResourceId).IsRequired();
+                b.HasMany (x => x.Secrets).WithOne ().HasForeignKey (x => x.ApiResourceId).IsRequired ();
+                b.HasMany (x => x.Scopes).WithOne ().HasForeignKey (x => x.ApiResourceId).IsRequired ();
+                b.HasMany (x => x.UserClaims).WithOne ().HasForeignKey (x => x.ApiResourceId).IsRequired ();
             });
 
-            builder.Entity<ApiSecret>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ApiSecrets", options.Schema);
+            builder.Entity<ApiSecret> (b => {
+                b.ToTable (options.TablePrefix + "ApiSecrets", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ApiResourceId, x.Type, x.Value });
+                b.HasKey (x => new { x.ApiResourceId, x.Type, x.Value });
 
-                b.Property(x => x.Type).HasMaxLength(SecretConsts.TypeMaxLength).IsRequired();
-                b.Property(x => x.Description).HasMaxLength(SecretConsts.DescriptionMaxLength);
+                b.Property (x => x.Type).HasMaxLength (SecretConsts.TypeMaxLength).IsRequired ();
+                b.Property (x => x.Description).HasMaxLength (SecretConsts.DescriptionMaxLength);
 
-                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql)
-                {
-                    b.Property(x => x.Value).HasMaxLength(300).IsRequired();
-                }
-                else
-                {
-                    b.Property(x => x.Value).HasMaxLength(SecretConsts.ValueMaxLength).IsRequired();
+                if (options.DatabaseProvider == EfCoreDatabaseProvider.MySql) {
+                    b.Property (x => x.Value).HasMaxLength (300).IsRequired ();
+                } else {
+                    b.Property (x => x.Value).HasMaxLength (SecretConsts.ValueMaxLength).IsRequired ();
                 }
             });
 
-            builder.Entity<ApiResourceClaim>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ApiClaims", options.Schema);
+            builder.Entity<ApiResourceClaim> (b => {
+                b.ToTable (options.TablePrefix + "ApiClaims", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ApiResourceId, x.Type });
+                b.HasKey (x => new { x.ApiResourceId, x.Type });
 
-                b.Property(x => x.Type).HasMaxLength(UserClaimConsts.TypeMaxLength).IsRequired();
+                b.Property (x => x.Type).HasMaxLength (UserClaimConsts.TypeMaxLength).IsRequired ();
             });
 
-            builder.Entity<ApiScope>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ApiScopes", options.Schema);
+            builder.Entity<ApiScope> (b => {
+                b.ToTable (options.TablePrefix + "ApiScopes", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ApiResourceId, x.Name });
+                b.HasKey (x => new { x.ApiResourceId, x.Name });
 
-                b.Property(x => x.Name).HasMaxLength(ApiScopeConsts.NameMaxLength).IsRequired();
-                b.Property(x => x.DisplayName).HasMaxLength(ApiScopeConsts.DisplayNameMaxLength);
-                b.Property(x => x.Description).HasMaxLength(ApiScopeConsts.DescriptionMaxLength);
+                b.Property (x => x.Name).HasMaxLength (ApiScopeConsts.NameMaxLength).IsRequired ();
+                b.Property (x => x.DisplayName).HasMaxLength (ApiScopeConsts.DisplayNameMaxLength);
+                b.Property (x => x.Description).HasMaxLength (ApiScopeConsts.DescriptionMaxLength);
 
-                b.HasMany(x => x.UserClaims).WithOne().HasForeignKey(x => new { x.ApiResourceId, x.Name }).IsRequired();
+                b.HasMany (x => x.UserClaims).WithOne ().HasForeignKey (x => new { x.ApiResourceId, x.Name }).IsRequired ();
             });
 
-            builder.Entity<ApiScopeClaim>(b =>
-            {
-                b.ToTable(options.TablePrefix + "ApiScopeClaims", options.Schema);
+            builder.Entity<ApiScopeClaim> (b => {
+                b.ToTable (options.TablePrefix + "ApiScopeClaims", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.HasKey(x => new { x.ApiResourceId, x.Name, x.Type });
+                b.HasKey (x => new { x.ApiResourceId, x.Name, x.Type });
 
-                b.Property(x => x.Type).HasMaxLength(UserClaimConsts.TypeMaxLength).IsRequired();
-                b.Property(x => x.Name).HasMaxLength(ApiScopeConsts.NameMaxLength).IsRequired();
+                b.Property (x => x.Type).HasMaxLength (UserClaimConsts.TypeMaxLength).IsRequired ();
+                b.Property (x => x.Name).HasMaxLength (ApiScopeConsts.NameMaxLength).IsRequired ();
             });
 
-            builder.Entity<DeviceFlowCodes>(b =>
-            {
-                b.ToTable(options.TablePrefix + "DeviceFlowCodes", options.Schema);
+            builder.Entity<DeviceFlowCodes> (b => {
+                b.ToTable (options.TablePrefix + "DeviceFlowCodes", options.Schema);
 
-                b.ConfigureByConvention();
+                b.ConfigureByConvention ();
 
-                b.Property(x => x.DeviceCode).HasMaxLength(200).IsRequired();
-                b.Property(x => x.UserCode).HasMaxLength(200).IsRequired();
-                b.Property(x => x.SubjectId).HasMaxLength(200);
-                b.Property(x => x.ClientId).HasMaxLength(200).IsRequired();
-                b.Property(x => x.Expiration).IsRequired();
-                b.Property(x => x.Data).HasMaxLength(50000).IsRequired();
+                b.Property (x => x.DeviceCode).HasMaxLength (200).IsRequired ();
+                b.Property (x => x.UserCode).HasMaxLength (200).IsRequired ();
+                b.Property (x => x.SubjectId).HasMaxLength (200);
+                b.Property (x => x.ClientId).HasMaxLength (200).IsRequired ();
+                b.Property (x => x.Expiration).IsRequired ();
+                b.Property (x => x.Data).HasMaxLength (50000).IsRequired ();
 
-                b.HasIndex(x => new { x.UserCode }).IsUnique();
-                b.HasIndex(x => x.DeviceCode).IsUnique();
-                b.HasIndex(x => x.Expiration);
+                b.HasIndex (x => new { x.UserCode }).IsUnique ();
+                b.HasIndex (x => x.DeviceCode).IsUnique ();
+                b.HasIndex (x => x.Expiration);
             });
         }
     }

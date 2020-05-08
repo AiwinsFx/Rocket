@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.AuditLogging
-{
-    public static class AuditLogConsts
-    {
+﻿namespace Aiwins.Rocket.AuditLogging {
+    public static class AuditLogConsts {
         public const int MaxApplicationNameLength = 96;
 
         public const int MaxClientIpAddressLength = 64;

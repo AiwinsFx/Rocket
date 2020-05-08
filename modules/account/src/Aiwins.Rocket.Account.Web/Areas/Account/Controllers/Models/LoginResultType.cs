@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Account.Web.Areas.Account.Controllers.Models
-{
-    public enum LoginResultType : byte
-    {
+﻿namespace Aiwins.Rocket.Account.Web.Areas.Account.Controllers.Models {
+    public enum LoginResultType : byte {
         Success = 1,
 
         InvalidUserNameOrPassword = 2,

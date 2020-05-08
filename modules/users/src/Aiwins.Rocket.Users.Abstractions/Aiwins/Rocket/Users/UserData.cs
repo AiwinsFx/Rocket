@@ -1,10 +1,8 @@
 using System;
 using JetBrains.Annotations;
 
-namespace Aiwins.Rocket.Users
-{
-    public class UserData : IUserData
-    {
+namespace Aiwins.Rocket.Users {
+    public class UserData : IUserData {
         public Guid Id { get; set; }
 
         public Guid? TenantId { get; set; }
@@ -23,13 +21,11 @@ namespace Aiwins.Rocket.Users
 
         public bool PhoneNumberConfirmed { get; set; }
 
-        public UserData()
-        {
+        public UserData () {
 
         }
 
-        public UserData(IUserData userData)
-        {
+        public UserData (IUserData userData) {
             Id = userData.Id;
             UserName = userData.UserName;
             Email = userData.Email;
@@ -41,17 +37,11 @@ namespace Aiwins.Rocket.Users
             TenantId = userData.TenantId;
         }
 
-        public UserData(
-            Guid id,
-            [NotNull] string userName,
-            [CanBeNull] string email = null,
-            [CanBeNull] string name = null,
-            [CanBeNull] string surname = null,
-            bool emailConfirmed = false,
-            [CanBeNull] string phoneNumber = null,
+        public UserData (
+            Guid id, [NotNull] string userName, [CanBeNull] string email = null, [CanBeNull] string name = null, [CanBeNull] string surname = null,
+            bool emailConfirmed = false, [CanBeNull] string phoneNumber = null,
             bool phoneNumberConfirmed = false,
-            Guid? tenantId = null)
-        {
+            Guid? tenantId = null) {
             Id = id;
             UserName = userName;
             Email = email;

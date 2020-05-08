@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Identity
-{
-    public enum IdentityClaimValueType
-    {
+﻿namespace Aiwins.Rocket.Identity {
+    public enum IdentityClaimValueType {
         String,
         Int,
         Boolean,
