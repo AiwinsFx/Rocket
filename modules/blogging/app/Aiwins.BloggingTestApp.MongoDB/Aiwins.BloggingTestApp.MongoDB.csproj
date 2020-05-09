@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Aiwins.Blogging.MongoDB\Aiwins.Blogging.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.MongoDB\Aiwins.Rocket.PermissionManagement.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\setting-management\src\Aiwins.Rocket.SettingManagement.MongoDB\Aiwins.Rocket.SettingManagement.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.MongoDB\Aiwins.Rocket.Identity.MongoDB.csproj" />
+  </ItemGroup>
+
+</Project>

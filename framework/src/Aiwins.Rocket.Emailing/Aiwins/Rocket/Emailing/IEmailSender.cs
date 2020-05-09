@@ -1,36 +1,38 @@
 ﻿using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace Aiwins.Rocket.Emailing {
+namespace Aiwins.Rocket.Emailing
+{
     /// <summary>
-    /// 电子邮件发送方
+    /// This service can be used simply sending emails.
     /// </summary>
-    public interface IEmailSender {
+    public interface IEmailSender
+    {
         /// <summary>
-        /// 发送邮件
+        /// Sends an email.
         /// </summary>
-        Task SendAsync (string to, string subject, string body, bool isBodyHtml = true);
+        Task SendAsync(string to, string subject, string body, bool isBodyHtml = true);
 
         /// <summary>
-        /// 发送邮件
+        /// Sends an email.
         /// </summary>
-        Task SendAsync (string from, string to, string subject, string body, bool isBodyHtml = true);
+        Task SendAsync(string from, string to, string subject, string body, bool isBodyHtml = true);
 
         /// <summary>
-        /// 发送邮件
+        /// Sends an email.
         /// </summary>
-        /// <param name="mail">邮件信息</param>
+        /// <param name="mail">Mail to be sent</param>
         /// <param name="normalize">
-        /// 是否规范化电子邮件信息?
-        /// 如果设置为true, 则会以UTF-8编码格式设置发送方的信息
+        /// Should normalize email?
+        /// If true, it sets sender address/name if it's not set before and makes mail encoding UTF-8. 
         /// </param>
-        Task SendAsync (MailMessage mail, bool normalize = true);
+        Task SendAsync(MailMessage mail, bool normalize = true);
 
         /// <summary>
-        /// 添加到后台任务队列
+        /// Adds an email to queue to send via background jobs.
         /// </summary>
-        Task QueueAsync (string to, string subject, string body, bool isBodyHtml = true);
+        Task QueueAsync(string to, string subject, string body, bool isBodyHtml = true);
 
-        //TODO: 考虑添加其他队列方法. 问题: MailMessage不能序列化，因此不能在后台作业中使用
+        //TODO: Add other Queue methods too. Problem: MailMessage is not serializable so can not be used in background jobs.
     }
 }

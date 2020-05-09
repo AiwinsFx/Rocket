@@ -29,7 +29,7 @@ namespace Aiwins.Rocket.Validation {
         public virtual List<ValidationResult> GetErrors (object validatingObject, string name = null, bool allowNull = false) {
             if (validatingObject == null) {
                 if (allowNull) {
-                    return new List<ValidationResult> (); //TODO: 考虑返回一个验证结果的数组
+                    return new List<ValidationResult> (); //TODO: Returning an array would be more performent
                 } else {
                     return new List<ValidationResult> {
                         name == null ?

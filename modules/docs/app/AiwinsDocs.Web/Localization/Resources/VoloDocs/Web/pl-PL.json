@@ -1,0 +1,9 @@
+﻿{
+  "culture": "pl-PL",
+  "texts": {
+    "WelcomeAiwinsDocs": "Witaj w AiwinsDocs!",
+    "NoProjectWarning": "Nie ma jeszcze zdefiniowanego projektu!",
+    "CreateYourFirstProject": "Kliknij, aby rozpocząć swój pierwszy projekt",
+    "NoProject": "Brak projektu!"
+  }
+}

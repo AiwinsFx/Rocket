@@ -1,17 +1,19 @@
 using System.Net.Mail;
 using System.Threading.Tasks;
 
-namespace Aiwins.Rocket.Emailing.Smtp {
+namespace Aiwins.Rocket.Emailing.Smtp
+{
     /// <summary>
-    /// SMTP协议发送邮件
+    /// Used to send emails over SMTP.
     /// </summary>
-    public interface ISmtpEmailSender : IEmailSender {
+    public interface ISmtpEmailSender : IEmailSender
+    {
         /// <summary>
-        /// 创建一个SMTP客户端 <see cref="SmtpClient"/> 实例发送邮件
+        /// Creates and configures new <see cref="SmtpClient"/> object to send emails.
         /// </summary>
         /// <returns>
-        /// 返回一个 <see cref="SmtpClient"/> SMTP客户端对象
+        /// An <see cref="SmtpClient"/> object that is ready to send emails.
         /// </returns>
-        Task<SmtpClient> BuildClientAsync ();
+        Task<SmtpClient> BuildClientAsync();
     }
 }

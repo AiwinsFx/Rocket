@@ -1,4 +1,5 @@
 ﻿using System;
+using Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations.ObjectExtending;
 using Aiwins.Rocket.AspNetCore.Mvc.MultiTenancy;
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
@@ -17,5 +18,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         public MultiTenancyInfoDto MultiTenancy { get; set; }
 
         public CurrentTenantDto CurrentTenant { get; set; }
+
+        public ObjectExtensionsDto ObjectExtensions { get; set; }
     }
 }

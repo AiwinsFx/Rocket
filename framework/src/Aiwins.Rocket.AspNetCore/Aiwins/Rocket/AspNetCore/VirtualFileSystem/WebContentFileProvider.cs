@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.VirtualFileSystem;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.FileProviders;
+using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Primitives;
 
@@ -76,9 +78,24 @@ namespace Aiwins.Rocket.AspNetCore.VirtualFileSystem {
         }
 
         protected virtual IFileProvider CreateFileProvider () {
-            return new CompositeFileProvider (
+            var fileProviders = new List<IFileProvider> () {
                 new PhysicalFileProvider (_hostingEnvironment.ContentRootPath),
                 _virtualFileProvider
+            };
+
+            if (_hostingEnvironment.IsDevelopment () &&
+                _hostingEnvironment.WebRootFileProvider is CompositeFileProvider compositeFileProvider) {
+                var staticWebAssetsFileProvider = compositeFileProvider
+                    .FileProviders
+                    .FirstOrDefault (f => f.GetType ().Name.Equals ("StaticWebAssetsFileProvider"));
+
+                if (staticWebAssetsFileProvider != null) {
+                    fileProviders.Add (staticWebAssetsFileProvider);
+                }
+            }
+
+            return new CompositeFileProvider (
+                fileProviders
             );
         }
 

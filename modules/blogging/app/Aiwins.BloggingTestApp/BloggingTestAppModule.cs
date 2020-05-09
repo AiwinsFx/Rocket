@@ -1,0 +1,175 @@
+﻿//#define MONGODB
+
+using System.Collections.Generic;
+using System.Globalization;
+using System.IO;
+using System.Linq;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Options;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
+using Aiwins.Rocket;
+using Aiwins.Rocket.Account.Web;
+using Aiwins.Rocket.AspNetCore.Mvc.UI;
+using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap;
+using Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic;
+using Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared;
+using Aiwins.Rocket.AspNetCore.Mvc.UI.Theming;
+using Aiwins.Rocket.Authorization.Permissions;
+using Aiwins.Rocket.Autofac;
+using Aiwins.Rocket.Data;
+using Aiwins.Rocket.EntityFrameworkCore;
+using Aiwins.Rocket.Identity;
+using Aiwins.Rocket.Identity.Web;
+using Aiwins.Rocket.Modularity;
+using Aiwins.Rocket.PermissionManagement;
+using Aiwins.Rocket.PermissionManagement.Identity;
+using Aiwins.Rocket.Threading;
+using Aiwins.Rocket.UI;
+using Aiwins.Rocket.VirtualFileSystem;
+using Aiwins.Blogging;
+using Aiwins.Blogging.Files;
+using Aiwins.BloggingTestApp.EntityFrameworkCore;
+using Aiwins.BloggingTestApp.MongoDB;
+
+namespace Aiwins.BloggingTestApp
+{
+    [DependsOn(
+        typeof(BloggingWebModule),
+        typeof(BloggingApplicationModule),
+#if MONGODB
+               typeof(BloggingTestAppMongoDbModule),
+#else
+        typeof(BloggingTestAppEntityFrameworkCoreModule),
+#endif
+        typeof(RocketAccountWebModule),
+        typeof(RocketIdentityWebModule),
+        typeof(RocketIdentityApplicationModule),
+        typeof(RocketPermissionManagementDomainIdentityModule),
+        typeof(RocketPermissionManagementApplicationModule),
+        typeof(RocketAutofacModule),
+        typeof(RocketAspNetCoreMvcUiBasicThemeModule)
+    )]
+    public class BloggingTestAppModule : RocketModule
+    {
+        public override void ConfigureServices(ServiceConfigurationContext context)
+        {
+            var hostingEnvironment = context.Services.GetHostingEnvironment();
+            var configuration = context.Services.GetConfiguration();
+
+            Configure<BloggingUrlOptions>(options =>
+            {
+                options.RoutePrefix = null;
+            });
+
+            Configure<RocketDbConnectionOptions>(options =>
+            {
+#if MONGODB
+                const string connStringName = "MongoDb";
+#else
+                const string connStringName = "SqlServer";
+#endif
+                options.ConnectionStrings.Default = configuration.GetConnectionString(connStringName);
+            });
+
+#if !MONGODB
+            Configure<RocketDbContextOptions>(options =>
+            {
+                options.UseSqlServer();
+            });
+#endif
+            if (hostingEnvironment.IsDevelopment())
+            {
+                Configure<RocketVirtualFileSystemOptions>(options =>
+                {
+                    options.FileSets.ReplaceEmbeddedByPhysical<RocketUiModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}..{0}..{0}framework{0}src{0}Aiwins.Rocket.UI", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<RocketAspNetCoreMvcUiModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}..{0}..{0}framework{0}src{0}Aiwins.Rocket.AspNetCore.Mvc.UI", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<RocketAspNetCoreMvcUiBootstrapModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}..{0}..{0}framework{0}src{0}Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<RocketAspNetCoreMvcUiThemeSharedModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}..{0}..{0}framework{0}src{0}Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<RocketAspNetCoreMvcUiBasicThemeModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}..{0}..{0}framework{0}src{0}Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BloggingDomainModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}Aiwins.Blogging.Domain", Path.DirectorySeparatorChar)));
+                    options.FileSets.ReplaceEmbeddedByPhysical<BloggingWebModule>(Path.Combine(hostingEnvironment.ContentRootPath, string.Format("..{0}..{0}src{0}Aiwins.Blogging.Web", Path.DirectorySeparatorChar)));
+                });
+            }
+
+            context.Services.AddSwaggerGen(
+                options =>
+                {
+                    options.SwaggerDoc("v1", new OpenApiInfo { Title = "Blogging API", Version = "v1" });
+                    options.DocInclusionPredicate((docName, description) => true);
+                    options.CustomSchemaIds(type => type.FullName);
+                });
+
+            var cultures = new List<CultureInfo> 
+            { 
+                new CultureInfo("cs"), 
+                new CultureInfo("en"), 
+                new CultureInfo("tr"), 
+                new CultureInfo("zh-Hans") 
+            };
+
+            Configure<RequestLocalizationOptions>(options =>
+            {
+                options.DefaultRequestCulture = new RequestCulture("en");
+                options.SupportedCultures = cultures;
+                options.SupportedUICultures = cultures;
+            });
+
+            Configure<RocketThemingOptions>(options =>
+            {
+                options.DefaultThemeName = BasicTheme.Name;
+            });
+
+            Configure<BlogFileOptions>(options =>
+            {
+                options.FileUploadLocalFolder = Path.Combine(hostingEnvironment.WebRootPath, "files");
+            });
+        }
+
+        public override void OnApplicationInitialization(ApplicationInitializationContext context)
+        {
+            var app = context.GetApplicationBuilder();
+
+            if (context.GetEnvironment().IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseErrorPage();
+            }
+
+            app.UseVirtualFiles();
+
+            app.UseRouting();
+
+            app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/v1/swagger.json", "Support APP API");
+            });
+
+            app.UseAuthentication();
+
+            app.UseRequestLocalization(app.ApplicationServices.GetRequiredService<IOptions<RequestLocalizationOptions>>().Value);
+
+            app.UseMvcWithDefaultRouteAndArea();
+
+
+            using (var scope = context.ServiceProvider.CreateScope())
+            {
+                AsyncHelper.RunSync(async () =>
+                {
+                    await scope.ServiceProvider
+                        .GetRequiredService<IDataSeeder>()
+                        .SeedAsync();
+                });
+            }
+        }
+    }
+}

@@ -1,0 +1,45 @@
+﻿@page
+@using Microsoft.AspNetCore.Authorization
+@using Aiwins.Blogging
+@using Aiwins.Blogging.Pages.Blog
+@inherits BloggingPage
+@model Aiwins.Blogging.Pages.Admin.Blogs.IndexModel
+@inject IAuthorizationService Authorization
+@{
+    ViewBag.PageTitle = "Blogs";
+}
+
+@section scripts {
+    <rocket-script src="/Pages/Admin/Blogs/index.js" />
+    <rocket-script src="/Pages/Admin/Blogs/create.js" />
+    <rocket-script src="/Pages/Admin/Blogs/edit.js" />
+}
+
+<rocket-card>
+    <rocket-card-header>
+        <rocket-row>
+            <rocket-column size-md="_6">
+                <h2>@L["Blogs"]</h2>
+            </rocket-column>
+            <rocket-column size-md="_6" class="text-right">
+                @if (await Authorization.IsGrantedAsync(BloggingPermissions.Blogs.Create))
+                {
+                    <rocket-button icon="plus" text="@L["CreateANewBlog"].Value" button-type="Primary" id="CreateNewBlogButtonId"></rocket-button>
+                }
+            </rocket-column>
+        </rocket-row>
+    </rocket-card-header>
+    <rocket-card-body>
+        <rocket-table striped-rows="true" id="BlogsTable" class="nowrap">
+            <thead>
+                <tr>
+                    <th>@L["Actions"]</th>
+                    <th>@L["Name"]</th>
+                    <th>@L["ShortName"]</th>
+                    <th>@L["CreationTime"]</th>
+                    <th>@L["Description"]</th>
+                </tr>
+            </thead>
+        </rocket-table>
+    </rocket-card-body>
+</rocket-card>

@@ -6,7 +6,7 @@ namespace Aiwins.Rocket.AuditLogging {
     public class RocketAuditLoggingDomainSharedModule : RocketModule {
         public override void ConfigureServices (ServiceConfigurationContext context) {
             Configure<RocketLocalizationOptions> (options => {
-                options.Resources.Add<AuditLoggingResource> ("en");
+                options.Resources.Add<AuditLoggingResource> ("zh-Hans");
             });
         }
     }

@@ -1,0 +1,10 @@
+﻿{
+  "culture": "en",
+  "texts": {
+    "DocsTitle": "AiwinsDocs",
+    "WelcomeAiwinsDocs": "Welcome to the AiwinsDocs!",
+    "NoProjectWarning": "There`s no defined project yet!",
+    "CreateYourFirstProject": "Click here to start your first project",
+    "NoProject": "No project!"
+  }
+}

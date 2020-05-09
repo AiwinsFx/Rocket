@@ -1,43 +1,45 @@
 ﻿using System.Threading.Tasks;
 
-namespace Aiwins.Rocket.Emailing.Smtp {
+namespace Aiwins.Rocket.Emailing.Smtp
+{
     /// <summary>
-    /// SmtpClient客户端配置
+    /// Defines configurations to used by SmtpClient object.
     /// </summary>
-    public interface ISmtpEmailSenderConfiguration : IEmailSenderConfiguration {
+    public interface ISmtpEmailSenderConfiguration : IEmailSenderConfiguration
+    {
         /// <summary>
-        /// SMTP 服务主机/IP地址
+        /// SMTP Host name/IP.
         /// </summary>
-        Task<string> GetHostAsync ();
+        Task<string> GetHostAsync();
 
         /// <summary>
-        /// SMTP 端口号
+        /// SMTP Port.
         /// </summary>
-        Task<int> GetPortAsync ();
+        Task<int> GetPortAsync();
 
         /// <summary>
-        /// SMTP 服务用户名
+        /// User name to login to SMTP server.
         /// </summary>
-        Task<string> GetUserNameAsync ();
+        Task<string> GetUserNameAsync();
 
         /// <summary>
-        /// SMTP 服务密码
+        /// Password to login to SMTP server.
         /// </summary>
-        Task<string> GetPasswordAsync ();
+        Task<string> GetPasswordAsync();
 
         /// <summary>
-        /// SMTP 服务域名
+        /// Domain name to login to SMTP server.
         /// </summary>
-        Task<string> GetDomainAsync ();
+        Task<string> GetDomainAsync();
 
         /// <summary>
-        /// 是否启用SSL
+        /// Is SSL enabled?
         /// </summary>
-        Task<bool> GetEnableSslAsync ();
+        Task<bool> GetEnableSslAsync();
 
         /// <summary>
-        /// 是否使用默认证书
+        /// Use default credentials?
         /// </summary>
-        Task<bool> GetUseDefaultCredentialsAsync ();
+        Task<bool> GetUseDefaultCredentialsAsync();
     }
 }

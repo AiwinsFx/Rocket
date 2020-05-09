@@ -8,80 +8,104 @@ using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 
 namespace Aiwins.Rocket.Localization {
-    public class RocketStringLocalizerFactory : IStringLocalizerFactory {
-        private readonly ResourceManagerStringLocalizerFactory _innerFactory;
-        private readonly RocketLocalizationOptions _rocketLocalizationOptions;
-        private readonly IServiceProvider _serviceProvider;
-        private readonly ConcurrentDictionary<Type, StringLocalizerCacheItem> _localizerCache;
+    public class RocketStringLocalizerFactory : IStringLocalizerFactory, IRocketStringLocalizerFactoryWithDefaultResourceSupport
+    {
+        protected internal RocketLocalizationOptions RocketLocalizationOptions { get; }
+        protected ResourceManagerStringLocalizerFactory InnerFactory { get; }
+        protected IServiceProvider ServiceProvider { get; }
+        protected ConcurrentDictionary<Type, StringLocalizerCacheItem> LocalizerCache { get; }
 
-        //TODO: 考虑通过装饰器模式实现，而非ResourceManagerStringLocalizerFactory。
-        public RocketStringLocalizerFactory (
+        //TODO: It's better to use decorator pattern for IStringLocalizerFactory instead of getting ResourceManagerStringLocalizerFactory as a dependency.
+        public RocketStringLocalizerFactory(
             ResourceManagerStringLocalizerFactory innerFactory,
             IOptions<RocketLocalizationOptions> rocketLocalizationOptions,
-            IServiceProvider serviceProvider) {
-            _innerFactory = innerFactory;
-            _serviceProvider = serviceProvider;
-            _rocketLocalizationOptions = rocketLocalizationOptions.Value;
+            IServiceProvider serviceProvider)
+        {
+            InnerFactory = innerFactory;
+            ServiceProvider = serviceProvider;
+            RocketLocalizationOptions = rocketLocalizationOptions.Value;
 
-            _localizerCache = new ConcurrentDictionary<Type, StringLocalizerCacheItem> ();
+            LocalizerCache = new ConcurrentDictionary<Type, StringLocalizerCacheItem>();
         }
 
-        public virtual IStringLocalizer Create (Type resourceType) {
-            var resource = _rocketLocalizationOptions.Resources.GetOrDefault (resourceType);
-            if (resource == null) {
-                return _innerFactory.Create (resourceType);
+        public virtual IStringLocalizer Create(Type resourceType)
+        {
+            var resource = RocketLocalizationOptions.Resources.GetOrDefault(resourceType);
+            if (resource == null)
+            {
+                return InnerFactory.Create(resourceType);
             }
 
-            if (_localizerCache.TryGetValue (resourceType, out var cacheItem)) {
+            if (LocalizerCache.TryGetValue(resourceType, out var cacheItem))
+            {
                 return cacheItem.Localizer;
             }
 
-            lock (_localizerCache) {
-                return _localizerCache.GetOrAdd (
+            lock (LocalizerCache)
+            {
+                return LocalizerCache.GetOrAdd(
                     resourceType,
-                    _ => CreateStringLocalizerCacheItem (resource)
+                    _ => CreateStringLocalizerCacheItem(resource)
                 ).Localizer;
             }
         }
 
-        private StringLocalizerCacheItem CreateStringLocalizerCacheItem (LocalizationResource resource) {
-            foreach (var globalContributor in _rocketLocalizationOptions.GlobalContributors) {
-                resource.Contributors.Add ((ILocalizationResourceContributor) Activator.CreateInstance (globalContributor));
+        private StringLocalizerCacheItem CreateStringLocalizerCacheItem(LocalizationResource resource)
+        {
+            foreach (var globalContributor in RocketLocalizationOptions.GlobalContributors)
+            {
+                resource.Contributors.Add((ILocalizationResourceContributor) Activator.CreateInstance(globalContributor));
             }
 
-            using (var scope = _serviceProvider.CreateScope ()) {
-                var context = new LocalizationResourceInitializationContext (resource, scope.ServiceProvider);
+            using (var scope = ServiceProvider.CreateScope())
+            {
+                var context = new LocalizationResourceInitializationContext(resource, scope.ServiceProvider);
 
-                foreach (var contributor in resource.Contributors) {
-                    contributor.Initialize (context);
+                foreach (var contributor in resource.Contributors)
+                {
+                    contributor.Initialize(context);
                 }
             }
 
-            return new StringLocalizerCacheItem (
-                new RocketDictionaryBasedStringLocalizer (
+            return new StringLocalizerCacheItem(
+                new RocketDictionaryBasedStringLocalizer(
                     resource,
-                    resource.BaseResourceTypes.Select (Create).ToList ()
+                    resource.BaseResourceTypes.Select(Create).ToList()
                 )
             );
         }
 
-        public virtual IStringLocalizer Create (string baseName, string location) {
-            //TODO: 跟踪下何时调用?
+        public virtual IStringLocalizer Create(string baseName, string location)
+        {
+            //TODO: Investigate when this is called?
 
-            return _innerFactory.Create (baseName, location);
+            return InnerFactory.Create(baseName, location);
         }
 
-        internal static void Replace (IServiceCollection services) {
-            services.Replace (ServiceDescriptor.Singleton<IStringLocalizerFactory, RocketStringLocalizerFactory> ());
-            services.AddSingleton<ResourceManagerStringLocalizerFactory> ();
+        internal static void Replace(IServiceCollection services)
+        {
+            services.Replace(ServiceDescriptor.Singleton<IStringLocalizerFactory, RocketStringLocalizerFactory>());
+            services.AddSingleton<ResourceManagerStringLocalizerFactory>();
         }
 
-        private class StringLocalizerCacheItem {
+        protected class StringLocalizerCacheItem
+        {
             public RocketDictionaryBasedStringLocalizer Localizer { get; }
 
-            public StringLocalizerCacheItem (RocketDictionaryBasedStringLocalizer localizer) {
+            public StringLocalizerCacheItem(RocketDictionaryBasedStringLocalizer localizer)
+            {
                 Localizer = localizer;
             }
+        }
+
+        public IStringLocalizer CreateDefaultOrNull()
+        {
+            if (RocketLocalizationOptions.DefaultResourceType == null)
+            {
+                return null;
+            }
+
+            return Create(RocketLocalizationOptions.DefaultResourceType);
         }
     }
 }

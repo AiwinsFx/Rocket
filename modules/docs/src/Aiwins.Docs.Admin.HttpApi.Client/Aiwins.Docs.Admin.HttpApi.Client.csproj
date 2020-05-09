@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Aiwins.Docs.Admin.HttpApi.Client</AssemblyName>
+    <PackageId>Aiwins.Docs.Admin.HttpApi.Client</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Docs.Admin.Application.Contracts\Aiwins.Docs.Admin.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

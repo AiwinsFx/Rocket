@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Docs.MongoDB</AssemblyName>
+    <PackageId>Aiwins.Docs.MongoDB</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Docs.Domain\Aiwins.Docs.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.MongoDB\Aiwins.Rocket.MongoDB.csproj" />
+  </ItemGroup>
+
+</Project>

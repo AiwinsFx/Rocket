@@ -97,7 +97,6 @@
     "Description:Rocket.Identity.SignIn.RequireConfirmedEmail": "Zda je k přihlášení vyžadována potvrzená emailová adresa.",
     "Description:Rocket.Identity.SignIn.RequireConfirmedPhoneNumber": "Zda je pro přihlášení vyžadováno potvrzené telefonní číslo.",
     "Description:Rocket.Identity.User.IsUserNameUpdateEnabled": "Zda může uživatel změnit uživatelské jméno.",
-    "Description:Rocket.Identity.User.IsEmailUpdateEnabled": "Zda může uživatel změnit email.",
-    "Description:Rocket.Identity.User.IsPhoneNumberUpdateEnabled": "Zda může uživatel změnit phone."
+    "Description:Rocket.Identity.User.IsEmailUpdateEnabled": "Zda může uživatel změnit email."
   }
 }

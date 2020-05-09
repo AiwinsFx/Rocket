@@ -37,7 +37,7 @@ namespace Aiwins.Rocket.Validation {
 
             AddErrors (errors, validatingObject);
 
-            // 验证枚举项
+            //Validate items of enumerable
             if (validatingObject is IEnumerable) {
                 if (!(validatingObject is IQueryable)) {
                     foreach (var item in (validatingObject as IEnumerable)) {
@@ -50,7 +50,7 @@ namespace Aiwins.Rocket.Validation {
 
             var validatingObjectType = validatingObject.GetType ();
 
-            // 不递归验证基类对象
+            //Do not recursively validate for primitive objects
             if (TypeHelper.IsPrimitiveExtended (validatingObjectType)) {
                 return;
             }

@@ -10,6 +10,8 @@ using Aiwins.Rocket.IdentityServer.Grants;
 using Aiwins.Rocket.IdentityServer.IdentityResources;
 using Aiwins.Rocket.IdentityServer.Tokens;
 using Aiwins.Rocket.Modularity;
+using Aiwins.Rocket.ObjectExtending;
+using Aiwins.Rocket.ObjectExtending.Modularity;
 using Aiwins.Rocket.Security;
 using Aiwins.Rocket.Validation;
 using IdentityServer4.Services;
@@ -81,6 +83,26 @@ namespace Aiwins.Rocket.IdentityServer {
                 identityServerBuilder.AddInMemoryApiResources (configuration.GetSection ("IdentityServer:ApiResources"));
                 identityServerBuilder.AddInMemoryIdentityResources (configuration.GetSection ("IdentityServer:IdentityResources"));
             }
+        }
+
+        public override void PostConfigureServices (ServiceConfigurationContext context) {
+            ModuleExtensionConfigurationHelper.ApplyEntityConfigurationToEntity (
+                IdentityServerModuleExtensionConsts.ModuleName,
+                IdentityServerModuleExtensionConsts.EntityNames.Client,
+                typeof (Client)
+            );
+
+            ModuleExtensionConfigurationHelper.ApplyEntityConfigurationToEntity (
+                IdentityServerModuleExtensionConsts.ModuleName,
+                IdentityServerModuleExtensionConsts.EntityNames.IdentityResource,
+                typeof (IdentityResource)
+            );
+
+            ModuleExtensionConfigurationHelper.ApplyEntityConfigurationToEntity (
+                IdentityServerModuleExtensionConsts.ModuleName,
+                IdentityServerModuleExtensionConsts.EntityNames.ApiResource,
+                typeof (ApiResource)
+            );
         }
 
         public override void OnApplicationInitialization (ApplicationInitializationContext context) {

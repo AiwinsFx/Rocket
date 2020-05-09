@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Blogging.Application.Contracts</AssemblyName>
+    <PackageId>Aiwins.Blogging.Application.Contracts</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Aiwins\Blogging\Localization\Resources\Blogging\ApplicationContracts\*.json" />
+    <None Remove="Aiwins\Blogging\Localization\Resources\Blogging\ApplicationContracts\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Blogging.Domain.Shared\Aiwins.Blogging.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Ddd.Application\Aiwins.Rocket.Ddd.Application.csproj" />
+  </ItemGroup>
+</Project>

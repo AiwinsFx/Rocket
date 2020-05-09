@@ -7,7 +7,10 @@ using Aiwins.Rocket.VirtualFileSystem;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiwins.Rocket.Validation {
-    [DependsOn (typeof (RocketLocalizationModule))]
+    [DependsOn (
+        typeof (RocketValidationAbstractionsModule),
+        typeof (RocketLocalizationModule)
+    )]
     public class RocketValidationModule : RocketModule {
         public override void PreConfigureServices (ServiceConfigurationContext context) {
             context.Services.OnRegistred (ValidationInterceptorRegistrar.RegisterIfNeeded);
@@ -21,7 +24,7 @@ namespace Aiwins.Rocket.Validation {
 
             Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<RocketValidationResource> ("en")
+                    .Add<RocketValidationResource> ("zh-Hans")
                     .AddVirtualJson ("/Aiwins/Rocket/Validation/Localization");
             });
         }

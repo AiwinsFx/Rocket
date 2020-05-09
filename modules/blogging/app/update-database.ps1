@@ -1,0 +1,1 @@
+dotnet ef database update -s Aiwins.BloggingTestApp/Aiwins.BloggingTestApp.csproj -p Aiwins.BloggingTestApp.EntityFrameworkCore/Aiwins.BloggingTestApp.EntityFrameworkCore.csproj

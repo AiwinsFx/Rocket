@@ -2,39 +2,46 @@
 using System.Threading.Tasks;
 using Aiwins.Rocket.Settings;
 
-namespace Aiwins.Rocket.Emailing {
+namespace Aiwins.Rocket.Emailing
+{
     /// <summary>
-    /// 实现了 <see cref="IEmailSenderConfiguration"/> 接口
-    /// 通过 <see cref="ISettingProvider"/> 获取配置信息
+    /// Base implementation of <see cref="IEmailSenderConfiguration"/> that reads settings
+    /// from <see cref="ISettingProvider"/>.
     /// </summary>
-    public abstract class EmailSenderConfiguration : IEmailSenderConfiguration {
+    public abstract class EmailSenderConfiguration : IEmailSenderConfiguration
+    {
         protected ISettingProvider SettingProvider { get; }
 
         /// <summary>
-        /// 创建一个新的 <see cref="EmailSenderConfiguration"/> 实例
+        /// Creates a new <see cref="EmailSenderConfiguration"/>.
         /// </summary>
-        protected EmailSenderConfiguration (ISettingProvider settingProvider) {
+        protected EmailSenderConfiguration(ISettingProvider settingProvider)
+        {
             SettingProvider = settingProvider;
         }
 
-        public Task<string> GetDefaultFromAddressAsync () {
-            return GetNotEmptySettingValueAsync (EmailSettingNames.DefaultFromAddress);
+        public Task<string> GetDefaultFromAddressAsync()
+        {
+            return GetNotEmptySettingValueAsync(EmailSettingNames.DefaultFromAddress);
         }
 
-        public Task<string> GetDefaultFromDisplayNameAsync () {
-            return GetNotEmptySettingValueAsync (EmailSettingNames.DefaultFromDisplayName);
+        public Task<string> GetDefaultFromDisplayNameAsync()
+        {
+            return GetNotEmptySettingValueAsync(EmailSettingNames.DefaultFromDisplayName);
         }
 
         /// <summary>
-        /// 获取配置信息，如果不存在或者为空则抛出异常 <see cref="RocketException"/> 。
+        /// Gets a setting value by checking. Throws <see cref="RocketException"/> if it's null or empty.
         /// </summary>
-        /// <param name="name">配置名称</param>
-        /// <returns>配置信息</returns>
-        protected async Task<string> GetNotEmptySettingValueAsync (string name) {
-            var value = await SettingProvider.GetOrNullAsync (name);
+        /// <param name="name">Name of the setting</param>
+        /// <returns>Value of the setting</returns>
+        protected async Task<string> GetNotEmptySettingValueAsync(string name)
+        {
+            var value = await SettingProvider.GetOrNullAsync(name);
 
-            if (value.IsNullOrEmpty ()) {
-                throw new RocketException ($"Setting value for '{name}' is null or empty!");
+            if (value.IsNullOrEmpty())
+            {
+                throw new RocketException($"Setting value for '{name}' is null or empty!");
             }
 
             return value;

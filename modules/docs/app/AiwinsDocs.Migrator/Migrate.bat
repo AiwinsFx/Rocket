@@ -1,0 +1,1 @@
+@dotnet AiwinsDocs.Migrator.dll

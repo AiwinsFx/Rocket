@@ -1,0 +1,50 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "es2015",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2018", "dom"],
+    "types": ["jest"],
+    "paths": {
+      "@rocket/ng.core": ["packages/core/src/public-api.ts"],
+      "@rocket/ng.core/*": ["packages/core/src/lib/*"],
+      "@rocket/ng.theme.shared": ["packages/theme-shared/src/public-api.ts"],
+      "@rocket/ng.theme.shared/*": ["packages/theme-shared/src/lib/*"],
+      "@rocket/ng.theme.basic": ["packages/theme-basic/src/public-api.ts"],
+      "@rocket/ng.theme.basic/*": ["packages/theme-basic/src/lib/*"],
+      "@rocket/ng.account": ["packages/account/src/public-api.ts"],
+      "@rocket/ng.account/*": ["packages/account/src/lib/*"],
+      "@rocket/ng.account.config": ["packages/account-config/src/public-api.ts"],
+      "@rocket/ng.account.config/*": ["packages/account-config/src/lib/*"],
+      "@rocket/ng.identity": ["packages/identity/src/public-api.ts"],
+      "@rocket/ng.identity/*": ["packages/identity/src/lib/*"],
+      "@rocket/ng.identity.config": ["packages/identity-config/src/public-api.ts"],
+      "@rocket/ng.identity.config/*": ["packages/identity-config/src/lib/*"],
+      "@rocket/ng.tenant-management": ["packages/tenant-management/src/public-api.ts"],
+      "@rocket/ng.tenant-management/*": ["packages/tenant-management/src/lib/*"],
+      "@rocket/ng.tenant-management.config": ["packages/tenant-management-config/src/public-api.ts"],
+      "@rocket/ng.tenant-management.config/*": ["packages/tenant-management-config/src/lib/*"],
+      "@rocket/ng.setting-management": ["packages/setting-management/src/public-api.ts"],
+      "@rocket/ng.setting-management/*": ["packages/setting-management/src/lib/*"],
+      "@rocket/ng.setting-management.config": ["packages/setting-management-config/src/public-api.ts"],
+      "@rocket/ng.setting-management.config/*": ["packages/setting-management-config/src/lib/*"],
+      "@rocket/ng.permission-management": ["packages/permission-management/src/public-api.ts"],
+      "@rocket/ng.permission-management/*": ["packages/permission-management/src/lib/*"],
+      "@rocket/ng.feature-management": ["packages/feature-management/src/public-api.ts"],
+      "@rocket/ng.feature-management/*": ["packages/feature-management/src/lib/*"]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

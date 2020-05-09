@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "name": "aiwins.blogtestapp",
+  "private": true,
+  "dependencies": {
+    "@rocket/aspnetcore.mvc.ui.theme.basic": "^1.0.2",
+    "@rocket/blogging": "^1.0.2"
+  }
+}

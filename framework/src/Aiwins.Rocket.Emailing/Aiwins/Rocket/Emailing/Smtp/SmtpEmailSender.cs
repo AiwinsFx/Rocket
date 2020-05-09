@@ -6,58 +6,73 @@ using Aiwins.Rocket.BackgroundJobs;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.Threading;
 
-namespace Aiwins.Rocket.Emailing.Smtp {
+namespace Aiwins.Rocket.Emailing.Smtp
+{
     /// <summary>
-    /// SMTP协议发送邮件
+    /// Used to send emails over SMTP.
     /// </summary>
-    public class SmtpEmailSender : EmailSenderBase, ISmtpEmailSender, ITransientDependency {
+    public class SmtpEmailSender : EmailSenderBase, ISmtpEmailSender, ITransientDependency
+    {
         protected ISmtpEmailSenderConfiguration SmtpConfiguration { get; }
 
         /// <summary>
-        /// 创建一个新的SMTP邮件发送 <see cref="SmtpEmailSender"/> 实例
+        /// Creates a new <see cref="SmtpEmailSender"/>.
         /// </summary>
-        public SmtpEmailSender (
+        public SmtpEmailSender(
             ISmtpEmailSenderConfiguration smtpConfiguration,
-            IBackgroundJobManager backgroundJobManager) : base (smtpConfiguration, backgroundJobManager) {
+            IBackgroundJobManager backgroundJobManager)
+            : base(smtpConfiguration, backgroundJobManager)
+        {
             SmtpConfiguration = smtpConfiguration;
         }
 
-        public async Task<SmtpClient> BuildClientAsync () {
-            var host = await SmtpConfiguration.GetHostAsync ();
-            var port = await SmtpConfiguration.GetPortAsync ();
+        public async Task<SmtpClient> BuildClientAsync()
+        {
+            var host = await SmtpConfiguration.GetHostAsync();
+            var port = await SmtpConfiguration.GetPortAsync();
 
-            var smtpClient = new SmtpClient (host, port);
+            var smtpClient = new SmtpClient(host, port);
 
-            try {
-                if (await SmtpConfiguration.GetEnableSslAsync ()) {
+            try
+            {
+                if (await SmtpConfiguration.GetEnableSslAsync())
+                {
                     smtpClient.EnableSsl = true;
                 }
 
-                if (await SmtpConfiguration.GetUseDefaultCredentialsAsync ()) {
+                if (await SmtpConfiguration.GetUseDefaultCredentialsAsync())
+                {
                     smtpClient.UseDefaultCredentials = true;
-                } else {
+                }
+                else
+                {
                     smtpClient.UseDefaultCredentials = false;
 
-                    var userName = await SmtpConfiguration.GetUserNameAsync ();
-                    if (!userName.IsNullOrEmpty ()) {
-                        var password = await SmtpConfiguration.GetPasswordAsync ();
-                        var domain = await SmtpConfiguration.GetDomainAsync ();
-                        smtpClient.Credentials = !domain.IsNullOrEmpty () ?
-                            new NetworkCredential (userName, password, domain) :
-                            new NetworkCredential (userName, password);
+                    var userName = await SmtpConfiguration.GetUserNameAsync();
+                    if (!userName.IsNullOrEmpty())
+                    {
+                        var password = await SmtpConfiguration.GetPasswordAsync();
+                        var domain = await SmtpConfiguration.GetDomainAsync();
+                        smtpClient.Credentials = !domain.IsNullOrEmpty()
+                            ? new NetworkCredential(userName, password, domain)
+                            : new NetworkCredential(userName, password);
                     }
                 }
 
                 return smtpClient;
-            } catch {
-                smtpClient.Dispose ();
+            }
+            catch
+            {
+                smtpClient.Dispose();
                 throw;
             }
         }
 
-        protected override async Task SendEmailAsync (MailMessage mail) {
-            using (var smtpClient = await BuildClientAsync ()) {
-                await smtpClient.SendMailAsync (mail);
+        protected override async Task SendEmailAsync(MailMessage mail)
+        {
+            using (var smtpClient = await BuildClientAsync())
+            {
+                await smtpClient.SendMailAsync(mail);
             }
         }
     }

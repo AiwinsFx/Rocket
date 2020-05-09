@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Blogging.EntityFrameworkCore</AssemblyName>
+    <PackageId>Aiwins.Blogging.EntityFrameworkCore</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Blogging.Domain\Aiwins.Blogging.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.EntityFrameworkCore\Aiwins.Rocket.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\users\src\Aiwins.Rocket.Users.EntityFrameworkCore\Aiwins.Rocket.Users.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

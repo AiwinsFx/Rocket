@@ -4,8 +4,8 @@ using Aiwins.Rocket.Settings;
 
 namespace Aiwins.Rocket.Emailing {
     /// <summary>
-    /// 定义邮件发送配置信息
-    /// 配置字段 <see cref="EmailSettingNames"/>
+    /// Defines settings to send emails.
+    /// <see cref="EmailSettingNames"/> for all available configurations.
     /// </summary>
     internal class EmailSettingProvider : SettingDefinitionProvider {
         public override void Define (ISettingDefinitionContext context) {
@@ -57,14 +57,14 @@ namespace Aiwins.Rocket.Emailing {
                     L ("Description:Rocket.Mailing.DefaultFromAddress")),
 
                 new SettingDefinition (EmailSettingNames.DefaultFromDisplayName,
-                    "Rocket application",
+                    "ABP application",
                     L ("DisplayName:Rocket.Mailing.DefaultFromDisplayName"),
                     L ("Description:Rocket.Mailing.DefaultFromDisplayName"))
             );
         }
 
         private static LocalizableString L (string name) {
-            return LocalizableString.Create<RocketEmailingResource> (name);
+            return LocalizableString.Create<EmailingResource> (name);
         }
     }
 }

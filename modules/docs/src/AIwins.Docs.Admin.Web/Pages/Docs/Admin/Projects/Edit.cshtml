@@ -1,0 +1,22 @@
+﻿@page
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Docs.Admin.Pages.Docs.Admin.Projects
+@inherits Aiwins.Docs.Admin.Pages.Docs.Admin.DocsAdminPage
+@model Aiwins.Docs.Admin.Pages.Docs.Admin.Projects.EditModel
+@{
+    Layout = null;
+}
+
+@if (Model.GithubProject != null)
+{
+    <rocket-dynamic-form submit-button="false" rocket-model="@Model.GithubProject" asp-page="/Docs/Admin/Projects/Edit">
+        <rocket-modal size="@(RocketModalSize.Default)">
+            <rocket-modal-header title="@L["Edit"].Value"></rocket-modal-header>
+            <rocket-modal-body>
+                <rocket-form-content />
+            </rocket-modal-body>
+            <rocket-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)">
+            </rocket-modal-footer>
+        </rocket-modal>
+    </rocket-dynamic-form>
+}

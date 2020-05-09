@@ -15,23 +15,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Aiwins\Rocket\Emailing\Templates\DefaultEmailTemplates\*\*.tpl" />
-    <None Remove="Aiwins\Rocket\Emailing\Templates\DefaultEmailTemplates\*\*.tpl" />
-  </ItemGroup>
-
-  <ItemGroup>
     <Content Remove="Aiwins\Rocket\Emailing\Localization\*.json" />
     <EmbeddedResource Include="Aiwins\Rocket\Emailing\Localization\*.json" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Scriban" Version="2.1.1" />
+    <Content Remove="Aiwins\Rocket\Emailing\Templates\**\*.tpl" />
+    <EmbeddedResource Include="Aiwins\Rocket\Emailing\Templates\**\*.tpl" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Aiwins.Rocket.BackgroundJobs.Abstractions\Aiwins.Rocket.BackgroundJobs.Abstractions.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Localization\Aiwins.Rocket.Localization.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Settings\Aiwins.Rocket.Settings.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.TextTemplating\Aiwins.Rocket.TextTemplating.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.VirtualFileSystem\Aiwins.Rocket.VirtualFileSystem.csproj" />
   </ItemGroup>
 

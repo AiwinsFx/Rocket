@@ -55,16 +55,21 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         public virtual async Task<ApplicationConfigurationDto> GetAsync () {
             //TODO: Optimize & cache..?
 
-            return new ApplicationConfigurationDto {
+            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetAsync()...");
+
+            var result = new ApplicationConfigurationDto {
                 Auth = await GetAuthConfigAsync (),
-                    Features = await GetFeaturesConfigAsync (),
-                    Localization = await GetLocalizationConfigAsync (),
-                    CurrentUser = GetCurrentUser (),
-                    Setting = await GetSettingConfigAsync (),
-                    MultiTenancy = GetMultiTenancy (),
-                    CurrentTenant = GetCurrentTenant ()
+                Features = await GetFeaturesConfigAsync (),
+                Localization = await GetLocalizationConfigAsync (),
+                CurrentUser = GetCurrentUser (),
+                Setting = await GetSettingConfigAsync (),
+                MultiTenancy = GetMultiTenancy (),
+                CurrentTenant = GetCurrentTenant ()
 
             };
+
+            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetAsync()...");
+            return result;
         }
 
         protected virtual CurrentTenantDto GetCurrentTenant () {
@@ -91,13 +96,9 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         }
 
         protected virtual async Task<ApplicationAuthConfigurationDto> GetAuthConfigAsync () {
-            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetAuthConfigAsync()");
-
             var authConfig = new ApplicationAuthConfigurationDto ();
 
             var policyNames = await _rocketAuthorizationPolicyProvider.GetPoliciesNamesAsync ();
-
-            Logger.LogDebug ($"GetPoliciesNamesAsync returns {policyNames.Count} items.");
 
             foreach (var policyName in policyNames) {
                 authConfig.Policies[policyName] = true;
@@ -109,13 +110,10 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
                 }
             }
 
-            Logger.LogDebug ("Executed RocketApplicationConfigurationAppService.GetAuthConfigAsync()");
-
             return authConfig;
         }
 
         protected virtual async Task<ApplicationLocalizationConfigurationDto> GetLocalizationConfigAsync () {
-            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetLocalizationConfigAsync()");
 
             var localizationConfig = new ApplicationLocalizationConfigurationDto ();
 
@@ -136,8 +134,6 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             }
 
             localizationConfig.CurrentCulture = GetCurrentCultureInfo ();
-
-            Logger.LogDebug ("Executed RocketApplicationConfigurationAppService.GetLocalizationConfigAsync()");
 
             return localizationConfig;
         }
@@ -165,7 +161,6 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         }
 
         private async Task<ApplicationSettingConfigurationDto> GetSettingConfigAsync () {
-            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetSettingConfigAsync()");
 
             var result = new ApplicationSettingConfigurationDto {
                 Values = new Dictionary<string, string> ()
@@ -179,13 +174,10 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
                 result.Values[settingDefinition.Name] = await _settingProvider.GetOrNullAsync (settingDefinition.Name);
             }
 
-            Logger.LogDebug ("Executed RocketApplicationConfigurationAppService.GetSettingConfigAsync()");
-
             return result;
         }
 
         protected virtual async Task<ApplicationFeatureConfigurationDto> GetFeaturesConfigAsync () {
-            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetFeaturesConfigAsync()");
 
             var result = new ApplicationFeatureConfigurationDto ();
 
@@ -196,8 +188,6 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
 
                 result.Values[featureDefinition.Name] = await FeatureChecker.GetOrNullAsync (featureDefinition.Name);
             }
-
-            Logger.LogDebug ("Executed RocketApplicationConfigurationAppService.GetFeaturesConfigAsync()");
 
             return result;
         }

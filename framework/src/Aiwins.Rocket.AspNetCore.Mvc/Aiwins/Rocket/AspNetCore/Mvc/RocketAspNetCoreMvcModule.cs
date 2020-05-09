@@ -31,6 +31,7 @@ using Microsoft.AspNetCore.Mvc.ViewComponents;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Localization;
 using Microsoft.Extensions.Options;
 
 namespace Aiwins.Rocket.AspNetCore.Mvc {
@@ -98,8 +99,16 @@ namespace Aiwins.Rocket.AspNetCore.Mvc {
                 .AddRazorRuntimeCompilation ()
                 .AddDataAnnotationsLocalization (options => {
                     options.DataAnnotationLocalizerProvider = (type, factory) => {
-                        var resourceType = rocketMvcDataAnnotationsLocalizationOptions.AssemblyResources.GetOrDefault (type.Assembly);
-                        return factory.Create (resourceType ?? type);
+                        var resourceType = rocketMvcDataAnnotationsLocalizationOptions
+                            .AssemblyResources
+                            .GetOrDefault (type.Assembly);
+
+                        if (resourceType != null) {
+                            return factory.Create (resourceType);
+                        }
+
+                        return factory.CreateDefaultOrNull () ??
+                            factory.Create (type);
                     };
                 })
                 .AddViewLocalization (); //TODO: 如何做到应用程序灵活配置？另外，考虑迁移到UI模块

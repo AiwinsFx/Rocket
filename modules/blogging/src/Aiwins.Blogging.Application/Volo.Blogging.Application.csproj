@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Blogging.Application</AssemblyName>
+    <PackageId>Aiwins.Blogging.Application</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="System.Drawing.Common" Version="4.7.0" />
+    <ProjectReference Include="..\Aiwins.Blogging.Application.Contracts\Aiwins.Blogging.Application.Contracts.csproj" />
+    <ProjectReference Include="..\Aiwins.Blogging.Domain\Aiwins.Blogging.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AutoMapper\Aiwins.Rocket.AutoMapper.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Caching\Aiwins.Rocket.Caching.csproj" />
+  </ItemGroup>
+
+</Project>

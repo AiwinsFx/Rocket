@@ -1,8 +1,10 @@
-﻿namespace Aiwins.Rocket.Emailing {
+﻿namespace Aiwins.Rocket.Emailing
+{
     /// <summary>
-    /// 配置字段 <see cref="EmailSettingProvider"/>.
+    /// Declares names of the settings defined by <see cref="EmailSettingProvider"/>.
     /// </summary>
-    public static class EmailSettingNames {
+    public static class EmailSettingNames
+    {
         /// <summary>
         /// Rocket.Net.Mail.DefaultFromAddress
         /// </summary>
@@ -14,9 +16,10 @@
         public const string DefaultFromDisplayName = "Rocket.Mailing.DefaultFromDisplayName";
 
         /// <summary>
-        /// SMTP 配置字段
+        /// SMTP related email settings.
         /// </summary>
-        public static class Smtp {
+        public static class Smtp
+        {
             /// <summary>
             /// Rocket.Net.Mail.Smtp.Host
             /// </summary>

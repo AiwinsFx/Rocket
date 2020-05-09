@@ -2,7 +2,7 @@ using System;
 
 namespace Aiwins.Rocket.Validation {
     /// <summary>
-    /// 禁用自动验证
+    /// Can be added to a method to disable auto validation.
     /// </summary>
     [AttributeUsage (AttributeTargets.Method | AttributeTargets.Class | AttributeTargets.Property)]
     public class DisableValidationAttribute : Attribute {

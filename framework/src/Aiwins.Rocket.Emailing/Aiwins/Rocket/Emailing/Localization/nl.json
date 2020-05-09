@@ -1,0 +1,23 @@
+{
+  "culture": "nl",
+  "texts": {
+    "DisplayName:Rocket.Mailing.DefaultFromAddress": "Standard vanaf adres",
+    "DisplayName:Rocket.Mailing.DefaultFromDisplayName": "Standaard vanaf weergave naam",
+    "DisplayName:Rocket.Mailing.Smtp.Host": "Host",
+    "DisplayName:Rocket.Mailing.Smtp.Port": "Poort",
+    "DisplayName:Rocket.Mailing.Smtp.UserName": "Gebruiker naam",
+    "DisplayName:Rocket.Mailing.Smtp.Password": "wachtwoord",
+    "DisplayName:Rocket.Mailing.Smtp.Domain": "Domein",
+    "DisplayName:Rocket.Mailing.Smtp.EnableSsl": "SSL toestaan",
+    "DisplayName:Rocket.Mailing.Smtp.UseDefaultCredentials": "Gebruik standaard inloggegevens",
+    "Description:Rocket.Mailing.DefaultFromAddress": "Standard vanaf adres",
+    "Description:Rocket.Mailing.DefaultFromDisplayName": "Standaard vanaf weergave naam",
+    "Description:Rocket.Mailing.Smtp.Host": "De naam of het IP-adres van de host die wordt gebruikt voor SMTP-transacties.",
+    "Description:Rocket.Mailing.Smtp.Port": "De poort die wordt gebruikt voor SMTP-transacties.",
+    "Description:Rocket.Mailing.Smtp.UserName": "Gebruikersnaam gekoppeld aan de inloggegevens.",
+    "Description:Rocket.Mailing.Smtp.Password": "Het wachtwoord voor de gebruikersnaam die bij de inloggegevens hoort.",
+    "Description:Rocket.Mailing.Smtp.Domain": "Het domein of de computernaam die de inloggegevens verifieert.",
+    "Description:Rocket.Mailing.Smtp.EnableSsl": "Of de SmtpClient Secure Sockets Layer (SSL) gebruikt om de verbinding te versleutelen.",
+    "Description:Rocket.Mailing.Smtp.UseDefaultCredentials": "Of de standaard inloggegevens worden verzonden met verzoeken."
+  }
+}

@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <Import Project="..\..\..\configureawait.props" />
   <Import Project="..\..\..\common.props" />
@@ -15,7 +15,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Aiwins.Rocket.Core\Aiwins.Rocket.Core.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Validation.Abstractions\Aiwins.Rocket.Validation.Abstractions.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Localization.Abstractions\Aiwins.Rocket.Localization.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

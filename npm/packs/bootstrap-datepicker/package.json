@@ -1,0 +1,11 @@
+{
+  "version": "2.6.2",
+  "name": "@rocket/bootstrap-datepicker",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "bootstrap-datepicker": "^1.9.0"
+  },
+  "gitHead": "eb4a0e507f492e275865b72caeb02ce28d69ae56"
+}

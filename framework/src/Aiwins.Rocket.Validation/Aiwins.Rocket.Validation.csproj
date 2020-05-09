@@ -21,6 +21,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Aiwins.Rocket.Localization\Aiwins.Rocket.Localization.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Validation.Abstractions\Aiwins.Rocket.Validation.Abstractions.csproj" />
   </ItemGroup>
 
 </Project>

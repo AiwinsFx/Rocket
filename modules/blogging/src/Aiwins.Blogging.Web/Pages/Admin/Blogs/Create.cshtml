@@ -1,0 +1,20 @@
+﻿@page
+@using Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.TagHelpers.Modal
+@using Aiwins.Blogging.Pages.Blog
+@inherits BloggingPage
+@model Aiwins.Blogging.Pages.Admin.Blogs.CreateModel
+@{
+    Layout = null;
+}
+
+
+<rocket-dynamic-form submit-button="false" rocket-model="Blog" asp-page="/Admin/Blogs/Create">
+    <rocket-modal size="@(RocketModalSize.Large)">
+        <rocket-modal-header title="@L["Create"].Value"></rocket-modal-header>
+        <rocket-modal-body>
+            <rocket-form-content />
+        </rocket-modal-body>
+        <rocket-modal-footer buttons="@(RocketModalButtons.Cancel|RocketModalButtons.Save)">
+        </rocket-modal-footer>
+    </rocket-modal>
+</rocket-dynamic-form>

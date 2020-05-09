@@ -1,0 +1,25 @@
+﻿{
+  "culture": "tr",
+  "texts": {
+    "DisplayName:Rocket.Mailing.DefaultFromAddress": "Varsayılan gönderici adresi",
+    "DisplayName:Rocket.Mailing.DefaultFromDisplayName": "Varsayılan gönderici adı",
+    "DisplayName:Rocket.Mailing.Smtp.Host": "Sunucu",
+    "DisplayName:Rocket.Mailing.Smtp.Port": "Port",
+    "DisplayName:Rocket.Mailing.Smtp.UserName": "Kullanıcı adı",
+    "DisplayName:Rocket.Mailing.Smtp.Password": "Şifre",
+    "DisplayName:Rocket.Mailing.Smtp.Domain": "Domain",
+    "DisplayName:Rocket.Mailing.Smtp.EnableSsl": "SSL aktif",
+    "DisplayName:Rocket.Mailing.Smtp.UseDefaultCredentials": "Varsayılan kimlik kullan",
+    "Description:Rocket.Mailing.DefaultFromAddress": "Varsayılan gönderici adresi",
+    "Description:Rocket.Mailing.DefaultFromDisplayName": "Varsayılan gönderici adı",
+    "Description:Rocket.Mailing.Smtp.Host": "SMTP üzerinden e-posta göndermek için kullanılacak sunucunun IP adresi ya da adı.",
+    "Description:Rocket.Mailing.Smtp.Port": "Sunucunun SMTP portu.",
+    "Description:Rocket.Mailing.Smtp.UserName": "Varsayılan kimlik kullanılmaması durumunda kullanılacak kullanıcı adı.",
+    "Description:Rocket.Mailing.Smtp.Password": "Varsayılan kimlik kullanılmaması durumunda kullanılacak şifre.",
+    "Description:Rocket.Mailing.Smtp.Domain": "Kimlik bilgilerinin doğrulanacağı sunucu/domain.",
+    "Description:Rocket.Mailing.Smtp.EnableSsl": "Email gönderiminde SSL kullanılıp kullanılmayacağı.",
+    "Description:Rocket.Mailing.Smtp.UseDefaultCredentials": "Varsayılan kimlik bilgilerinin kullanılıp kullanılmayacağı.",
+    "TextTemplate:StandardEmailTemplates.Layout": "Varsayılan e-posta layout şablonu",
+    "TextTemplate:StandardEmailTemplates.Message": "Basit bir mesaj göndermek için e-posta şablonu"
+  }
+}

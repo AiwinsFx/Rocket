@@ -2,6 +2,8 @@
 using Aiwins.Rocket.Domain;
 using Aiwins.Rocket.EventBus.Distributed;
 using Aiwins.Rocket.Modularity;
+using Aiwins.Rocket.ObjectExtending;
+using Aiwins.Rocket.ObjectExtending.Modularity;
 using Aiwins.Rocket.Users;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
@@ -37,6 +39,26 @@ namespace Aiwins.Rocket.Identity {
             context.Services.ExecutePreConfiguredActions (identityBuilder);
 
             AddRocketIdentityOptionsFactory (context.Services);
+        }
+
+        public override void PostConfigureServices (ServiceConfigurationContext context) {
+            ModuleExtensionConfigurationHelper.ApplyEntityConfigurationToEntity (
+                IdentityModuleExtensionConsts.ModuleName,
+                IdentityModuleExtensionConsts.EntityNames.User,
+                typeof (IdentityUser)
+            );
+
+            ModuleExtensionConfigurationHelper.ApplyEntityConfigurationToEntity (
+                IdentityModuleExtensionConsts.ModuleName,
+                IdentityModuleExtensionConsts.EntityNames.Role,
+                typeof (IdentityRole)
+            );
+
+            ModuleExtensionConfigurationHelper.ApplyEntityConfigurationToEntity (
+                IdentityModuleExtensionConsts.ModuleName,
+                IdentityModuleExtensionConsts.EntityNames.ClaimType,
+                typeof (IdentityClaimType)
+            );
         }
 
         private static void AddRocketIdentityOptionsFactory (IServiceCollection services) {

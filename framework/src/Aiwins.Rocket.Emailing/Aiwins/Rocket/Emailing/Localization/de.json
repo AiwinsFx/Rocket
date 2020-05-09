@@ -1,0 +1,23 @@
+{
+  "culture": "de",
+  "texts": {
+    "DisplayName:Rocket.Mailing.DefaultFromAddress": "Standard-Absenderadresse",
+    "DisplayName:Rocket.Mailing.DefaultFromDisplayName": "Standard-Absendername",
+    "DisplayName:Rocket.Mailing.Smtp.Host": "Host",
+    "DisplayName:Rocket.Mailing.Smtp.Port": "Port",
+    "DisplayName:Rocket.Mailing.Smtp.UserName": "Benutzername",
+    "DisplayName:Rocket.Mailing.Smtp.Password": "Passwort",
+    "DisplayName:Rocket.Mailing.Smtp.Domain": "Domain",
+    "DisplayName:Rocket.Mailing.Smtp.EnableSsl": "SSL aktivieren",
+    "DisplayName:Rocket.Mailing.Smtp.UseDefaultCredentials": "Standard-Anmeldeinformationen verwenden",
+    "Description:Rocket.Mailing.DefaultFromAddress": "Die Standard-Absenderadresse",
+    "Description:Rocket.Mailing.DefaultFromDisplayName": "Der Standard-Absendername",
+    "Description:Rocket.Mailing.Smtp.Host": "Der Name oder die IP-Adresse des f�r SMTP-Transaktionen verwendeten Hosts.",
+    "Description:Rocket.Mailing.Smtp.Port": "Der f�r SMTP-Transaktionen verwendete Port.",
+    "Description:Rocket.Mailing.Smtp.UserName": "Benutzername, der mit den Anmeldedaten verkn�pft ist.",
+    "Description:Rocket.Mailing.Smtp.Password": "Das Passwort f�r den Benutzernamen, der mit den Anmeldeinformationen verkn�pft ist.",
+    "Description:Rocket.Mailing.Smtp.Domain": "Die Dom�ne oder der Computername, der die Anmeldeinformationen verifiziert.",
+    "Description:Rocket.Mailing.Smtp.EnableSsl": "Bestimmt, ob der SmptClient Secure Sockets Layer (SSL) zur Verschl�sselung der Verbindung verwendet.",
+    "Description:Rocket.Mailing.Smtp.UseDefaultCredentials": "Bestimmt, ob die DefaultCredentials mit Anfragen gesendet werden."
+  }
+}

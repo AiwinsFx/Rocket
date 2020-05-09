@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  aiwins-docs-migrator:
+    image: 'aiwinssoft/aiwins-docs-migrator:${TAG:-latest}'
+    build:
+      context: ../../
+      dockerfile: modules/docs/app/AiwinsDocs.Migrator/Dockerfile
+    environment:
+      - ConnectionString=Server=sqlserver;Database=AiwinsDocs;Trusted_Connection=True;MultipleActiveResultSets=true;User=sa;Password=yourStrong(!)Password;Integrated Security=false
+    depends_on:
+      - sqlserver

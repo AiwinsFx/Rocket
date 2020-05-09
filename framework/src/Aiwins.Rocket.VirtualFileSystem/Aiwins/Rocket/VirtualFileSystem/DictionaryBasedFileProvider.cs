@@ -8,7 +8,7 @@ namespace Aiwins.Rocket.VirtualFileSystem {
         protected abstract IDictionary<string, IFileInfo> Files { get; }
 
         public virtual IFileInfo GetFileInfo (string subpath) {
-            if (string.IsNullOrEmpty (subpath)) {
+            if (subpath == null){
                 return new NotFoundFileInfo (subpath);
             }
 

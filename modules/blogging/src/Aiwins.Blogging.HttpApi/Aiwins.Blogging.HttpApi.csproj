@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>Aiwins.Blogging.HttpApi</AssemblyName>
+    <PackageId>Aiwins.Blogging.HttpApi</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Blogging.Application.Contracts\Aiwins.Blogging.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc\Aiwins.Rocket.AspNetCore.Mvc.csproj" />
+  </ItemGroup>
+
+</Project>

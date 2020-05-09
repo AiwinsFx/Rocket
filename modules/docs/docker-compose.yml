@@ -1,0 +1,18 @@
+version: '3.4'
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server
+    volumes:
+      - dbdata:/var/opt/mssql
+
+  aiwins-docs:
+    image: 'aiwinssoft/aiwins-docs:${TAG:-latest}'
+    build:
+      context: ../../
+      dockerfile: modules/docs/app/AiwinsDocs.Web/Dockerfile
+    depends_on: 
+      - sqlserver
+
+volumes:
+  dbdata:

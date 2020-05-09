@@ -1,0 +1,24 @@
+{
+  "version": "2.6.2",
+  "name": "@rocket/aspnetcore.mvc.ui.theme.shared",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@rocket/aspnetcore.mvc.ui": "^2.6.2",
+    "@rocket/bootstrap": "^2.6.2",
+    "@rocket/bootstrap-datepicker": "^2.6.2",
+    "@rocket/datatables.net-bs4": "^2.6.2",
+    "@rocket/font-awesome": "^2.6.2",
+    "@rocket/jquery-form": "^2.6.2",
+    "@rocket/jquery-validation-unobtrusive": "^2.6.2",
+    "@rocket/lodash": "^2.6.2",
+    "@rocket/luxon": "^2.6.2",
+    "@rocket/malihu-custom-scrollbar-plugin": "^2.6.2",
+    "@rocket/select2": "^2.6.2",
+    "@rocket/sweetalert": "^2.6.2",
+    "@rocket/timeago": "^2.6.2",
+    "@rocket/toastr": "^2.6.2"
+  },
+  "gitHead": "eb4a0e507f492e275865b72caeb02ce28d69ae56"
+}

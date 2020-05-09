@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Aiwins.Blogging.EntityFrameworkCore\Aiwins.Blogging.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.EntityFrameworkCore.SqlServer\Aiwins.Rocket.EntityFrameworkCore.SqlServer.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.EntityFrameworkCore\Aiwins.Rocket.PermissionManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\setting-management\src\Aiwins.Rocket.SettingManagement.EntityFrameworkCore\Aiwins.Rocket.SettingManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.EntityFrameworkCore\Aiwins.Rocket.Identity.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

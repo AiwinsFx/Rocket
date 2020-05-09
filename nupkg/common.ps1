@@ -8,9 +8,9 @@ $solutions = (
     "modules/account",
     "modules/audit-logging",
     "modules/background-jobs",
-    "modules/blogging",
+    # "modules/blogging",
     "modules/client-simulation",
-    "modules/docs",
+    # "modules/docs",
     "modules/feature-management",
     "modules/identity",
     "modules/identityserver",
@@ -95,6 +95,7 @@ $projects = (
     "framework/src/Aiwins.Rocket.ObjectMapping",
     "framework/src/Aiwins.Rocket.Quartz",
     "framework/src/Aiwins.Rocket.RabbitMQ",
+    "framework/src/Aiwins.Rocket.Redis",
     "framework/src/Aiwins.Rocket.Security",
     "framework/src/Aiwins.Rocket.Serialization",
     "framework/src/Aiwins.Rocket.Settings",
@@ -107,6 +108,7 @@ $projects = (
     "framework/src/Aiwins.Rocket.UI.Navigation",
     "framework/src/Aiwins.Rocket.Uow",
     "framework/src/Aiwins.Rocket.Validation",
+    "framework/src/Aiwins.Rocket.Validation.Abstractions",
     "framework/src/Aiwins.Rocket.VirtualFileSystem",
 
     # modules/account
@@ -200,7 +202,7 @@ $projects = (
     "modules/permission-management/src/Aiwins.Rocket.PermissionManagement.HttpApi.Client",
     "modules/permission-management/src/Aiwins.Rocket.PermissionManagement.HttpApi",
     "modules/permission-management/src/Aiwins.Rocket.PermissionManagement.MongoDB",
-    "modules/permission-management/src/Aiwins.Rocket.PermissionManagement.Web",
+    # "modules/permission-management/src/Aiwins.Rocket.PermissionManagement.Web",
 
     # modules/setting-management
     "modules/setting-management/src/Aiwins.Rocket.SettingManagement.Domain",

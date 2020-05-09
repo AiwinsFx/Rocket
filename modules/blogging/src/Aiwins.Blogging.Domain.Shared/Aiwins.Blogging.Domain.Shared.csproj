@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Blogging.Domain.Shared</AssemblyName>
+    <PackageId>Aiwins.Blogging.Domain.Shared</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <content Remove="Aiwins\Blogging\Localization\Resources\*.json" />
+    <EmbeddedResource Include="Aiwins\Blogging\Localization\Resources\*.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Validation\Aiwins.Rocket.Validation.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,23 @@
+﻿@page
+@model AiwinsDocs.Web.Pages.IndexModel
+@{
+}
+
+@if (!Model.Projects.Any())
+{
+    <rocket-alert alert-type="Warning">
+        <strong>No projects found!</strong><br />
+        See <a href=" https://docs.rocket.io/en/rocket/latest/Modules/Docs">documentation</a> to see how you can create a new one.
+    </rocket-alert>
+}
+else
+{
+    <h1>Projects</h1>
+
+    <rocket-list-group class="mt-5">
+        @foreach (var project in Model.Projects)
+        {
+            <rocket-list-group-item href="@Model.GetUrlForProject(project)">@project.Name</rocket-list-group-item>
+        }
+    </rocket-list-group>
+}

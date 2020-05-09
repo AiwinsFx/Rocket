@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\..\..\configureawait.props" />
+  <Import Project="..\..\..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <AssemblyName>Aiwins.Docs.EntityFrameworkCore</AssemblyName>
+    <PackageId>Aiwins.Docs.EntityFrameworkCore</PackageId>
+    <RootNamespace />
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Aiwins\Docs\NewFolder\**" />
+    <EmbeddedResource Remove="Aiwins\Docs\NewFolder\**" />
+    <None Remove="Aiwins\Docs\NewFolder\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Aiwins.Docs.Domain\Aiwins.Docs.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.EntityFrameworkCore\Aiwins.Rocket.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

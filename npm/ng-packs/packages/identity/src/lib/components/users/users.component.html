@@ -1,0 +1,271 @@
+<div id="identity-roles-wrapper" class="card">
+  <div class="card-header">
+    <div class="row">
+      <div class="col col-md-6">
+        <h5 class="card-title">{{ 'RocketIdentity::Users' | rocketLocalization }}</h5>
+      </div>
+      <div class="text-right col col-md-6">
+        <button
+          *rocketPermission="'RocketIdentity.Users.Create'"
+          id="create-role"
+          class="btn btn-primary"
+          type="button"
+          (click)="add()"
+        >
+          <i class="fa fa-plus mr-1"></i>
+          <span>{{ 'RocketIdentity::NewUser' | rocketLocalization }}</span>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body">
+    <div id="data-tables-table-filter" class="data-tables-filter">
+      <label
+        ><input
+          type="search"
+          class="form-control form-control-sm"
+          [placeholder]="'RocketUi::PagerSearch' | rocketLocalization"
+          (input.debounce)="onSearch($event.target.value)"
+      /></label>
+    </div>
+    <rocket-table
+      *ngIf="[150, 250, 250, 250] as columnWidths"
+      [rocketLoading]="loading"
+      [rocketLoadingDelay]="500"
+      [rocketTableSort]="{ key: sortKey, order: sortOrder }"
+      [colgroupTemplate]="tableColGroup"
+      [headerTemplate]="tableHeader"
+      [bodyTemplate]="tableBody"
+      [value]="data$ | async"
+      [rows]="pageQuery.maxResultCount"
+      [totalRecords]="totalCount$ | async"
+      [scrollable]="true"
+      (pageChange)="onPageChange($event)"
+    >
+      <ng-template #tableColGroup>
+        <colgroup>
+          <col *ngFor="let width of columnWidths" [ngStyle]="{ 'width.px': width || undefined }" />
+        </colgroup>
+      </ng-template>
+      <ng-template #tableHeader>
+        <tr>
+          <th>{{ 'RocketIdentity::Actions' | rocketLocalization }}</th>
+          <th (click)="sortOrderIcon.sort('userName')">
+            {{ 'RocketIdentity::UserName' | rocketLocalization }}
+            <rocket-sort-order-icon
+              #sortOrderIcon
+              sortKey="userName"
+              [(selectedSortKey)]="sortKey"
+              [(order)]="sortOrder"
+            >
+            </rocket-sort-order-icon>
+          </th>
+          <th (click)="sortOrderIcon.sort('email')">
+            {{ 'RocketIdentity::EmailAddress' | rocketLocalization }}
+            <rocket-sort-order-icon
+              sortKey="email"
+              [(selectedSortKey)]="sortKey"
+              [(order)]="sortOrder"
+            ></rocket-sort-order-icon>
+          </th>
+          <th (click)="sortOrderIcon.sort('phoneNumber')">
+            {{ 'RocketIdentity::PhoneNumber' | rocketLocalization }}
+            <rocket-sort-order-icon
+              sortKey="phoneNumber"
+              [(selectedSortKey)]="sortKey"
+              [(order)]="sortOrder"
+            >
+            </rocket-sort-order-icon>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template #tableBody let-data>
+        <tr>
+          <td class="text-center">
+            <div ngbDropdown container="body" class="d-inline-block">
+              <button
+                class="btn btn-primary btn-sm dropdown-toggle"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                ngbDropdownToggle
+              >
+                <i class="fa fa-cog mr-1"></i>{{ 'RocketIdentity::Actions' | rocketLocalization }}
+              </button>
+              <div ngbDropdownMenu>
+                <button
+                  *rocketPermission="'RocketIdentity.Users.Update'"
+                  ngbDropdownItem
+                  (click)="edit(data.id)"
+                >
+                  {{ 'RocketIdentity::Edit' | rocketLocalization }}
+                </button>
+                <button
+                  *rocketPermission="'RocketIdentity.Users.ManagePermissions'"
+                  ngbDropdownItem
+                  (click)="openPermissionsModal(data.id)"
+                >
+                  {{ 'RocketIdentity::Permissions' | rocketLocalization }}
+                </button>
+                <button
+                  *rocketPermission="'RocketIdentity.Users.Delete'"
+                  ngbDropdownItem
+                  (click)="delete(data.id, data.userName)"
+                >
+                  {{ 'RocketIdentity::Delete' | rocketLocalization }}
+                </button>
+              </div>
+            </div>
+          </td>
+          <td>{{ data.userName }}</td>
+          <td>{{ data.email }}</td>
+          <td>{{ data.phoneNumber }}</td>
+        </tr>
+      </ng-template>
+    </rocket-table>
+  </div>
+</div>
+
+<rocket-modal [(visible)]="isModalVisible" [busy]="modalBusy" (disappear)="form = null">
+  <ng-template #rocketHeader>
+    <h3>{{ (selected?.id ? 'RocketIdentity::Edit' : 'RocketIdentity::NewUser') | rocketLocalization }}</h3>
+  </ng-template>
+
+  <ng-template #rocketBody>
+    <ng-template #loaderRef
+      ><div class="text-center"><i class="fa fa-pulse fa-spinner"></i></div
+    ></ng-template>
+
+    <form *ngIf="form; else loaderRef" [formGroup]="form" (ngSubmit)="save()">
+      <ngb-tabset>
+        <ngb-tab [title]="'RocketIdentity::UserInformations' | rocketLocalization">
+          <ng-template ngbTabContent>
+            <div class="mt-2 fade-in-top">
+              <div class="form-group">
+                <label for="user-name">{{ 'RocketIdentity::UserName' | rocketLocalization }}</label
+                ><span> * </span>
+                <input
+                  type="text"
+                  id="user-name"
+                  class="form-control"
+                  formControlName="userName"
+                  autofocus
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="name">{{ 'RocketIdentity::DisplayName:Name' | rocketLocalization }}</label>
+                <input type="text" id="name" class="form-control" formControlName="name" />
+              </div>
+
+              <div class="form-group">
+                <label for="surname">{{
+                  'RocketIdentity::DisplayName:Surname' | rocketLocalization
+                }}</label>
+                <input type="text" id="surname" class="form-control" formControlName="surname" />
+              </div>
+
+              <div class="form-group">
+                <label for="password">{{ 'RocketIdentity::Password' | rocketLocalization }}</label
+                ><span *ngIf="!selected.userName"> * </span>
+                <input
+                  type="password"
+                  id="password"
+                  autocomplete="new-password"
+                  class="form-control"
+                  formControlName="password"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">{{ 'RocketIdentity::EmailAddress' | rocketLocalization }}</label
+                ><span> * </span>
+                <input type="text" id="email" class="form-control" formControlName="email" />
+              </div>
+
+              <div class="form-group">
+                <label for="phone-number">{{ 'RocketIdentity::PhoneNumber' | rocketLocalization }}</label>
+                <input
+                  type="text"
+                  id="phone-number"
+                  class="form-control"
+                  formControlName="phoneNumber"
+                />
+              </div>
+
+              <div class="custom-checkbox custom-control mb-2">
+                <input
+                  type="checkbox"
+                  id="lockout-checkbox"
+                  class="custom-control-input"
+                  formControlName="lockoutEnabled"
+                />
+                <label class="custom-control-label" for="lockout-checkbox">{{
+                  'RocketIdentity::DisplayName:LockoutEnabled' | rocketLocalization
+                }}</label>
+              </div>
+
+              <div class="custom-checkbox custom-control mb-2">
+                <input
+                  type="checkbox"
+                  id="two-factor-checkbox"
+                  class="custom-control-input"
+                  formControlName="twoFactorEnabled"
+                />
+                <label class="custom-control-label" for="two-factor-checkbox">{{
+                  'RocketIdentity::DisplayName:TwoFactorEnabled' | rocketLocalization
+                }}</label>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab [title]="'RocketIdentity::Roles' | rocketLocalization">
+          <ng-template ngbTabContent>
+            <div class="mt-2 fade-in-top">
+              <div
+                *ngFor="let roleGroup of roleGroups; let i = index; trackBy: trackByFn"
+                class="custom-checkbox custom-control mb-2"
+              >
+                <input
+                  type="checkbox"
+                  class="custom-control-input"
+                  [attr.id]="'roles-' + i"
+                  [formControl]="roleGroup.controls[roles[i].name]"
+                />
+                <label class="custom-control-label" [attr.for]="'roles-' + i">{{
+                  roles[i].name
+                }}</label>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </form>
+  </ng-template>
+
+  <ng-template #rocketFooter>
+    <button type="button" class="btn btn-secondary" #rocketClose>
+      {{ 'RocketIdentity::Cancel' | rocketLocalization }}
+    </button>
+    <rocket-button iconClass="fa fa-check" (click)="save()" [disabled]="form?.invalid">{{
+      'RocketIdentity::Save' | rocketLocalization
+    }}</rocket-button>
+  </ng-template>
+</rocket-modal>
+
+<rocket-permission-management
+  #rocketPermissionManagement="rocketPermissionManagement"
+  *rocketReplaceableTemplate="
+    {
+      inputs: {
+        providerName: { value: 'U' },
+        providerKey: { value: providerKey },
+        visible: { value: visiblePermissions, twoWay: true }
+      },
+      outputs: { visibleChange: onVisiblePermissionChange },
+      componentKey: permissionManagementKey
+    };
+    let init = initTemplate
+  "
+  (rocketInit)="init(rocketPermissionManagement)"
+>
+</rocket-permission-management>

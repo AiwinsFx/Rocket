@@ -7,13 +7,17 @@ namespace Aiwins.Rocket.VirtualFileSystem {
         //TODO: 性能优化!
 
         public static string NormalizePath (string fullPath) {
+            if (fullPath.Equals ("/", StringComparison.Ordinal)) {
+                return string.Empty;
+            }
+
             var fileName = fullPath;
             var extension = "";
 
             if (fileName.Contains (".")) {
                 extension = fullPath.Substring (fileName.LastIndexOf (".", StringComparison.Ordinal));
                 if (extension.Contains ("/")) {
-                    //清除目录扩展名
+                    //That means the file does not have extension, but a directory has "." char. So, clear extension.
                     extension = "";
                 } else {
                     fileName = fullPath.Substring (0, fullPath.Length - extension.Length);

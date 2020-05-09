@@ -32,7 +32,7 @@ namespace Aiwins.Rocket.Validation {
                 throw new Exception ("Method parameter count does not match with argument count!");
             }
 
-            //TODO: 考虑移除该条件判断
+            //todo: consider to remove this condition
             if (context.Errors.Any () && HasSingleNullArgument (context)) {
                 ThrowValidationError (context);
             }
