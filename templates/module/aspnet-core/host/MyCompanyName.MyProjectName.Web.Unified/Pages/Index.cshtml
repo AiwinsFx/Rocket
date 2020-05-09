@@ -1,0 +1,7 @@
+﻿@page
+@using Localization.Resources.RocketUi
+@using Microsoft.Extensions.Localization
+@using MyCompanyName.MyProjectName.Pages
+@model IndexModel
+@inject IStringLocalizer<RocketUiResource> Localizer
+<a href="/Account/Login">@Localizer["Login"]</a>

@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.MongoDB\Aiwins.Rocket.PermissionManagement.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\setting-management\src\Aiwins.Rocket.SettingManagement.MongoDB\Aiwins.Rocket.SettingManagement.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.MongoDB\Aiwins.Rocket.Identity.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identityserver\src\Aiwins.Rocket.IdentityServer.MongoDB\Aiwins.Rocket.IdentityServer.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\background-jobs\src\Aiwins.Rocket.BackgroundJobs.MongoDB\Aiwins.Rocket.BackgroundJobs.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\audit-logging\src\Aiwins.Rocket.AuditLogging.MongoDB\Aiwins.Rocket.AuditLogging.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.MongoDB\Aiwins.Rocket.TenantManagement.MongoDB.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.MongoDB\Aiwins.Rocket.FeatureManagement.MongoDB.csproj" />
+  </ItemGroup>
+
+</Project>

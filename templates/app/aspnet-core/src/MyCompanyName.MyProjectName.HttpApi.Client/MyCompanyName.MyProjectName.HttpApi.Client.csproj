@@ -1,0 +1,22 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\modules\account\src\Aiwins.Rocket.Account.HttpApi.Client\Aiwins.Rocket.Account.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.HttpApi.Client\Aiwins.Rocket.Identity.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.HttpApi.Client\Aiwins.Rocket.PermissionManagement.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.HttpApi.Client\Aiwins.Rocket.TenantManagement.HttpApi.Client.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.HttpApi.Client\Aiwins.Rocket.FeatureManagement.HttpApi.Client.csproj" />
+  </ItemGroup>
+
+</Project>

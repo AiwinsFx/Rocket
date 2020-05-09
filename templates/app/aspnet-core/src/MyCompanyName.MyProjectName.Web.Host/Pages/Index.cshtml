@@ -1,0 +1,27 @@
+﻿@page
+@inherits MyCompanyName.MyProjectName.Web.Pages.MyProjectNamePage
+@model MyCompanyName.MyProjectName.Web.Pages.IndexModel
+@section styles {
+    <rocket-style-bundle>
+        <rocket-style src="/Pages/Index.css" />
+    </rocket-style-bundle>
+}
+@section scripts {
+    <rocket-script-bundle>
+        <rocket-script src="/Pages/Index.js" />
+    </rocket-script-bundle>
+}
+<rocket-card>
+    <rocket-card-header>@L["Welcome"]</rocket-card-header>
+    <rocket-card-body>
+        <p>@L["LongWelcomeMessage"]</p>
+        @if (!CurrentUser.IsAuthenticated)
+        {
+            <form method="POST">
+                <input type="submit" asp-page-handler="Login" value="LOGIN" class="btn btn-login" />
+            </form>
+        }
+        <hr />
+        <p class="text-right"><a href="https://rocket.io?ref=tmpl" target="_blank">rocket.io</a></p>
+    </rocket-card-body>
+</rocket-card>

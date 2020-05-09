@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.Domain\Aiwins.Rocket.Identity.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.PermissionManagement.Domain.Identity\Aiwins.Rocket.PermissionManagement.Domain.Identity.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identityserver\src\Aiwins.Rocket.IdentityServer.Domain\Aiwins.Rocket.IdentityServer.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identityserver\src\Aiwins.Rocket.PermissionManagement.Domain.IdentityServer\Aiwins.Rocket.PermissionManagement.Domain.IdentityServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\background-jobs\src\Aiwins.Rocket.BackgroundJobs.Domain\Aiwins.Rocket.BackgroundJobs.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\audit-logging\src\Aiwins.Rocket.AuditLogging.Domain\Aiwins.Rocket.AuditLogging.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.Domain\Aiwins.Rocket.TenantManagement.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.Domain\Aiwins.Rocket.FeatureManagement.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\setting-management\src\Aiwins.Rocket.SettingManagement.Domain\Aiwins.Rocket.SettingManagement.Domain.csproj" />
+  </ItemGroup>
+
+</Project>

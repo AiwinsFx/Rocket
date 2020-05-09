@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+  </PropertyGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain\MyCompanyName.MyProjectName.Domain.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.EntityFrameworkCore.SqlServer\Aiwins.Rocket.EntityFrameworkCore.SqlServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.EntityFrameworkCore\Aiwins.Rocket.PermissionManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\setting-management\src\Aiwins.Rocket.SettingManagement.EntityFrameworkCore\Aiwins.Rocket.SettingManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.EntityFrameworkCore\Aiwins.Rocket.Identity.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identityserver\src\Aiwins.Rocket.IdentityServer.EntityFrameworkCore\Aiwins.Rocket.IdentityServer.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\background-jobs\src\Aiwins.Rocket.BackgroundJobs.EntityFrameworkCore\Aiwins.Rocket.BackgroundJobs.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\audit-logging\src\Aiwins.Rocket.AuditLogging.EntityFrameworkCore\Aiwins.Rocket.AuditLogging.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.EntityFrameworkCore\Aiwins.Rocket.TenantManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.EntityFrameworkCore\Aiwins.Rocket.FeatureManagement.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

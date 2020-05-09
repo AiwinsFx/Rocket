@@ -1,0 +1,27 @@
+﻿@page
+@inherits MyCompanyName.MyProjectName.Web.Pages.MyProjectNamePage
+@model MyCompanyName.MyProjectName.Web.Pages.IndexModel
+@section styles {
+    <rocket-style-bundle>
+        <rocket-style src="/Pages/Index.css" />
+    </rocket-style-bundle>
+}
+@section scripts {
+    <rocket-script-bundle>
+        <rocket-script src="/Pages/Index.js" />
+    </rocket-script-bundle>
+}
+<div class="jumbotron text-center">
+    <h1>@L["Welcome"]</h1>
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <p>@L["LongWelcomeMessage"]</p>
+            <hr class="my-4"/>
+        </div>
+    </div>
+    <a href="https://rocket.io?ref=tmpl" target="_blank" class="btn btn-primary px-4">rocket.io</a>
+    @if (!CurrentUser.IsAuthenticated)
+    {
+        <a rocket-button="Primary" href="/Account/Login" class="px-4"><i class="fa fa-sign-in"></i> @L["Login"]</a>
+    }
+</div>

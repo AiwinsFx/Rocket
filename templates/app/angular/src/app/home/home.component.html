@@ -1,0 +1,20 @@
+<div id="RocketContentToolbar"></div>
+<div class="jumbotron text-center">
+  <h1>{{ '::Welcome' | rocketLocalization }}</h1>
+  <div class="row">
+    <div class="col-md-6 mx-auto">
+      <p>{{ '::LongWelcomeMessage' | rocketLocalization }}</p>
+      <hr class="my-4" />
+    </div>
+  </div>
+  <a href="https://rocket.io?ref=tmpl" target="_blank" class="btn btn-primary px-4">rocket.io</a>
+  <a
+    *ngIf="!hasLoggedIn"
+    routerLink="/account/login"
+    [state]="{ redirectUrl: '/' }"
+    class="px-4 btn btn-primary ml-1"
+    role="button"
+    id="login-button"
+    ><i class="fa fa-sign-in"></i> {{ 'RocketAccount::Login' | rocketLocalization }}</a
+  >
+</div>

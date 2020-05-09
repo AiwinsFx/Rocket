@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.Domain.Shared\Aiwins.Rocket.Identity.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identityserver\src\Aiwins.Rocket.IdentityServer.Domain.Shared\Aiwins.Rocket.IdentityServer.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\background-jobs\src\Aiwins.Rocket.BackgroundJobs.Domain.Shared\Aiwins.Rocket.BackgroundJobs.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\audit-logging\src\Aiwins.Rocket.AuditLogging.Domain.Shared\Aiwins.Rocket.AuditLogging.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.Domain.Shared\Aiwins.Rocket.TenantManagement.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.Domain.Shared\Aiwins.Rocket.FeatureManagement.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.Domain.Shared\Aiwins.Rocket.PermissionManagement.Domain.Shared.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\setting-management\src\Aiwins.Rocket.SettingManagement.Domain.Shared\Aiwins.Rocket.SettingManagement.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Localization\MyProjectName\*.json" />
+    <Content Remove="Localization\MyProjectName\*.json" />
+  </ItemGroup>
+
+</Project>

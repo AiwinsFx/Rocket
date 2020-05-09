@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <Import Project="..\..\common.props" />
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Domain.Shared\MyCompanyName.MyProjectName.Domain.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.ObjectExtending\Aiwins.Rocket.ObjectExtending.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\account\src\Aiwins.Rocket.Account.Application.Contracts\Aiwins.Rocket.Account.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.Application.Contracts\Aiwins.Rocket.Identity.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.Application.Contracts\Aiwins.Rocket.PermissionManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.Application.Contracts\Aiwins.Rocket.TenantManagement.Application.Contracts.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.Application.Contracts\Aiwins.Rocket.FeatureManagement.Application.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>

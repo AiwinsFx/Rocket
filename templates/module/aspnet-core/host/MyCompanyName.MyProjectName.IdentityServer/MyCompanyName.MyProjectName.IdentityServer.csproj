@@ -1,0 +1,62 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>MyCompanyName.MyProjectName</RootNamespace>
+    <PreserveCompilationReferences>true</PreserveCompilationReferences>
+    <UserSecretsId>MyCompanyName.MyProjectName-c2d31439-b723-48e2-b061-5ebd7aeb6010</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Serilog.AspNetCore" Version="3.2.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="4.1.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.3.1" />
+    <PackageReference Include="IdentityServer4.AccessTokenValidation" Version="3.0.1" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="3.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="3.1.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.2" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Authentication.JwtBearer\Aiwins.Rocket.AspNetCore.Authentication.JwtBearer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc\Aiwins.Rocket.AspNetCore.Mvc.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.MultiTenancy\Aiwins.Rocket.AspNetCore.Mvc.UI.MultiTenancy.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.Autofac\Aiwins.Rocket.Autofac.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.EntityFrameworkCore.SqlServer\Aiwins.Rocket.EntityFrameworkCore.SqlServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Serilog\Aiwins.Rocket.AspNetCore.Serilog.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\account\src\Aiwins.Rocket.Account.Web.IdentityServer\Aiwins.Rocket.Account.Web.IdentityServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\account\src\Aiwins.Rocket.Account.Application\Aiwins.Rocket.Account.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\setting-management\src\Aiwins.Rocket.SettingManagement.EntityFrameworkCore\Aiwins.Rocket.SettingManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\audit-logging\src\Aiwins.Rocket.AuditLogging.EntityFrameworkCore\Aiwins.Rocket.AuditLogging.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identityserver\src\Aiwins.Rocket.IdentityServer.EntityFrameworkCore\Aiwins.Rocket.IdentityServer.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.EntityFrameworkCore\Aiwins.Rocket.PermissionManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.Application\Aiwins.Rocket.PermissionManagement.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\permission-management\src\Aiwins.Rocket.PermissionManagement.HttpApi\Aiwins.Rocket.PermissionManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.EntityFrameworkCore\Aiwins.Rocket.Identity.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.Application\Aiwins.Rocket.Identity.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.Identity.HttpApi\Aiwins.Rocket.Identity.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\identity\src\Aiwins.Rocket.PermissionManagement.Domain.Identity\Aiwins.Rocket.PermissionManagement.Domain.Identity.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.EntityFrameworkCore\Aiwins.Rocket.TenantManagement.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.Application\Aiwins.Rocket.TenantManagement.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\tenant-management\src\Aiwins.Rocket.TenantManagement.HttpApi\Aiwins.Rocket.TenantManagement.HttpApi.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.Application\Aiwins.Rocket.FeatureManagement.Application.csproj" />
+    <ProjectReference Include="..\..\..\..\..\modules\feature-management\src\Aiwins.Rocket.FeatureManagement.Application\Aiwins.Rocket.FeatureManagement.Application.csproj" />
+    <ProjectReference Include="..\..\src\MyCompanyName.MyProjectName.Application.Contracts\MyCompanyName.MyProjectName.Application.Contracts.csproj" />
+    <ProjectReference Include="..\MyCompanyName.MyProjectName.Host.Shared\MyCompanyName.MyProjectName.Host.Shared.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Logs\**" />
+    <Content Remove="Logs\**" />
+    <EmbeddedResource Remove="Logs\**" />
+    <None Remove="Logs\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Pages\**\*.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Pages\**\*.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
