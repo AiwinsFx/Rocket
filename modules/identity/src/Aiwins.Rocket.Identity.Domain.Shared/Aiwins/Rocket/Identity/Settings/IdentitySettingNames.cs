@@ -34,6 +34,7 @@
 
             public const string IsUserNameUpdateEnabled = UserPrefix + ".IsUserNameUpdateEnabled";
             public const string IsEmailUpdateEnabled = UserPrefix + ".IsEmailUpdateEnabled";
+            public const string IsPhoneNumberUpdateEnabled = UserPrefix + ".IsPhoneNumberUpdateEnabled";
         }
     }
 }

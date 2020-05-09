@@ -13,8 +13,8 @@ namespace Aiwins.Blogging.Comments
 
         Task<int> GetCommentCountOfPostAsync(Guid postId);
 
-        Task<List<Comment>> GetRepliesOfComment(Guid id);
+        Task<List<Comment>> GetRepliesOfCommentAsync(Guid id);
 
-        Task DeleteOfPost(Guid id);
+        Task DeleteOfPostAsync(Guid id);
     }
 }

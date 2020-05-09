@@ -29,13 +29,13 @@ namespace Aiwins.Blogging.Comments
                 .CountAsync(a => a.PostId == postId);
         }
 
-        public async Task<List<Comment>> GetRepliesOfComment(Guid id)
+        public async Task<List<Comment>> GetRepliesOfCommentAsync(Guid id)
         {
             return await GetMongoQueryable()
                 .Where(a => a.RepliedCommentId == id).ToListAsync();
         }
 
-        public async Task DeleteOfPost(Guid id)
+        public async Task DeleteOfPostAsync(Guid id)
         {
             var recordsToDelete = GetMongoQueryable().Where(pt => pt.PostId == id);
 

@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using Aiwins.Rocket.Localization;
 using JetBrains.Annotations;
-using Microsoft.Extensions.Localization;
 
 namespace Aiwins.Rocket.ObjectExtending {
     public class ObjectExtensionPropertyInfo : IHasNameWithLocalizableDisplayName {
@@ -16,9 +14,9 @@ namespace Aiwins.Rocket.ObjectExtending {
         [NotNull]
         public Type Type { get; }
 
-        [NotNull]
-        [Obsolete ("Add validation attributes to the Attributes list instead! ValidationAttributes property will be removed in future versions.")]
-        public List<ValidationAttribute> ValidationAttributes { get; }
+        // [NotNull]
+        // [Obsolete ("Add validation attributes to the Attributes list instead! ValidationAttributes property will be removed in future versions.")]
+        // public List<ValidationAttribute> ValidationAttributes { get; }
 
         [NotNull]
         public List<Attribute> Attributes { get; }
@@ -53,7 +51,7 @@ namespace Aiwins.Rocket.ObjectExtending {
             Name = Check.NotNull (name, nameof (name));
 
             Configuration = new Dictionary<object, object> ();
-            ValidationAttributes = new List<ValidationAttribute> ();
+            // ValidationAttributes = new List<ValidationAttribute> ();
             Attributes = new List<Attribute> ();
             Validators = new List<Action<ObjectExtensionPropertyValidationContext>> ();
         }

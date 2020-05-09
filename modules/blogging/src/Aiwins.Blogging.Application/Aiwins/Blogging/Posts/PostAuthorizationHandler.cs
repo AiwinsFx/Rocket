@@ -31,8 +31,8 @@ namespace Aiwins.Blogging.Posts {
             if (resource.CreatorId != null && resource.CreatorId == context.User.FindUserId ()) {
                 return true;
             }
-
-            if (await _permissionChecker.IsGrantedAsync (context.User, BloggingPermissions.Posts.Delete)) {
+            var result = await _permissionChecker.GetResultAsync (context.User, BloggingPermissions.Posts.Delete);
+            if (result?.GrantType == PermissionGrantType.Granted) {
                 return true;
             }
 
@@ -44,7 +44,8 @@ namespace Aiwins.Blogging.Posts {
                 return true;
             }
 
-            if (await _permissionChecker.IsGrantedAsync (context.User, BloggingPermissions.Posts.Update)) {
+            var result = await _permissionChecker.GetResultAsync (context.User, BloggingPermissions.Posts.Update);
+            if (result?.GrantType == PermissionGrantType.Granted) {
                 return true;
             }
 

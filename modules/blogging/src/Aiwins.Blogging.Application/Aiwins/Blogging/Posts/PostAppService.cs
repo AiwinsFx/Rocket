@@ -113,7 +113,7 @@ namespace Aiwins.Blogging.Posts {
 
             var tags = await GetTagsOfPost (id);
             await _tagRepository.DecreaseUsageCountOfTagsAsync (tags.Select (t => t.Id).ToList ());
-            await _commentRepository.DeleteOfPost (id);
+            await _commentRepository.DeleteOfPostAsync (id);
 
             await _postRepository.DeleteAsync (id);
         }

@@ -8,13 +8,13 @@ namespace Aiwins.Rocket.Users {
         string UserName { get; }
 
         [CanBeNull]
-        string Email { get; }
-
-        [CanBeNull]
         string Name { get; }
 
         [CanBeNull]
         string Surname { get; }
+        
+        [CanBeNull]
+        string Email { get; }
 
         bool EmailConfirmed { get; }
 

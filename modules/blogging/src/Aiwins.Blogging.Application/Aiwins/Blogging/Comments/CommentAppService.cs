@@ -112,7 +112,7 @@ namespace Aiwins.Blogging.Comments
 
             await _commentRepository.DeleteAsync(id);
 
-            var replies = await _commentRepository.GetRepliesOfComment(id);
+            var replies = await _commentRepository.GetRepliesOfCommentAsync(id);
 
             foreach (var reply in replies)
             {
