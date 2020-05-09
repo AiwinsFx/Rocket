@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Aiwins.Rocket.Cli
-{
-    public class RocketCliOptions
-    {
+namespace Aiwins.Rocket.Cli {
+    public class RocketCliOptions {
         public Dictionary<string, Type> Commands { get; }
 
         /// <summary>
@@ -17,9 +15,8 @@ namespace Aiwins.Rocket.Cli
         /// </summary>
         public string ToolName { get; set; } = "CLI";
 
-        public RocketCliOptions()
-        {
-            Commands = new Dictionary<string, Type>(StringComparer.OrdinalIgnoreCase);
+        public RocketCliOptions () {
+            Commands = new Dictionary<string, Type> (StringComparer.OrdinalIgnoreCase);
         }
     }
 }

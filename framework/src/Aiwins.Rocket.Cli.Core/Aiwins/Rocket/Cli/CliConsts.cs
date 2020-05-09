@@ -1,7 +1,5 @@
-﻿namespace Aiwins.Rocket.Cli
-{
-    public static class CliConsts
-    {
+﻿namespace Aiwins.Rocket.Cli {
+    public static class CliConsts {
         public const string Command = "RocketCliCommand";
 
         public const string BranchPrefix = "branch@";

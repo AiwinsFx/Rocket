@@ -1,34 +1,28 @@
 ﻿using System;
 using System.IO;
 
-namespace Aiwins.Rocket.Cli.Utils
-{
-    public class GlobalToolHelper
-    {
+namespace Aiwins.Rocket.Cli.Utils {
+    public class GlobalToolHelper {
         /// <summary>
         /// Checks whether the tool is installed or not.
         /// </summary>
         /// <param name="toolCommandName">Eg: For RocketSuite tool it's "rocket-suite", for ABP CLI tool it's "rocket"</param>
-        public static bool IsGlobalToolInstalled(string toolCommandName)
-        {
+        public static bool IsGlobalToolInstalled (string toolCommandName) {
             string suitePath;
 
-            if (PlatformHelper.GetPlatform() == RuntimePlatform.LinuxOrMacOs)
-            {
+            if (PlatformHelper.GetPlatform () == RuntimePlatform.LinuxOrMacOs) {
                 suitePath = Environment
-                    .ExpandEnvironmentVariables(
-                        Path.Combine("%HOME%", ".dotnet", "tools", toolCommandName)
+                    .ExpandEnvironmentVariables (
+                        Path.Combine ("%HOME%", ".dotnet", "tools", toolCommandName)
                     );
-            }
-            else
-            {
+            } else {
                 suitePath = Environment
-                    .ExpandEnvironmentVariables(
-                        Path.Combine(@"%USERPROFILE%", ".dotnet", "tools", toolCommandName + ".exe")
+                    .ExpandEnvironmentVariables (
+                        Path.Combine (@"%USERPROFILE%", ".dotnet", "tools", toolCommandName + ".exe")
                     );
             }
 
-            return File.Exists(suitePath);
+            return File.Exists (suitePath);
         }
     }
 }

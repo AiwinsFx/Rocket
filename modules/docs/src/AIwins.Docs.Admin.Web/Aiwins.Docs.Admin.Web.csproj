@@ -13,6 +13,10 @@
     <TypeScriptToolsVersion>2.8</TypeScriptToolsVersion>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Docs.Admin.Web' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>https://localhost:5001;http://localhost:5000</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AutoMapper\Aiwins.Rocket.AutoMapper.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Bundling\Aiwins.Rocket.AspNetCore.Mvc.UI.Bundling.csproj" />

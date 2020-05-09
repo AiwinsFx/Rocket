@@ -167,6 +167,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.AspNetCore.Mv
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets", "src\Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets\Aiwins.Rocket.AspNetCore.Mvc.UI.Widgets.csproj", "{73544FDF-D202-4667-96F5-AF83EFD6A97B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.Validation.Abstractions", "src\Aiwins.Rocket.Validation.Abstractions\Aiwins.Rocket.Validation.Abstractions.csproj", "{CCC603A5-B27E-40E8-8FFB-68DF6772517F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1164,5 +1166,17 @@ Global
 		{73544FDF-D202-4667-96F5-AF83EFD6A97B}.Release|x64.Build.0 = Release|Any CPU
 		{73544FDF-D202-4667-96F5-AF83EFD6A97B}.Release|x86.ActiveCfg = Release|Any CPU
 		{73544FDF-D202-4667-96F5-AF83EFD6A97B}.Release|x86.Build.0 = Release|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Debug|x64.Build.0 = Debug|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Debug|x86.Build.0 = Debug|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Release|x64.ActiveCfg = Release|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Release|x64.Build.0 = Release|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Release|x86.ActiveCfg = Release|Any CPU
+		{CCC603A5-B27E-40E8-8FFB-68DF6772517F}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

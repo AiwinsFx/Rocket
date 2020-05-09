@@ -13,6 +13,11 @@
     <RootNamespace>Aiwins.Blogging</RootNamespace>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Blogging.Web' ">
+    <StartAction>Project</StartAction>
+    <ExternalConsole>true</ExternalConsole>
+    <ApplicationURL>http://localhost:50014/</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap\Aiwins.Rocket.AspNetCore.Mvc.UI.Bootstrap.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Packages\Aiwins.Rocket.AspNetCore.Mvc.UI.Packages.csproj" />

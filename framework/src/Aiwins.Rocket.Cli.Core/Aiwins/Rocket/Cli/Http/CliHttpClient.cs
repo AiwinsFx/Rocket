@@ -5,96 +5,78 @@ using System.Net.Http;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using Aiwins.Rocket.Cli.Auth;
 using IdentityModel.Client;
+using Microsoft.Extensions.Logging;
 using Polly;
 using Polly.Extensions.Http;
-using Aiwins.Rocket.Cli.Auth;
-using Microsoft.Extensions.Logging;
 
-namespace Aiwins.Rocket.Cli.Http
-{
-    public class CliHttpClient : HttpClient
-    {
-        public static TimeSpan DefaultTimeout { get; set; } = TimeSpan.FromMinutes(1);
+namespace Aiwins.Rocket.Cli.Http {
+    public class CliHttpClient : HttpClient {
+        public static TimeSpan DefaultTimeout { get; set; } = TimeSpan.FromMinutes (1);
 
-        public CliHttpClient(TimeSpan? timeout = null) : base(new CliHttpClientHandler())
-        {
+        public CliHttpClient (TimeSpan? timeout = null) : base (new CliHttpClientHandler ()) {
             Timeout = timeout ?? DefaultTimeout;
 
-            AddAuthentication(this);
+            AddAuthentication (this);
         }
 
-        public CliHttpClient(bool setBearerToken) : base(new CliHttpClientHandler())
-        {
+        public CliHttpClient (bool setBearerToken) : base (new CliHttpClientHandler ()) {
             Timeout = DefaultTimeout;
 
-            if (setBearerToken)
-            {
-                AddAuthentication(this);
+            if (setBearerToken) {
+                AddAuthentication (this);
             }
         }
 
-        private static void AddAuthentication(HttpClient client)
-        {
-            if (!AuthService.IsLoggedIn())
-            {
+        private static void AddAuthentication (HttpClient client) {
+            if (!AuthService.IsLoggedIn ()) {
                 return;
             }
 
-            var accessToken = File.ReadAllText(CliPaths.AccessToken, Encoding.UTF8);
-            if (!accessToken.IsNullOrEmpty())
-            {
-                client.SetBearerToken(accessToken);
+            var accessToken = File.ReadAllText (CliPaths.AccessToken, Encoding.UTF8);
+            if (!accessToken.IsNullOrEmpty ()) {
+                client.SetBearerToken (accessToken);
             }
         }
 
-        public async Task<HttpResponseMessage> GetHttpResponseMessageWithRetryAsync<T>
-        (
+        public async Task<HttpResponseMessage> GetHttpResponseMessageWithRetryAsync<T> (
             string url,
             CancellationToken? cancellationToken = null,
             ILogger<T> logger = null,
-            IEnumerable<TimeSpan> sleepDurations = null
-        )
-        {
-            if (sleepDurations == null)
-            {
-                sleepDurations = new[]
-                {
-                    TimeSpan.FromSeconds(2),
-                    TimeSpan.FromSeconds(4),
-                    TimeSpan.FromSeconds(7)
+            IEnumerable<TimeSpan> sleepDurations = null) {
+            if (sleepDurations == null) {
+            sleepDurations = new [] {
+            TimeSpan.FromSeconds (2),
+            TimeSpan.FromSeconds (4),
+            TimeSpan.FromSeconds (7)
                 };
             }
 
-            if (!cancellationToken.HasValue)
-            {
+            if (!cancellationToken.HasValue) {
                 cancellationToken = CancellationToken.None;
             }
 
             return await HttpPolicyExtensions
-                .HandleTransientHttpError()
-                .OrResult(msg => !msg.IsSuccessStatusCode)
-                .WaitAndRetryAsync(sleepDurations,
-                    (responseMessage, timeSpan, retryCount, context) =>
-                    {
-                        if (responseMessage.Exception != null)
-                        {
+                .HandleTransientHttpError ()
+                .OrResult (msg => !msg.IsSuccessStatusCode)
+                .WaitAndRetryAsync (sleepDurations,
+                    (responseMessage, timeSpan, retryCount, context) => {
+                        if (responseMessage.Exception != null) {
                             string httpErrorCode = responseMessage.Result == null ?
                                 httpErrorCode = string.Empty :
-                                "HTTP-" + (int)responseMessage.Result.StatusCode + ", ";
+                                "HTTP-" + (int) responseMessage.Result.StatusCode + ", ";
 
-                            logger?.LogWarning(
+                            logger?.LogWarning (
                                 $"{retryCount}. HTTP request attempt failed to {url} with an error: {httpErrorCode}{responseMessage.Exception.Message}. " +
                                 $"Waiting {timeSpan.TotalSeconds} secs for the next try...");
-                        }
-                        else if (responseMessage.Result != null)
-                        {
-                            logger?.LogWarning(
+                        } else if (responseMessage.Result != null) {
+                            logger?.LogWarning (
                                 $"{retryCount}. HTTP request attempt failed to {url} with an error: {(int)responseMessage.Result.StatusCode}-{responseMessage.Result.ReasonPhrase}. " +
                                 $"Waiting {timeSpan.TotalSeconds} secs for the next try...");
                         }
                     })
-                .ExecuteAsync(async () => await this.GetAsync(url, cancellationToken.Value));
+                .ExecuteAsync (async () => await this.GetAsync (url, cancellationToken.Value));
         }
 
     }

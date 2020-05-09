@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace Aiwins.Rocket.Cli.Licensing
-{
-    public class DeveloperApiKeyResult
-    {
+namespace Aiwins.Rocket.Cli.Licensing {
+    public class DeveloperApiKeyResult {
         public bool HasActiveLicense { get; set; }
         public string OrganizationName { get; set; }
         public string ApiKey { get; set; }
@@ -12,9 +10,8 @@ namespace Aiwins.Rocket.Cli.Licensing
         public string LicenseCode { get; set; }
         public string ErrorMessage { get; set; }
         public LicenseErrorType? ErrorType { get; set; }
-        
-        public enum LicenseErrorType
-        {
+
+        public enum LicenseErrorType {
             NotAuthenticated = 1,
             NotMemberOfAnOrganization = 2,
             NoActiveLicense = 3,

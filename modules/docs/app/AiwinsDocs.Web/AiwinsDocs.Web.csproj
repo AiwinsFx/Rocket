@@ -11,6 +11,10 @@
     <UserSecretsId>5f11b41f-0025-4fe6-ab97-60ec1bd4e8c2</UserSecretsId>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'AiwinsDocs' ">
+    <StartAction>Project</StartAction>
+    <ApplicationURL>http://localhost:55019/</ApplicationURL>
+  </PropertyGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localization\Resources\AiwinsDocs\Web\*.json" />
     <Content Remove="Localization\Resources\AiwinsDocs\Web\*.json" />
