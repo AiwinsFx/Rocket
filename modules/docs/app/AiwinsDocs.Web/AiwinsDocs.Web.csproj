@@ -13,6 +13,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'AiwinsDocs' ">
     <StartAction>Project</StartAction>
+    <ExternalConsole>true</ExternalConsole>
     <ApplicationURL>http://localhost:55019/</ApplicationURL>
   </PropertyGroup>
   <ItemGroup>

@@ -18,6 +18,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'Aiwins.Rocket.Account.Web.IdentityServer' ">
     <StartAction>Project</StartAction>
+    <ExternalConsole>true</ExternalConsole>
     <ApplicationURL>http://localhost:49584/</ApplicationURL>
   </PropertyGroup>
   <ItemGroup>
