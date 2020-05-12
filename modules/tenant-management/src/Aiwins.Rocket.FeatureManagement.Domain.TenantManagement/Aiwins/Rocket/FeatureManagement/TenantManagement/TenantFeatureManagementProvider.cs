@@ -2,7 +2,7 @@
 using Aiwins.Rocket.Features;
 using Aiwins.Rocket.MultiTenancy;
 
-namespace Aiwins.Rocket.FeatureManagement.Tenant {
+namespace Aiwins.Rocket.FeatureManagement.TenantManagement {
     public class TenantFeatureManagementProvider : FeatureManagementProvider, ITransientDependency {
         public override string Name => TenantFeatureValueProvider.ProviderName;
 

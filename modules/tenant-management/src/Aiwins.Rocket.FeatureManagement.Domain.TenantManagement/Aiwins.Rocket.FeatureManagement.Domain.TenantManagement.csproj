@@ -5,8 +5,8 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Aiwins.Rocket.FeatureManagement.Domain.Tenant</AssemblyName>
-    <PackageId>Aiwins.Rocket.FeatureManagement.Domain.Tenant</PackageId>
+    <AssemblyName>Aiwins.Rocket.FeatureManagement.Domain.TenantManagement</AssemblyName>
+    <PackageId>Aiwins.Rocket.FeatureManagement.Domain.TenantManagement</PackageId>
     <AssetTargetFallback>$(AssetTargetFallback);portable-net45+win8+wp8+wpa81;</AssetTargetFallback>
     <GenerateAssemblyConfigurationAttribute>false</GenerateAssemblyConfigurationAttribute>
     <GenerateAssemblyCompanyAttribute>false</GenerateAssemblyCompanyAttribute>

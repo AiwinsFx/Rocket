@@ -1,10 +1,11 @@
-﻿using Aiwins.Rocket.Modularity;
+﻿using Aiwins.Rocket.Features;
+using Aiwins.Rocket.Modularity;
 
-namespace Aiwins.Rocket.FeatureManagement.Tenant {
+namespace Aiwins.Rocket.FeatureManagement.TenantManagement {
     [DependsOn (
         typeof (RocketFeatureManagementDomainModule)
     )]
-    public class RocketFeatureManagementDomainTenantModule : RocketModule {
+    public class RocketFeatureManagementDomainTenantManagementModule : RocketModule {
         public override void ConfigureServices (ServiceConfigurationContext context) {
             Configure<FeatureManagementOptions> (options => {
                 options.Providers.Add<TenantFeatureManagementProvider> ();
