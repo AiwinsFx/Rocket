@@ -10,6 +10,8 @@ namespace Aiwins.Rocket.PermissionManagement {
 
         public bool IsGranted { get; set; }
 
+        public bool IsDropdownBox { get; set; }
+
         public string SelectedScope { get; set; }
 
         public List<string> AllowedProviders { get; set; }

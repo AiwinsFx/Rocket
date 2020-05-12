@@ -17,10 +17,6 @@ namespace Aiwins.Rocket.FeatureManagement {
             Configure<FeatureManagementOptions> (options => {
                 options.Providers.Add<DefaultValueFeatureManagementProvider> ();
                 options.Providers.Add<EditionFeatureManagementProvider> ();
-
-                //TODO: Should be moved to the Tenant Management module
-                options.Providers.Add<TenantFeatureManagementProvider> ();
-                options.ProviderPolicies[TenantFeatureValueProvider.ProviderName] = "RocketTenantManagement.Tenants.ManageFeatures";
             });
 
             Configure<RocketExceptionLocalizationOptions> (options => {

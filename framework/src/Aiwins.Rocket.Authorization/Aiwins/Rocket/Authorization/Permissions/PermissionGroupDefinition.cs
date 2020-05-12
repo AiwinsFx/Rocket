@@ -58,11 +58,13 @@ namespace Aiwins.Rocket.Authorization.Permissions {
             string name,
             ILocalizableString displayName = null,
             MultiTenancySides multiTenancySide = MultiTenancySides.Both,
+            bool isDropdownBox = true,
             bool isEnabled = true) {
             var permission = new PermissionDefinition (
                 name,
                 displayName,
                 multiTenancySide,
+                isDropdownBox,
                 isEnabled
             );
 

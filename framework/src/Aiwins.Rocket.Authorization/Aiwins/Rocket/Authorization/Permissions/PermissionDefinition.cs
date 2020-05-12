@@ -49,6 +49,13 @@ namespace Aiwins.Rocket.Authorization.Permissions {
         public Dictionary<string, object> Properties { get; }
 
         /// <summary>
+        /// 是否下拉框组件方式展示
+        /// 
+        /// 默认值: true.
+        /// </summary>
+        public bool IsDropdownBox { get; set; } = true;
+
+        /// <summary>
         /// 定义权限的状态
         /// 通常权限为启用状态
         /// 权限关闭后，任何人将不可见, 但是应用程序仍会检查权限值 (总是返回false)。
@@ -74,10 +81,12 @@ namespace Aiwins.Rocket.Authorization.Permissions {
             [NotNull] string name,
             ILocalizableString displayName = null,
             MultiTenancySides multiTenancySide = MultiTenancySides.Both,
+            bool isDropdownBox = true,
             bool isEnabled = true) {
             Name = Check.NotNull (name, nameof (name));
             DisplayName = displayName ?? new FixedLocalizableString (name);
             MultiTenancySide = multiTenancySide;
+            IsDropdownBox = isDropdownBox;
             IsEnabled = isEnabled;
 
             Properties = new Dictionary<string, object> ();
@@ -90,11 +99,13 @@ namespace Aiwins.Rocket.Authorization.Permissions {
             [NotNull] string name,
             ILocalizableString displayName = null,
             MultiTenancySides multiTenancySide = MultiTenancySides.Both,
+            bool isDropdownBox = true,
             bool isEnabled = true) {
             var child = new PermissionDefinition (
             name,
             displayName,
             multiTenancySide,
+            isDropdownBox,
             isEnabled) {
             Parent = this
             };
