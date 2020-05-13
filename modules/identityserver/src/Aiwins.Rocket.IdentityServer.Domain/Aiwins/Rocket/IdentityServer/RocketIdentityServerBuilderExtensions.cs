@@ -17,11 +17,9 @@ namespace Aiwins.Rocket.IdentityServer {
                 options = new RocketIdentityServerBuilderOptions ();
             }
 
-            //TODO: AspNet Identity integration lines. Can be extracted to a extension method
+            // Identity
             if (options.IntegrateToAspNetIdentity) {
-                builder.AddAspNetIdentity<IdentityUser> ();
-                builder.AddProfileService<RocketProfileService> ();
-                builder.AddResourceOwnerValidator<RocketResourceOwnerPasswordValidator> ();
+                builder.AddRocketAspNetIdentity();
             }
 
             builder.Services.Replace (ServiceDescriptor.Transient<IClaimsService, RocketClaimsService> ());
