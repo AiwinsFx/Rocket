@@ -17,7 +17,7 @@ namespace Aiwins.Rocket.IdentityServer {
             });
 
             Configure<RocketLocalizationOptions> (options => {
-                options.Resources.Add<RocketIdentityServerResource> ("en")
+                options.Resources.Add<RocketIdentityServerResource> ("zh-Hans")
                     .AddBaseTypes (
                         typeof (RocketValidationResource)
                     ).AddVirtualJson ("/Aiwins/Rocket/IdentityServer/Localization/Resources");

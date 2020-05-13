@@ -22,7 +22,7 @@ namespace Aiwins.Rocket.Emailing {
 
             Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<EmailingResource> ("en")
+                    .Add<EmailingResource> ("zh-Hans")
                     .AddVirtualJson ("/Aiwins/Rocket/Emailing/Localization");
             });
 

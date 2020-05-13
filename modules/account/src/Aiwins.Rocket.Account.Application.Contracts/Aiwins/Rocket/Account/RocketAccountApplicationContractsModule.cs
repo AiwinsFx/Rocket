@@ -18,7 +18,7 @@ namespace Aiwins.Rocket.Account {
 
             Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<AccountResource> ("en")
+                    .Add<AccountResource> ("zh-Hans")
                     .AddBaseTypes (typeof (RocketValidationResource))
                     .AddVirtualJson ("/Aiwins/Rocket/Account/Localization/Resources");
             });

@@ -13,7 +13,7 @@ namespace Aiwins.Rocket.SettingManagement {
 
             Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<RocketSettingManagementResource> ("en")
+                    .Add<RocketSettingManagementResource> ("zh-Hans")
                     .AddVirtualJson ("/Aiwins/Rocket/SettingManagement/Localization/Resources/RocketSettingManagement");
             });
         }

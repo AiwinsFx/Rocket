@@ -20,11 +20,11 @@ namespace Aiwins.Rocket.Localization {
             Configure<RocketLocalizationOptions> (options => {
                 options
                     .Resources
-                    .Add<DefaultResource> ("en");
+                    .Add<DefaultResource> ("zh-Hans");
 
                 options
                     .Resources
-                    .Add<RocketLocalizationResource> ("en")
+                    .Add<RocketLocalizationResource> ("zh-Hans")
                     .AddVirtualJson ("/Localization/Resources/RocketLocalization");
             });
         }

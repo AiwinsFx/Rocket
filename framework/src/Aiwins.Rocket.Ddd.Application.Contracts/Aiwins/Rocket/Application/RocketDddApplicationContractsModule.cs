@@ -17,7 +17,7 @@ namespace Aiwins.Rocket.Application {
 
             Configure<RocketLocalizationOptions> (options => {
                 options.Resources
-                    .Add<RocketDddApplicationContractsResource> ("en")
+                    .Add<RocketDddApplicationContractsResource> ("zh-Hans")
                     .AddVirtualJson ("/Aiwins/Rocket/Application/Localization/Resources/RocketDdd");
             });
         }
