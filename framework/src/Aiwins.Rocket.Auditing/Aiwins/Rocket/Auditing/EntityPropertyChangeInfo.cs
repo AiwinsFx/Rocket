@@ -10,6 +10,12 @@ namespace Aiwins.Rocket.Auditing {
         public const int MaxPropertyNameLength = 96;
 
         /// <summary>
+        /// 属性名 <see cref="PropertyDisplayName"/> 最大长度
+        /// 建议值: 192.
+        /// </summary>
+        public const int MaxPropertyDisplayNameLength = 192;
+
+        /// <summary>
         /// 属性值 <see cref="NewValue"/> 最大长度
         /// 建议值: 512.
         /// </summary>
@@ -17,7 +23,7 @@ namespace Aiwins.Rocket.Auditing {
 
         /// <summary>
         /// 属性类型名称 <see cref="PropertyTypeFullName"/> 最大长度
-        /// 建议值: 512.
+        /// 建议值: 192.
         /// </summary>
         public const int MaxPropertyTypeFullNameLength = 192;
 
@@ -26,6 +32,8 @@ namespace Aiwins.Rocket.Auditing {
         public virtual string OriginalValue { get; set; }
 
         public virtual string PropertyName { get; set; }
+
+        public virtual string PropertyDisplayName { get; set; }
 
         public virtual string PropertyTypeFullName { get; set; }
     }

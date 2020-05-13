@@ -1,24 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Aiwins.ClientSimulation.Clients;
+using Aiwins.ClientSimulation.Scenarios;
+using Aiwins.ClientSimulation.Snapshot;
+using Aiwins.Rocket;
+using Aiwins.Rocket.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Logging.Abstractions;
 using Microsoft.Extensions.Options;
-using Aiwins.Rocket;
-using Aiwins.Rocket.DependencyInjection;
-using Aiwins.ClientSimulation.Clients;
-using Aiwins.ClientSimulation.Scenarios;
-using Aiwins.ClientSimulation.Snapshot;
 
-namespace Aiwins.ClientSimulation
-{
-    public class Simulation : ISingletonDependency, IDisposable
-    {
+namespace Aiwins.ClientSimulation {
+    public class Simulation : ISingletonDependency, IDisposable {
         public ILogger<Simulation> Logger { get; set; }
 
-        public SimulationState State
-        {
+        public SimulationState State {
             get => _state;
             private set => _state = value;
         }
@@ -29,129 +26,106 @@ namespace Aiwins.ClientSimulation
         protected ClientSimulationOptions Options { get; }
         protected IServiceScopeFactory ServiceScopeFactory { get; }
         protected IServiceScope ServiceScope { get; private set; }
-        protected object SyncObj { get; } = new object();
+        protected object SyncObj { get; } = new object ();
 
-        public Simulation(
+        public Simulation (
             IServiceScopeFactory serviceScopeFactory,
-            IOptions<ClientSimulationOptions> options)
-        {
+            IOptions<ClientSimulationOptions> options) {
             ServiceScopeFactory = serviceScopeFactory;
             Options = options.Value;
 
             Logger = NullLogger<Simulation>.Instance;
 
-            Clients = new List<IClient>();
+            Clients = new List<IClient> ();
         }
 
-        public virtual void Start()
-        {
-            lock (SyncObj)
-            {
-                if (State != SimulationState.Stopped)
-                {
-                    throw new UserFriendlyException($"Simulation should be stopped to be able to start. Current state is '{State}'.");
+        public virtual void Start () {
+            lock (SyncObj) {
+                if (State != SimulationState.Stopped) {
+                    throw new UserFriendlyException ($"Simulation should be stopped to be able to start. Current state is '{State}'.");
                 }
 
                 State = SimulationState.Starting;
 
-                try
-                {
-                    DisposeResources();
-                    ServiceScope = ServiceScopeFactory.CreateScope();
+                try {
+                    DisposeResources ();
+                    ServiceScope = ServiceScopeFactory.CreateScope ();
 
-                    foreach (var scenarioConfiguration in Options.Scenarios)
-                    {
-                        for (int i = 0; i < scenarioConfiguration.ClientCount; i++)
-                        {
-                            var scenario = (Scenario)ServiceScope.ServiceProvider.GetRequiredService(
+                    foreach (var scenarioConfiguration in Options.Scenarios) {
+                        for (int i = 0; i < scenarioConfiguration.ClientCount; i++) {
+                            var scenario = (Scenario) ServiceScope.ServiceProvider.GetRequiredService (
                                 scenarioConfiguration.ScenarioType
                             );
 
-                            var client = ServiceScope.ServiceProvider.GetRequiredService<IClient>();
+                            var client = ServiceScope.ServiceProvider.GetRequiredService<IClient> ();
                             client.Stopped += Client_OnStopped;
-                            client.Initialize(scenario);
-                            Clients.Add(client);
+                            client.Initialize (scenario);
+                            Clients.Add (client);
                         }
                     }
 
-                    foreach (var client in Clients)
-                    {
-                        client.Start();
+                    foreach (var client in Clients) {
+                        client.Start ();
                     }
 
                     State = SimulationState.Started;
-                }
-                catch(Exception ex)
-                {
-                    Logger.LogException(ex);
+                } catch (Exception ex) {
+                    Logger.LogException (ex);
                     State = SimulationState.Stopped;
                 }
             }
         }
 
-        public virtual void Stop()
-        {
-            lock (SyncObj)
-            {
-                if (State != SimulationState.Started)
-                {
-                    throw new UserFriendlyException($"Simulation should be started to be able to stop. Current state is '{State}'.");
+        public virtual void Stop () {
+            lock (SyncObj) {
+                if (State != SimulationState.Started) {
+                    throw new UserFriendlyException ($"Simulation should be started to be able to stop. Current state is '{State}'.");
                 }
 
                 State = SimulationState.Stopping;
 
-                foreach (var client in Clients)
-                {
-                    client.Stop();
+                foreach (var client in Clients) {
+                    client.Stop ();
                 }
             }
         }
 
-        public virtual SimulationSnapshot CreateSnapshot()
-        {
+        public virtual SimulationSnapshot CreateSnapshot () {
             SimulationSnapshot snapshot;
 
-            lock (SyncObj)
-            {
-                snapshot = new SimulationSnapshot
-                {
+            lock (SyncObj) {
+                snapshot = new SimulationSnapshot {
                     State = State,
                     Clients = Clients
-                        .Select(c => c.CreateSnapshot())
-                        .ToList()
+                    .Select (c => c.CreateSnapshot ())
+                    .ToList ()
                 };
             }
 
-            snapshot.CreateSummaries();
+            snapshot.CreateSummaries ();
 
             return snapshot;
         }
 
-        public virtual void Dispose()
-        {
-            DisposeResources();
+        public virtual void Dispose () {
+            DisposeResources ();
         }
 
-        protected virtual void Client_OnStopped(object sender, EventArgs e)
-        {
-            lock (SyncObj)
-            {
-                if (Clients.All(c => c.State == ClientState.Stopped))
-                {
-                    OnStopped();
+        protected virtual void Client_OnStopped (object sender, EventArgs e) {
+            lock (SyncObj) {
+                if (Clients.All (c => c.State == ClientState.Stopped)) {
+                    OnStopped ();
                 }
             }
         }
 
-        private void OnStopped()
-        {
+        private void OnStopped () {
             State = SimulationState.Stopped;
         }
 
-        private void DisposeResources()
-        {
-            Clients.Clear();
-            ServiceScope?.Dispose();
+        private void DisposeResources () {
+            Clients.Clear ();
+            ServiceScope?.Dispose ();
         }
     }
 }

@@ -2,20 +2,18 @@
 using Aiwins.ClientSimulation.Scenarios;
 using Aiwins.ClientSimulation.Snapshot;
 
-namespace Aiwins.ClientSimulation.Clients
-{
-    public interface IClient
-    {
+namespace Aiwins.ClientSimulation.Clients {
+    public interface IClient {
         event EventHandler Stopped;
 
         ClientState State { get; }
 
-        void Initialize(Scenario scenario);
+        void Initialize (Scenario scenario);
 
-        void Start();
+        void Start ();
 
-        void Stop();
+        void Stop ();
 
-        ClientSnapshot CreateSnapshot();
+        ClientSnapshot CreateSnapshot ();
     }
 }

@@ -2,43 +2,35 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace Aiwins.ClientSimulation.Snapshot
-{
+namespace Aiwins.ClientSimulation.Snapshot {
     [Serializable]
-    public class SimulationSnapshot
-    {
+    public class SimulationSnapshot {
         public SimulationState State { get; set; }
 
         public List<ClientSnapshot> Clients { get; set; }
 
         public List<ScenarioSummarySnapshot> Scenarios { get; set; }
 
-        public void CreateSummaries()
-        {
-            var scenarioDictionary = new Dictionary<string, ScenarioSummarySnapshot>();
+        public void CreateSummaries () {
+            var scenarioDictionary = new Dictionary<string, ScenarioSummarySnapshot> ();
 
-            foreach (var client in Clients)
-            {
-                var scenarioSummary = scenarioDictionary.GetOrAdd(
+            foreach (var client in Clients) {
+                var scenarioSummary = scenarioDictionary.GetOrAdd (
                     client.Scenario.DisplayText,
-                    () => new ScenarioSummarySnapshot
-                    {
+                    () => new ScenarioSummarySnapshot {
                         DisplayText = client.Scenario.DisplayText,
-                        Steps = new List<ScenarioStepSummarySnapshot>()
+                            Steps = new List<ScenarioStepSummarySnapshot> ()
                     }
                 );
 
-                foreach (var scenarioStep in client.Scenario.Steps)
-                {
-                    var scenarioStepSummary = scenarioSummary.Steps.FirstOrDefault(s => s.DisplayText == scenarioStep.DisplayText);
-                    if (scenarioStepSummary == null)
-                    {
-                        scenarioStepSummary = new ScenarioStepSummarySnapshot
-                        {
-                            DisplayText = scenarioStep.DisplayText
+                foreach (var scenarioStep in client.Scenario.Steps) {
+                    var scenarioStepSummary = scenarioSummary.Steps.FirstOrDefault (s => s.DisplayText == scenarioStep.DisplayText);
+                    if (scenarioStepSummary == null) {
+                        scenarioStepSummary = new ScenarioStepSummarySnapshot {
+                        DisplayText = scenarioStep.DisplayText
                         };
 
-                        scenarioSummary.Steps.Add(scenarioStepSummary);
+                        scenarioSummary.Steps.Add (scenarioStepSummary);
                     }
 
                     scenarioStepSummary.ExecutionCount += scenarioStep.ExecutionCount;
@@ -46,23 +38,21 @@ namespace Aiwins.ClientSimulation.Snapshot
                     scenarioStepSummary.FailCount += scenarioStep.FailCount;
                     scenarioStepSummary.TotalExecutionDuration += scenarioStep.TotalExecutionDuration;
 
-                    if (scenarioStepSummary.MinExecutionDuration > scenarioStep.MinExecutionDuration)
-                    {
+                    if (scenarioStepSummary.MinExecutionDuration > scenarioStep.MinExecutionDuration) {
                         scenarioStepSummary.MinExecutionDuration = scenarioStep.MinExecutionDuration;
                     }
 
-                    if (scenarioStepSummary.MaxExecutionDuration < scenarioStep.MaxExecutionDuration)
-                    {
+                    if (scenarioStepSummary.MaxExecutionDuration < scenarioStep.MaxExecutionDuration) {
                         scenarioStepSummary.MaxExecutionDuration = scenarioStep.MaxExecutionDuration;
                     }
 
-                    scenarioStepSummary.AvgExecutionDuration = scenarioStepSummary.SuccessCount == 0
-                        ? 0.0
-                        : scenarioStepSummary.TotalExecutionDuration / scenarioStepSummary.SuccessCount;
+                    scenarioStepSummary.AvgExecutionDuration = scenarioStepSummary.SuccessCount == 0 ?
+                        0.0 :
+                        scenarioStepSummary.TotalExecutionDuration / scenarioStepSummary.SuccessCount;
                 }
             }
 
-            Scenarios = scenarioDictionary.Values.ToList();
+            Scenarios = scenarioDictionary.Values.ToList ();
         }
     }
 }

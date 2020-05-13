@@ -1,10 +1,8 @@
 ﻿using System;
 
-namespace Aiwins.ClientSimulation.Snapshot
-{
+namespace Aiwins.ClientSimulation.Snapshot {
     [Serializable]
-    public class ScenarioStepSummarySnapshot
-    {
+    public class ScenarioStepSummarySnapshot {
         public string DisplayText { get; set; }
 
         public int ExecutionCount { get; set; }

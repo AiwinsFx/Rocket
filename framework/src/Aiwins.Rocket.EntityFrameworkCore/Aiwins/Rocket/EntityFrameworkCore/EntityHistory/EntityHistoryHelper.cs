@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Reflection;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Data;
 using Aiwins.Rocket.DependencyInjection;
@@ -151,6 +153,7 @@ namespace Aiwins.Rocket.EntityFrameworkCore.EntityHistory {
                         NewValue = isDeleted ? null : JsonSerializer.Serialize (propertyEntry.CurrentValue).TruncateWithPostfix (EntityPropertyChangeInfo.MaxValueLength),
                             OriginalValue = isCreated ? null : JsonSerializer.Serialize (propertyEntry.OriginalValue).TruncateWithPostfix (EntityPropertyChangeInfo.MaxValueLength),
                             PropertyName = property.Name,
+                            PropertyDisplayName = (property.PropertyInfo?.GetCustomAttribute<DisplayAttribute> (false))?.Name??property.Name,
                             PropertyTypeFullName = property.ClrType.GetFirstGenericArgumentIfNullable ().FullName
                     });
                 }
@@ -245,6 +248,7 @@ namespace Aiwins.Rocket.EntityFrameworkCore.EntityHistory {
                                     NewValue = JsonSerializer.Serialize (propertyEntry.CurrentValue),
                                         OriginalValue = JsonSerializer.Serialize (propertyEntry.OriginalValue),
                                         PropertyName = property.Name,
+                                        PropertyDisplayName = (property.PropertyInfo?.GetCustomAttribute<DisplayAttribute> (false))?.Name??property.Name,
                                         PropertyTypeFullName = property.ClrType.GetFirstGenericArgumentIfNullable ().FullName
                                 });
                             }

@@ -1,17 +1,14 @@
 ﻿using System;
 
-namespace Aiwins.ClientSimulation
-{
-    public class ScenarioConfiguration
-    {
+namespace Aiwins.ClientSimulation {
+    public class ScenarioConfiguration {
         public Type ScenarioType { get; }
 
         public int ClientCount { get; }
 
-        public ScenarioConfiguration(
+        public ScenarioConfiguration (
             Type scenarioType,
-            int clientCount = 1)
-        {
+            int clientCount = 1) {
             ScenarioType = scenarioType;
             ClientCount = clientCount;
         }

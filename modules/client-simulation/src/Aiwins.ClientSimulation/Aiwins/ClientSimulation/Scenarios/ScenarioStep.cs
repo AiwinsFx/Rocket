@@ -3,14 +3,12 @@ using System.ComponentModel;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.DependencyInjection;
 using Aiwins.ClientSimulation.Snapshot;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 
-namespace Aiwins.ClientSimulation.Scenarios
-{
-    public abstract class ScenarioStep
-    {
+namespace Aiwins.ClientSimulation.Scenarios {
+    public abstract class ScenarioStep {
         protected int ExecutionCount;
         protected int SuccessCount;
         protected int FailCount;
@@ -19,15 +17,13 @@ namespace Aiwins.ClientSimulation.Scenarios
         protected double MaxExecutionDuration;
         protected double LastExecutionDuration;
 
-        public async Task RunAsync(ScenarioExecutionContext context)
-        {
-            await BeforeExecuteAsync(context);
+        public async Task RunAsync (ScenarioExecutionContext context) {
+            await BeforeExecuteAsync (context);
 
-            var stopwatch = Stopwatch.StartNew();
+            var stopwatch = Stopwatch.StartNew ();
 
-            try
-            {
-                await ExecuteAsync(context);
+            try {
+                await ExecuteAsync (context);
 
                 SuccessCount++;
 
@@ -35,84 +31,71 @@ namespace Aiwins.ClientSimulation.Scenarios
 
                 TotalExecutionDuration += LastExecutionDuration;
 
-                if (MinExecutionDuration > LastExecutionDuration)
-                {
+                if (MinExecutionDuration > LastExecutionDuration) {
                     MinExecutionDuration = LastExecutionDuration;
                 }
 
-                if (MaxExecutionDuration < LastExecutionDuration)
-                {
+                if (MaxExecutionDuration < LastExecutionDuration) {
                     MaxExecutionDuration = LastExecutionDuration;
                 }
-            }
-            catch(Exception ex)
-            {
+            } catch (Exception ex) {
                 FailCount++;
 
                 context
                     .ServiceProvider
-                    .GetService<ILogger<ScenarioStep>>()
-                    .LogException(ex);
-            }
-            finally
-            {
-                stopwatch.Stop();
+                    .GetService<ILogger<ScenarioStep>> ()
+                    .LogException (ex);
+            } finally {
+                stopwatch.Stop ();
 
                 ExecutionCount++;
             }
 
-            await AfterExecuteAsync(context);
+            await AfterExecuteAsync (context);
         }
 
-        protected virtual Task BeforeExecuteAsync(ScenarioExecutionContext context)
-        {
+        protected virtual Task BeforeExecuteAsync (ScenarioExecutionContext context) {
             return Task.CompletedTask;
         }
 
-        protected abstract Task ExecuteAsync(ScenarioExecutionContext context);
+        protected abstract Task ExecuteAsync (ScenarioExecutionContext context);
 
-        protected virtual Task AfterExecuteAsync(ScenarioExecutionContext context)
-        {
+        protected virtual Task AfterExecuteAsync (ScenarioExecutionContext context) {
             return Task.CompletedTask;
         }
 
-        public virtual string GetDisplayText()
-        {
-            var displayNameAttr = GetType()
-                .GetCustomAttributes(true)
-                .OfType<DisplayNameAttribute>()
-                .FirstOrDefault();
+        public virtual string GetDisplayText () {
+            var displayNameAttr = GetType ()
+                .GetCustomAttributes (true)
+                .OfType<DisplayNameAttribute> ()
+                .FirstOrDefault ();
 
-            if (displayNameAttr != null)
-            {
+            if (displayNameAttr != null) {
                 return displayNameAttr.DisplayName;
             }
 
-            return GetType()
+            return GetType ()
                 .Name
-                .RemovePostFix(nameof(ScenarioStep));
+                .RemovePostFix (nameof (ScenarioStep));
         }
 
-        public ScenarioStepSnapshot CreateSnapshot()
-        {
-            return new ScenarioStepSnapshot
-            {
-                DisplayText = GetDisplayText(),
-                ExecutionCount = ExecutionCount,
-                LastExecutionDuration = LastExecutionDuration,
-                MaxExecutionDuration = MaxExecutionDuration,
-                MinExecutionDuration = MinExecutionDuration,
-                TotalExecutionDuration = TotalExecutionDuration,
-                AvgExecutionDuration = SuccessCount == 0 
-                    ? 0.0 
-                    : TotalExecutionDuration / SuccessCount,
-                FailCount = FailCount,
-                SuccessCount = SuccessCount
+        public ScenarioStepSnapshot CreateSnapshot () {
+            return new ScenarioStepSnapshot {
+                DisplayText = GetDisplayText (),
+                    ExecutionCount = ExecutionCount,
+                    LastExecutionDuration = LastExecutionDuration,
+                    MaxExecutionDuration = MaxExecutionDuration,
+                    MinExecutionDuration = MinExecutionDuration,
+                    TotalExecutionDuration = TotalExecutionDuration,
+                    AvgExecutionDuration = SuccessCount == 0 ?
+                    0.0 :
+                    TotalExecutionDuration / SuccessCount,
+                    FailCount = FailCount,
+                    SuccessCount = SuccessCount
             };
         }
 
-        public virtual void Reset()
-        {
+        public virtual void Reset () {
             ExecutionCount = 0;
             FailCount = 0;
             SuccessCount = 0;

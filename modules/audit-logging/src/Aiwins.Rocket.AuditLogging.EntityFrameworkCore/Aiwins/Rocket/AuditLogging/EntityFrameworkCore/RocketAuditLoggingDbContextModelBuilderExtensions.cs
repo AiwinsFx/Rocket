@@ -89,6 +89,7 @@ namespace Aiwins.Rocket.AuditLogging.EntityFrameworkCore {
 
                 b.Property (x => x.NewValue).HasMaxLength (EntityPropertyChangeConsts.MaxNewValueLength).HasColumnName (nameof (EntityPropertyChange.NewValue));
                 b.Property (x => x.PropertyName).HasMaxLength (EntityPropertyChangeConsts.MaxPropertyNameLength).IsRequired ().HasColumnName (nameof (EntityPropertyChange.PropertyName));
+                b.Property (x => x.PropertyDisplayName).HasMaxLength (EntityPropertyChangeConsts.MaxPropertyDisplayNameLength).IsRequired ().HasColumnName (nameof (EntityPropertyChange.PropertyDisplayName));
                 b.Property (x => x.PropertyTypeFullName).HasMaxLength (EntityPropertyChangeConsts.MaxPropertyTypeFullNameLength).IsRequired ().HasColumnName (nameof (EntityPropertyChange.PropertyTypeFullName));
                 b.Property (x => x.OriginalValue).HasMaxLength (EntityPropertyChangeConsts.MaxOriginalValueLength).HasColumnName (nameof (EntityPropertyChange.OriginalValue));
 

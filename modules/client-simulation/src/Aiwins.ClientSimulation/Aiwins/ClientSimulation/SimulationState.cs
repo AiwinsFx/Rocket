@@ -1,7 +1,5 @@
-﻿namespace Aiwins.ClientSimulation
-{
-    public enum SimulationState
-    {
+﻿namespace Aiwins.ClientSimulation {
+    public enum SimulationState {
         Stopped,
         Starting,
         Started,

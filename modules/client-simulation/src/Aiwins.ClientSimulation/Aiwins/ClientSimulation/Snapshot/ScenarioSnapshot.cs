@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Aiwins.ClientSimulation.Snapshot
-{
+namespace Aiwins.ClientSimulation.Snapshot {
     [Serializable]
-    public class ScenarioSnapshot
-    {
+    public class ScenarioSnapshot {
         public string DisplayText { get; set; }
 
         public List<ScenarioStepSnapshot> Steps { get; set; }

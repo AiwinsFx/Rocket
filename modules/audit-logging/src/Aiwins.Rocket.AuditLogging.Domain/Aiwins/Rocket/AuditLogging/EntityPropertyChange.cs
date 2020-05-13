@@ -17,6 +17,8 @@ namespace Aiwins.Rocket.AuditLogging {
 
         public virtual string PropertyName { get; protected set; }
 
+        public virtual string PropertyDisplayName { get; protected set; }
+
         public virtual string PropertyTypeFullName { get; protected set; }
 
         protected EntityPropertyChange () {
@@ -34,6 +36,7 @@ namespace Aiwins.Rocket.AuditLogging {
             NewValue = entityChangeInfo.NewValue.Truncate (EntityPropertyChangeConsts.MaxNewValueLength);
             OriginalValue = entityChangeInfo.OriginalValue.Truncate (EntityPropertyChangeConsts.MaxOriginalValueLength);
             PropertyName = entityChangeInfo.PropertyName.TruncateFromBeginning (EntityPropertyChangeConsts.MaxPropertyNameLength);
+            PropertyDisplayName = entityChangeInfo.PropertyDisplayName.TruncateFromBeginning (EntityPropertyChangeConsts.MaxPropertyDisplayNameLength);
             PropertyTypeFullName = entityChangeInfo.PropertyTypeFullName.TruncateFromBeginning (EntityPropertyChangeConsts.MaxPropertyTypeFullNameLength);
         }
     }

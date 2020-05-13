@@ -1,7 +1,5 @@
-﻿namespace Aiwins.ClientSimulation.Clients
-{
-    public enum ClientState
-    {
+﻿namespace Aiwins.ClientSimulation.Clients {
+    public enum ClientState {
         Stopped,
         Running,
         Stopping
