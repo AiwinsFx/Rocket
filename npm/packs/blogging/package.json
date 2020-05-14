@@ -1,14 +1,14 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.5",
   "name": "@rocket/blogging",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/aspnetcore.mvc.ui.theme.shared": "^1.0.1",
-    "@rocket/owl.carousel": "^1.0.1",
-    "@rocket/prismjs": "^1.0.1",
-    "@rocket/tui-editor": "^1.0.1"
+    "@rocket/aspnetcore.mvc.ui.theme.shared": "^1.0.5",
+    "@rocket/owl.carousel": "^1.0.5",
+    "@rocket/prismjs": "^1.0.5",
+    "@rocket/tui-editor": "^1.0.5"
   },
   "gitHead": "9bfbac5395172907be8b5cf56b6bbfdde668863b"
 }

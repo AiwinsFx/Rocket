@@ -1,11 +1,11 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.5",
   "name": "@rocket/toastr",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/jquery": "^1.0.1",
+    "@rocket/jquery": "^1.0.5",
     "toastr": "^2.1.4"
   },
   "gitHead": "9bfbac5395172907be8b5cf56b6bbfdde668863b"

@@ -1,14 +1,14 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.5",
   "name": "@rocket/tui-editor",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/codemirror": "^1.0.1",
-    "@rocket/highlight.js": "^1.0.1",
-    "@rocket/jquery": "^1.0.1",
-    "@rocket/markdown-it": "^1.0.1",
+    "@rocket/codemirror": "^1.0.5",
+    "@rocket/highlight.js": "^1.0.5",
+    "@rocket/jquery": "^1.0.5",
+    "@rocket/markdown-it": "^1.0.5",
     "tui-editor": "^1.4.8"
   },
   "gitHead": "9bfbac5395172907be8b5cf56b6bbfdde668863b"
