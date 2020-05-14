@@ -83,7 +83,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket add-module Aiwins.Blogging -s Acme.BookStore --skip-db-migrations false    Adds the module to the given solution but doesn't create a database migration.");
             sb.AppendLine(@"  rocket add-module Aiwins.Blogging -s Acme.BookStore -sp ..\Acme.BookStore.Web\Acme.BookStore.Web.csproj   Adds the module to the given solution and specify migration startup project.");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

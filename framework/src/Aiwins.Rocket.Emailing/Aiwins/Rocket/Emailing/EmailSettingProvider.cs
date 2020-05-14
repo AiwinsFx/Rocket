@@ -52,7 +52,7 @@ namespace Aiwins.Rocket.Emailing {
 
                 new SettingDefinition (
                     EmailSettingNames.DefaultFromAddress,
-                    "noreply@rocket.cn",
+                    "noreply@aiwins.cn",
                     L ("DisplayName:Rocket.Mailing.DefaultFromAddress"),
                     L ("Description:Rocket.Mailing.DefaultFromAddress")),
 

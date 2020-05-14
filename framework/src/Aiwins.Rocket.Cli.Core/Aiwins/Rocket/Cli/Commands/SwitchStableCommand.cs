@@ -31,7 +31,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("Options:");
             sb.AppendLine("-sd|--solution-directory");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

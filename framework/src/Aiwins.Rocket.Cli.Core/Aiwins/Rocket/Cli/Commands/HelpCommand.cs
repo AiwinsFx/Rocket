@@ -84,7 +84,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("");
             sb.AppendLine("    rocket help <command>");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

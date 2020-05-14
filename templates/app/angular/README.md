@@ -1,6 +1,6 @@
 # MyProjectName
 
-This is a startup project based on the ROCKET framework. For more information, visit <a href="https://rocket.cn/" target="_blank">rocket.cn</a>
+This is a startup project based on the ROCKET framework. For more information, visit <a href="https://aiwins.cn/" target="_blank">aiwins.cn</a>
 
 ## Development server
 

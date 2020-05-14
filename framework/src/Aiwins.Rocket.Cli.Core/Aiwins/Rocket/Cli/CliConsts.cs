@@ -4,6 +4,6 @@
 
         public const string BranchPrefix = "branch@";
 
-        public const string DocsLink = "https://docs.rocket.cn";
+        public const string DocsLink = "https://docs.aiwins.cn";
     }
 }

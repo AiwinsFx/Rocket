@@ -114,7 +114,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket update -p");
             sb.AppendLine("  rocket update -sp \"D:\\projects\\\" -sn Acme.BookStore");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

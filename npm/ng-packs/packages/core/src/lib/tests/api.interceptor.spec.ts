@@ -29,7 +29,7 @@ describe('ApiInterceptor', () => {
     oauthService.getAccessToken.andReturn('ey892mkwa8^2jk');
     store.selectSnapshot.andReturn({ id: 'test' });
 
-    const request = new HttpRequest('GET', 'https://rocket.cn');
+    const request = new HttpRequest('GET', 'https://aiwins.cn');
     const handleRes$ = new Subject();
 
     const handler = {
@@ -51,7 +51,7 @@ describe('ApiInterceptor', () => {
   it('should dispatch the loader', done => {
     const spy = jest.spyOn(store, 'dispatch');
 
-    const request = new HttpRequest('GET', 'https://rocket.cn');
+    const request = new HttpRequest('GET', 'https://aiwins.cn');
     const handleRes$ = new Subject();
 
     const handler = {

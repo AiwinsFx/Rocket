@@ -13,16 +13,16 @@ describe('ProfileService', () => {
   beforeEach(() => (spectator = createHttp()));
 
   it('should send a GET to my-profile API', () => {
-    spectator.get(Store).selectSnapshot.andReturn('https://rocket.cn');
+    spectator.get(Store).selectSnapshot.andReturn('https://aiwins.cn');
     spectator.service.get().subscribe();
-    spectator.expectOne('https://rocket.cn/api/identity/my-profile', HttpMethod.GET);
+    spectator.expectOne('https://aiwins.cn/api/identity/my-profile', HttpMethod.GET);
   });
 
   it('should send a POST to change-password API', () => {
     const mock = { currentPassword: 'test', newPassword: 'test' };
-    spectator.get(Store).selectSnapshot.andReturn('https://rocket.cn');
+    spectator.get(Store).selectSnapshot.andReturn('https://aiwins.cn');
     spectator.service.changePassword(mock).subscribe();
-    const req = spectator.expectOne('https://rocket.cn/api/identity/my-profile/change-password', HttpMethod.POST);
+    const req = spectator.expectOne('https://aiwins.cn/api/identity/my-profile/change-password', HttpMethod.POST);
     expect(req.request.body).toEqual(mock);
   });
 
@@ -34,9 +34,9 @@ describe('ProfileService', () => {
       surname: 'Doe',
       phoneNumber: '+123456',
     };
-    spectator.get(Store).selectSnapshot.andReturn('https://rocket.cn');
+    spectator.get(Store).selectSnapshot.andReturn('https://aiwins.cn');
     spectator.service.update(mock).subscribe();
-    const req = spectator.expectOne('https://rocket.cn/api/identity/my-profile', HttpMethod.PUT);
+    const req = spectator.expectOne('https://aiwins.cn/api/identity/my-profile', HttpMethod.PUT);
     expect(req.request.body).toEqual(mock);
   });
 });

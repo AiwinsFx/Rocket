@@ -10,6 +10,6 @@ This module is used to create technical documentation web sites;
 * Links to the file on GitHub, so anyone can easily contribute by clicking to the **Edit link**.
 * In addition to the GitHub source, allows to simply use a folder as the documentation source.
 
-ROCKET Framework uses this module to host its documentation. See [docs.rocket.cn](https://docs.rocket.cn/). A screenshot from the ROCKET documentation:
+ROCKET Framework uses this module to host its documentation. See [docs.aiwins.cn](https://docs.aiwins.cn/). A screenshot from the ROCKET documentation:
 
 ![screenshot](screenshot2.png)

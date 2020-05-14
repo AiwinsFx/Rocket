@@ -9,7 +9,7 @@ import { RestService } from '../services/rest.service';
 describe('HttpClient testing', () => {
   let spectator: SpectatorHttp<RestService>;
   let store: SpyObject<Store>;
-  const api = 'https://rocket.cn';
+  const api = 'https://aiwins.cn';
 
   const createHttp = createHttpFactory({
     dataService: RestService,

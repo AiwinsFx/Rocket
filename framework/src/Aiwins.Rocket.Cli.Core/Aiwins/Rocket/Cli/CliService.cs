@@ -35,7 +35,7 @@ namespace Aiwins.Rocket.Cli {
         }
 
         public async Task RunAsync (string[] args) {
-            Logger.LogInformation ("ROCKET CLI (https://rocket.cn)");
+            Logger.LogInformation ("ROCKET CLI (https://aiwins.cn)");
 
             await CheckCliVersionAsync ();
 

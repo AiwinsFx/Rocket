@@ -132,7 +132,7 @@ namespace Aiwins.Rocket.Cli.Commands
 
         public string GetShortDescription()
         {
-            return "Install, update, remove or start ROCKET Suite. See https://commercial.rocket.cn/tools/suite.";
+            return "Install, update, remove or start ROCKET Suite. See https://commercial.aiwins.cn/tools/suite.";
         }
     }
 }

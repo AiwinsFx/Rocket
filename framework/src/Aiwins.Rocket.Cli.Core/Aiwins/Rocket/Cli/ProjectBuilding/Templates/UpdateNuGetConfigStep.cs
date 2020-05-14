@@ -30,7 +30,7 @@ namespace Aiwins.Rocket.Cli.ProjectBuilding.Templates
             }
 
             const string placeHolder = "<!-- {ROCKET_COMMERCIAL_NUGET_SOURCE} -->";
-            var nugetSourceTag = $"<add key=\"ROCKET Commercial NuGet Source\" value=\"https://nuget.rocket.cn/{apiKey}/v3/index.json\" />";
+            var nugetSourceTag = $"<add key=\"ROCKET Commercial NuGet Source\" value=\"https://nuget.aiwins.cn/{apiKey}/v3/index.json\" />";
 
             file.ReplaceText(placeHolder, nugetSourceTag);
         }

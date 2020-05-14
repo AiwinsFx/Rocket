@@ -11,7 +11,7 @@ export class GetAppConfiguration {
 }
 
 /**
- * @see usage: https://github.com/rocketframework/rocket/pull/2425#issue-355018812
+ * @see usage: https://github.com/aiwinfx/rocket/pull/2425#issue-355018812
  */
 export class AddRoute {
   static readonly type = '[Config] Add Route';

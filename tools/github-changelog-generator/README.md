@@ -31,6 +31,6 @@ Global Flags:
 Generate change logs for the ROCKET repository for the 0.19 milestone:
 
 ````
-.\generator.exe generate -r rocketframework/rocket -m "0.19" > changelog.md
+.\generator.exe generate -r aiwinfx/rocket -m "0.19" > changelog.md
 ````
 

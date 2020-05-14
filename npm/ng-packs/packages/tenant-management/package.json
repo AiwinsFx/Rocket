@@ -1,10 +1,10 @@
 {
   "name": "@rocket/ng.tenant-management",
   "version": "1.0.0",
-  "homepage": "https://rocket.cn",
+  "homepage": "https://aiwins.cn",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rocketframework/rocket.git"
+    "url": "https://github.com/aiwinfx/rocket.git"
   },
   "dependencies": {
     "@rocket/ng.feature-management": "^1.0.0",

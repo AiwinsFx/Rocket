@@ -99,7 +99,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket get-source Aiwins.Blogging");
             sb.AppendLine("  rocket get-source Aiwins.Blogging -o d:\\my-project");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

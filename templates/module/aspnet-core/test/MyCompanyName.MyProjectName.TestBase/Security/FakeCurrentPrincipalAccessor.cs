@@ -25,7 +25,7 @@ namespace MyCompanyName.MyProjectName.Security
                                 {
                                     new Claim(RocketClaimTypes.UserId,"2e701e62-0953-4dd3-910b-dc6cc93ccb0d"),
                                     new Claim(RocketClaimTypes.UserName,"admin"),
-                                    new Claim(RocketClaimTypes.Email,"admin@rocket.cn")
+                                    new Claim(RocketClaimTypes.Email,"admin@aiwins.cn")
                                 }
                             )
                         );

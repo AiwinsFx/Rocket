@@ -20,7 +20,7 @@ If you will only develop the `dev-app`, you don't need to run `symlink-manager`.
 
 > Reminder! If you have developed the `dev-app` template, you should do the same for the application and module templates.
 
-For more information, see the [docs.rocket.cn](https://docs.rocket.cn)
+For more information, see the [docs.aiwins.cn](https://docs.aiwins.cn)
 
 # Committing changes
 

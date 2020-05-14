@@ -9,7 +9,7 @@ import { Profile } from '../models/profile';
 export class DummyClass {}
 
 export const PROFILE_STATE_DATA = {
-  profile: { userName: 'admin', email: 'info@rocket.cn', name: 'Admin' },
+  profile: { userName: 'admin', email: 'info@aiwins.cn', name: 'Admin' },
 } as Profile.State;
 
 describe('ProfileState', () => {
@@ -38,7 +38,7 @@ describe('ProfileState', () => {
 
   describe('#GetProfile', () => {
     it('should call the profile service get method and update the state', () => {
-      const mockData = { userName: 'test', email: 'test@rocket.cn' };
+      const mockData = { userName: 'test', email: 'test@aiwins.cn' };
       const spy = jest.spyOn(profileService, 'get');
       spy.mockReturnValue(of(mockData as any));
 
@@ -50,7 +50,7 @@ describe('ProfileState', () => {
 
   describe('#UpdateProfile', () => {
     it('should call the profile service update method and update the state', () => {
-      const mockData = { userName: 'test2', email: 'test@rocket.cn' };
+      const mockData = { userName: 'test2', email: 'test@aiwins.cn' };
       const spy = jest.spyOn(profileService, 'update');
       spy.mockReturnValue(of(mockData as any));
 

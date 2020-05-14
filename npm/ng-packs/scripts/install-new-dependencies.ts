@@ -1,11 +1,14 @@
 import execa from 'execa';
 import fse from 'fs-extra';
 
+console.warn(1111);
+
 const updateAndInstall = async () => {
   const { projects } = await fse.readJSON('../angular.json');
   const projectNames = Object.keys(projects).filter(project => project !== 'dev-app');
-
+  console.warn(projectNames);
   const packageJson = await fse.readJSON('../package.json');
+  console.warn(packageJson);
   projectNames.forEach(project => {
     // do not convert to async
     const { dependencies = {}, peerDependencies = {}, name, version } = fse.readJSONSync(
@@ -18,6 +21,8 @@ const updateAndInstall = async () => {
       ...peerDependencies,
       [name]: `~${version}`,
     };
+
+    console.warn(packageJson.devDependencies);
 
     packageJson.devDependencies = Object.keys(packageJson.devDependencies)
       .sort()

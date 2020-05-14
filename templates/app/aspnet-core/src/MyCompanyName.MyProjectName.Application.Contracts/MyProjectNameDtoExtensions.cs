@@ -21,7 +21,7 @@ namespace MyCompanyName.MyProjectName
                  *   .AddOrUpdateProperty<IdentityRoleDto, string>("Title");
                  *
                  * See the documentation for more:
-                 * https://docs.rocket.cn/en/rocket/latest/Object-Extensions
+                 * https://docs.aiwins.cn/en/rocket/latest/Object-Extensions
                  */
             });
         }

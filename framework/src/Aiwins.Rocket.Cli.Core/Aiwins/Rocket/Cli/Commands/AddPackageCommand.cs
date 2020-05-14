@@ -61,7 +61,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket add-package Aiwins.Rocket.FluentValidation                                  Adds the package to the current project.");
             sb.AppendLine("  rocket add-package Aiwins.Rocket.FluentValidation -p Acme.BookStore.Application    Adds the package to the given project.");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

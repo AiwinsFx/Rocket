@@ -34,12 +34,12 @@ namespace MyCompanyName.MyProjectName.Samples
                 adminUser = await _identityUserRepository
                     .FindByNormalizedUserNameAsync("ADMIN");
 
-                await _identityUserManager.SetEmailAsync(adminUser, "newemail@rocket.cn");
+                await _identityUserManager.SetEmailAsync(adminUser, "newemail@aiwins.cn");
                 await _identityUserRepository.UpdateAsync(adminUser);
             });
 
             adminUser = await _identityUserRepository.FindByNormalizedUserNameAsync("ADMIN");
-            adminUser.Email.ShouldBe("newemail@rocket.cn");
+            adminUser.Email.ShouldBe("newemail@aiwins.cn");
         }
     }
 }

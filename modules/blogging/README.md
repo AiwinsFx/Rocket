@@ -7,4 +7,4 @@ This module adds a simple blog to your ROCKET application;
 * Allows to write comment for a post.
 * Allows to assign tags to the blog posts.
 
-See the [blog.rocket.cn](https://blog.rocket.cn/) website as a live example of the blogging module.
+See the [blog.aiwins.cn](https://blog.aiwins.cn/) website as a live example of the blogging module.
