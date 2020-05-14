@@ -1,6 +1,6 @@
 {
   "name": "@rocket/utils",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "scripts": {
     "prepublish": "yarn install --ignore-scripts && node prepublish.js",
     "ng": "ng",
@@ -55,5 +55,5 @@
   "dependencies": {
     "just-compare": "^1.3.0"
   },
-  "gitHead": "9bfbac5395172907be8b5cf56b6bbfdde668863b"
+  "gitHead": "16a5e1e14c08b3150a478c08279df61b5e9983b1"
 }
