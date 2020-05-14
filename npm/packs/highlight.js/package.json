@@ -1,11 +1,11 @@
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "name": "@rocket/highlight.js",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/core": "^1.0.8"
+    "@rocket/core": "^1.0.9"
   },
-  "gitHead": "3654347d0011eab2091e04d87a79121d580a22f9"
+  "gitHead": "e543cf1134601a0c11e4ceac1def639e5a89d03a"
 }

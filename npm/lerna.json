@@ -1,5 +1,5 @@
 {
-  "version": "1.0.8",
+  "version": "1.0.9",
   "packages": [
     "packs/*"
   ],
@@ -7,5 +7,5 @@
     "access": "public"
   },
   "npmClient": "yarn",
-  "lerna": "3.18.4"
+  "lerna": "3.21.0"
 }
