@@ -1,11 +1,11 @@
 {
-  "version": "1.0.9",
-  "name": "@rocket/jquery-validation-unobtrusive",
+  "version": "1.0.10",
+  "name": "@rocket123/jquery-validation-unobtrusive",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/jquery-validation": "^1.0.9",
+    "@rocket123/jquery-validation": "^1.0.10",
     "jquery-validation-unobtrusive": "^3.2.11"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

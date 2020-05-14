@@ -1,11 +1,11 @@
 {
-  "version": "1.0.9",
-  "name": "@rocket/codemirror",
+  "version": "1.0.10",
+  "name": "@rocket123/codemirror",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/core": "^1.0.9",
+    "@rocket123/core": "^1.0.10",
     "codemirror": "^5.49.2"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

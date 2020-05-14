@@ -1,11 +1,11 @@
 {
-  "version": "1.0.9",
-  "name": "@rocket/bootstrap",
+  "version": "1.0.10",
+  "name": "@rocket123/bootstrap",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/core": "^1.0.9",
+    "@rocket123/core": "^1.0.10",
     "bootstrap": "^4.3.1"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

@@ -1,6 +1,6 @@
 {
-  "name": "@rocket/utils",
-  "version": "1.0.9",
+  "name": "@rocket123/utils",
+  "version": "1.0.10",
   "scripts": {
     "prepublish": "yarn install --ignore-scripts && node prepublish.js",
     "ng": "ng",

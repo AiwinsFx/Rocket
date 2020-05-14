@@ -1,24 +1,24 @@
 {
-  "version": "1.0.9",
-  "name": "@rocket/aspnetcore.mvc.ui.theme.shared",
+  "version": "1.0.10",
+  "name": "@rocket123/aspnetcore.mvc.ui.theme.shared",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/aspnetcore.mvc.ui": "^1.0.9",
-    "@rocket/bootstrap": "^1.0.9",
-    "@rocket/bootstrap-datepicker": "^1.0.9",
-    "@rocket/datatables.net-bs4": "^1.0.9",
-    "@rocket/font-awesome": "^1.0.9",
-    "@rocket/jquery-form": "^1.0.9",
-    "@rocket/jquery-validation-unobtrusive": "^1.0.9",
-    "@rocket/lodash": "^1.0.9",
-    "@rocket/luxon": "^1.0.9",
-    "@rocket/malihu-custom-scrollbar-plugin": "^1.0.9",
-    "@rocket/select2": "^1.0.9",
-    "@rocket/sweetalert": "^1.0.9",
-    "@rocket/timeago": "^1.0.9",
-    "@rocket/toastr": "^1.0.9"
+    "@rocket123/aspnetcore.mvc.ui": "^1.0.10",
+    "@rocket123/bootstrap": "^1.0.10",
+    "@rocket123/bootstrap-datepicker": "^1.0.10",
+    "@rocket123/datatables.net-bs4": "^1.0.10",
+    "@rocket123/font-awesome": "^1.0.10",
+    "@rocket123/jquery-form": "^1.0.10",
+    "@rocket123/jquery-validation-unobtrusive": "^1.0.10",
+    "@rocket123/lodash": "^1.0.10",
+    "@rocket123/luxon": "^1.0.10",
+    "@rocket123/malihu-custom-scrollbar-plugin": "^1.0.10",
+    "@rocket123/select2": "^1.0.10",
+    "@rocket123/sweetalert": "^1.0.10",
+    "@rocket123/timeago": "^1.0.10",
+    "@rocket123/toastr": "^1.0.10"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"
 }

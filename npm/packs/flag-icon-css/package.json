@@ -1,6 +1,6 @@
 {
-  "version": "1.0.9",
-  "name": "@rocket/flag-icon-css",
+  "version": "1.0.10",
+  "name": "@rocket123/flag-icon-css",
   "publishConfig": {
     "access": "public"
   },
