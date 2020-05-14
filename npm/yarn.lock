@@ -3219,7 +3219,7 @@ latest-version@^5.0.0:
   dependencies:
     package-json "^6.3.0"
 
-lerna@^3.18.4:
+lerna@^3.21.0:
   version "3.21.0"
   resolved "https://registry.yarnpkg.com/lerna/-/lerna-3.21.0.tgz#c81a0f8df45c6b7c9d3fc9fdcd0f846aca2375c6"
   integrity sha512-ux8yOwQEgIXOZVUfq+T8nVzPymL19vlIoPbysOP3YA4hcjKlqQIlsjI/1ugBe6b4MF7W4iV5vS3gH9cGqBBc1A==
