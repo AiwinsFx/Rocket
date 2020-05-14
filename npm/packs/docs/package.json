@@ -1,15 +1,15 @@
 {
-  "version": "1.0.3",
+  "version": "1.0.1",
   "name": "@rocket/docs",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/anchor-js": "^1.0.3",
-    "@rocket/clipboard": "^1.0.3",
-    "@rocket/malihu-custom-scrollbar-plugin": "^1.0.3",
-    "@rocket/popper.js": "^1.0.3",
-    "@rocket/prismjs": "^1.0.3"
+    "@rocket/anchor-js": "^1.0.1",
+    "@rocket/clipboard": "^1.0.1",
+    "@rocket/malihu-custom-scrollbar-plugin": "^1.0.1",
+    "@rocket/popper.js": "^1.0.1",
+    "@rocket/prismjs": "^1.0.1"
   },
-  "gitHead": "eb4a0e507f492e275865b72caeb02ce28d69ae56"
+  "gitHead": "9bfbac5395172907be8b5cf56b6bbfdde668863b"
 }
