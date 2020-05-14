@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 import { ConfirmationService, Confirmation } from '@rocket/ng.theme.shared';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
@@ -37,7 +37,7 @@ export class RolesComponent implements OnInit {
 
   providerKey: string;
 
-  pageQuery: ABP.PageQueryParams = { maxResultCount: 10 };
+  pageQuery: ROCKET.PageQueryParams = { maxResultCount: 10 };
 
   loading = false;
 

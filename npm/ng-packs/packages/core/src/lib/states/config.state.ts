@@ -13,7 +13,7 @@ import {
 import { RestOccurError } from '../actions/rest.actions';
 import { SetLanguage } from '../actions/session.actions';
 import { ApplicationConfiguration } from '../models/application-configuration';
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 import { Config } from '../models/config';
 import { organizeRoutes } from '../utils/route-utils';
 import { SessionState } from './session.state';
@@ -67,7 +67,7 @@ export class ConfigState {
   static getRoute(path?: string, name?: string, url?: string) {
     const selector = createSelector([ConfigState], (state: Config.State) => {
       const { flattedRoutes } = state;
-      return (flattedRoutes as ABP.FullRoute[]).find(route => {
+      return (flattedRoutes as ROCKET.FullRoute[]).find(route => {
         if (path && route.path === path) {
           return route;
         } else if (name && route.name === name) {
@@ -235,7 +235,7 @@ export class ConfigState {
     { patchState, getState }: StateContext<Config.State>,
     { name, newValue }: PatchRouteByName,
   ) {
-    let routes: ABP.FullRoute[] = getState().routes;
+    let routes: ROCKET.FullRoute[] = getState().routes;
 
     routes = patchRouteDeep(routes, name, newValue);
 
@@ -243,7 +243,7 @@ export class ConfigState {
     const index = flattedRoutes.findIndex(route => route.name === name);
 
     if (index > -1) {
-      flattedRoutes[index] = { ...flattedRoutes[index], ...newValue } as ABP.FullRoute;
+      flattedRoutes[index] = { ...flattedRoutes[index], ...newValue } as ROCKET.FullRoute;
     }
 
     return patchState({
@@ -254,9 +254,9 @@ export class ConfigState {
 
   @Action(AddRoute)
   addRoute({ patchState, getState }: StateContext<Config.State>, { payload }: AddRoute) {
-    let routes: ABP.FullRoute[] = getState().routes;
+    let routes: ROCKET.FullRoute[] = getState().routes;
     const flattedRoutes = getState().flattedRoutes;
-    const route: ABP.FullRoute = { ...payload };
+    const route: ROCKET.FullRoute = { ...payload };
 
     if (route.parentName) {
       const index = flattedRoutes.findIndex(r => r.name === route.parentName);
@@ -317,11 +317,11 @@ export class ConfigState {
 }
 
 function patchRouteDeep(
-  routes: ABP.FullRoute[],
+  routes: ROCKET.FullRoute[],
   name: string,
-  newValue: Partial<ABP.FullRoute>,
+  newValue: Partial<ROCKET.FullRoute>,
   parentUrl: string = '',
-): ABP.FullRoute[] {
+): ROCKET.FullRoute[] {
   routes = routes.map(route => {
     if (route.name === name) {
       newValue.url = `${parentUrl}/${(!newValue.path && newValue.path === ''
@@ -357,9 +357,9 @@ function patchRouteDeep(
 }
 
 function updateRouteDeep(
-  routes: ABP.FullRoute[],
+  routes: ROCKET.FullRoute[],
   parentNameArr: string[],
-  newValue: ABP.FullRoute,
+  newValue: ROCKET.FullRoute,
   parentIndex = 0,
 ) {
   const index = routes.findIndex(route => route.name === parentNameArr[parentIndex]);

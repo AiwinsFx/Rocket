@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 import { ConfirmationService, Confirmation, getPasswordValidators } from '@rocket/ng.theme.shared';
 import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -28,12 +28,12 @@ interface SelectedModalContent {
 })
 export class TenantsComponent implements OnInit {
   @Select(TenantManagementState.get)
-  data$: Observable<ABP.BasicItem[]>;
+  data$: Observable<ROCKET.BasicItem[]>;
 
   @Select(TenantManagementState.getTenantsTotalCount)
   totalCount$: Observable<number>;
 
-  selected: ABP.BasicItem;
+  selected: ROCKET.BasicItem;
 
   tenantForm: FormGroup;
 
@@ -51,7 +51,7 @@ export class TenantsComponent implements OnInit {
 
   _useSharedDatabase: boolean;
 
-  pageQuery: ABP.PageQueryParams = { maxResultCount: 10 };
+  pageQuery: ROCKET.PageQueryParams = { maxResultCount: 10 };
 
   loading = false;
 
@@ -176,7 +176,7 @@ export class TenantsComponent implements OnInit {
   }
 
   addTenant() {
-    this.selected = {} as ABP.BasicItem;
+    this.selected = {} as ROCKET.BasicItem;
     this.createTenantForm();
     this.openModal('RocketTenantManagement::NewTenant', this.tenantModalTemplate, 'saveTenant');
   }

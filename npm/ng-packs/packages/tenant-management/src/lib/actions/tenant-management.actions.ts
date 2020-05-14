@@ -1,9 +1,9 @@
 import { TenantManagement } from '../models/tenant-management';
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 
 export class GetTenants {
   static readonly type = '[TenantManagement] Get Tenant';
-  constructor(public payload?: ABP.PageQueryParams) {}
+  constructor(public payload?: ROCKET.PageQueryParams) {}
 }
 
 export class GetTenantById {

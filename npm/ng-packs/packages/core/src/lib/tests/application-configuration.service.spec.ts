@@ -13,8 +13,8 @@ describe('ApplicationConfigurationService', () => {
   beforeEach(() => (spectator = createHttp()));
 
   it('should send a GET to application-configuration API', () => {
-    spectator.get(Store).selectSnapshot.andReturn('https://rocket.io');
+    spectator.get(Store).selectSnapshot.andReturn('https://rocket.cn');
     spectator.service.getConfiguration().subscribe();
-    spectator.expectOne('https://rocket.io/api/rocket/application-configuration', HttpMethod.GET);
+    spectator.expectOne('https://rocket.cn/api/rocket/application-configuration', HttpMethod.GET);
   });
 });

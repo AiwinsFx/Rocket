@@ -24,7 +24,7 @@ namespace MyCompanyName.MyProjectName.ObjectExtending
                  *    .AddOrUpdateProperty<IdentityRole, string>("Title");
                  *
                  * See the documentation for more:
-                 * https://docs.rocket.io/en/rocket/latest/Object-Extensions
+                 * https://docs.rocket.cn/en/rocket/latest/Object-Extensions
                  */
             });
         }

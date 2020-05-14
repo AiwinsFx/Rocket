@@ -14,9 +14,9 @@
         public const string NuGetRootPath = NuGetRootPathProduction;
 #endif
 
-        public const string WwwRocketIoProduction = "https://rocket.io/";
-        public const string AccountRocketIoProduction = "https://account.rocket.io/";
-        public const string NuGetRootPathProduction = "https://nuget.rocket.io/";
+        public const string WwwRocketIoProduction = "https://rocket.cn/";
+        public const string AccountRocketIoProduction = "https://account.rocket.cn/";
+        public const string NuGetRootPathProduction = "https://nuget.rocket.cn/";
 
         public const string WwwRocketIoDevelopment = "https://localhost:44328/";
         public const string AccountRocketIoDevelopment = "https://localhost:44333/";

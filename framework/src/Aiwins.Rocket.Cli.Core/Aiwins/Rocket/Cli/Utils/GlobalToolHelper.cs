@@ -6,7 +6,7 @@ namespace Aiwins.Rocket.Cli.Utils {
         /// <summary>
         /// Checks whether the tool is installed or not.
         /// </summary>
-        /// <param name="toolCommandName">Eg: For RocketSuite tool it's "rocket-suite", for ABP CLI tool it's "rocket"</param>
+        /// <param name="toolCommandName">Eg: For RocketSuite tool it's "rocket-suite", for ROCKET CLI tool it's "rocket"</param>
         public static bool IsGlobalToolInstalled (string toolCommandName) {
             string suitePath;
 

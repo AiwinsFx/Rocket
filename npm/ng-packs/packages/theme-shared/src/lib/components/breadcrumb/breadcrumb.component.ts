@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { ConfigState, ABP } from '@rocket/ng.core';
+import { ConfigState, ROCKET } from '@rocket/ng.core';
 
 @Component({
   selector: 'rocket-breadcrumb',
@@ -21,7 +21,7 @@ export class BreadcrumbComponent implements OnInit {
     if (this.show && !this.segments.length) {
       let splittedUrl = this.router.url.split('/').filter(chunk => chunk);
 
-      let currentUrl: ABP.FullRoute = this.store.selectSnapshot(
+      let currentUrl: ROCKET.FullRoute = this.store.selectSnapshot(
         ConfigState.getRoute(splittedUrl[0]),
       );
 
@@ -39,7 +39,7 @@ export class BreadcrumbComponent implements OnInit {
       if (splittedUrl.length > 1) {
         const [, ...arr] = splittedUrl;
 
-        let childRoute: ABP.FullRoute = currentUrl;
+        let childRoute: ROCKET.FullRoute = currentUrl;
         for (let i = 0; i < arr.length; i++) {
           const element = arr[i];
           if (!childRoute.children || !childRoute.children.length) return;

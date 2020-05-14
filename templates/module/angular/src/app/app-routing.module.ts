@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -10,7 +10,7 @@ const routes: Routes = [
       routes: {
         name: 'Home',
         order: 1,
-      } as ABP.Route,
+      } as ROCKET.Route,
     },
   },
   {

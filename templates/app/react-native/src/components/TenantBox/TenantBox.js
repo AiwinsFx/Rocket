@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
 const Forwarded = forwardRef((props, ref) => <TenantBox {...props} forwardedRef={ref} />);
 
 export default connectToRedux({
-  component: connectStyle('ABP.TenantBox', styles)(Forwarded),
+  component: connectStyle('ROCKET.TenantBox', styles)(Forwarded),
   dispatchProps: {
     setTenant: PersistentStorageActions.setTenant,
   },

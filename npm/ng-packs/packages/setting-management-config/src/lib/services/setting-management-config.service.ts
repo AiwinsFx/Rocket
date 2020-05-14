@@ -1,5 +1,5 @@
 import { Injectable, Injector } from '@angular/core';
-import { addRocketRoutes, eLayoutType, PatchRouteByName, ABP } from '@rocket/ng.core';
+import { addRocketRoutes, eLayoutType, PatchRouteByName, ROCKET } from '@rocket/ng.core';
 import { getSettingTabs } from '@rocket/ng.theme.shared';
 import { Store } from '@ngxs/store';
 import { eSettingManagementRouteNames } from '@rocket/ng.setting-management';
@@ -21,7 +21,7 @@ export class SettingManagementConfigService {
       layout: eLayoutType.application,
       order: 6,
       iconClass: 'fa fa-cog',
-    } as ABP.FullRoute;
+    } as ROCKET.FullRoute;
 
     addRocketRoutes(route);
 

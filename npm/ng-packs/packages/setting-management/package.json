@@ -1,14 +1,14 @@
 {
   "name": "@rocket/ng.setting-management",
-  "version": "2.6.2",
-  "homepage": "https://rocket.io",
+  "version": "1.0.0",
+  "homepage": "https://rocket.cn",
   "repository": {
     "type": "git",
     "url": "https://github.com/rocketframework/rocket.git"
   },
   "dependencies": {
-    "@rocket/ng.setting-management.config": "^2.6.2",
-    "@rocket/ng.theme.shared": "^2.6.2"
+    "@rocket/ng.setting-management.config": "^1.0.0",
+    "@rocket/ng.theme.shared": "^1.0.0"
   },
   "publishConfig": {
     "access": "public"

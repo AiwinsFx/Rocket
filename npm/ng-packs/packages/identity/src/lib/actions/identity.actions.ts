@@ -1,9 +1,9 @@
 import { Identity } from '../models/identity';
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 
 export class GetRoles {
   static readonly type = '[Identity] Get Roles';
-  constructor(public payload?: ABP.PageQueryParams) {}
+  constructor(public payload?: ROCKET.PageQueryParams) {}
 }
 
 export class GetRoleById {
@@ -28,7 +28,7 @@ export class UpdateRole {
 
 export class GetUsers {
   static readonly type = '[Identity] Get Users';
-  constructor(public payload?: ABP.PageQueryParams) {}
+  constructor(public payload?: ROCKET.PageQueryParams) {}
 }
 
 export class GetUserById {

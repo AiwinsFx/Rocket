@@ -1,8 +1,8 @@
 {
-  "homepage": "https://rocket.io",
+  "homepage": "https://rocket.cn",
   "repository": {
     "type": "git",
-    "url": "https://github.com/rocketframework/rocket.git"
+    "url": "https://github.com/aiwinsfx/rocket.git"
   },
   "scripts": {
     "ng": "ng",
@@ -22,20 +22,6 @@
     "generate:changelog": "conventional-changelog -p angular -i CHANGELOG.md -s"
   },
   "devDependencies": {
-    "@rocket/ng.account": "~2.6.2",
-    "@rocket/ng.account.config": "~2.6.2",
-    "@rocket/ng.core": "~2.6.2",
-    "@rocket/ng.feature-management": "~2.6.2",
-    "@rocket/ng.identity": "~2.6.2",
-    "@rocket/ng.identity.config": "~2.6.2",
-    "@rocket/ng.permission-management": "~2.6.2",
-    "@rocket/ng.setting-management": "~2.6.2",
-    "@rocket/ng.setting-management.config": "~2.6.2",
-    "@rocket/ng.tenant-management": "~2.6.2",
-    "@rocket/ng.tenant-management.config": "~2.6.2",
-    "@rocket/ng.theme.basic": "~2.6.2",
-    "@rocket/ng.theme.shared": "~2.6.2",
-    "@rocket/utils": "~2.6.2",
     "@angular-builders/jest": "^8.2.0",
     "@angular-devkit/build-angular": "~0.803.21",
     "@angular-devkit/build-ng-packagr": "~0.803.21",
@@ -54,12 +40,13 @@
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@ng-bootstrap/ng-bootstrap": "^5.3.0",
     "@ngneat/spectator": "^4.5.0",
-    "@ngx-validate/core": "^0.0.8",
+    "@ngx-validate/core": "^0.0.7",
     "@ngxs/devtools-plugin": "^3.5.1",
     "@ngxs/logger-plugin": "^3.5.1",
     "@ngxs/router-plugin": "^3.6.2",
     "@ngxs/storage-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2",
+    "@rocket/utils": "^2.6.0",
     "@types/jest": "^24.0.18",
     "@types/node": "~8.9.4",
     "angular-oauth2-oidc": "^8.0.4",

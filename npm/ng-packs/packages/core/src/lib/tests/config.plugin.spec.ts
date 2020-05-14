@@ -6,7 +6,7 @@ import { environment } from '../../../../../apps/dev-app/src/environments/enviro
 import { RouterOutletComponent } from '../components';
 import { CoreModule } from '../core.module';
 import { eLayoutType } from '../enums/common';
-import { ABP } from '../models';
+import { ROCKET } from '../models';
 import { ConfigPlugin } from '../plugins';
 import { ConfigState } from '../states';
 import { addRocketRoutes } from '../utils';
@@ -329,7 +329,7 @@ describe('ConfigPlugin', () => {
           data: {
             routes: {
               name: '::Menu:Home',
-            } as ABP.Route,
+            } as ROCKET.Route,
           },
         },
         { path: 'identity', component: RouterOutletComponent },

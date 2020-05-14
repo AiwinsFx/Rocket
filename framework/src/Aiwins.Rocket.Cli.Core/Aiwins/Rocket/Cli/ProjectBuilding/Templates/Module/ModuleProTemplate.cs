@@ -13,7 +13,7 @@ namespace Aiwins.Rocket.Cli.ProjectBuilding.Templates.MvcModule
             : base(TemplateName)
         {
             //TODO: uncomment next line after document is ready
-            //DocumentUrl = "https://docs.rocket.io/en/commercial/latest/Startup-Templates/Module";
+            //DocumentUrl = "https://docs.rocket.cn/en/commercial/latest/Startup-Templates/Module";
         }
     }
 }

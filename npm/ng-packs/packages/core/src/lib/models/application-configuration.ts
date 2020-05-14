@@ -1,4 +1,4 @@
-import { ABP } from './common';
+import { ROCKET } from './common';
 
 export namespace ApplicationConfiguration {
   export interface Response {
@@ -58,7 +58,7 @@ export namespace ApplicationConfiguration {
   }
 
   export interface Value {
-    values: ABP.Dictionary<string>;
+    values: ROCKET.Dictionary<string>;
   }
 
   export interface CurrentUser {

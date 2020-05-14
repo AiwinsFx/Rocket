@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import {

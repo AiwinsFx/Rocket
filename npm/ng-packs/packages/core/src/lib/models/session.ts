@@ -1,9 +1,9 @@
-import { ABP } from '../models';
+import { ROCKET } from '../models';
 
 export namespace Session {
   export interface State {
     language: string;
-    tenant: ABP.BasicItem;
+    tenant: ROCKET.BasicItem;
     sessionDetail: SessionDetail;
   }
 

@@ -1,11 +1,11 @@
 {
-  "version": "2.6.2",
+  "version": "1.0.0",
   "name": "@rocket/lodash",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/core": "^2.6.2",
+    "@rocket/core": "^1.0.0",
     "lodash": "^4.17.15"
   },
   "gitHead": "eb4a0e507f492e275865b72caeb02ce28d69ae56"

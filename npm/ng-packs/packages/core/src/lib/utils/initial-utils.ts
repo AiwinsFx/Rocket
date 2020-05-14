@@ -5,14 +5,14 @@ import { OAuthService } from 'angular-oauth2-oidc';
 import { tap } from 'rxjs/operators';
 import { GetAppConfiguration } from '../actions/config.actions';
 import differentLocales from '../constants/different-locales';
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 import { ConfigState } from '../states/config.state';
 import { CORE_OPTIONS } from '../tokens/options.token';
 
 export function getInitialData(injector: Injector) {
   const fn = () => {
     const store: Store = injector.get(Store);
-    const { skipGetAppConfiguration } = injector.get(CORE_OPTIONS) as ABP.Root;
+    const { skipGetAppConfiguration } = injector.get(CORE_OPTIONS) as ROCKET.Root;
 
     if (skipGetAppConfiguration) return;
 

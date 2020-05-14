@@ -55,7 +55,7 @@ Loading.propTypes = {
 };
 
 export default connectToRedux({
-  component: connectStyle('ABP.Loading', styles)(Forwarded),
+  component: connectStyle('ROCKET.Loading', styles)(Forwarded),
   stateProps: state => ({
     loading: createLoadingSelector()(state),
     opacity: createOpacitySelector()(state),

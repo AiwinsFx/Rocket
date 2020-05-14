@@ -1,8 +1,8 @@
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 import { isNumber } from './number-utils';
 
-export function mapEnumToOptions<T>(_enum: T): ABP.Option<T>[] {
-  const options: ABP.Option<T>[] = [];
+export function mapEnumToOptions<T>(_enum: T): ROCKET.Option<T>[] {
+  const options: ROCKET.Option<T>[] = [];
 
   for (const member in _enum)
     if (!isNumber(member))

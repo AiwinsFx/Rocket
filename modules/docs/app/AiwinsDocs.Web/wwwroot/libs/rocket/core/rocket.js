@@ -551,7 +551,7 @@ var rocket = rocket || {};
 
     /**
      * Sets a cookie value for given key.
-     * This is a simple implementation created to be used by ABP.
+     * This is a simple implementation created to be used by ROCKET.
      * Please use a complete cookie library if you need.
      * @param {string} key
      * @param {string} value 
@@ -578,7 +578,7 @@ var rocket = rocket || {};
 
     /**
      * Gets a cookie with given key.
-     * This is a simple implementation created to be used by ABP.
+     * This is a simple implementation created to be used by ROCKET.
      * Please use a complete cookie library if you need.
      * @param {string} key
      * @returns {string} Cookie value or null
@@ -605,7 +605,7 @@ var rocket = rocket || {};
 
     /**
      * Deletes cookie for given key.
-     * This is a simple implementation created to be used by ABP.
+     * This is a simple implementation created to be used by ROCKET.
      * Please use a complete cookie library if you need.
      * @param {string} key
      * @param {string} path (optional)

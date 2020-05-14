@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
@@ -9,7 +9,7 @@ const routes: Routes = [
     data: {
       routes: {
         name: '::Menu:Home'
-      } as ABP.Route
+      } as ROCKET.Route
     }
   },
   {

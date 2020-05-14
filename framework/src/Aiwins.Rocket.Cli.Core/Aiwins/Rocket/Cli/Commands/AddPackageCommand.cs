@@ -45,7 +45,7 @@ namespace Aiwins.Rocket.Cli.Commands
             var sb = new StringBuilder();
 
             sb.AppendLine("");
-            sb.AppendLine("'add-package' command is used to add an ABP package to a project.");
+            sb.AppendLine("'add-package' command is used to add an ROCKET package to a project.");
             sb.AppendLine("It should be used in a folder containing a .csproj file.");
             sb.AppendLine("");
             sb.AppendLine("Usage:");
@@ -61,14 +61,14 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket add-package Aiwins.Rocket.FluentValidation                                  Adds the package to the current project.");
             sb.AppendLine("  rocket add-package Aiwins.Rocket.FluentValidation -p Acme.BookStore.Application    Adds the package to the given project.");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.io/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }
 
         public string GetShortDescription()
         {
-            return "Add a new ABP package to a project by adding related NuGet package dependencies and [DependsOn(...)] attributes.";
+            return "Add a new ROCKET package to a project by adding related NuGet package dependencies and [DependsOn(...)] attributes.";
         }
 
         protected virtual string GetProjectFile(CommandLineArgs commandLineArgs)

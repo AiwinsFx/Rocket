@@ -1,5 +1,5 @@
 import { Store } from '@ngxs/store';
-import { ABP, ConfigState } from '@rocket/ng.core';
+import { ROCKET, ConfigState } from '@rocket/ng.core';
 import { PasswordRules, validatePassword } from '@ngx-validate/core';
 import { Validators, ValidatorFn } from '@angular/forms';
 
@@ -36,7 +36,7 @@ export function getPasswordValidators(store: Store): ValidatorFn[] {
 
 function getRuleFn(store: Store) {
   return (key: string) => {
-    const passwordRules: ABP.Dictionary<string> = store.selectSnapshot(
+    const passwordRules: ROCKET.Dictionary<string> = store.selectSnapshot(
       ConfigState.getSettings('Identity.Password'),
     );
 

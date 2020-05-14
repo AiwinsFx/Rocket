@@ -34,17 +34,17 @@ namespace Aiwins.Rocket.Cli.Commands
                     break;
 
                 case "install":
-                    Logger.LogInformation("Installing ABP Suite...");
+                    Logger.LogInformation("Installing ROCKET Suite...");
                     await InstallSuiteAsync();
                     break;
 
                 case "update":
-                    Logger.LogInformation("Updating ABP Suite...");
+                    Logger.LogInformation("Updating ROCKET Suite...");
                     await UpdateSuiteAsync();
                     break;
 
                 case "remove":
-                    Logger.LogInformation("Removing ABP Suite...");
+                    Logger.LogInformation("Removing ROCKET Suite...");
                     RemoveSuite();
                     break;
             }
@@ -63,7 +63,7 @@ namespace Aiwins.Rocket.Cli.Commands
 
             if (result == 0)
             {
-                Logger.LogInformation("ABP Suite has been successfully installed.");
+                Logger.LogInformation("ROCKET Suite has been successfully installed.");
                 Logger.LogInformation("You can run it with the CLI command \"rocket suite\"");
             }
         }
@@ -91,13 +91,13 @@ namespace Aiwins.Rocket.Cli.Commands
             {
                 if (!GlobalToolHelper.IsGlobalToolInstalled("rocket-suite"))
                 {
-                    Logger.LogWarning("ABP Suite is not installed! To install it you can run the command: \"rocket suite install\"");
+                    Logger.LogWarning("ROCKET Suite is not installed! To install it you can run the command: \"rocket suite install\"");
                     return;
                 }
             }
             catch (Exception ex)
             {
-                Logger.LogWarning("Couldn't check ABP Suite installed status: " + ex.Message);
+                Logger.LogWarning("Couldn't check ROCKET Suite installed status: " + ex.Message);
             }
 
             CmdHelper.RunCmd("rocket-suite");
@@ -114,10 +114,10 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("");
             sb.AppendLine("Options:");
             sb.AppendLine("");
-            sb.AppendLine("<no argument>                          (run ABP Suite)");
-            sb.AppendLine("install                                (install ABP Suite as a dotnet global tool)");
-            sb.AppendLine("update                                 (update ABP Suite to the latest)");
-            sb.AppendLine("remove                                 (uninstall ABP Suite)");
+            sb.AppendLine("<no argument>                          (run ROCKET Suite)");
+            sb.AppendLine("install                                (install ROCKET Suite as a dotnet global tool)");
+            sb.AppendLine("update                                 (update ROCKET Suite to the latest)");
+            sb.AppendLine("remove                                 (uninstall ROCKET Suite)");
             sb.AppendLine("");
             sb.AppendLine("Examples:");
             sb.AppendLine("");
@@ -132,7 +132,7 @@ namespace Aiwins.Rocket.Cli.Commands
 
         public string GetShortDescription()
         {
-            return "Install, update, remove or start ABP Suite. See https://commercial.rocket.io/tools/suite.";
+            return "Install, update, remove or start ROCKET Suite. See https://commercial.rocket.cn/tools/suite.";
         }
     }
 }

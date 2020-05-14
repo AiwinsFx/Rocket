@@ -1,4 +1,4 @@
-import { ABP } from '../models';
+import { ROCKET } from '../models';
 
 export class SetLanguage {
   static readonly type = '[Session] Set Language';
@@ -6,7 +6,7 @@ export class SetLanguage {
 }
 export class SetTenant {
   static readonly type = '[Session] Set Tenant';
-  constructor(public payload: ABP.BasicItem) {}
+  constructor(public payload: ROCKET.BasicItem) {}
 }
 export class ModifyOpenedTabCount {
   static readonly type = '[Session] Modify Opened Tab Count';

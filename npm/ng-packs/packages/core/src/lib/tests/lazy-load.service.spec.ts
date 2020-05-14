@@ -80,17 +80,17 @@ describe('LazyLoadService (Deprecated)', () => {
     const spy = jest.spyOn(document, 'createElement');
     spy.mockReturnValue(scriptElement);
 
-    service.load('https://rocket.io', 'script', 'test').subscribe(res => {
+    service.load('https://rocket.cn', 'script', 'test').subscribe(res => {
       expect(
-        document.querySelector('script[src="https://rocket.io"][type="text/javascript"]').textContent,
+        document.querySelector('script[src="https://rocket.cn"][type="text/javascript"]').textContent,
       ).toMatch('test');
     });
 
     scriptElement.onload(null);
 
-    service.load('https://rocket.io', 'script', 'test').subscribe(res => {
+    service.load('https://rocket.cn', 'script', 'test').subscribe(res => {
       expect(
-        document.querySelectorAll('script[src="https://rocket.io"][type="text/javascript"]'),
+        document.querySelectorAll('script[src="https://rocket.cn"][type="text/javascript"]'),
       ).toHaveLength(1);
       done();
     });
@@ -116,9 +116,9 @@ describe('LazyLoadService (Deprecated)', () => {
     });
 
     test('should load an link element', done => {
-      service.load('https://rocket.io', 'style').subscribe(res => {
+      service.load('https://rocket.cn', 'style').subscribe(res => {
         expect(
-          document.querySelector('link[type="text/css"][rel="stylesheet"][href="https://rocket.io"]'),
+          document.querySelector('link[type="text/css"][rel="stylesheet"][href="https://rocket.cn"]'),
         ).toBeTruthy();
         done();
       });
@@ -127,7 +127,7 @@ describe('LazyLoadService (Deprecated)', () => {
     });
 
     test('should load link elements', done => {
-      service.load(['https://rocket.io', 'https://aiwinssoft.com'], 'style').subscribe(res => {
+      service.load(['https://rocket.cn', 'https://aiwinssoft.com'], 'style').subscribe(res => {
         expect(document.querySelector('link[href="https://aiwinssoft.com"]')).toBeTruthy();
         done();
       });

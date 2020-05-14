@@ -223,14 +223,14 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket new Acme.BookStore --local-framework-ref --rocket-path \"D:\\github\\rocket\"");
             sb.AppendLine("  rocket new Acme.BookStore --connection-string \"Server=myServerName\\myInstanceName;Database=myDatabase;User Id=myUsername;Password=myPassword\"");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.io/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }
 
         public string GetShortDescription()
         {
-            return "Generate a new solution based on the ABP startup templates.";
+            return "Generate a new solution based on the ROCKET startup templates.";
         }
 
         protected virtual DatabaseProvider GetDatabaseProvider(CommandLineArgs commandLineArgs)

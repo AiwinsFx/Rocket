@@ -28,4 +28,4 @@ const styles = StyleSheet.create({
 
 const Forwarded = forwardRef((props, ref) => <LoadingButton {...props} forwardedRef={ref} />);
 
-export default connectStyle('ABP.LoadingButton', styles)(Forwarded);
+export default connectStyle('ROCKET.LoadingButton', styles)(Forwarded);

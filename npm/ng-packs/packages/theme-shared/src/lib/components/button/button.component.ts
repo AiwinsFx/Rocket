@@ -8,7 +8,7 @@ import {
   Renderer2,
   OnInit,
 } from '@angular/core';
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 
 @Component({
   selector: 'rocket-button',
@@ -47,7 +47,7 @@ export class ButtonComponent implements OnInit {
   disabled = false;
 
   @Input()
-  attributes: ABP.Dictionary<string>;
+  attributes: ROCKET.Dictionary<string>;
 
   // tslint:disable
   @Output() readonly click = new EventEmitter<MouseEvent>();

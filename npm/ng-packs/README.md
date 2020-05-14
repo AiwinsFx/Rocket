@@ -8,7 +8,7 @@
 
 ## Getting started
 
-Run `yarn` to install all dependencies, then run `yarn prepare:workspace` to prepare the ABP packages (might take 2 minutes).
+Run `yarn` to install all dependencies, then run `yarn prepare:workspace` to prepare the ROCKET packages (might take 2 minutes).
 
 Run `yarn start` to start the `dev-app`. Navigate to http://localhost:4200/.
 
@@ -24,6 +24,6 @@ If you will only develop the `dev-app`, you don't need to run `symlink-manager`.
 
 > Reminder! If you have developed the `dev-app` template, you should do the same for the application and module templates.
 
-For more information, see the [docs.rocket.io](https://docs.rocket.io)
+For more information, see the [docs.rocket.cn](https://docs.rocket.cn)
 
 If would you like contribute, see the [contribution guideline](./CONTRIBUTING.md).

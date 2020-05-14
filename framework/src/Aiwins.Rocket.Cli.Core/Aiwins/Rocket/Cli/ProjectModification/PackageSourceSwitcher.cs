@@ -29,7 +29,7 @@ namespace Aiwins.Rocket.Cli.ProjectModification
 
         public async Task SwitchToPreview(CommandLineArgs commandLineArgs)
         {
-            _packageSourceAdder.Add("ABP Nightly", "https://www.myget.org/F/rocket-nightly/api/v3/index.json");
+            _packageSourceAdder.Add("ROCKET Nightly", "https://www.myget.org/F/rocket-nightly/api/v3/index.json");
 
             var solutionPath = GetSolutionPath(commandLineArgs);
             var solutionFolder = GetSolutionFolder(commandLineArgs);

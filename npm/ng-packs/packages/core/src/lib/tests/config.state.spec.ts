@@ -3,7 +3,7 @@ import { Store } from '@ngxs/store';
 import clone from 'just-clone';
 import { of, ReplaySubject, timer } from 'rxjs';
 import { AddRoute, PatchRouteByName, SetLanguage } from '../actions';
-import { ABP } from '../models';
+import { ROCKET } from '../models';
 import { Config } from '../models/config';
 import { ApplicationConfigurationService, ConfigStateService } from '../services';
 import { ConfigState } from '../states';
@@ -401,7 +401,7 @@ describe('ConfigState', () => {
       invisible: false,
       order: 2,
       requiredPolicy: 'MyProjectName::MyNewPage',
-    } as Omit<ABP.Route, 'children'>;
+    } as Omit<ROCKET.Route, 'children'>;
 
     test('should add a new route', () => {
       let patchStateArg;

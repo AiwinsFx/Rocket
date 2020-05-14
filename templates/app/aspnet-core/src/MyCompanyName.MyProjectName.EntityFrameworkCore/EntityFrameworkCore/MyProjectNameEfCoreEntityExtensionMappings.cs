@@ -29,7 +29,7 @@ namespace MyCompanyName.MyProjectName.EntityFrameworkCore
                  *    );
                  *
                  * See the documentation for more:
-                 * https://docs.rocket.io/en/rocket/latest/Customizing-Application-Modules-Extending-Entities
+                 * https://docs.rocket.cn/en/rocket/latest/Customizing-Application-Modules-Extending-Entities
                  */
             });
         }

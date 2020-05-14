@@ -1,13 +1,13 @@
 import { Type } from '@angular/core';
 import { AuthConfig } from 'angular-oauth2-oidc';
 import { ApplicationConfiguration } from './application-configuration';
-import { ABP } from './common';
+import { ROCKET } from './common';
 
 export namespace Config {
   export type State = ApplicationConfiguration.Response &
-    ABP.Root & { environment: Environment } & {
-      routes: ABP.FullRoute[];
-      flattedRoutes: ABP.FullRoute[];
+    ROCKET.Root & { environment: Environment } & {
+      routes: ROCKET.FullRoute[];
+      flattedRoutes: ROCKET.FullRoute[];
     };
 
   export interface Environment {

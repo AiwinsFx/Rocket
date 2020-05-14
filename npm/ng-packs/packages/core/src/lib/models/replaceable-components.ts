@@ -1,5 +1,5 @@
 import { Type, EventEmitter } from '@angular/core';
-import { ABP } from './common';
+import { ROCKET } from './common';
 import { Subject, BehaviorSubject } from 'rxjs';
 
 export namespace ReplaceableComponents {
@@ -17,7 +17,7 @@ export namespace ReplaceableComponents {
     O extends { [K in keyof O]: EventEmitter<any> | Subject<any> }
   > {
     inputs: { -readonly [K in keyof I]: { value: I[K]; twoWay?: boolean } };
-    outputs: { -readonly [K in keyof O]: (value: ABP.ExtractFromOutput<O[K]>) => void };
+    outputs: { -readonly [K in keyof O]: (value: ROCKET.ExtractFromOutput<O[K]>) => void };
     componentKey: string;
   }
 
@@ -37,7 +37,7 @@ export namespace ReplaceableComponents {
   export type ReplaceableTemplateOutputs<
     T extends { [K in keyof T]: EventEmitter<any> | Subject<any> }
   > = {
-    [K in keyof T]: (value: ABP.ExtractFromOutput<T[K]>) => void;
+    [K in keyof T]: (value: ROCKET.ExtractFromOutput<T[K]>) => void;
   };
 
   export interface RouteData<T = any> {

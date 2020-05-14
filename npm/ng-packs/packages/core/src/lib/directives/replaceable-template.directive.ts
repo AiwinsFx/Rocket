@@ -14,7 +14,7 @@ import {
 import { Store } from '@ngxs/store';
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 import { ReplaceableComponents } from '../models/replaceable-components';
 import { ReplaceableComponentsState } from '../states/replaceable-components.state';
 import { takeUntilDestroy } from '../utils/rxjs-utils';
@@ -37,7 +37,7 @@ export class ReplaceableTemplateDirective implements OnInit, OnDestroy, OnChange
 
   defaultComponentRef: any;
 
-  defaultComponentSubscriptions = {} as ABP.Dictionary<Subscription>;
+  defaultComponentSubscriptions = {} as ROCKET.Dictionary<Subscription>;
 
   initialized = false;
 
@@ -158,7 +158,7 @@ export class ReplaceableTemplateDirective implements OnInit, OnDestroy, OnChange
     Object.keys(this.defaultComponentSubscriptions).forEach(key => {
       this.defaultComponentSubscriptions[key].unsubscribe();
     });
-    this.defaultComponentSubscriptions = {} as ABP.Dictionary<Subscription>;
+    this.defaultComponentSubscriptions = {} as ROCKET.Dictionary<Subscription>;
     this.defaultComponentRef = null;
   }
 }

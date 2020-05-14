@@ -1,11 +1,11 @@
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 
 export function organizeRoutes(
-  routes: ABP.FullRoute[],
-  wrappers: ABP.FullRoute[] = [],
-  parentNameArr = [] as ABP.FullRoute[],
+  routes: ROCKET.FullRoute[],
+  wrappers: ROCKET.FullRoute[] = [],
+  parentNameArr = [] as ROCKET.FullRoute[],
   parentName: string = null,
-): ABP.FullRoute[] {
+): ROCKET.FullRoute[] {
   const filter = route => {
     if (route.children && route.children.length) {
       route.children = organizeRoutes(route.children, wrappers, parentNameArr, route.name);
@@ -34,9 +34,9 @@ export function organizeRoutes(
 }
 
 export function setChildRoute(
-  routes: ABP.FullRoute[],
-  parentNameArr: ABP.FullRoute[],
-): ABP.FullRoute[] {
+  routes: ROCKET.FullRoute[],
+  parentNameArr: ROCKET.FullRoute[],
+): ROCKET.FullRoute[] {
   return routes.map(route => {
     if (route.children && route.children.length) {
       route.children = setChildRoute(route.children, parentNameArr);
@@ -51,7 +51,7 @@ export function setChildRoute(
   });
 }
 
-export function sortRoutes(routes: ABP.FullRoute[] = []): ABP.FullRoute[] {
+export function sortRoutes(routes: ROCKET.FullRoute[] = []): ROCKET.FullRoute[] {
   if (!routes.length) return [];
   return routes
     .map((route, index) => {
@@ -70,16 +70,16 @@ export function sortRoutes(routes: ABP.FullRoute[] = []): ABP.FullRoute[] {
     });
 }
 
-const ABP_ROUTES = [] as ABP.FullRoute[];
+const ROCKET_ROUTES = [] as ROCKET.FullRoute[];
 
-export function addRocketRoutes(routes: ABP.FullRoute | ABP.FullRoute[]): void {
+export function addRocketRoutes(routes: ROCKET.FullRoute | ROCKET.FullRoute[]): void {
   if (!Array.isArray(routes)) {
     routes = [routes];
   }
 
-  ABP_ROUTES.push(...routes);
+  ROCKET_ROUTES.push(...routes);
 }
 
-export function getRocketRoutes(): ABP.FullRoute[] {
-  return ABP_ROUTES;
+export function getRocketRoutes(): ROCKET.FullRoute[] {
+  return ROCKET_ROUTES;
 }

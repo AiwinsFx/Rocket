@@ -29,8 +29,8 @@ namespace Aiwins.Rocket.Cli.ProjectBuilding.Templates
                 return;
             }
 
-            const string placeHolder = "<!-- {ABP_COMMERCIAL_NUGET_SOURCE} -->";
-            var nugetSourceTag = $"<add key=\"ABP Commercial NuGet Source\" value=\"https://nuget.rocket.io/{apiKey}/v3/index.json\" />";
+            const string placeHolder = "<!-- {ROCKET_COMMERCIAL_NUGET_SOURCE} -->";
+            var nugetSourceTag = $"<add key=\"ROCKET Commercial NuGet Source\" value=\"https://nuget.rocket.cn/{apiKey}/v3/index.json\" />";
 
             file.ReplaceText(placeHolder, nugetSourceTag);
         }

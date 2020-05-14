@@ -15,4 +15,4 @@ const styles = {
 
 const Forwarded = forwardRef((props, ref) => <ValidationMessage {...props} forwardedRef={ref} />);
 
-export default connectStyle('ABP.ValidationMessage', styles)(Forwarded);
+export default connectStyle('ROCKET.ValidationMessage', styles)(Forwarded);

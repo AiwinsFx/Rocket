@@ -79,4 +79,4 @@ const styles = StyleSheet.create({
 
 const Forwarded = forwardRef((props, ref) => <FormButtons {...props} forwardedRef={ref} />);
 
-export default connectStyle('ABP.FormButtons', styles)(Forwarded);
+export default connectStyle('ROCKET.FormButtons', styles)(Forwarded);

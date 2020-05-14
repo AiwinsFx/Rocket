@@ -18,7 +18,7 @@ import {
   SetRemember,
   SetTenant,
 } from '../actions/session.actions';
-import { ABP, Session } from '../models';
+import { ROCKET, Session } from '../models';
 
 @State<Session.State>({
   name: 'SessionState',
@@ -32,7 +32,7 @@ export class SessionState {
   }
 
   @Selector()
-  static getTenant({ tenant }: Session.State): ABP.BasicItem {
+  static getTenant({ tenant }: Session.State): ROCKET.BasicItem {
     return tenant;
   }
 

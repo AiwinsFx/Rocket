@@ -31,7 +31,7 @@ namespace Aiwins.Rocket.Caching {
                 await invocation.ProceedAsync ();
             } else {
                 var distributedCacheAttribute = ReflectionHelper.GetSingleAttributeOrDefault<LocalCacheAttribute> (invocation.Method);
-                var cacheKey = CacheKeyGenerator.GetCacheKey (invocation.Method, invocation.Arguments, distributedCacheAttribute.Prefix);
+                var cacheKey = CacheKeyHelper.GetCacheKey (invocation.Method, invocation.Arguments, distributedCacheAttribute.Prefix);
                 var returnType = invocation.Method.ReturnType.GetGenericArguments ().First ();
                 try {
                     var cacheValue = await _cache.GetAsync (cacheKey);

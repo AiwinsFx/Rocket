@@ -23,7 +23,7 @@ import { StopPropagationDirective } from './directives/stop-propagation.directiv
 import { VisibilityDirective } from './directives/visibility.directive';
 import { ApiInterceptor } from './interceptors/api.interceptor';
 import { LocalizationModule } from './localization.module';
-import { ABP } from './models/common';
+import { ROCKET } from './models/common';
 import { LocalizationPipe, MockLocalizationPipe } from './pipes/localization.pipe';
 import { SortPipe } from './pipes/sort.pipe';
 import { ConfigPlugin, NGXS_CONFIG_PLUGIN_OPTIONS } from './plugins/config.plugin';
@@ -141,7 +141,7 @@ export class TestCoreModule {}
   providers: [LocalizationPipe],
 })
 export class CoreModule {
-  static forTest({ baseHref = '/' } = {} as ABP.Test): ModuleWithProviders<TestCoreModule> {
+  static forTest({ baseHref = '/' } = {} as ROCKET.Test): ModuleWithProviders<TestCoreModule> {
     return {
       ngModule: TestCoreModule,
       providers: [
@@ -154,7 +154,7 @@ export class CoreModule {
     };
   }
 
-  static forRoot(options = {} as ABP.Root): ModuleWithProviders<RootCoreModule> {
+  static forRoot(options = {} as ROCKET.Root): ModuleWithProviders<RootCoreModule> {
     return {
       ngModule: RootCoreModule,
       providers: [

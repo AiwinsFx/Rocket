@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RestService, Rest, ABP } from '@rocket/ng.core';
+import { RestService, Rest, ROCKET } from '@rocket/ng.core';
 import { Identity } from '../models/identity';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class IdentityService {
 
   constructor(private rest: RestService) {}
 
-  getRoles(params = {} as ABP.PageQueryParams): Observable<Identity.RoleResponse> {
+  getRoles(params = {} as ROCKET.PageQueryParams): Observable<Identity.RoleResponse> {
     const request: Rest.Request<null> = {
       method: 'GET',
       url: '/api/identity/roles',
@@ -75,7 +75,7 @@ export class IdentityService {
     });
   }
 
-  getUsers(params = {} as ABP.PageQueryParams): Observable<Identity.UserResponse> {
+  getUsers(params = {} as ROCKET.PageQueryParams): Observable<Identity.UserResponse> {
     const request: Rest.Request<null> = {
       method: 'GET',
       url: '/api/identity/users',

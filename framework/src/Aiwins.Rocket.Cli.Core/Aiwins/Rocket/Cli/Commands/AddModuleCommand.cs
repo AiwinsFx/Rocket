@@ -64,7 +64,7 @@ namespace Aiwins.Rocket.Cli.Commands
             var sb = new StringBuilder();
 
             sb.AppendLine("");
-            sb.AppendLine("'add-module' command is used to add a multi-package ABP module to a solution.");
+            sb.AppendLine("'add-module' command is used to add a multi-package ROCKET module to a solution.");
             sb.AppendLine("It should be used in a folder containing a .sln file.");
             sb.AppendLine("");
             sb.AppendLine("Usage:");
@@ -83,7 +83,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket add-module Aiwins.Blogging -s Acme.BookStore --skip-db-migrations false    Adds the module to the given solution but doesn't create a database migration.");
             sb.AppendLine(@"  rocket add-module Aiwins.Blogging -s Acme.BookStore -sp ..\Acme.BookStore.Web\Acme.BookStore.Web.csproj   Adds the module to the given solution and specify migration startup project.");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.io/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

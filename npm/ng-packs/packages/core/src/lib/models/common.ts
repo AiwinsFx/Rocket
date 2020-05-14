@@ -4,7 +4,7 @@ import { Subject } from 'rxjs';
 import { eLayoutType } from '../enums/common';
 import { Config } from './config';
 
-export namespace ABP {
+export namespace ROCKET {
   export interface Root {
     environment: Partial<Config.Environment>;
     /**

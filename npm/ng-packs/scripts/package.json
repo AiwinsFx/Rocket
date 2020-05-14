@@ -1,7 +1,7 @@
 {
   "name": "scripts",
   "version": "1.0.0",
-  "description": "ABP helper scripts",
+  "description": "ROCKET helper scripts",
   "main": "index.js",
   "scripts": {
     "build": "ts-node -r tsconfig-paths/register build.ts",

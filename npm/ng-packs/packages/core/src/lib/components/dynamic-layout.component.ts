@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router, UrlSegment } from '@angular/rout
 import { Store } from '@ngxs/store';
 import snq from 'snq';
 import { eLayoutType } from '../enums/common';
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 import { ReplaceableComponents } from '../models/replaceable-components';
 import { ConfigState } from '../states/config.state';
 import { ReplaceableComponentsState } from '../states/replaceable-components.state';
@@ -52,7 +52,7 @@ export class DynamicLayoutComponent implements OnDestroy {
   ngOnDestroy() {}
 }
 
-function findLayout(segments: UrlSegment[], routes: ABP.FullRoute[]): eLayoutType {
+function findLayout(segments: UrlSegment[], routes: ROCKET.FullRoute[]): eLayoutType {
   let layout = eLayoutType.empty;
 
   const route = routes

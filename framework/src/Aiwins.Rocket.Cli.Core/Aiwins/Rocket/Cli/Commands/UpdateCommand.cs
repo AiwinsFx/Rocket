@@ -114,14 +114,14 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket update -p");
             sb.AppendLine("  rocket update -sp \"D:\\projects\\\" -sn Acme.BookStore");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.io/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }
 
         public string GetShortDescription()
         {
-            return "Update all ABP related NuGet packages and NPM packages in a solution or project to the latest version.";
+            return "Update all ROCKET related NuGet packages and NPM packages in a solution or project to the latest version.";
         }
 
         public static class Options

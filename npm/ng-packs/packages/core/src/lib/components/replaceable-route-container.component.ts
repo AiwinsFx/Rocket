@@ -2,7 +2,7 @@ import { Component, OnDestroy, OnInit, Type } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngxs/store';
 import { distinctUntilChanged } from 'rxjs/operators';
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 import { ReplaceableComponents } from '../models/replaceable-components';
 import { ReplaceableComponentsState } from '../states/replaceable-components.state';
 import { takeUntilDestroy } from '../utils/rxjs-utils';

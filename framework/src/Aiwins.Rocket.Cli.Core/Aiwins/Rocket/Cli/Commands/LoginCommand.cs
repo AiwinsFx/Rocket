@@ -71,7 +71,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("  rocket login john");
             sb.AppendLine("  rocket login john -p 1234");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.io/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }

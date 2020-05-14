@@ -131,7 +131,7 @@ const styles = StyleSheet.create({
 const Forwarded = forwardRef((props, ref) => <DataList {...props} forwardedRef={ref} />);
 
 export default connectToRedux({
-  component: connectStyle('ABP.DataList', styles)(Forwarded),
+  component: connectStyle('ROCKET.DataList', styles)(Forwarded),
   dispatchProps: {
     startLoading: LoadingActions.start,
     stopLoading: LoadingActions.stop,

@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 import { Confirmation, ConfirmationService, getPasswordValidators } from '@rocket/ng.theme.shared';
 import { Component, OnInit, TemplateRef, TrackByFunction, ViewChild } from '@angular/core';
 import {
@@ -51,7 +51,7 @@ export class UsersComponent implements OnInit {
 
   providerKey: string;
 
-  pageQuery: ABP.PageQueryParams = { maxResultCount: 10 };
+  pageQuery: ROCKET.PageQueryParams = { maxResultCount: 10 };
 
   isModalVisible: boolean;
 

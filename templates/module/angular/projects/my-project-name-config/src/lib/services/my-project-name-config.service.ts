@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { eLayoutType, addRocketRoutes, ABP } from '@rocket/ng.core';
+import { eLayoutType, addRocketRoutes, ROCKET } from '@rocket/ng.core';
 import { addSettingTab } from '@rocket/ng.theme.shared';
 import { MyProjectNameSettingsComponent } from '../components/my-project-name-settings.component';
 
@@ -13,7 +13,7 @@ export class MyProjectNameConfigService {
       path: 'my-project-name',
       layout: eLayoutType.application,
       order: 2,
-    } as ABP.FullRoute);
+    } as ROCKET.FullRoute);
 
     const route = addSettingTab({
       component: MyProjectNameSettingsComponent,

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RestService, Rest, ABP } from '@rocket/ng.core';
+import { RestService, Rest, ROCKET } from '@rocket/ng.core';
 import { TenantManagement } from '../models/tenant-management';
 
 @Injectable({
@@ -11,7 +11,7 @@ export class TenantManagementService {
 
   constructor(private rest: RestService) {}
 
-  getTenant(params = {} as ABP.PageQueryParams): Observable<TenantManagement.Response> {
+  getTenant(params = {} as ROCKET.PageQueryParams): Observable<TenantManagement.Response> {
     const request: Rest.Request<null> = {
       method: 'GET',
       url: '/api/multi-tenancy/tenants',
@@ -21,13 +21,13 @@ export class TenantManagementService {
     return this.rest.request<null, TenantManagement.Response>(request, { apiName: this.apiName });
   }
 
-  getTenantById(id: string): Observable<ABP.BasicItem> {
+  getTenantById(id: string): Observable<ROCKET.BasicItem> {
     const request: Rest.Request<null> = {
       method: 'GET',
       url: `/api/multi-tenancy/tenants/${id}`,
     };
 
-    return this.rest.request<null, ABP.BasicItem>(request, { apiName: this.apiName });
+    return this.rest.request<null, ROCKET.BasicItem>(request, { apiName: this.apiName });
   }
 
   deleteTenant(id: string): Observable<null> {
@@ -39,19 +39,19 @@ export class TenantManagementService {
     return this.rest.request<null, null>(request, { apiName: this.apiName });
   }
 
-  createTenant(body: TenantManagement.AddRequest): Observable<ABP.BasicItem> {
+  createTenant(body: TenantManagement.AddRequest): Observable<ROCKET.BasicItem> {
     const request: Rest.Request<TenantManagement.AddRequest> = {
       method: 'POST',
       url: '/api/multi-tenancy/tenants',
       body,
     };
 
-    return this.rest.request<TenantManagement.AddRequest, ABP.BasicItem>(request, {
+    return this.rest.request<TenantManagement.AddRequest, ROCKET.BasicItem>(request, {
       apiName: this.apiName,
     });
   }
 
-  updateTenant(body: TenantManagement.UpdateRequest): Observable<ABP.BasicItem> {
+  updateTenant(body: TenantManagement.UpdateRequest): Observable<ROCKET.BasicItem> {
     const url = `/api/multi-tenancy/tenants/${body.id}`;
     delete body.id;
 
@@ -61,7 +61,7 @@ export class TenantManagementService {
       body,
     };
 
-    return this.rest.request<TenantManagement.UpdateRequest, ABP.BasicItem>(request, {
+    return this.rest.request<TenantManagement.UpdateRequest, ROCKET.BasicItem>(request, {
       apiName: this.apiName,
     });
   }

@@ -1,4 +1,4 @@
-import { ABP, GetAppConfiguration, SessionState, SetTenant } from '@rocket/ng.core';
+import { ROCKET, GetAppConfiguration, SessionState, SetTenant } from '@rocket/ng.core';
 import { ToasterService } from '@rocket/ng.theme.shared';
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
@@ -14,7 +14,7 @@ import { AccountService } from '../../services/account.service';
 export class TenantBoxComponent
   implements Account.TenantBoxComponentInputs, Account.TenantBoxComponentOutputs {
   @Select(SessionState.getTenant)
-  currentTenant$: Observable<ABP.BasicItem>;
+  currentTenant$: Observable<ROCKET.BasicItem>;
 
   name: string;
 
@@ -30,7 +30,7 @@ export class TenantBoxComponent
 
   onSwitch() {
     const tenant = this.store.selectSnapshot(SessionState.getTenant);
-    this.name = (tenant || ({} as ABP.BasicItem)).name;
+    this.name = (tenant || ({} as ROCKET.BasicItem)).name;
     this.isModalVisible = true;
   }
 
@@ -56,7 +56,7 @@ export class TenantBoxComponent
       });
   }
 
-  private setTenant(tenant: ABP.BasicItem) {
+  private setTenant(tenant: ROCKET.BasicItem) {
     return this.store.dispatch([new SetTenant(tenant), new GetAppConfiguration()]);
   }
 

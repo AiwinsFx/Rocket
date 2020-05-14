@@ -1,3 +1,3 @@
 # @rocket/ng.setting-management.config
 
-[docs.rocket.io](https://docs.rocket.io)
+[docs.rocket.cn](https://docs.rocket.cn)

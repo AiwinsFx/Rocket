@@ -22,7 +22,7 @@
 * **account:** add autocomplete attiributes for chromium based browsers ([343c847](https://github.com/rocketframework/rocket/commit/343c847fb70d634218de1b156b3a15557e27acda))
 * **account:** add the enableLocalLogin condition to auth-wrapper ([#2537](https://github.com/rocketframework/rocket/pull/2573)) ([0fb7ba4](https://github.com/rocketframework/rocket/commit/0fb7ba4614ebb64a00f19a9bef277a0fb9bee764))
 * **core:** add init directive ([5ae1071](https://github.com/rocketframework/rocket/commit/5ae10717d73b1d76711dcd68201ed6b0609c4112))
-* **core:** add ExtractFromGeneric type to ABP namespace ([1fe3b35](https://github.com/rocketframework/rocket/commit/1fe3b35076c5daddf9edc2a8396b62288cf105da))
+* **core:** add ExtractFromGeneric type to ROCKET namespace ([1fe3b35](https://github.com/rocketframework/rocket/commit/1fe3b35076c5daddf9edc2a8396b62288cf105da))
 * **core:** add init directive to emit an output when the element initialized ([31c224c](https://github.com/rocketframework/rocket/commit/31c224c9f9c015e94877d1eba382d1cd415704c7))
 * **core:** fill the parentName property in flattedRoutes for child rotues ([17dd0a2](https://github.com/rocketframework/rocket/commit/17dd0a25a7dc2fa6268ce68f4f2f5d78f78a1f23))
 * **core:** create AddRoute action to add new elements to top navigation ([#2425](https://github.com/rocketframework/rocket/pull/2425)), closes ([#2186](https://github.com/rocketframework/rocket/pull/2186))

@@ -8,7 +8,7 @@ import {
   Input,
 } from '@angular/core';
 import {
-  ABP,
+  ROCKET,
   takeUntilDestroy,
   SetLanguage,
   AuthService,
@@ -52,7 +52,7 @@ export class NavItemsComponent implements AfterViewInit, OnDestroy {
 
   rightPartElements: TemplateRef<any>[] = [];
 
-  trackByFn: TrackByFunction<ABP.FullRoute> = (_, element) => element;
+  trackByFn: TrackByFunction<ROCKET.FullRoute> = (_, element) => element;
 
   get defaultLanguage$(): Observable<string> {
     return this.languages$.pipe(

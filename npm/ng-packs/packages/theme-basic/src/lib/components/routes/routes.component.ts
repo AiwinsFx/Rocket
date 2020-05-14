@@ -1,6 +1,6 @@
 import { Component, OnInit, TrackByFunction, Input, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ABP, ConfigState } from '@rocket/ng.core';
+import { ROCKET, ConfigState } from '@rocket/ng.core';
 import { map } from 'rxjs/operators';
 import { Select } from '@ngxs/store';
 
@@ -10,7 +10,7 @@ import { Select } from '@ngxs/store';
 })
 export class RoutesComponent {
   @Select(ConfigState.getOne('routes'))
-  routes$: Observable<ABP.FullRoute[]>;
+  routes$: Observable<ROCKET.FullRoute[]>;
 
   @Input()
   smallScreen: boolean;
@@ -18,11 +18,11 @@ export class RoutesComponent {
   @Input()
   isDropdownChildDynamic: boolean;
 
-  get visibleRoutes$(): Observable<ABP.FullRoute[]> {
+  get visibleRoutes$(): Observable<ROCKET.FullRoute[]> {
     return this.routes$.pipe(map(routes => getVisibleRoutes(routes)));
   }
 
-  trackByFn: TrackByFunction<ABP.FullRoute> = (_, item) => item.name;
+  trackByFn: TrackByFunction<ROCKET.FullRoute> = (_, item) => item.name;
 
   constructor(private renderer: Renderer2) {}
 
@@ -38,7 +38,7 @@ export class RoutesComponent {
   }
 }
 
-function getVisibleRoutes(routes: ABP.FullRoute[]) {
+function getVisibleRoutes(routes: ROCKET.FullRoute[]) {
   return routes.reduce((acc, val) => {
     if (val.invisible) return acc;
 

@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 
 export namespace TenantManagement {
   export interface State {
@@ -6,7 +6,7 @@ export namespace TenantManagement {
     selectedItem: Item;
   }
 
-  export type Response = ABP.PagedResponse<Item>;
+  export type Response = ROCKET.PagedResponse<Item>;
 
   export interface Item {
     id: string;

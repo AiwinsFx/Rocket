@@ -19,8 +19,9 @@ const publish = async () => {
     process.exit(1);
   }
 
+  console.log('Current publish env is preview?' +  program.preview);
   const registry = program.preview ? 'http://localhost:4873' : 'https://registry.npmjs.org';
-
+  
   try {
     await execa('yarn', ['install-new-dependencies'], { stdout: 'inherit' });
 

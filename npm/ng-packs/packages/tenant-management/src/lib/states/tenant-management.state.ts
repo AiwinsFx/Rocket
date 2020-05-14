@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import {
@@ -19,7 +19,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class TenantManagementState {
   @Selector()
-  static get({ result }: TenantManagement.State): ABP.BasicItem[] {
+  static get({ result }: TenantManagement.State): ROCKET.BasicItem[] {
     return result.items || [];
   }
 

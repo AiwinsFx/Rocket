@@ -35,7 +35,7 @@ namespace Aiwins.Rocket.Cli {
         }
 
         public async Task RunAsync (string[] args) {
-            Logger.LogInformation ("ABP CLI (https://rocket.io)");
+            Logger.LogInformation ("ROCKET CLI (https://rocket.cn)");
 
             await CheckCliVersionAsync ();
 
@@ -148,7 +148,7 @@ namespace Aiwins.Rocket.Cli {
         private void LogNewVersionInfo (UpdateChannel updateChannel, SemanticVersion latestVersion, string toolPath) {
             var toolPathArg = IsGlobalTool (toolPath) ? "-g" : $"--tool-path {toolPath}";
 
-            Logger.LogWarning ($"ABP CLI has a newer {updateChannel.ToString().ToLowerInvariant()} version {latestVersion}, please update to get the latest features and fixes.");
+            Logger.LogWarning ($"ROCKET CLI has a newer {updateChannel.ToString().ToLowerInvariant()} version {latestVersion}, please update to get the latest features and fixes.");
             Logger.LogWarning (string.Empty);
             Logger.LogWarning ("Update Command: ");
 

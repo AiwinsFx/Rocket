@@ -15,9 +15,9 @@ describe('AccountService', () => {
   beforeEach(() => (spectator = createHttp()));
 
   it('should send a GET to find tenant', () => {
-    spectator.get(Store).selectSnapshot.andReturn('https://rocket.io');
+    spectator.get(Store).selectSnapshot.andReturn('https://rocket.cn');
     spectator.service.findTenant('test').subscribe();
-    spectator.expectOne('https://rocket.io/api/rocket/multi-tenancy/tenants/by-name/test', HttpMethod.GET);
+    spectator.expectOne('https://rocket.cn/api/rocket/multi-tenancy/tenants/by-name/test', HttpMethod.GET);
   });
 
   it('should send a POST to register API', () => {
@@ -27,9 +27,9 @@ describe('AccountService', () => {
       password: 'test1234',
       appName: 'Angular',
     } as RegisterRequest;
-    spectator.get(Store).selectSnapshot.andReturn('https://rocket.io');
+    spectator.get(Store).selectSnapshot.andReturn('https://rocket.cn');
     spectator.service.register(mock).subscribe();
-    const req = spectator.expectOne('https://rocket.io/api/account/register', HttpMethod.POST);
+    const req = spectator.expectOne('https://rocket.cn/api/account/register', HttpMethod.POST);
     expect(req.request.body).toEqual(mock);
   });
 });

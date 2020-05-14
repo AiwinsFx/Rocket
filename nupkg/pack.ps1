@@ -14,7 +14,7 @@ foreach($project in $projects) {
 
     # Create nuget pack
     Set-Location $projectFolder
-    Remove-Item -Recurse (Join-Path $projectFolder "bin/Release")
+    Remove-Item -Recurse (Join-Path $projectFolder "bin/Release") -force
     & dotnet msbuild /t:pack /p:Configuration=Release /p:SourceLinkCreate=true
 
     if (-Not $?) {

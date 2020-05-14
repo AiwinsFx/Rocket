@@ -10,7 +10,7 @@ import {
 } from '@ngxs/store';
 import clone from 'just-clone';
 import snq from 'snq';
-import { ABP } from '../models/common';
+import { ROCKET } from '../models/common';
 import { getRocketRoutes, organizeRoutes } from '../utils/route-utils';
 
 export const NGXS_CONFIG_PLUGIN_OPTIONS = new InjectionToken('NGXS_CONFIG_PLUGIN_OPTIONS');
@@ -20,7 +20,7 @@ export class ConfigPlugin implements NgxsPlugin {
   private initialized = false;
 
   constructor(
-    @Inject(NGXS_CONFIG_PLUGIN_OPTIONS) private options: ABP.Root,
+    @Inject(NGXS_CONFIG_PLUGIN_OPTIONS) private options: ROCKET.Root,
     private router: Router,
   ) {}
 
@@ -49,11 +49,11 @@ export class ConfigPlugin implements NgxsPlugin {
   }
 }
 
-function transformRoutes(routes: Routes = [], wrappers: ABP.FullRoute[] = []): any {
+function transformRoutes(routes: Routes = [], wrappers: ROCKET.FullRoute[] = []): any {
   const rocketRoutes = [...getRocketRoutes()];
 
   wrappers = rocketRoutes.filter(ar => ar.wrapper);
-  const transformed = [] as ABP.FullRoute[];
+  const transformed = [] as ROCKET.FullRoute[];
   routes
     .filter(route => route.component || route.loadChildren)
     .forEach(route => {
@@ -73,14 +73,14 @@ function transformRoutes(routes: Routes = [], wrappers: ABP.FullRoute[] = []): a
           path: route.path,
           name: snq(() => route.data.routes.name, route.path),
           children: route.data.routes.children || [],
-        } as ABP.FullRoute);
+        } as ROCKET.FullRoute);
       }
     });
 
   return { routes: setUrls(transformed), wrappers };
 }
 
-function setUrls(routes: ABP.FullRoute[], parentUrl?: string): ABP.FullRoute[] {
+function setUrls(routes: ROCKET.FullRoute[], parentUrl?: string): ROCKET.FullRoute[] {
   if (parentUrl) {
     // recursive block
     return routes.map(route => ({
@@ -103,10 +103,10 @@ function setUrls(routes: ABP.FullRoute[], parentUrl?: string): ABP.FullRoute[] {
   }));
 }
 
-function flatRoutes(routes: ABP.FullRoute[]): ABP.FullRoute[] {
-  const flat = (r: ABP.FullRoute[]) => {
+function flatRoutes(routes: ROCKET.FullRoute[]): ROCKET.FullRoute[] {
+  const flat = (r: ROCKET.FullRoute[]) => {
     return r.reduce((acc, val) => {
-      let value: ABP.FullRoute[] = [val];
+      let value: ROCKET.FullRoute[] = [val];
       if (val.children) {
         val.children = val.children.map(child => ({ ...child, parentName: val.name }));
         value = [val, ...flat(val.children)];
@@ -119,7 +119,7 @@ function flatRoutes(routes: ABP.FullRoute[]): ABP.FullRoute[] {
   return flat(routes);
 }
 
-function reduceWrappers(wrappers: ABP.FullRoute[] = []) {
+function reduceWrappers(wrappers: ROCKET.FullRoute[] = []) {
   const existingWrappers = new Set();
 
   return wrappers.filter(wrapper => {

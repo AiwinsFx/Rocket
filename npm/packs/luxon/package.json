@@ -1,5 +1,5 @@
 {
-  "version": "2.6.2",
+  "version": "1.0.0",
   "name": "@rocket/luxon",
   "publishConfig": {
     "access": "public"

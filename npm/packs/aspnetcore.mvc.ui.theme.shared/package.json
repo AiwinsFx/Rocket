@@ -1,24 +1,24 @@
 {
-  "version": "2.6.2",
+  "version": "1.0.0",
   "name": "@rocket/aspnetcore.mvc.ui.theme.shared",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/aspnetcore.mvc.ui": "^2.6.2",
-    "@rocket/bootstrap": "^2.6.2",
-    "@rocket/bootstrap-datepicker": "^2.6.2",
-    "@rocket/datatables.net-bs4": "^2.6.2",
-    "@rocket/font-awesome": "^2.6.2",
-    "@rocket/jquery-form": "^2.6.2",
-    "@rocket/jquery-validation-unobtrusive": "^2.6.2",
-    "@rocket/lodash": "^2.6.2",
-    "@rocket/luxon": "^2.6.2",
-    "@rocket/malihu-custom-scrollbar-plugin": "^2.6.2",
-    "@rocket/select2": "^2.6.2",
-    "@rocket/sweetalert": "^2.6.2",
-    "@rocket/timeago": "^2.6.2",
-    "@rocket/toastr": "^2.6.2"
+    "@rocket/aspnetcore.mvc.ui": "^1.0.0",
+    "@rocket/bootstrap": "^1.0.0",
+    "@rocket/bootstrap-datepicker": "^1.0.0",
+    "@rocket/datatables.net-bs4": "^1.0.0",
+    "@rocket/font-awesome": "^1.0.0",
+    "@rocket/jquery-form": "^1.0.0",
+    "@rocket/jquery-validation-unobtrusive": "^1.0.0",
+    "@rocket/lodash": "^1.0.0",
+    "@rocket/luxon": "^1.0.0",
+    "@rocket/malihu-custom-scrollbar-plugin": "^1.0.0",
+    "@rocket/select2": "^1.0.0",
+    "@rocket/sweetalert": "^1.0.0",
+    "@rocket/timeago": "^1.0.0",
+    "@rocket/toastr": "^1.0.0"
   },
   "gitHead": "eb4a0e507f492e275865b72caeb02ce28d69ae56"
 }

@@ -1,3 +1,3 @@
 # @rocket/ng.account.config
 
-[docs.rocket.io](https://docs.rocket.io)
+[docs.rocket.cn](https://docs.rocket.cn)

@@ -5,7 +5,7 @@ var rocket = rocket || {};
         throw "rocket/jquery library requires the jquery library included to the page!";
     }
 
-    // ABP CORE OVERRIDES /////////////////////////////////////////////////////
+    // ROCKET CORE OVERRIDES /////////////////////////////////////////////////////
 
     rocket.message._showMessage = function (message, title) {
         alert((title || '') + ' ' + message);

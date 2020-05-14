@@ -31,14 +31,14 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("Options:");
             sb.AppendLine("-sd|--solution-directory");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.rocket.io/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.rocket.cn/en/rocket/latest/CLI");
 
             return sb.ToString();
         }
 
         public string GetShortDescription()
         {
-            return "Switches packages to nightly preview ABP version.";
+            return "Switches packages to nightly preview ROCKET version.";
         }
     }
 }

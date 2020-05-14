@@ -1,4 +1,4 @@
-import { ABP } from '@rocket/ng.core';
+import { ROCKET } from '@rocket/ng.core';
 
 export namespace Identity {
   export interface State {
@@ -9,7 +9,7 @@ export namespace Identity {
     selectedUserRoles: RoleItem[];
   }
 
-  export type RoleResponse = ABP.PagedResponse<RoleItem>;
+  export type RoleResponse = ROCKET.PagedResponse<RoleItem>;
 
   export interface RoleSaveRequest {
     name: string;
@@ -23,7 +23,7 @@ export namespace Identity {
     id: string;
   }
 
-  export type UserResponse = ABP.PagedResponse<UserItem>;
+  export type UserResponse = ROCKET.PagedResponse<UserItem>;
 
   export interface UserItem extends User {
     tenantId: string;

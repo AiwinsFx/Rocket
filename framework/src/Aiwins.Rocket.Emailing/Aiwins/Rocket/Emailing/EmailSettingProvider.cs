@@ -52,12 +52,12 @@ namespace Aiwins.Rocket.Emailing {
 
                 new SettingDefinition (
                     EmailSettingNames.DefaultFromAddress,
-                    "noreply@rocket.io",
+                    "noreply@rocket.cn",
                     L ("DisplayName:Rocket.Mailing.DefaultFromAddress"),
                     L ("Description:Rocket.Mailing.DefaultFromAddress")),
 
                 new SettingDefinition (EmailSettingNames.DefaultFromDisplayName,
-                    "ABP application",
+                    "ROCKET application",
                     L ("DisplayName:Rocket.Mailing.DefaultFromDisplayName"),
                     L ("Description:Rocket.Mailing.DefaultFromDisplayName"))
             );

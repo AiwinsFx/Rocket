@@ -1,12 +1,13 @@
 <Project>
   <PropertyGroup>
     <LangVersion>latest</LangVersion>
-    <Version>1.0.0</Version>
+    <Version>1.0.1</Version>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
     <PackageTags>Aiwins;Rocket</PackageTags>
     <PackageIcon>icon.jpg</PackageIcon>
     <PackageProjectUrl>https://rocket.aiwins.cn</PackageProjectUrl>
-    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
+    <!-- <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression> -->
+    <PackageLicenseExpression>LGPL-3.0-or-later</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/aiwinsfx/rocket</RepositoryUrl>
   </PropertyGroup>

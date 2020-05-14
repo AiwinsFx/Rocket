@@ -4,7 +4,7 @@ import { createRoutingFactory, SpectatorRouting } from '@ngneat/spectator/jest';
 import { NgxsModule, Store } from '@ngxs/store';
 import { DynamicLayoutComponent, RouterOutletComponent } from '../components';
 import { eLayoutType } from '../enums';
-import { ABP } from '../models';
+import { ROCKET } from '../models';
 import { ConfigState, ReplaceableComponentsState } from '../states';
 import { ApplicationConfigurationService } from '../services';
 import { HttpClient } from '@angular/common/http';
@@ -67,7 +67,7 @@ const storeData = {
       },
       { path: 'withData', layout: eLayoutType.application },
       ,
-    ] as ABP.FullRoute[],
+    ] as ROCKET.FullRoute[],
     environment: { application: {} },
   },
   ReplaceableComponentsState: {

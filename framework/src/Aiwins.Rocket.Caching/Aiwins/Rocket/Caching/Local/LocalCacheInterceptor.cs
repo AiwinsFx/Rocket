@@ -24,7 +24,7 @@ namespace Aiwins.Rocket.Caching {
             } else {
                 // var localCacheAttribute = (LocalCacheAttribute) Attribute.GetCustomAttribute (invocation.Method, typeof (LocalCacheAttribute), false);
                 var localCacheAttribute = ReflectionHelper.GetSingleAttributeOrDefault<LocalCacheAttribute> (invocation.Method);
-                var cacheKey = CacheKeyGenerator.GetCacheKey (invocation.Method, invocation.Arguments, localCacheAttribute.Prefix);
+                var cacheKey = CacheKeyHelper.GetCacheKey (invocation.Method, invocation.Arguments, localCacheAttribute.Prefix);
                 var returnType = invocation.Method.ReturnType.GetGenericArguments ().First ();
                 try {
                     var resultValue = _cache.Get (cacheKey);
