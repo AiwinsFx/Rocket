@@ -1,12 +1,12 @@
 {
-  "version": "1.0.6",
+  "version": "1.0.7",
   "name": "@rocket/datatables.net",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/jquery": "^1.0.6",
+    "@rocket/jquery": "^1.0.7",
     "datatables.net": "^1.10.20"
   },
-  "gitHead": "16a5e1e14c08b3150a478c08279df61b5e9983b1"
+  "gitHead": "98c4fc35063d34aad8182e2d5ee835e8e1ccaf32"
 }
