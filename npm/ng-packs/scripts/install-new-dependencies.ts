@@ -6,7 +6,6 @@ const updateAndInstall = async () => {
   const projectNames = Object.keys(projects).filter(project => project !== 'dev-app');
 
   const packageJson = await fse.readJSON('../package.json');
-
   projectNames.forEach(project => {
     // do not convert to async
     const { dependencies = {}, peerDependencies = {}, name, version } = fse.readJSONSync(
