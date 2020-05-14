@@ -1,11 +1,11 @@
 {
-  "version": "1.0.7",
+  "version": "1.0.8",
   "name": "@rocket/core",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/utils": "^1.0.7"
+    "@rocket/utils": "^1.0.8"
   },
-  "gitHead": "98c4fc35063d34aad8182e2d5ee835e8e1ccaf32"
+  "gitHead": "3654347d0011eab2091e04d87a79121d580a22f9"
 }

@@ -1,8 +1,11 @@
 {
-  "version": "1.0.7",
+  "version": "1.0.8",
   "packages": [
     "packs/*"
   ],
+  "publishConfig": {
+    "access": "public"
+  },
   "npmClient": "yarn",
   "lerna": "3.18.4"
 }
