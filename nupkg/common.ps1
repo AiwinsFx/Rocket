@@ -213,6 +213,7 @@ $projects = (
     "modules/setting-management/src/Aiwins.Rocket.SettingManagement.Web",
 
     # modules/tenant-management
+    "modules/tenant-management/src/Aiwins.Rocket.FeatureManagement.Domain.TenantManagement",
     "modules/tenant-management/src/Aiwins.Rocket.TenantManagement.Application.Contracts",
     "modules/tenant-management/src/Aiwins.Rocket.TenantManagement.Application",
     "modules/tenant-management/src/Aiwins.Rocket.TenantManagement.Domain",

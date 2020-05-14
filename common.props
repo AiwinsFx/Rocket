@@ -3,13 +3,17 @@
     <LangVersion>latest</LangVersion>
     <Version>1.0.0</Version>
     <NoWarn>$(NoWarn);CS1591</NoWarn>
-    <PackageIconUrl>https://rocket.aiwins.cn/assets/rocket_nupkg.png</PackageIconUrl>
+    <PackageTags>Aiwins;Rocket</PackageTags>
+    <PackageIcon>icon.jpg</PackageIcon>
     <PackageProjectUrl>https://rocket.aiwins.cn</PackageProjectUrl>
-    <PackageLicenseUrl>https://github.com/aiwinsfx/rocket/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageLicenseExpression>Apache-2.0</PackageLicenseExpression>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/aiwinsfx/rocket</RepositoryUrl>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="SourceLink.Create.CommandLine" Version="2.8.3" PrivateAssets="All" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="../../../icon.jpg" Pack="true" Visible="false" PackagePath="" />
   </ItemGroup>
 </Project>

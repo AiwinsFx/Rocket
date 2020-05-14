@@ -1,27 +1,23 @@
 ﻿using System;
+using Aiwins.Rocket.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Options;
 using Nest;
-using Aiwins.Rocket.DependencyInjection;
 
-namespace Aiwins.Docs.Documents.FullSearch.Elastic
-{
-    public class DefaultElasticClientProvider : IElasticClientProvider, ISingletonDependency
-    {
+namespace Aiwins.Docs.Documents.FullSearch.Elastic {
+    public class DefaultElasticClientProvider : IElasticClientProvider, ISingletonDependency {
         protected readonly DocsElasticSearchOptions Options;
         protected readonly IConfiguration Configuration;
 
-        public DefaultElasticClientProvider(IOptions<DocsElasticSearchOptions> options, IConfiguration configuration)
-        {
+        public DefaultElasticClientProvider (IOptions<DocsElasticSearchOptions> options, IConfiguration configuration) {
             Configuration = configuration;
             Options = options.Value;
         }
 
-        public virtual IElasticClient GetClient()
-        {
-            var node = new Uri(Configuration["ElasticSearch:Url"]);
-            var settings = new ConnectionSettings(node).DefaultIndex(Options.IndexName);
-            return new ElasticClient(settings);
+        public virtual IElasticClient GetClient () {
+            var node = new Uri (Configuration["ElasticSearch:Url"]);
+            var settings = new ConnectionSettings (node).DefaultIndex (Options.IndexName);
+            return new ElasticClient (settings);
         }
     }
 }

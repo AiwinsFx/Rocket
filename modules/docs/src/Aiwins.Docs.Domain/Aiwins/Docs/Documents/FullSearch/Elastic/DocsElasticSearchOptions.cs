@@ -1,9 +1,6 @@
-﻿namespace Aiwins.Docs.Documents.FullSearch.Elastic
-{
-    public class DocsElasticSearchOptions
-    {
-        public DocsElasticSearchOptions()
-        {
+﻿namespace Aiwins.Docs.Documents.FullSearch.Elastic {
+    public class DocsElasticSearchOptions {
+        public DocsElasticSearchOptions () {
             Enable = false;
             IndexName = "rocket_documents";
         }
@@ -12,4 +9,4 @@
 
         public string IndexName { get; set; }
     }
-}
+}˝

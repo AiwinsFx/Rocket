@@ -1,33 +1,28 @@
 using System;
 using System.Collections.Generic;
+using Aiwins.Rocket.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using Aiwins.Rocket.DependencyInjection;
 
-namespace Aiwins.Docs.Documents
-{
-    public class DocumentSourceFactory : IDocumentSourceFactory, ITransientDependency
-    {
+namespace Aiwins.Docs.Documents {
+    public class DocumentSourceFactory : IDocumentSourceFactory, ITransientDependency {
         protected DocumentSourceOptions Options { get; }
         protected IServiceProvider ServiceProvider { get; }
 
-        public DocumentSourceFactory(
+        public DocumentSourceFactory (
             IServiceProvider serviceProvider,
-            IOptions<DocumentSourceOptions> options)
-        {
+            IOptions<DocumentSourceOptions> options) {
             Options = options.Value;
             ServiceProvider = serviceProvider;
         }
 
-        public virtual IDocumentSource Create(string sourceType)
-        {
-            var serviceType = Options.Sources.GetOrDefault(sourceType);
-            if (serviceType == null)
-            {
-                throw new ApplicationException($"Unknown document store: {sourceType}");
+        public virtual IDocumentSource Create (string sourceType) {
+            var serviceType = Options.Sources.GetOrDefault (sourceType);
+            if (serviceType == null) {
+                throw new ApplicationException ($"Unknown document store: {sourceType}");
             }
 
-            return (IDocumentSource) ServiceProvider.GetRequiredService(serviceType);
+            return (IDocumentSource) ServiceProvider.GetRequiredService (serviceType);
         }
     }
 }

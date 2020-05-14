@@ -1,10 +1,8 @@
 ﻿using System;
 using Aiwins.Rocket.Domain.Entities;
 
-namespace Aiwins.Docs.Documents
-{
-    public class DocumentContributor : Entity
-    {
+namespace Aiwins.Docs.Documents {
+    public class DocumentContributor : Entity {
         public Guid DocumentId { get; set; }
 
         public string Username { get; set; }
@@ -13,26 +11,22 @@ namespace Aiwins.Docs.Documents
 
         public string AvatarUrl { get; set; }
 
-        protected DocumentContributor()
-        {
+        protected DocumentContributor () {
 
         }
 
-        public virtual bool Equals(Guid documentId, string username)
-        {
+        public virtual bool Equals (Guid documentId, string username) {
             return DocumentId == documentId && Username == username;
         }
 
-        public DocumentContributor(Guid documentId, string username, string userProfileUrl, string avatarUrl)
-        {
+        public DocumentContributor (Guid documentId, string username, string userProfileUrl, string avatarUrl) {
             DocumentId = documentId;
             Username = username;
             UserProfileUrl = userProfileUrl;
             AvatarUrl = avatarUrl;
         }
 
-        public override object[] GetKeys()
-        {
+        public override object[] GetKeys () {
             return new object[] { DocumentId, Username };
         }
     }

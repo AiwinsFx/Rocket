@@ -1,11 +1,8 @@
-namespace Aiwins.Docs.Documents
-{
-    public class DocumentResource
-    {
+namespace Aiwins.Docs.Documents {
+    public class DocumentResource {
         public byte[] Content { get; }
 
-        public DocumentResource(byte[] content)
-        {
+        public DocumentResource (byte[] content) {
             Content = content;
         }
     }

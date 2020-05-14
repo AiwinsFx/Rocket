@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Aiwins.Docs.Documents.FullSearch.Elastic
-{
-    public class EsDocument
-    {
-        public EsDocument()
-        {
-            Highlight = new List<string>();
+namespace Aiwins.Docs.Documents.FullSearch.Elastic {
+    public class EsDocument {
+        public EsDocument () {
+            Highlight = new List<string> ();
         }
 
         public Guid Id { get; set; }

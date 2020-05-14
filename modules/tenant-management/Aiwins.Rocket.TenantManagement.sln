@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.TenantManagem
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.TenantManagement.Web", "src\Aiwins.Rocket.TenantManagement.Web\Aiwins.Rocket.TenantManagement.Web.csproj", "{5B3F9EF4-1191-4E72-AA5C-ADD5C0FB009E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.FeatureManagement.Domain.Tenant", "src\Aiwins.Rocket.FeatureManagement.Domain.Tenant\Aiwins.Rocket.FeatureManagement.Domain.Tenant.csproj", "{F0F4E4F0-DDDA-4FFF-9F74-A3B1BBB46392}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.FeatureManagement.Domain.TenantManagement", "src\Aiwins.Rocket.FeatureManagement.Domain.TenantManagement\Aiwins.Rocket.FeatureManagement.Domain.TenantManagement.csproj", "{F0F4E4F0-DDDA-4FFF-9F74-A3B1BBB46392}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
