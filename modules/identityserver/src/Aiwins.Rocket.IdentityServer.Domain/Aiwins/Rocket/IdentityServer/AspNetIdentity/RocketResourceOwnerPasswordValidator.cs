@@ -45,6 +45,7 @@ namespace Aiwins.Rocket.IdentityServer.AspNetIdentity {
         /// <returns></returns>
         [UnitOfWork]
         public virtual async Task ValidateAsync (ResourceOwnerPasswordValidationContext context) {
+            // 默认手机号登录、支持邮箱登录
             await ReplaceEmailToUsernameOfInputIfNeeds (context);
             var user = await UserManager.FindByNameAsync (context.UserName);
             string errorDescription;
@@ -87,6 +88,25 @@ namespace Aiwins.Rocket.IdentityServer.AspNetIdentity {
             }
 
             context.Result = new GrantValidationResult (TokenRequestErrors.InvalidGrant, errorDescription);
+        }
+
+        protected virtual async Task ReplacePhoneNumberToUsernameOfInputIfNeeds (ResourceOwnerPasswordValidationContext context) {
+            if (!ValidationHelper.IsValidPhoneNumber (context.UserName)) {
+                return;
+            }
+
+            var userByUsername = await UserManager.FindByNameAsync (context.UserName);
+            if (userByUsername != null) {
+                return;
+            }
+
+            // TODO：此处同步方法获取用户信息，可以考虑优化
+            var userByPhoneNumber = UserManager.Users.FirstOrDefault(m => m.PhoneNumber == context.UserName);
+            if (userByPhoneNumber == null) {
+                return;
+            }
+
+            context.UserName = userByPhoneNumber.UserName;
         }
 
         protected virtual async Task ReplaceEmailToUsernameOfInputIfNeeds (ResourceOwnerPasswordValidationContext context) {

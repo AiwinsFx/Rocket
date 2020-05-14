@@ -39,8 +39,8 @@ namespace Aiwins.Rocket.Identity {
 
             var result = new IdentityDataSeedResult ();
 
-            //"admin" user
-            const string adminUserName = "admin";
+            // userName -> phoneNumber(默认)
+            string adminUserName = adminPhoneNumber;
             var adminUser = await UserRepository.FindByNormalizedUserNameAsync (
                 LookupNormalizer.NormalizeName (adminUserName)
             );
