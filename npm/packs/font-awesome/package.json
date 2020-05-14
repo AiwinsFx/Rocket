@@ -1,12 +1,12 @@
 {
   "version": "1.0.10",
-  "name": "@rocket123/font-awesome",
+  "name": "@rocket/font-awesome",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.11.2",
-    "@rocket123/core": "^1.0.10"
+    "@rocket/core": "^1.0.10"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"
 }

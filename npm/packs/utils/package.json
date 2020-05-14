@@ -1,6 +1,10 @@
 {
-  "name": "@rocket123/utils",
+  "name": "@rocket/utils",
   "version": "1.0.10",
+  "description": "aiwins rocket package",
+  "author": "aiwins",
+  "homepage": "https://aiwins.cn/",
+  "license": "MIT",
   "scripts": {
     "prepublish": "yarn install --ignore-scripts && node prepublish.js",
     "ng": "ng",

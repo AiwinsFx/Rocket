@@ -1,6 +1,6 @@
 {
   "version": "1.0.10",
-  "name": "@rocket123/luxon",
+  "name": "@rocket/luxon",
   "publishConfig": {
     "access": "public"
   },

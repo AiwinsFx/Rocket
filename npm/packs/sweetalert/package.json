@@ -1,11 +1,11 @@
 {
   "version": "1.0.10",
-  "name": "@rocket123/sweetalert",
+  "name": "@rocket/sweetalert",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket123/core": "^1.0.10",
+    "@rocket/core": "^1.0.10",
     "sweetalert": "^2.1.2"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

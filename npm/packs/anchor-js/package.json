@@ -1,11 +1,11 @@
 {
   "version": "1.0.10",
-  "name": "@rocket123/anchor-js",
+  "name": "@rocket/anchor-js",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket123/core": "^1.0.10",
+    "@rocket/core": "^1.0.10",
     "anchor-js": "^4.2.2"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

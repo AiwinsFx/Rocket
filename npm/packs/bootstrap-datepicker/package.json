@@ -1,6 +1,6 @@
 {
   "version": "1.0.10",
-  "name": "@rocket123/bootstrap-datepicker",
+  "name": "@rocket/bootstrap-datepicker",
   "publishConfig": {
     "access": "public"
   },
