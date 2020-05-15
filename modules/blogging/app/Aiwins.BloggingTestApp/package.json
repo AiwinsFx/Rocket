@@ -3,7 +3,7 @@
   "name": "aiwins.blogtestapp",
   "private": true,
   "dependencies": {
-    "@aiwins/aspnetcore.mvc.ui.theme.basic": "^1.0.2",
-    "@aiwins/blogging": "^1.0.2"
+    "@aiwins/aspnetcore.mvc.ui.theme.basic": "^1.1.0",
+    "@aiwins/blogging": "^1.1.0"
   }
 }

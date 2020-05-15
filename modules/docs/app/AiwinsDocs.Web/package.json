@@ -3,7 +3,7 @@
   "name": "aiwins.docstestapp",
   "private": true,
   "dependencies": {
-    "@aiwins/aspnetcore.mvc.ui.theme.basic": "^1.0.2",
-    "@aiwins/docs": "^1.0.2"
+    "@aiwins/aspnetcore.mvc.ui.theme.basic": "^1.1.0",
+    "@aiwins/docs": "^1.1.0"
   }
 }
