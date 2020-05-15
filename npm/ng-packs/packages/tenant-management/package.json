@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/ng.tenant-management",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "aiwins package",
   "author": "aiwins",
   "license": "MIT",
@@ -10,9 +10,9 @@
     "url": "https://github.com/aiwinfx/rocket.git"
   },
   "dependencies": {
-    "@aiwins/ng.feature-management": "^1.1.2",
-    "@aiwins/ng.tenant-management.config": "^1.1.2",
-    "@aiwins/ng.theme.shared": "^1.1.2"
+    "@aiwins/ng.feature-management": "^1.1.3",
+    "@aiwins/ng.tenant-management.config": "^1.1.3",
+    "@aiwins/ng.theme.shared": "^1.1.3"
   },
   "publishConfig": {
     "access": "public"
