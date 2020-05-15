@@ -1,6 +1,10 @@
 {
-  "version": "1.0.10",
   "name": "@aiwins/popper.js",
+  "version": "1.0.10",
+  "description": "aiwins package",
+  "author": "aiwins",
+  "homepage": "https://aiwins.cn/",
+  "license": "MIT",
   "publishConfig": {
     "access": "public"
   },

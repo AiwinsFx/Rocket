@@ -83,7 +83,7 @@
         investigatedPackagePaths[packagePath] = 'OK';
 
         var packageJson = requireOptional(path.join(packagePath, 'package.json'));
-        var resourcemapping = requireOptional(path.join(packagePath, 'rocket.resourcemapping.js')) || { };
+        var resourcemapping = requireOptional(path.join(packagePath, 'aiwins.resourcemapping.js')) || { };
 
         if (packageJson && packageJson.dependencies) {
             var aliases = {};

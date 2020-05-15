@@ -1,6 +1,9 @@
 {
   "name": "@aiwins/ng.tenant-management",
   "version": "1.0.0",
+  "description": "aiwins package",
+  "author": "aiwins",
+  "license": "MIT",
   "homepage": "https://aiwins.cn",
   "repository": {
     "type": "git",
