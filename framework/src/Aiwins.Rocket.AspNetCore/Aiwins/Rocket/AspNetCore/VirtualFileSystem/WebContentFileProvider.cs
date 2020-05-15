@@ -85,13 +85,11 @@ namespace Aiwins.Rocket.AspNetCore.VirtualFileSystem {
 
             if (_hostingEnvironment.IsDevelopment () &&
                 _hostingEnvironment.WebRootFileProvider is CompositeFileProvider compositeFileProvider) {
-                var staticWebAssetsFileProvider = compositeFileProvider
+                var staticWebAssetsFileProviders = compositeFileProvider
                     .FileProviders
-                    .FirstOrDefault (f => f.GetType ().Name.Equals ("StaticWebAssetsFileProvider"));
+                    .Where (f => f.GetType ().Name.Equals ("StaticWebAssetsFileProvider")).ToList();
 
-                if (staticWebAssetsFileProvider != null) {
-                    fileProviders.Add (staticWebAssetsFileProvider);
-                }
+                fileProviders.AddRange(staticWebAssetsFileProviders);
             }
 
             return new CompositeFileProvider (

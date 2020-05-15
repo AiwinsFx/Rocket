@@ -64,6 +64,9 @@ namespace Aiwins.Rocket.AspNetCore.Mvc {
         public ILoggerFactory LoggerFactory => LazyGetRequiredService (ref _loggerFactory);
         private ILoggerFactory _loggerFactory;
 
+         protected ILogger Logger => _lazyLogger.Value;
+        private Lazy<ILogger> _lazyLogger => new Lazy<ILogger>(() => LoggerFactory?.CreateLogger(GetType().FullName) ?? NullLogger.Instance, true);
+
         public ICurrentUser CurrentUser => LazyGetRequiredService (ref _currentUser);
         private ICurrentUser _currentUser;
 
@@ -104,8 +107,5 @@ namespace Aiwins.Rocket.AspNetCore.Mvc {
         protected virtual void ValidateModel () {
             ModelValidator?.Validate (ModelState);
         }
-
-        protected ILogger Logger => _lazyLogger.Value;
-        private Lazy<ILogger> _lazyLogger => new Lazy<ILogger> (() => LoggerFactory?.CreateLogger (GetType ().FullName) ?? NullLogger.Instance, true);
     }
 }

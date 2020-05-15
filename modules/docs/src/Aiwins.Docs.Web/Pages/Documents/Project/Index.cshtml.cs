@@ -202,7 +202,7 @@ namespace Aiwins.Docs.Pages.Documents.Project
                             + (LatestVersionInfo.IsSelected ? DocsAppConsts.Latest : Version) + "/" +
                             DocumentName;
 
-            return Redirect("/Rocket/Languages/Switch?culture=" + LanguageCode + "&uiCulture=" + LanguageCode + "&returnUrl=" + returnUrl);
+            return Redirect("/rocket/languages/switch?culture=" + LanguageCode + "&uiCulture=" + LanguageCode + "&returnUrl=" + returnUrl);
         }
 
         private IActionResult RedirectToDefaultLanguage()

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading.Tasks;
 using Aiwins.Rocket.Application.Services;
+using Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations.ObjectExtending;
 using Aiwins.Rocket.AspNetCore.Mvc.MultiTenancy;
 using Aiwins.Rocket.Authorization;
 using Aiwins.Rocket.Features;
@@ -28,6 +29,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         private readonly ISettingDefinitionManager _settingDefinitionManager;
         private readonly IFeatureDefinitionManager _featureDefinitionManager;
         private readonly ILanguageProvider _languageProvider;
+        private readonly ICachedObjectExtensionsDtoService _cachedObjectExtensionsDtoService;
 
         public RocketApplicationConfigurationAppService (
             IOptions<RocketLocalizationOptions> localizationOptions,
@@ -39,7 +41,8 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             ISettingProvider settingProvider,
             ISettingDefinitionManager settingDefinitionManager,
             IFeatureDefinitionManager featureDefinitionManager,
-            ILanguageProvider languageProvider) {
+            ILanguageProvider languageProvider,
+            ICachedObjectExtensionsDtoService cachedObjectExtensionsDtoService) {
             _serviceProvider = serviceProvider;
             _rocketAuthorizationPolicyProvider = rocketAuthorizationPolicyProvider;
             _authorizationService = authorizationService;
@@ -48,6 +51,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             _settingDefinitionManager = settingDefinitionManager;
             _featureDefinitionManager = featureDefinitionManager;
             _languageProvider = languageProvider;
+            _cachedObjectExtensionsDtoService = cachedObjectExtensionsDtoService;
             _localizationOptions = localizationOptions.Value;
             _multiTenancyOptions = multiTenancyOptions.Value;
         }
@@ -64,11 +68,12 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
                 CurrentUser = GetCurrentUser (),
                 Setting = await GetSettingConfigAsync (),
                 MultiTenancy = GetMultiTenancy (),
-                CurrentTenant = GetCurrentTenant ()
-
+                CurrentTenant = GetCurrentTenant (),
+                ObjectExtensions = _cachedObjectExtensionsDtoService.Get ()
             };
 
-            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetAsync()...");
+            Logger.LogDebug ("Executed RocketApplicationConfigurationAppService.GetAsync().");
+
             return result;
         }
 
@@ -91,7 +96,8 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
                 IsAuthenticated = _currentUser.IsAuthenticated,
                     Id = _currentUser.Id,
                     TenantId = _currentUser.TenantId,
-                    UserName = _currentUser.UserName
+                    UserName = _currentUser.UserName,
+                    Email = _currentUser.Email
             };
         }
 
@@ -103,8 +109,6 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             foreach (var policyName in policyNames) {
                 authConfig.Policies[policyName] = true;
 
-                Logger.LogDebug ($"_authorizationService.IsGrantedAsync? {policyName}");
-
                 if (await _authorizationService.IsGrantedAsync (policyName)) {
                     authConfig.GrantedPolicies[policyName] = true;
                 }
@@ -114,7 +118,6 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         }
 
         protected virtual async Task<ApplicationLocalizationConfigurationDto> GetLocalizationConfigAsync () {
-
             var localizationConfig = new ApplicationLocalizationConfigurationDto ();
 
             localizationConfig.Languages.AddRange (await _languageProvider.GetLanguagesAsync ());
@@ -134,6 +137,12 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             }
 
             localizationConfig.CurrentCulture = GetCurrentCultureInfo ();
+
+            if (_localizationOptions.DefaultResourceType != null) {
+                localizationConfig.DefaultResourceName = LocalizationResourceNameAttribute.GetName (
+                    _localizationOptions.DefaultResourceType
+                );
+            }
 
             return localizationConfig;
         }
@@ -161,7 +170,6 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         }
 
         private async Task<ApplicationSettingConfigurationDto> GetSettingConfigAsync () {
-
             var result = new ApplicationSettingConfigurationDto {
                 Values = new Dictionary<string, string> ()
             };
@@ -178,7 +186,6 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         }
 
         protected virtual async Task<ApplicationFeatureConfigurationDto> GetFeaturesConfigAsync () {
-
             var result = new ApplicationFeatureConfigurationDto ();
 
             foreach (var featureDefinition in _featureDefinitionManager.GetAll ()) {

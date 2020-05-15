@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 
 namespace Aiwins.Rocket.AspNetCore.Mvc.ProxyScripting {
-    [Area ("Rocket")]
-    [Route ("Rocket/ServiceProxyScript")]
+    [Area ("rocket")]
+    [Route ("rocket/service-proxy-script")]
     [DisableAuditing]
+    [RemoteService(false)]
+    [ApiExplorerSettings(IgnoreApi = true)]
     public class RocketServiceProxyScriptController : RocketController {
         private readonly IProxyScriptManager _proxyScriptManager;
         private readonly RocketAspNetCoreMvcOptions _options;

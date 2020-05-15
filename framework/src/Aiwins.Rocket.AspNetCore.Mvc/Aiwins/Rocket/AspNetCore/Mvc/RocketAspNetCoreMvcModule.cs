@@ -17,6 +17,7 @@ using Aiwins.Rocket.Http.Modeling;
 using Aiwins.Rocket.Localization;
 using Aiwins.Rocket.Modularity;
 using Aiwins.Rocket.UI;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.AspNetCore.Mvc.ApplicationParts;
@@ -28,6 +29,7 @@ using Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.RazorPages.Infrastructure;
 using Microsoft.AspNetCore.Mvc.ViewComponents;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Hosting;
@@ -145,6 +147,14 @@ namespace Aiwins.Rocket.AspNetCore.Mvc {
 
             Configure<MvcOptions> (mvcOptions => {
                 mvcOptions.AddRocket (context.Services);
+            });
+
+            Configure<RocketEndpointRouterOptions> (options => {
+                options.EndpointConfigureActions.Add (context => {
+                    context.Endpoints.MapControllerRoute ("defaultWithArea", "{area}/{controller=Home}/{action=Index}/{id?}");
+                    context.Endpoints.MapControllerRoute ("default", "{controller=Home}/{action=Index}/{id?}");
+                    context.Endpoints.MapRazorPages ();
+                });
             });
         }
 
