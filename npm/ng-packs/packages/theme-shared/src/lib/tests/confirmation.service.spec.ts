@@ -1,4 +1,4 @@
-import { CoreModule } from '@rocket/ng.core';
+import { CoreModule } from '@aiwins/ng.core';
 import { NgModule } from '@angular/core';
 import { fakeAsync, tick } from '@angular/core/testing';
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';

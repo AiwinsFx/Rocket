@@ -1,4 +1,4 @@
-import { Config, RestOccurError } from '@rocket/ng.core';
+import { Config, RestOccurError } from '@aiwins/ng.core';
 import { HttpErrorResponse } from '@angular/common/http';
 import {
   ApplicationRef,

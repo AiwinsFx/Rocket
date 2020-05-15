@@ -264,7 +264,7 @@ namespace Aiwins.Rocket.Cli.ProjectModification
                 }
 
                 var properties = dependencies.Properties().ToList();
-                rocketPackages.AddRange(properties.Where(p => p.Name.StartsWith("@rocket/") || p.Name.StartsWith("@aiwins/")).ToList());
+                rocketPackages.AddRange(properties.Where(p => p.Name.StartsWith("@aiwins/") || p.Name.StartsWith("@aiwins/")).ToList());
             }
 
             return rocketPackages;

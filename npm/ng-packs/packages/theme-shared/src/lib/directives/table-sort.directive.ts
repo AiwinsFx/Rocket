@@ -1,4 +1,4 @@
-import { SortOrder, SortPipe } from '@rocket/ng.core';
+import { SortOrder, SortPipe } from '@aiwins/ng.core';
 import {
   ChangeDetectorRef,
   Directive,

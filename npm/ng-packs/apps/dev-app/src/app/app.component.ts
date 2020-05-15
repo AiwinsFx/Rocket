@@ -1,4 +1,4 @@
-import { LazyLoadService, LOADING_STRATEGY } from '@rocket/ng.core';
+import { LazyLoadService, LOADING_STRATEGY } from '@aiwins/ng.core';
 import { Component, OnInit } from '@angular/core';
 import { forkJoin } from 'rxjs';
 

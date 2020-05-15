@@ -1,7 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Toaster } from '../../models/toaster';
 import { ToasterService } from '../../services/toaster.service';
-import { LocalizationService } from '@rocket/ng.core';
+import { LocalizationService } from '@aiwins/ng.core';
 import snq from 'snq';
 
 @Component({

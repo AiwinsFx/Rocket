@@ -1,4 +1,4 @@
-import { CoreModule, LazyLoadService, noop } from '@rocket/ng.core';
+import { CoreModule, LazyLoadService, noop } from '@aiwins/ng.core';
 import { DatePipe } from '@angular/common';
 import { APP_INITIALIZER, Injector, ModuleWithProviders, NgModule } from '@angular/core';
 import { NgbDateParserFormatter, NgbPaginationModule } from '@ng-bootstrap/ng-bootstrap';

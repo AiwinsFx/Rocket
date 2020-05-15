@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { addRocketRoutes, eLayoutType } from '@rocket/ng.core';
-import { eTenantManagementRouteNames } from '@rocket/ng.tenant-management';
+import { addRocketRoutes, eLayoutType } from '@aiwins/ng.core';
+import { eTenantManagementRouteNames } from '@aiwins/ng.tenant-management';
 @Injectable({
   providedIn: 'root',
 })

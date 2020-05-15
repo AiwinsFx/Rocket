@@ -1,5 +1,5 @@
-import { ROCKET } from '@rocket/ng.core';
-import { Confirmation, ConfirmationService, getPasswordValidators } from '@rocket/ng.theme.shared';
+import { ROCKET } from '@aiwins/ng.core';
+import { Confirmation, ConfirmationService, getPasswordValidators } from '@aiwins/ng.theme.shared';
 import { Component, OnInit, TemplateRef, TrackByFunction, ViewChild } from '@angular/core';
 import {
   AbstractControl,
@@ -24,7 +24,7 @@ import {
 import { Identity } from '../../models/identity';
 import { IdentityService } from '../../services/identity.service';
 import { IdentityState } from '../../states/identity.state';
-import { ePermissionManagementComponents } from '@rocket/ng.permission-management';
+import { ePermissionManagementComponents } from '@aiwins/ng.permission-management';
 @Component({
   selector: 'rocket-users',
   templateUrl: './users.component.html',

@@ -1,6 +1,6 @@
 {
   "version": "1.0.10",
-  "name": "@rocket/chart.js",
+  "name": "@aiwins/chart.js",
   "publishConfig": {
     "access": "public"
   },

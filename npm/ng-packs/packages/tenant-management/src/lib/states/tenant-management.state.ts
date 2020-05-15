@@ -1,4 +1,4 @@
-import { ROCKET } from '@rocket/ng.core';
+import { ROCKET } from '@aiwins/ng.core';
 import { Action, Selector, State, StateContext } from '@ngxs/store';
 import { tap } from 'rxjs/operators';
 import {

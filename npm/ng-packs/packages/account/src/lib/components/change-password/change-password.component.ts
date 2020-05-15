@@ -1,5 +1,5 @@
-import { ChangePassword } from '@rocket/ng.core';
-import { getPasswordValidators, ToasterService } from '@rocket/ng.theme.shared';
+import { ChangePassword } from '@aiwins/ng.core';
+import { getPasswordValidators, ToasterService } from '@aiwins/ng.theme.shared';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { comparePasswords, Validation } from '@ngx-validate/core';

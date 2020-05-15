@@ -53,7 +53,7 @@ namespace Aiwins.Rocket.Cli.Commands
                 var environment = JObject.Parse(environmentJson);
                 apiUrl = environment["apis"]["default"]["url"].ToString();
             }
-            apiUrl += "/api/rocket/api-definition?IncludeTypes=true";
+            apiUrl += "/api/api-definition?IncludeTypes=true";
 
             var uiFramework = GetUiFramework(commandLineArgs);
 
@@ -352,12 +352,12 @@ namespace Aiwins.Rocket.Cli.Commands
                     {
                         var firstTypeListDistinct = ", " + string.Join(", ", firstTypeList.Where(p => p != "void").Distinct().ToArray());
                         serviceFileText.Replace("[firstTypeList]",
-                            $"import {{ RestService {firstTypeListDistinct}}} from '@rocket/ng.core';");
+                            $"import {{ RestService {firstTypeListDistinct}}} from '@aiwins/ng.core';");
                     }
                     else
                     {
                         serviceFileText.Replace("[firstTypeList]",
-                            $"import {{ RestService }} from '@rocket/ng.core';");
+                            $"import {{ RestService }} from '@aiwins/ng.core';");
                     }
 
                     if (secondTypeList != null && secondTypeList.Count > 0)
@@ -502,7 +502,7 @@ namespace Aiwins.Rocket.Cli.Commands
                 {
                     if (baseType.Contains("Aiwins.Rocket.Application.Dtos"))
                     {
-                        baseTypeKebabCase = "@rocket/ng.core";
+                        baseTypeKebabCase = "@aiwins/ng.core";
 
                         baseTypeName = baseType.Split("Aiwins.Rocket.Application.Dtos")[1].Split("<")[0].TrimStart('.');
                         customBaseTypeName = baseType.Split("Aiwins.Rocket.Application.Dtos")[1].Replace("System.Guid", "string").TrimStart('.');
@@ -713,7 +713,7 @@ namespace Aiwins.Rocket.Cli.Commands
             sb.AppendLine("");
             sb.AppendLine("  rocket generate-proxy --apiUrl https://www.aiwinssoft.com");
             sb.AppendLine("");
-            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/rocket/latest/CLI");
+            sb.AppendLine("See the documentation for more info: https://docs.aiwins.cn/en/latest/CLI");
 
             return sb.ToString();
         }

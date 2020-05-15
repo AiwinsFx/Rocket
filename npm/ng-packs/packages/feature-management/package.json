@@ -1,5 +1,5 @@
 {
-  "name": "@rocket/ng.feature-management",
+  "name": "@aiwins/ng.feature-management",
   "version": "1.0.0",
   "homepage": "https://aiwins.cn",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/aiwinfx/rocket.git"
   },
   "dependencies": {
-    "@rocket/ng.theme.shared": "^1.0.0"
+    "@aiwins/ng.theme.shared": "^1.0.0"
   },
   "publishConfig": {
     "access": "public"

@@ -1,5 +1,5 @@
-import { ConfigState } from '@rocket/ng.core';
-import { getSettingTabs, SettingTab } from '@rocket/ng.theme.shared';
+import { ConfigState } from '@aiwins/ng.core';
+import { getSettingTabs, SettingTab } from '@aiwins/ng.theme.shared';
 import { Component, OnInit, TrackByFunction } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { SetSelectedSettingTab } from '../actions/setting-management.actions';

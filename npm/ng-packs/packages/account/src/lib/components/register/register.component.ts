@@ -1,5 +1,5 @@
-import { AuthService, ConfigState } from '@rocket/ng.core';
-import { getPasswordValidators, ToasterService } from '@rocket/ng.theme.shared';
+import { AuthService, ConfigState } from '@aiwins/ng.core';
+import { getPasswordValidators, ToasterService } from '@aiwins/ng.theme.shared';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';

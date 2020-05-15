@@ -1,5 +1,5 @@
-import { eLayoutType, takeUntilDestroy } from '@rocket/ng.core';
-import { collapseWithMargin, slideFromBottom } from '@rocket/ng.theme.shared';
+import { eLayoutType, takeUntilDestroy } from '@aiwins/ng.core';
+import { collapseWithMargin, slideFromBottom } from '@aiwins/ng.theme.shared';
 import { AfterViewInit, Component, OnDestroy } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { fromEvent } from 'rxjs';

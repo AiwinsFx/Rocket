@@ -15,7 +15,7 @@ import {
   ConfigState,
   ApplicationConfiguration,
   SessionState,
-} from '@rocket/ng.core';
+} from '@aiwins/ng.core';
 import { LayoutState } from '../../states/layout.state';
 import { Store, Select } from '@ngxs/store';
 import { eNavigationElementNames } from '../../enums/navigation-element-names';

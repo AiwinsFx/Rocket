@@ -1,4 +1,4 @@
-import { Config } from '@rocket/ng.core';
+import { Config } from '@aiwins/ng.core';
 
 export namespace Confirmation {
   export interface Options {

@@ -1,4 +1,4 @@
-import { Config, ContentProjectionService, PROJECTION_STRATEGY } from '@rocket/ng.core';
+import { Config, ContentProjectionService, PROJECTION_STRATEGY } from '@aiwins/ng.core';
 import { ComponentRef, Injectable } from '@angular/core';
 import { fromEvent, Observable, ReplaySubject, Subject } from 'rxjs';
 import { debounceTime, filter, takeUntil } from 'rxjs/operators';

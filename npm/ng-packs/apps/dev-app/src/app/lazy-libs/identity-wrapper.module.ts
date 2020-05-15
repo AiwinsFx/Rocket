@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { IdentityModule } from '@rocket/ng.identity';
+import { IdentityModule } from '@aiwins/ng.identity';
 
 @NgModule({
   imports: [IdentityModule],

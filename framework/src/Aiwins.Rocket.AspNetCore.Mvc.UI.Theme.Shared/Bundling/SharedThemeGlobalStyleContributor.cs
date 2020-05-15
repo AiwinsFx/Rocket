@@ -26,7 +26,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Shared.Bundling
         {
             context.Files.AddRange(new[]
             {
-                "/libs/rocket/aspnetcore-mvc-ui-theme-shared/datatables/datatables-styles.css"
+                "/libs/aiwins/aspnetcore-mvc-ui-theme-shared/datatables/datatables-styles.css"
             });
         }
     }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Store } from '@ngxs/store';
-import { ConfigState, ROCKET } from '@rocket/ng.core';
+import { ConfigState, ROCKET } from '@aiwins/ng.core';
 
 @Component({
   selector: 'rocket-breadcrumb',

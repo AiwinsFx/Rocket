@@ -1,5 +1,5 @@
-import { CoreModule } from '@rocket/ng.core';
-import { ThemeSharedModule } from '@rocket/ng.theme.shared';
+import { CoreModule } from '@aiwins/ng.core';
+import { ThemeSharedModule } from '@aiwins/ng.theme.shared';
 import { NgModule, Provider } from '@angular/core';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgxValidateCoreModule } from '@ngx-validate/core';

@@ -1,4 +1,4 @@
-import { ContentProjectionService, PROJECTION_STRATEGY } from '@rocket/ng.core';
+import { ContentProjectionService, PROJECTION_STRATEGY } from '@aiwins/ng.core';
 import { ComponentRef, Injectable, TemplateRef, ViewContainerRef, OnDestroy } from '@angular/core';
 import { ModalContainerComponent } from '../components/modal/modal-container.component';
 

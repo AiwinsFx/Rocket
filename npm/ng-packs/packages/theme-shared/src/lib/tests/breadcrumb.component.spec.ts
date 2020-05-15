@@ -1,4 +1,4 @@
-import { LocalizationPipe } from '@rocket/ng.core';
+import { LocalizationPipe } from '@aiwins/ng.core';
 import { Directive } from '@angular/core';
 import { Router } from '@angular/router';
 import { createComponentFactory, Spectator, SpyObject } from '@ngneat/spectator/jest';

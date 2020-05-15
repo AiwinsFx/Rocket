@@ -1,4 +1,4 @@
-import { CoreModule } from '@rocket/ng.core';
+import { CoreModule } from '@aiwins/ng.core';
 import { NgModule } from '@angular/core';
 import { createServiceFactory, SpectatorService } from '@ngneat/spectator/jest';
 import { NgxsModule } from '@ngxs/store';

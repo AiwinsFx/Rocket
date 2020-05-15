@@ -1,5 +1,5 @@
 {
-  "name": "@rocket/ng.theme.shared",
+  "name": "@aiwins/ng.theme.shared",
   "version": "1.0.0",
   "homepage": "https://aiwins.cn",
   "repository": {
@@ -7,7 +7,7 @@
     "url": "https://github.com/aiwinfx/rocket.git"
   },
   "dependencies": {
-    "@rocket/ng.core": "^1.0.0",
+    "@aiwins/ng.core": "^1.0.0",
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@ng-bootstrap/ng-bootstrap": "^5.3.0",
     "@ngx-validate/core": "^0.0.7",

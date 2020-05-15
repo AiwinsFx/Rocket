@@ -5,7 +5,7 @@ import {
   CoreModule,
   ReplaceableRouteContainerComponent,
   ReplaceableComponents,
-} from '@rocket/ng.core';
+} from '@aiwins/ng.core';
 import { NgModule, Type } from '@angular/core';
 import { RouterModule, Routes, Router, ActivatedRoute } from '@angular/router';
 import { RolesComponent } from './components/roles/roles.component';

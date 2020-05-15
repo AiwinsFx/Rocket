@@ -1,5 +1,5 @@
-import { ROCKET } from '@rocket/ng.core';
-import { ConfirmationService, Confirmation } from '@rocket/ng.theme.shared';
+import { ROCKET } from '@aiwins/ng.core';
+import { ConfirmationService, Confirmation } from '@aiwins/ng.theme.shared';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
@@ -14,7 +14,7 @@ import {
 } from '../../actions/identity.actions';
 import { Identity } from '../../models/identity';
 import { IdentityState } from '../../states/identity.state';
-import { ePermissionManagementComponents } from '@rocket/ng.permission-management';
+import { ePermissionManagementComponents } from '@aiwins/ng.permission-management';
 
 @Component({
   selector: 'rocket-roles',

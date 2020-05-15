@@ -2,7 +2,7 @@ import {
   DynamicLayoutComponent,
   ReplaceableComponents,
   ReplaceableRouteContainerComponent,
-} from '@rocket/ng.core';
+} from '@aiwins/ng.core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { SettingManagementComponent } from './components/setting-management.component';

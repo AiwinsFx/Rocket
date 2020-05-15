@@ -1,10 +1,10 @@
-import { GetProfile, Profile, ProfileState, UpdateProfile } from '@rocket/ng.core';
+import { GetProfile, Profile, ProfileState, UpdateProfile } from '@aiwins/ng.core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { take, withLatestFrom, finalize } from 'rxjs/operators';
-import { ToasterService } from '@rocket/ng.theme.shared';
+import { ToasterService } from '@aiwins/ng.theme.shared';
 import { Account } from '../../models/account';
 
 const { maxLength, required, email } = Validators;

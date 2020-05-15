@@ -1,4 +1,4 @@
-import { Config, ConfigState } from '@rocket/ng.core';
+import { Config, ConfigState } from '@aiwins/ng.core';
 import { Component } from '@angular/core';
 import { Store } from '@ngxs/store';
 

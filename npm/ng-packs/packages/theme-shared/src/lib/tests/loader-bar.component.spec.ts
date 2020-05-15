@@ -3,7 +3,7 @@ import { createHostFactory, SpectatorHost, SpyObject } from '@ngneat/spectator/j
 import { Actions, NgxsModule, Store } from '@ngxs/store';
 import { Subject, Subscription, Observable, Subscriber, timer } from 'rxjs';
 import { LoaderBarComponent } from '../components/loader-bar/loader-bar.component';
-import { StartLoader, StopLoader } from '@rocket/ng.core';
+import { StartLoader, StopLoader } from '@aiwins/ng.core';
 import { HttpRequest } from '@angular/common/http';
 
 describe('LoaderBarComponent', () => {

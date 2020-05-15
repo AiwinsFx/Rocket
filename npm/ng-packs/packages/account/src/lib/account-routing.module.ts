@@ -3,7 +3,7 @@ import {
   AuthGuard,
   ReplaceableComponents,
   ReplaceableRouteContainerComponent,
-} from '@rocket/ng.core';
+} from '@aiwins/ng.core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './components/login/login.component';

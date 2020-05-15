@@ -1,6 +1,6 @@
-import { addRocketRoutes, eLayoutType } from '@rocket/ng.core';
+import { addRocketRoutes, eLayoutType } from '@aiwins/ng.core';
 import { Injectable } from '@angular/core';
-import { eIdentityRouteNames } from '@rocket/ng.identity';
+import { eIdentityRouteNames } from '@aiwins/ng.identity';
 
 @Injectable({
   providedIn: 'root',

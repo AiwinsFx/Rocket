@@ -1,13 +1,13 @@
-import { CoreModule } from '@rocket/ng.core';
+import { CoreModule } from '@aiwins/ng.core';
 import { NgModule, Provider } from '@angular/core';
 import { NgxsModule } from '@ngxs/store';
 import { RolesComponent } from './components/roles/roles.component';
 import { IdentityRoutingModule } from './identity-routing.module';
 import { IdentityState } from './states/identity.state';
 import { NgbTabsetModule, NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { ThemeSharedModule } from '@rocket/ng.theme.shared';
+import { ThemeSharedModule } from '@aiwins/ng.theme.shared';
 import { UsersComponent } from './components/users/users.component';
-import { PermissionManagementModule } from '@rocket/ng.permission-management';
+import { PermissionManagementModule } from '@aiwins/ng.permission-management';
 import { NgxValidateCoreModule } from '@ngx-validate/core';
 
 @NgModule({

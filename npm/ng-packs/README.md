@@ -3,8 +3,8 @@
 <a href="https://github.com/aiwinfx/rocket/actions?query=workflow%3AAngular">![action badge](https://img.shields.io/github/workflow/status/aiwinfx/rocket/Angular)</a>
 <a href="https://github.com/aiwinfx/rocket/labels/ui-angular">![issues](https://img.shields.io/github/issues/aiwinfx/rocket/ui-angular)</a>
 <a href="https://github.com/aiwinfx/rocket/pulls?utf8=%E2%9C%93&q=is%3Apr+is%3Aopen+label%3Aui-angular">![pull requests](https://img.shields.io/github/issues-pr-raw/aiwinfx/rocket/ui-angular)</a>
-<a href="https://npmjs.org/package/@rocket/ng.core">![npm](https://img.shields.io/npm/dm/@rocket/ng.core)</a>
-![npm version](https://img.shields.io/npm/v/@rocket/ng.core?label=version)
+<a href="https://npmjs.org/package/@aiwins/ng.core">![npm](https://img.shields.io/npm/dm/@aiwins/ng.core)</a>
+![npm version](https://img.shields.io/npm/v/@aiwins/ng.core?label=version)
 
 ## Getting started
 

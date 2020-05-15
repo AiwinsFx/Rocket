@@ -1,4 +1,4 @@
-import { DomInsertionService, AddReplaceableComponent, CONTENT_STRATEGY } from '@rocket/ng.core';
+import { DomInsertionService, AddReplaceableComponent, CONTENT_STRATEGY } from '@aiwins/ng.core';
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import styles from '../constants/styles';

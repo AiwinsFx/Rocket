@@ -1,7 +1,7 @@
 {
-  "name": "@rocket/utils",
-  "version": "1.0.10",
-  "description": "aiwins rocket package",
+  "name": "@aiwins/utils",
+  "version": "1.0.11",
+  "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
   "license": "MIT",

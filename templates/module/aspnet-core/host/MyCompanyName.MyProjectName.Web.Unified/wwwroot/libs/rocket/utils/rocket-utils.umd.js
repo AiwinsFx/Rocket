@@ -1,6 +1,6 @@
 (function (global, factory) {
-    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('just-compare')) :
-    typeof define === 'function' && define.amd ? define('@rocket/utils', ['exports', 'just-compare'], factory) :
+    typeof exports === 'object' && typeof module !== 'undefined' ? factory(exports, require('./node_modules/just-compare')) :
+    typeof define === 'function' && define.amd ? define('@aiwins/utils', ['exports', 'just-compare'], factory) :
     (global = global || self, factory((global.rocket = global.rocket || {}, global.rocket.utils = global.rocket.utils || {}, global.rocket.utils.common = {}), global.compare));
 }(this, (function (exports, compare) { 'use strict';
 

@@ -1,5 +1,5 @@
 import { Store } from '@ngxs/store';
-import { ROCKET, ConfigState } from '@rocket/ng.core';
+import { ROCKET, ConfigState } from '@aiwins/ng.core';
 import { PasswordRules, validatePassword } from '@ngx-validate/core';
 import { Validators, ValidatorFn } from '@angular/forms';
 

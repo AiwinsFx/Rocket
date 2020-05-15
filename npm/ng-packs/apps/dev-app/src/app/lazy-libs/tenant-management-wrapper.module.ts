@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { TenantManagementModule } from '@rocket/ng.tenant-management';
+import { TenantManagementModule } from '@aiwins/ng.tenant-management';
 
 @NgModule({
   imports: [TenantManagementModule],

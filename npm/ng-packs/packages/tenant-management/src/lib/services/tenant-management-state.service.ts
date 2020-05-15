@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngxs/store';
 import { TenantManagementState } from '../states/tenant-management.state';
-import { ROCKET } from '@rocket/ng.core';
+import { ROCKET } from '@aiwins/ng.core';
 import { GetTenants, GetTenantById, CreateTenant, UpdateTenant, DeleteTenant } from '../actions';
 import { TenantManagement } from '../models';
 

@@ -20,7 +20,7 @@ import program from 'commander';
         '--no-watch',
         '--sync',
         '--packages',
-        '@rocket/ng.core,@rocket/ng.theme.shared',
+        '@aiwins/ng.core,@aiwins/ng.theme.shared',
       ],
       { stdout: 'inherit', cwd: '../' },
     );
@@ -34,7 +34,7 @@ import program from 'commander';
         '--no-watch',
         '--all-packages',
         '--excluded-packages',
-        '@rocket/ng.core,@rocket/ng.theme.shared,@rocket/ng.feature-management,@rocket/ng.permission-management,@rocket/ng.account.config,@rocket/ng.identity.config,@rocket/ng.setting-management.config,@rocket/ng.tenant-management.config',
+        '@aiwins/ng.core,@aiwins/ng.theme.shared,@aiwins/ng.feature-management,@aiwins/ng.permission-management,@aiwins/ng.account.config,@aiwins/ng.identity.config,@aiwins/ng.setting-management.config,@aiwins/ng.tenant-management.config',
       ],
       { stdout: 'inherit', cwd: '../' },
     );
@@ -47,7 +47,7 @@ import program from 'commander';
         '--angular',
         '--no-watch',
         '--packages',
-        '@rocket/ng.feature-management,@rocket/ng.permission-management,@rocket/ng.account.config,@rocket/ng.identity.config,@rocket/ng.setting-management.config,@rocket/ng.tenant-management.config',
+        '@aiwins/ng.feature-management,@aiwins/ng.permission-management,@aiwins/ng.account.config,@aiwins/ng.identity.config,@aiwins/ng.setting-management.config,@aiwins/ng.tenant-management.config',
       ],
       { stdout: 'inherit', cwd: '../' },
     );

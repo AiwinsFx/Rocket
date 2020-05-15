@@ -1,11 +1,11 @@
 {
   "version": "1.0.10",
-  "name": "@rocket/popper.js",
+  "name": "@aiwins/popper.js",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/core": "^1.0.10",
+    "@aiwins/core": "^1.0.10",
     "popper.js": "^1.16.0"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

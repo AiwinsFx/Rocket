@@ -1,3 +1,3 @@
-<h1> @rocket/ng.account </h1>
+<h1> @aiwins/ng.account </h1>
 
 [docs.aiwins.cn](https://docs.aiwins.cn)

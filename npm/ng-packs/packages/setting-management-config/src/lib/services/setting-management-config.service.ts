@@ -1,8 +1,8 @@
 import { Injectable, Injector } from '@angular/core';
-import { addRocketRoutes, eLayoutType, PatchRouteByName, ROCKET } from '@rocket/ng.core';
-import { getSettingTabs } from '@rocket/ng.theme.shared';
+import { addRocketRoutes, eLayoutType, PatchRouteByName, ROCKET } from '@aiwins/ng.core';
+import { getSettingTabs } from '@aiwins/ng.theme.shared';
 import { Store } from '@ngxs/store';
-import { eSettingManagementRouteNames } from '@rocket/ng.setting-management';
+import { eSettingManagementRouteNames } from '@aiwins/ng.setting-management';
 
 @Injectable({
   providedIn: 'root',

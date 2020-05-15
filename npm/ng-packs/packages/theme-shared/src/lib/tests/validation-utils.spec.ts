@@ -1,4 +1,4 @@
-import { ConfigState } from '@rocket/ng.core';
+import { ConfigState } from '@aiwins/ng.core';
 import { Component } from '@angular/core';
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { NgxValidateCoreModule, validatePassword } from '@ngx-validate/core';

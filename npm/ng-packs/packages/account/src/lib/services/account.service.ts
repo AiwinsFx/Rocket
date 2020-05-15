@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { RestService, Rest } from '@rocket/ng.core';
+import { RestService, Rest } from '@aiwins/ng.core';
 import { RegisterResponse, RegisterRequest, TenantIdResponse } from '../models';
 
 @Injectable({

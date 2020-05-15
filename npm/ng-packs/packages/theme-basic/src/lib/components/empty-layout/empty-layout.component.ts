@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { eLayoutType } from '@rocket/ng.core';
+import { eLayoutType } from '@aiwins/ng.core';
 
 @Component({
   selector: 'rocket-layout-empty',

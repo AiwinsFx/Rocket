@@ -1,4 +1,4 @@
-import { CONTENT_STRATEGY, DomInsertionService } from '@rocket/ng.core';
+import { CONTENT_STRATEGY, DomInsertionService } from '@aiwins/ng.core';
 import { inject, InjectionToken } from '@angular/core';
 import styles from '../constants/styles';
 import { chartJsLoaded$ } from '../utils/widget-utils';

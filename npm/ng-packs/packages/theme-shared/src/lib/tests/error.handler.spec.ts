@@ -1,4 +1,4 @@
-import { CoreModule, RestOccurError } from '@rocket/ng.core';
+import { CoreModule, RestOccurError } from '@aiwins/ng.core';
 import { APP_BASE_HREF } from '@angular/common';
 import { HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Component, NgModule } from '@angular/core';

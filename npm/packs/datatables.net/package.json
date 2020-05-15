@@ -1,11 +1,11 @@
 {
   "version": "1.0.10",
-  "name": "@rocket/datatables.net",
+  "name": "@aiwins/datatables.net",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/jquery": "^1.0.10",
+    "@aiwins/jquery": "^1.0.10",
     "datatables.net": "^1.10.20"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

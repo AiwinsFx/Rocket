@@ -1,4 +1,4 @@
-import { StartLoader, StopLoader } from '@rocket/ng.core';
+import { StartLoader, StopLoader } from '@aiwins/ng.core';
 import { ChangeDetectorRef, Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { NavigationEnd, NavigationError, NavigationStart, Router } from '@angular/router';
 import { takeUntilDestroy } from '@ngx-validate/core';

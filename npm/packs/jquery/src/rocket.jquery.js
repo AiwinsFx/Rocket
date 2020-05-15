@@ -2,7 +2,7 @@
 (function($) {
 
     if (!$) {
-        throw "rocket/jquery library requires the jquery library included to the page!";
+        throw "aiwins/jquery library requires the jquery library included to the page!";
     }
 
     // ROCKET CORE OVERRIDES /////////////////////////////////////////////////////

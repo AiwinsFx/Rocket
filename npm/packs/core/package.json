@@ -1,11 +1,11 @@
 {
   "version": "1.0.10",
-  "name": "@rocket/core",
+  "name": "@aiwins/core",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/utils": "^1.0.10"
+    "@aiwins/utils": "^1.0.10"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"
 }

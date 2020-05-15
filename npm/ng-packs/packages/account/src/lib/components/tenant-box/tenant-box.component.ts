@@ -1,5 +1,5 @@
-import { ROCKET, GetAppConfiguration, SessionState, SetTenant } from '@rocket/ng.core';
-import { ToasterService } from '@rocket/ng.theme.shared';
+import { ROCKET, GetAppConfiguration, SessionState, SetTenant } from '@aiwins/ng.core';
+import { ToasterService } from '@aiwins/ng.theme.shared';
 import { Component } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';

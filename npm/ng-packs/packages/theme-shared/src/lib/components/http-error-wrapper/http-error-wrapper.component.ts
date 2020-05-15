@@ -1,4 +1,4 @@
-import { Config, takeUntilDestroy } from '@rocket/ng.core';
+import { Config, takeUntilDestroy } from '@aiwins/ng.core';
 import {
   AfterViewInit,
   ApplicationRef,

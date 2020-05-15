@@ -1,6 +1,6 @@
 {
   "version": "1.0.10",
-  "name": "@rocket/aspnetcore.mvc.ui",
+  "name": "@aiwins/aspnetcore.mvc.ui",
   "publishConfig": {
     "access": "public"
   },

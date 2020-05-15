@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RestService, Rest } from '@rocket/ng.core';
+import { RestService, Rest } from '@aiwins/ng.core';
 import { Store } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { FeatureManagement } from '../models';

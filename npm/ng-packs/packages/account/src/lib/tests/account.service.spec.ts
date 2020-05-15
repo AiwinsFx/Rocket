@@ -1,7 +1,7 @@
 import { createHttpFactory, HttpMethod, SpectatorHttp } from '@ngneat/spectator/jest';
 import { AccountService } from '../services/account.service';
 import { Store } from '@ngxs/store';
-import { RestService } from '@rocket/ng.core';
+import { RestService } from '@aiwins/ng.core';
 import { RegisterRequest } from '../models/user';
 
 describe('AccountService', () => {

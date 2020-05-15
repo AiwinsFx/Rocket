@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { AccountModule } from '@rocket/ng.account';
+import { AccountModule } from '@aiwins/ng.account';
 
 @NgModule({
   imports: [AccountModule],

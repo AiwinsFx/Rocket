@@ -1,4 +1,4 @@
-import { ConfigState, takeUntilDestroy } from '@rocket/ng.core';
+import { ConfigState, takeUntilDestroy } from '@aiwins/ng.core';
 import { Component, Input, OnDestroy, OnInit, TemplateRef } from '@angular/core';
 import { Select, Store } from '@ngxs/store';
 import { Observable } from 'rxjs';

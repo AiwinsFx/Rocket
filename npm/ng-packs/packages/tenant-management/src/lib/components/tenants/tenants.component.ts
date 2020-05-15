@@ -1,5 +1,5 @@
-import { ROCKET } from '@rocket/ng.core';
-import { ConfirmationService, Confirmation, getPasswordValidators } from '@rocket/ng.theme.shared';
+import { ROCKET } from '@aiwins/ng.core';
+import { ConfirmationService, Confirmation, getPasswordValidators } from '@aiwins/ng.theme.shared';
 import { Component, OnInit, TemplateRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Select, Store } from '@ngxs/store';
@@ -14,7 +14,7 @@ import {
 } from '../../actions/tenant-management.actions';
 import { TenantManagementService } from '../../services/tenant-management.service';
 import { TenantManagementState } from '../../states/tenant-management.state';
-import { eFeatureManagementComponents } from '@rocket/ng.feature-management';
+import { eFeatureManagementComponents } from '@aiwins/ng.feature-management';
 
 interface SelectedModalContent {
   type: 'saveConnStr' | 'saveTenant';

@@ -1,5 +1,5 @@
 import { Identity } from '../models/identity';
-import { ROCKET } from '@rocket/ng.core';
+import { ROCKET } from '@aiwins/ng.core';
 
 export class GetRoles {
   static readonly type = '[Identity] Get Roles';

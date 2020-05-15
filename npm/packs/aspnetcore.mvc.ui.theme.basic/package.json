@@ -1,11 +1,11 @@
 {
   "version": "1.0.10",
-  "name": "@rocket/aspnetcore.mvc.ui.theme.basic",
+  "name": "@aiwins/aspnetcore.mvc.ui.theme.basic",
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@rocket/aspnetcore.mvc.ui.theme.shared": "^1.0.10"
+    "@aiwins/aspnetcore.mvc.ui.theme.shared": "^1.0.10"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"
 }

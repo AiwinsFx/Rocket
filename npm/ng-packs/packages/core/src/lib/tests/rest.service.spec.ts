@@ -1,4 +1,4 @@
-import { ConfigState } from '@rocket/ng.core';
+import { ConfigState } from '@aiwins/ng.core';
 import { createHttpFactory, HttpMethod, SpectatorHttp, SpyObject } from '@ngneat/spectator/jest';
 import { NgxsModule, Store } from '@ngxs/store';
 import { of, throwError } from 'rxjs';

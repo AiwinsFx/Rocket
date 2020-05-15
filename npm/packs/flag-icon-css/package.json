@@ -1,6 +1,6 @@
 {
   "version": "1.0.10",
-  "name": "@rocket/flag-icon-css",
+  "name": "@aiwins/flag-icon-css",
   "publishConfig": {
     "access": "public"
   },

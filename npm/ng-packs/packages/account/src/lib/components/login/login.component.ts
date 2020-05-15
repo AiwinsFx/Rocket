@@ -1,5 +1,5 @@
-import { AuthService, SetRemember, ConfigState } from '@rocket/ng.core';
-import { ToasterService } from '@rocket/ng.theme.shared';
+import { AuthService, SetRemember, ConfigState } from '@aiwins/ng.core';
+import { ToasterService } from '@aiwins/ng.theme.shared';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngxs/store';

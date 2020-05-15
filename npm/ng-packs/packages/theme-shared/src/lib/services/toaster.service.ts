@@ -1,7 +1,7 @@
 import { Injectable, ComponentRef } from '@angular/core';
 import { Toaster } from '../models';
 import { ReplaySubject } from 'rxjs';
-import { Config, PROJECTION_STRATEGY, ContentProjectionService } from '@rocket/ng.core';
+import { Config, PROJECTION_STRATEGY, ContentProjectionService } from '@aiwins/ng.core';
 import snq from 'snq';
 import { ToastContainerComponent } from '../components/toast-container/toast-container.component';
 

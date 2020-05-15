@@ -1,4 +1,4 @@
-import { ROCKET } from '@rocket/ng.core';
+import { ROCKET } from '@aiwins/ng.core';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 

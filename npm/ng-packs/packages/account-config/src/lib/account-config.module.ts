@@ -1,5 +1,5 @@
-import { CoreModule, noop } from '@rocket/ng.core';
-import { ThemeSharedModule } from '@rocket/ng.theme.shared';
+import { CoreModule, noop } from '@aiwins/ng.core';
+import { ThemeSharedModule } from '@aiwins/ng.theme.shared';
 import { APP_INITIALIZER, InjectionToken, ModuleWithProviders, NgModule } from '@angular/core';
 import { AccountConfigService } from './services/account-config.service';
 

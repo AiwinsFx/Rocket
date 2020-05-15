@@ -4,5 +4,5 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "whitelistedNonPeerDependencies": ["@rocket/ng.theme.shared", "@rocket/ng.account.config"]
+  "whitelistedNonPeerDependencies": ["@aiwins/ng.theme.shared", "@aiwins/ng.account.config"]
 }

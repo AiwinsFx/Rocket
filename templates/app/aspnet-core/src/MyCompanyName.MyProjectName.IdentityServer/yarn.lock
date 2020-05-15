@@ -2,36 +2,36 @@
 # yarn lockfile v1
 
 
-"@rocket/aspnetcore.mvc.ui.theme.basic@^1.0.0":
+"@aiwins/aspnetcore.mvc.ui.theme.basic@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/aspnetcore.mvc.ui.theme.basic/-/aspnetcore.mvc.ui.theme.basic-1.0.0.tgz#c9f16291034eb68ea05b27ad3c503cb90cb1ee0a"
+  resolved "https://registry.yarnpkg.com/@aiwins/aspnetcore.mvc.ui.theme.basic/-/aspnetcore.mvc.ui.theme.basic-1.0.0.tgz#c9f16291034eb68ea05b27ad3c503cb90cb1ee0a"
   integrity sha512-aGKPHHRosvIONIwEfHJmSu1o61t5UxAiuQEe4vXf1+Jl9Fb/yKvOWFCMJ4BTgV+F+vNXK5OlD7u1oeWprVjKow==
   dependencies:
-    "@rocket/aspnetcore.mvc.ui.theme.shared" "^1.0.0"
+    "@aiwins/aspnetcore.mvc.ui.theme.shared" "^1.0.0"
 
-"@rocket/aspnetcore.mvc.ui.theme.shared@^1.0.0":
+"@aiwins/aspnetcore.mvc.ui.theme.shared@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/aspnetcore.mvc.ui.theme.shared/-/aspnetcore.mvc.ui.theme.shared-1.0.0.tgz#281584070428adc693f554c051cb4290d2401956"
+  resolved "https://registry.yarnpkg.com/@aiwins/aspnetcore.mvc.ui.theme.shared/-/aspnetcore.mvc.ui.theme.shared-1.0.0.tgz#281584070428adc693f554c051cb4290d2401956"
   integrity sha512-aq946vbDmT7cRqB5SmyadINkU1bJnOvOKhf8P0ss0JWIUBWW2MS0f3N1cRfUAgP9DBP+u+uOjijnd6kI2eC7EQ==
   dependencies:
-    "@rocket/aspnetcore.mvc.ui" "^1.0.0"
-    "@rocket/bootstrap" "^1.0.0"
-    "@rocket/bootstrap-datepicker" "^1.0.0"
-    "@rocket/datatables.net-bs4" "^1.0.0"
-    "@rocket/font-awesome" "^1.0.0"
-    "@rocket/jquery-form" "^1.0.0"
-    "@rocket/jquery-validation-unobtrusive" "^1.0.0"
-    "@rocket/lodash" "^1.0.0"
-    "@rocket/luxon" "^1.0.0"
-    "@rocket/malihu-custom-scrollbar-plugin" "^1.0.0"
-    "@rocket/select2" "^1.0.0"
-    "@rocket/sweetalert" "^1.0.0"
-    "@rocket/timeago" "^1.0.0"
-    "@rocket/toastr" "^1.0.0"
+    "@aiwins/aspnetcore.mvc.ui" "^1.0.0"
+    "@aiwins/bootstrap" "^1.0.0"
+    "@aiwins/bootstrap-datepicker" "^1.0.0"
+    "@aiwins/datatables.net-bs4" "^1.0.0"
+    "@aiwins/font-awesome" "^1.0.0"
+    "@aiwins/jquery-form" "^1.0.0"
+    "@aiwins/jquery-validation-unobtrusive" "^1.0.0"
+    "@aiwins/lodash" "^1.0.0"
+    "@aiwins/luxon" "^1.0.0"
+    "@aiwins/malihu-custom-scrollbar-plugin" "^1.0.0"
+    "@aiwins/select2" "^1.0.0"
+    "@aiwins/sweetalert" "^1.0.0"
+    "@aiwins/timeago" "^1.0.0"
+    "@aiwins/toastr" "^1.0.0"
 
-"@rocket/aspnetcore.mvc.ui@^1.0.0":
+"@aiwins/aspnetcore.mvc.ui@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/aspnetcore.mvc.ui/-/aspnetcore.mvc.ui-1.0.0.tgz#854fb357c4f8c9c9d40aff877fe00b440c82dc3e"
+  resolved "https://registry.yarnpkg.com/@aiwins/aspnetcore.mvc.ui/-/aspnetcore.mvc.ui-1.0.0.tgz#854fb357c4f8c9c9d40aff877fe00b440c82dc3e"
   integrity sha512-yUthVRfgBJwYqehJqWEa8oTLuoJJKSlGvlnSQsjJrV8+BiE47rPwPVkoP3ow0gUog/jRfvFjfJsyc7H9pPekEQ==
   dependencies:
     ansi-colors "^4.1.1"
@@ -41,142 +41,142 @@
     path "^0.12.7"
     rimraf "^3.0.0"
 
-"@rocket/bootstrap-datepicker@^1.0.0":
+"@aiwins/bootstrap-datepicker@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/bootstrap-datepicker/-/bootstrap-datepicker-1.0.0.tgz#2e811e1ae6326d665004fa7e54eab571eaf7e886"
+  resolved "https://registry.yarnpkg.com/@aiwins/bootstrap-datepicker/-/bootstrap-datepicker-1.0.0.tgz#2e811e1ae6326d665004fa7e54eab571eaf7e886"
   integrity sha512-bp9rCC6h/k3SK9BM6Nu+lZXYOtjuVMgD0Tuu5qZkkdgmcaDoFzFlBZgs+4HEMJzMNGop0n3cJ2YKiYmJHaUvlA==
   dependencies:
     bootstrap-datepicker "^1.9.0"
 
-"@rocket/bootstrap@^1.0.0":
+"@aiwins/bootstrap@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/bootstrap/-/bootstrap-1.0.0.tgz#48265d0236e09d653999f6a22d80265461f32a35"
+  resolved "https://registry.yarnpkg.com/@aiwins/bootstrap/-/bootstrap-1.0.0.tgz#48265d0236e09d653999f6a22d80265461f32a35"
   integrity sha512-lXP7QR3+3Aqsq5+IVg7J7gIhLvdqkapWRon1PkdZIgiveY3ue0MZywApJNhz/vpfUbO3t/tP4mjaiFEMd45qzQ==
   dependencies:
-    "@rocket/core" "^1.0.0"
+    "@aiwins/core" "^1.0.0"
     bootstrap "^4.3.1"
 
-"@rocket/core@^1.0.0":
+"@aiwins/core@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/core/-/core-1.0.0.tgz#7a256dd7c5707229849a36236b3df5bbbf080946"
+  resolved "https://registry.yarnpkg.com/@aiwins/core/-/core-1.0.0.tgz#7a256dd7c5707229849a36236b3df5bbbf080946"
   integrity sha512-UOuWZXBxCtbKrmjqyXE5z76+E7pr0JcfKCDOmi0Au7F7qy5zU+CfYCJt4IbOQklgq0v3US2AMHj9CjBUA12Tfg==
   dependencies:
-    "@rocket/utils" "^1.0.0"
+    "@aiwins/utils" "^1.0.0"
 
-"@rocket/datatables.net-bs4@^1.0.0":
+"@aiwins/datatables.net-bs4@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/datatables.net-bs4/-/datatables.net-bs4-1.0.0.tgz#14f35f94a01dac93306175d20d9d2270c935579d"
+  resolved "https://registry.yarnpkg.com/@aiwins/datatables.net-bs4/-/datatables.net-bs4-1.0.0.tgz#14f35f94a01dac93306175d20d9d2270c935579d"
   integrity sha512-YxqLD3XmxlECjo/Xhf7Qq7RvYDNTEUxeSTJNAUOr66DWINPbzqMyQF//q8OtpWt3lK5FRix+/W3EOqX07wb+bw==
   dependencies:
-    "@rocket/datatables.net" "^1.0.0"
+    "@aiwins/datatables.net" "^1.0.0"
     datatables.net-bs4 "^1.10.20"
 
-"@rocket/datatables.net@^1.0.0":
+"@aiwins/datatables.net@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/datatables.net/-/datatables.net-1.0.0.tgz#df3706dce18512773c79cb86615083763313424b"
+  resolved "https://registry.yarnpkg.com/@aiwins/datatables.net/-/datatables.net-1.0.0.tgz#df3706dce18512773c79cb86615083763313424b"
   integrity sha512-XU3U2xtmHs9ED0MpKZ0hnj/JDvIVYy+zqxRvcqNcIlUC6QBgcJE7evAMMeh55I9gOfqZgBOyND6XQIhGGzfLgg==
   dependencies:
-    "@rocket/jquery" "^1.0.0"
+    "@aiwins/jquery" "^1.0.0"
     datatables.net "^1.10.20"
 
-"@rocket/font-awesome@^1.0.0":
+"@aiwins/font-awesome@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/font-awesome/-/font-awesome-1.0.0.tgz#472b831f292b59fdd34c8395f41855afdafe63e9"
+  resolved "https://registry.yarnpkg.com/@aiwins/font-awesome/-/font-awesome-1.0.0.tgz#472b831f292b59fdd34c8395f41855afdafe63e9"
   integrity sha512-IkGxxC0MX7LOF0BKNURpLqsQiulCd6yAjbAkbu/TVoteO+G1qbw5+hioX3MOklF6te3xc//+HKhil+0zmd0tKQ==
   dependencies:
-    "@rocket/core" "^1.0.0"
+    "@aiwins/core" "^1.0.0"
     "@fortawesome/fontawesome-free" "^5.11.2"
 
-"@rocket/jquery-form@^1.0.0":
+"@aiwins/jquery-form@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/jquery-form/-/jquery-form-1.0.0.tgz#56dc3e585e1d9ae8b85e8d23181f066b8017e4c0"
+  resolved "https://registry.yarnpkg.com/@aiwins/jquery-form/-/jquery-form-1.0.0.tgz#56dc3e585e1d9ae8b85e8d23181f066b8017e4c0"
   integrity sha512-rBXU24pqSwb+Me2W7V23jLaWuFVCzVqD1xO3Zbp8VoVMLysn7xv6FtTSNEGs8gazoYT5mAuYqZzbvYcKLrpC4w==
   dependencies:
-    "@rocket/jquery" "^1.0.0"
+    "@aiwins/jquery" "^1.0.0"
     jquery-form "^4.2.2"
 
-"@rocket/jquery-validation-unobtrusive@^1.0.0":
+"@aiwins/jquery-validation-unobtrusive@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-1.0.0.tgz#5f324d146c488068ec53e4e76e9d2b4f19c20295"
+  resolved "https://registry.yarnpkg.com/@aiwins/jquery-validation-unobtrusive/-/jquery-validation-unobtrusive-1.0.0.tgz#5f324d146c488068ec53e4e76e9d2b4f19c20295"
   integrity sha512-TzHGyR+nQO6Vm+aAzKopuEN7CdhrZ6MXleyrFFeUodkdzvl8zay6C2GRBIdZ2vIpv0EIUySxkNCAol8QJSifNA==
   dependencies:
-    "@rocket/jquery-validation" "^1.0.0"
+    "@aiwins/jquery-validation" "^1.0.0"
     jquery-validation-unobtrusive "^3.2.11"
 
-"@rocket/jquery-validation@^1.0.0":
+"@aiwins/jquery-validation@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/jquery-validation/-/jquery-validation-1.0.0.tgz#c9d615fbae0cd5629135de425d530e20f9e4d7ed"
+  resolved "https://registry.yarnpkg.com/@aiwins/jquery-validation/-/jquery-validation-1.0.0.tgz#c9d615fbae0cd5629135de425d530e20f9e4d7ed"
   integrity sha512-+baPNwj4A4EXDgG+bxWI14Nn8MNFDxVt5AQXrgIUuv4o1/6Wud7OaBs7qW7guHptiAUlE7cZFUFkdKn7vsbN+g==
   dependencies:
-    "@rocket/jquery" "^1.0.0"
+    "@aiwins/jquery" "^1.0.0"
     jquery-validation "^1.19.1"
 
-"@rocket/jquery@^1.0.0":
+"@aiwins/jquery@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/jquery/-/jquery-1.0.0.tgz#c9cd3e1631924aaa3d9d6874e18104abc8b93e44"
+  resolved "https://registry.yarnpkg.com/@aiwins/jquery/-/jquery-1.0.0.tgz#c9cd3e1631924aaa3d9d6874e18104abc8b93e44"
   integrity sha512-tn2YlIN3qPb+9CsaM6pTo1KgknJusyxczMrsWBq3BglVgKCcMSoTXi7N0tGj927d0kLShrU8urOwNchyijt1kQ==
   dependencies:
-    "@rocket/core" "^1.0.0"
+    "@aiwins/core" "^1.0.0"
     jquery "^3.4.1"
 
-"@rocket/lodash@^1.0.0":
+"@aiwins/lodash@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/lodash/-/lodash-1.0.0.tgz#9c200b1040da55f4dac7748feea6672dbeab1a6c"
+  resolved "https://registry.yarnpkg.com/@aiwins/lodash/-/lodash-1.0.0.tgz#9c200b1040da55f4dac7748feea6672dbeab1a6c"
   integrity sha512-XQERYW4Ff13hYO2PoFqLKmykR0BDJxkCCeVUSvj49gtaW1lyEKog/33T9Xa0ewazS6hhKjqGO0f6R11FMZOJTQ==
   dependencies:
-    "@rocket/core" "^1.0.0"
+    "@aiwins/core" "^1.0.0"
     lodash "^4.17.15"
 
-"@rocket/luxon@^1.0.0":
+"@aiwins/luxon@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/luxon/-/luxon-1.0.0.tgz#5278e8d8abc5c524af3977557c50135395aa2f0d"
+  resolved "https://registry.yarnpkg.com/@aiwins/luxon/-/luxon-1.0.0.tgz#5278e8d8abc5c524af3977557c50135395aa2f0d"
   integrity sha512-T/GLdmjhsQeEpfVs/8Djm0hZqPFtMFRRR6Hi0+mFuAkEW5XwIuhApAluyBFCA1RYu9qPCZVqa9oXgNUq4TvVvg==
   dependencies:
     luxon "^1.21.3"
 
-"@rocket/malihu-custom-scrollbar-plugin@^1.0.0":
+"@aiwins/malihu-custom-scrollbar-plugin@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-1.0.0.tgz#0f849ad03ab713109fada47d5e5367bafa99c2dc"
+  resolved "https://registry.yarnpkg.com/@aiwins/malihu-custom-scrollbar-plugin/-/malihu-custom-scrollbar-plugin-1.0.0.tgz#0f849ad03ab713109fada47d5e5367bafa99c2dc"
   integrity sha512-GtADJJUfvisKIXTwF3xEXWWBNYI549dtlytITV1ZnMB9V3vvVbtNlJqMMxQnOGB0V77x+RKWzDx+0N7L1GCHRg==
   dependencies:
-    "@rocket/core" "^1.0.0"
+    "@aiwins/core" "^1.0.0"
     malihu-custom-scrollbar-plugin "^3.1.5"
 
-"@rocket/select2@^1.0.0":
+"@aiwins/select2@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/select2/-/select2-1.0.0.tgz#699d35efbe388f716a2aa1822bc0177d93e19859"
+  resolved "https://registry.yarnpkg.com/@aiwins/select2/-/select2-1.0.0.tgz#699d35efbe388f716a2aa1822bc0177d93e19859"
   integrity sha512-Otiw711Jx3XmKB8VMQGn5XGHP88xXCCP/ucw3ILVjJIt6VZFPMAIpQPAKGQuEcYQiv8Ohlnw4J/OMV/y7V6ZKg==
   dependencies:
-    "@rocket/core" "^1.0.0"
+    "@aiwins/core" "^1.0.0"
     select2 "^4.0.12"
 
-"@rocket/sweetalert@^1.0.0":
+"@aiwins/sweetalert@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/sweetalert/-/sweetalert-1.0.0.tgz#ab7ca9630d10bebaf80e7edf59380643a2e0834c"
+  resolved "https://registry.yarnpkg.com/@aiwins/sweetalert/-/sweetalert-1.0.0.tgz#ab7ca9630d10bebaf80e7edf59380643a2e0834c"
   integrity sha512-ft+bQynMdJI21LreOgsGra5KJKHtPubxdUTCLPshg5J1TUSLp74ScohJEDtOIzATmo4BCyEBLtqBEpxYpYkgDQ==
   dependencies:
-    "@rocket/core" "^1.0.0"
+    "@aiwins/core" "^1.0.0"
     sweetalert "^2.1.2"
 
-"@rocket/timeago@^1.0.0":
+"@aiwins/timeago@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/timeago/-/timeago-1.0.0.tgz#cdb624b3d50bfc7ef719498bcecde786a60fecc2"
+  resolved "https://registry.yarnpkg.com/@aiwins/timeago/-/timeago-1.0.0.tgz#cdb624b3d50bfc7ef719498bcecde786a60fecc2"
   integrity sha512-ifeA6KIIwpoBmN5idcdOaHE1SBg3bsZ9rF47KP3+zOox5ZtpLLg3K1UxGQyKIkGg/RjYrg7WIYdR67HQBXslHA==
   dependencies:
-    "@rocket/jquery" "^1.0.0"
+    "@aiwins/jquery" "^1.0.0"
     timeago "^1.6.7"
 
-"@rocket/toastr@^1.0.0":
+"@aiwins/toastr@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/toastr/-/toastr-1.0.0.tgz#00fa37b43b6fa2b68f41dfa6ffc5fa4ca47dcf88"
+  resolved "https://registry.yarnpkg.com/@aiwins/toastr/-/toastr-1.0.0.tgz#00fa37b43b6fa2b68f41dfa6ffc5fa4ca47dcf88"
   integrity sha512-6qAYYz8DdNDDxkgzf0O3HOkXZbD2ZoUS6HbuH5KeFXxX0q8qhmHAJd3+4N/2851uGnT/KeFateJb68SZP5XQKA==
   dependencies:
-    "@rocket/jquery" "^1.0.0"
+    "@aiwins/jquery" "^1.0.0"
     toastr "^2.1.4"
 
-"@rocket/utils@^1.0.0":
+"@aiwins/utils@^1.0.0":
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@rocket/utils/-/utils-1.0.0.tgz#dba9e7c0aa1531fae6c5ff22fcbdfb4d98c576e3"
+  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.0.0.tgz#dba9e7c0aa1531fae6c5ff22fcbdfb4d98c576e3"
   integrity sha512-MqExfPA4FRYORsskVG7kbkAwzs9z4XaMaZ75XkoahD+FyZtm1e0miEEoDvwrdye9jgL/FrWeShWNE49GY7PvpA==
   dependencies:
     just-compare "^1.3.0"

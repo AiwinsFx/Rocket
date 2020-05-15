@@ -1,4 +1,4 @@
-import { fadeIn } from '@rocket/ng.theme.shared';
+import { fadeIn } from '@aiwins/ng.theme.shared';
 import { transition, trigger, useAnimation } from '@angular/animations';
 import { Component } from '@angular/core';
 import { eAccountComponents } from '../../enums/components';

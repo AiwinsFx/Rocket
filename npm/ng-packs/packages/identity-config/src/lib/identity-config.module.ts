@@ -1,4 +1,4 @@
-import { noop } from '@rocket/ng.core';
+import { noop } from '@aiwins/ng.core';
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { IdentityConfigService } from './services/identity-config.service';
 

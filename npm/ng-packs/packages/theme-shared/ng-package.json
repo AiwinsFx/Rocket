@@ -5,7 +5,7 @@
     "entryFile": "src/public-api.ts"
   },
   "whitelistedNonPeerDependencies": [
-    "@rocket/ng.core",
+    "@aiwins/ng.core",
     "@fortawesome/fontawesome-free",
     "@ng-bootstrap/ng-bootstrap",
     "@ngx-validate/core",

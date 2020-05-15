@@ -1,4 +1,4 @@
-import { ROCKET } from '@rocket/ng.core';
+import { ROCKET } from '@aiwins/ng.core';
 
 export namespace TenantManagement {
   export interface State {

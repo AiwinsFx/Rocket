@@ -1,4 +1,4 @@
-import { SettingTab } from '@rocket/ng.theme.shared';
+import { SettingTab } from '@aiwins/ng.theme.shared';
 
 export namespace SettingManagement {
   export interface State {

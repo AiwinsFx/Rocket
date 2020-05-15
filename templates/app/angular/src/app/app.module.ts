@@ -1,9 +1,9 @@
-import { AccountConfigModule } from '@rocket/ng.account.config';
-import { CoreModule } from '@rocket/ng.core';
-import { IdentityConfigModule } from '@rocket/ng.identity.config';
-import { SettingManagementConfigModule } from '@rocket/ng.setting-management.config';
-import { TenantManagementConfigModule } from '@rocket/ng.tenant-management.config';
-import { ThemeSharedModule } from '@rocket/ng.theme.shared';
+import { AccountConfigModule } from '@aiwins/ng.account.config';
+import { CoreModule } from '@aiwins/ng.core';
+import { IdentityConfigModule } from '@aiwins/ng.identity.config';
+import { SettingManagementConfigModule } from '@aiwins/ng.setting-management.config';
+import { TenantManagementConfigModule } from '@aiwins/ng.tenant-management.config';
+import { ThemeSharedModule } from '@aiwins/ng.theme.shared';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';

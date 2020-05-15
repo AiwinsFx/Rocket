@@ -6,7 +6,7 @@
   },
   "deleteDestPath": false,
   "whitelistedNonPeerDependencies": [
-    "@rocket/utils",
+    "@aiwins/utils",
     "@angular/localize",
     "@ngxs/router-plugin",
     "@ngxs/storage-plugin",

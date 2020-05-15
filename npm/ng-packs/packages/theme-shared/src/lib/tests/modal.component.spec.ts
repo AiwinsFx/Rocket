@@ -1,4 +1,4 @@
-import { LocalizationPipe } from '@rocket/ng.core';
+import { LocalizationPipe } from '@aiwins/ng.core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { createHostFactory, SpectatorHost } from '@ngneat/spectator/jest';
 import { Store } from '@ngxs/store';

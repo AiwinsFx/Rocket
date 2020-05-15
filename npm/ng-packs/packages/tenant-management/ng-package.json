@@ -5,8 +5,8 @@
     "entryFile": "src/public-api.ts"
   },
   "whitelistedNonPeerDependencies": [
-    "@rocket/ng.theme.shared",
-    "@rocket/ng.feature-management",
-    "@rocket/ng.tenant-management.config"
+    "@aiwins/ng.theme.shared",
+    "@aiwins/ng.feature-management",
+    "@aiwins/ng.tenant-management.config"
   ]
 }

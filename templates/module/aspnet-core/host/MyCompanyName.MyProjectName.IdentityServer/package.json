@@ -3,6 +3,6 @@
   "name": "my-app-identityserver",
   "private": true,
   "dependencies": {
-    "@rocket/aspnetcore.mvc.ui.theme.basic": "^1.0.0"
+    "@aiwins/aspnetcore.mvc.ui.theme.basic": "^1.0.0"
   }
 }

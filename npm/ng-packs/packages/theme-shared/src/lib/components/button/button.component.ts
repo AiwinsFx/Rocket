@@ -8,7 +8,7 @@ import {
   Renderer2,
   OnInit,
 } from '@angular/core';
-import { ROCKET } from '@rocket/ng.core';
+import { ROCKET } from '@aiwins/ng.core';
 
 @Component({
   selector: 'rocket-button',

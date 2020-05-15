@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RestService, Rest } from '@rocket/ng.core';
+import { RestService, Rest } from '@aiwins/ng.core';
 import { Observable } from 'rxjs';
 import { PermissionManagement } from '../models/permission-management';
 

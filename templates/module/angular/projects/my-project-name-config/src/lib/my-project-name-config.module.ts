@@ -1,6 +1,6 @@
 import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { MyProjectNameConfigService } from './services/my-project-name-config.service';
-import { noop } from '@rocket/ng.core';
+import { noop } from '@aiwins/ng.core';
 import { MyProjectNameSettingsComponent } from './components/my-project-name-settings.component';
 
 @NgModule({

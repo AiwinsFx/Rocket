@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { eLayoutType, addRocketRoutes, ROCKET } from '@rocket/ng.core';
-import { addSettingTab } from '@rocket/ng.theme.shared';
+import { eLayoutType, addRocketRoutes, ROCKET } from '@aiwins/ng.core';
+import { addSettingTab } from '@aiwins/ng.theme.shared';
 import { MyProjectNameSettingsComponent } from '../components/my-project-name-settings.component';
 
 @Injectable({

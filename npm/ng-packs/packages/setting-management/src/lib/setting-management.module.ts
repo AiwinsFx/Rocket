@@ -1,5 +1,5 @@
-import { CoreModule } from '@rocket/ng.core';
-import { ThemeSharedModule } from '@rocket/ng.theme.shared';
+import { CoreModule } from '@aiwins/ng.core';
+import { ThemeSharedModule } from '@aiwins/ng.theme.shared';
 import { NgModule } from '@angular/core';
 import { SettingManagementRoutingModule } from './setting-management-routing.module';
 import { SettingManagementComponent } from './components/setting-management.component';

@@ -1,4 +1,4 @@
-import { takeUntilDestroy } from '@rocket/ng.core';
+import { takeUntilDestroy } from '@aiwins/ng.core';
 import {
   Component,
   ContentChild,

@@ -1,5 +1,5 @@
 ﻿module.exports = {
   mappings: {
-    '@node_modules/@rocket/utils/dist/bundles/*.*': '@libs/rocket/utils/',
+    '@node_modules/@aiwins/utils/dist/bundles/*.*': '@libs/aiwins/utils/',
   },
 };

@@ -7,7 +7,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.Packages.Core
     {
         public override void ConfigureBundle(BundleConfigurationContext context)
         {
-            context.Files.AddIfNotContains("/libs/rocket/core/rocket.css");
+            context.Files.AddIfNotContains("/libs/aiwins/core/rocket.css");
         }
     }
 }

@@ -1,6 +1,6 @@
 import { SpectatorHost, createHostFactory } from '@ngneat/spectator/jest';
 import { HttpErrorWrapperComponent } from '../components/http-error-wrapper/http-error-wrapper.component';
-import { LocalizationPipe } from '@rocket/ng.core';
+import { LocalizationPipe } from '@aiwins/ng.core';
 import { Store } from '@ngxs/store';
 import { Renderer2, ElementRef } from '@angular/core';
 import { Subject } from 'rxjs';

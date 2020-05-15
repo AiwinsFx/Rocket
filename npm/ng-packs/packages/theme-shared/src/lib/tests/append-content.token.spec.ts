@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { createComponentFactory, Spectator } from '@ngneat/spectator';
 import { THEME_SHARED_APPEND_CONTENT } from '../tokens/append-content.token';
-import { DomInsertionService } from '@rocket/ng.core';
+import { DomInsertionService } from '@aiwins/ng.core';
 import { chartJsLoaded$ } from '../utils';
 import styles from '../constants/styles';
 

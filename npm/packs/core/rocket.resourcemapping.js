@@ -1,5 +1,5 @@
 ﻿module.exports = {
     mappings: {
-        "@node_modules/@rocket/core/src/*": "@libs/rocket/core/"
+        "@node_modules/@aiwins/core/src/*": "@libs/aiwins/core/"
     }
 }

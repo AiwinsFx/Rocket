@@ -1,3 +1,3 @@
-<h1> @rocket/ng.core </h1>
+<h1> @aiwins/ng.core </h1>
 
 [docs.aiwins.cn](https://docs.aiwins.cn)

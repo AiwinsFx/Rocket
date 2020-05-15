@@ -1,6 +1,6 @@
 import { Component, OnInit, TrackByFunction, Input, Renderer2 } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ROCKET, ConfigState } from '@rocket/ng.core';
+import { ROCKET, ConfigState } from '@aiwins/ng.core';
 import { map } from 'rxjs/operators';
 import { Select } from '@ngxs/store';
 
