@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/jquery-form",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
@@ -9,7 +9,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/jquery": "^1.1.1",
+    "@aiwins/jquery": "^1.1.2",
     "jquery-form": "^4.2.2"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"

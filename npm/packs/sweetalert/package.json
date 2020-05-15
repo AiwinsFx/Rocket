@@ -1,5 +1,5 @@
 {
-  "version": "1.1.1",
+  "version": "1.1.2",
   "name": "@aiwins/sweetalert",
   "description": "aiwins package",
   "author": "aiwins",
@@ -9,7 +9,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/core": "^1.1.1",
+    "@aiwins/core": "^1.1.2",
     "sweetalert": "^2.1.2"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"
