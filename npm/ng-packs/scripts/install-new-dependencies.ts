@@ -1,8 +1,6 @@
 import execa from 'execa';
 import fse from 'fs-extra';
 
-console.warn(1111);
-
 const updateAndInstall = async () => {
   const { projects } = await fse.readJSON('../angular.json');
   const projectNames = Object.keys(projects).filter(project => project !== 'dev-app');

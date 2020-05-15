@@ -94,7 +94,7 @@ namespace Aiwins.Rocket.Cli.ProjectModification
         {
             var fileName = Path.Combine(directoryName, ".npmrc");
 
-            var rocketRegistry = "@rocket:registry=https://www.myget.org/F/rocket-nightly/npm";
+            var rocketRegistry = "@aiwins:registry=https://www.myget.org/F/rocket-nightly/npm";
             var aiwinsRegistry = await GetAiwinsRegistryAsync();
 
             if (File.Exists(fileName))

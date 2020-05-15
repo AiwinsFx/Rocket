@@ -19,7 +19,7 @@ const publish = async () => {
     process.exit(1);
   }
 
-  console.log('Current publish env is preview? ' +  program.preview);
+  console.warn('Current publish env: ' +  (program.preview?'preview':'production'));
   const registry = program.preview ? 'http://localhost:4873' : 'https://registry.npmjs.org';
 
   try {

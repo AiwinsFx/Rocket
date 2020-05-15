@@ -4,7 +4,7 @@ const childProcess = require('child_process');
 
 const check = pkgJsonPath => {
   try {
-    return childProcess.execSync(`ncu "/^@rocket.*$/" --packageFile ${pkgJsonPath} -u`).toString();
+    return childProcess.execSync(`ncu "/^@aiwins.*$/" --packageFile ${pkgJsonPath} -u`).toString();
   } catch (error) {
     console.log('exec error: ' + error.message);
     process.exit(error.status);

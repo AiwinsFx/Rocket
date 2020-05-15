@@ -12,9 +12,9 @@ import fse from 'fs-extra';
     cwd: '../../../templates/app/angular',
   });
 
-  await fse.remove('../../../templates/app/angular/node_modules/@rocket');
+  await fse.remove('../../../templates/app/angular/node_modules/@aiwins');
 
-  await fse.copy('../node_modules/@rocket', '../../../templates/app/angular/node_modules/@rocket', {
+  await fse.copy('../node_modules/@aiwins', '../../../templates/app/angular/node_modules/@aiwins', {
     overwrite: true,
   });
 
