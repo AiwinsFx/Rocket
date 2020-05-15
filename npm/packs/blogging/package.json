@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/blogging",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
@@ -9,10 +9,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/aspnetcore.mvc.ui.theme.shared": "^1.0.10",
-    "@aiwins/owl.carousel": "^1.0.10",
-    "@aiwins/prismjs": "^1.0.10",
-    "@aiwins/tui-editor": "^1.0.10"
+    "@aiwins/aspnetcore.mvc.ui.theme.shared": "^1.1.0",
+    "@aiwins/owl.carousel": "^1.1.0",
+    "@aiwins/prismjs": "^1.1.0",
+    "@aiwins/tui-editor": "^1.1.0"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"
 }

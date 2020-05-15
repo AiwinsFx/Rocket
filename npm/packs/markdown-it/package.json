@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/markdown-it",
-  "version": "1.0.10",
+  "version": "1.1.0",
   "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
@@ -9,7 +9,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/core": "^1.0.10",
+    "@aiwins/core": "^1.1.0",
     "markdown-it": "^10.0.0"
   },
   "gitHead": "173c234d0dc28b466b083f266fec324dd7a2124c"
