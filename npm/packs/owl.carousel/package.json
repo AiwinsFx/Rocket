@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/owl.carousel",
-  "version": "1.1.3",
+  "version": "1.1.4",
   "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
@@ -9,7 +9,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/core": "^1.1.3",
+    "@aiwins/core": "^1.1.4",
     "owl.carousel": "^2.3.4"
   },
   "gitHead": "bfdd3992c7aeb65eca73942110db1c2b4aa5153a"

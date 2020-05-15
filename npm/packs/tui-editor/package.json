@@ -1,5 +1,5 @@
 {
-  "version": "1.1.3",
+  "version": "1.1.4",
   "name": "@aiwins/tui-editor",
   "description": "aiwins package",
   "author": "aiwins",
@@ -9,10 +9,10 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/codemirror": "^1.1.3",
-    "@aiwins/highlight.js": "^1.1.3",
-    "@aiwins/jquery": "^1.1.3",
-    "@aiwins/markdown-it": "^1.1.3",
+    "@aiwins/codemirror": "^1.1.4",
+    "@aiwins/highlight.js": "^1.1.4",
+    "@aiwins/jquery": "^1.1.4",
+    "@aiwins/markdown-it": "^1.1.4",
     "tui-editor": "^1.4.8"
   },
   "gitHead": "bfdd3992c7aeb65eca73942110db1c2b4aa5153a"
