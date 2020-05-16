@@ -20,7 +20,21 @@ import program from 'commander';
         '--no-watch',
         '--sync',
         '--packages',
-        '@aiwins/ng.core,@aiwins/ng.theme.shared',
+        '@aiwins/ng.core,@aiwins/ng.theme.shared,@aiwins/ng.theme.basic',
+      ],
+      { stdout: 'inherit', cwd: '../' },
+    );
+
+    await execa(
+      'yarn',
+      [
+        'symlink',
+        'copy',
+        '--angular',
+        '--no-watch',
+        '--sync',
+        '--packages',
+        '@aiwins/ng.feature-management,@aiwins/ng.tenant-management,@aiwins/ng.setting-management,@aiwins/ng.permission-management',
       ],
       { stdout: 'inherit', cwd: '../' },
     );
@@ -34,7 +48,7 @@ import program from 'commander';
         '--no-watch',
         '--all-packages',
         '--excluded-packages',
-        '@aiwins/ng.core,@aiwins/ng.theme.shared,@aiwins/ng.feature-management,@aiwins/ng.permission-management,@aiwins/ng.account.config,@aiwins/ng.identity.config,@aiwins/ng.setting-management.config,@aiwins/ng.tenant-management.config',
+        '@aiwins/ng.core,@aiwins/ng.theme.shared,@aiwins/ng.theme.basic,@aiwins/ng.feature-management,@aiwins/ng.tenant-management,@aiwins/ng.setting-management,@aiwins/ng.permission-management,@aiwins/ng.account.config,@aiwins/ng.identity.config,@aiwins/ng.setting-management.config,@aiwins/ng.tenant-management.config',
       ],
       { stdout: 'inherit', cwd: '../' },
     );
@@ -47,7 +61,7 @@ import program from 'commander';
         '--angular',
         '--no-watch',
         '--packages',
-        '@aiwins/ng.feature-management,@aiwins/ng.permission-management,@aiwins/ng.account.config,@aiwins/ng.identity.config,@aiwins/ng.setting-management.config,@aiwins/ng.tenant-management.config',
+        '@aiwins/ng.account.config,@aiwins/ng.identity.config,@aiwins/ng.setting-management.config,@aiwins/ng.tenant-management.config',
       ],
       { stdout: 'inherit', cwd: '../' },
     );

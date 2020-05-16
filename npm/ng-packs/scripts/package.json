@@ -6,7 +6,7 @@
   "scripts": {
     "build": "ts-node -r tsconfig-paths/register build.ts",
     "build:prod": "ts-node -r tsconfig-paths/register prod-build.ts",
-    "publish-packages": "ts-node -r tsconfig-paths/register publish.ts",
+    "publish-packages": "ts-node -r tsconfig-paths/register publish.ts '--nextVersion' '1.1.10'",
     "install-new-dependencies": "ts-node -r tsconfig-paths/register install-new-dependencies.ts",
     "sync": "ts-node -r tsconfig-paths/register sync.ts"
   },

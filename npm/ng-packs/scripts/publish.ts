@@ -8,7 +8,7 @@ program
     'next semantic version. Available versions: ["major", "minor", "patch", "premajor", "preminor", "prepatch", "prerelease", "or type a custom version"]',
   )
   .option('-p, --preview', 'publish with preview tag');
-
+console.error(1);
 program.parse(process.argv);
 
 const publish = async () => {
@@ -19,17 +19,24 @@ const publish = async () => {
     process.exit(1);
   }
 
-  console.warn('Current publish env: ' +  (program.preview?'preview':'production'));
   const registry = program.preview ? 'http://localhost:4873' : 'https://registry.npmjs.org';
 
   try {
-    await execa('yarn', ['install-new-dependencies'], { stdout: 'inherit' });
+    // await execa('yarn', ['install-new-dependencies'], { stdout: 'inherit' });
 
     await fse.rename('../lerna.version.json', '../lerna.json');
 
     await execa(
       'yarn',
-      ['lerna', 'version', program.nextVersion, '--yes', '--no-commit-hooks', '--skip-git'],
+      [
+        'lerna',
+        'version',
+        program.nextVersion,
+        '--yes',
+        '--no-commit-hooks',
+        '--skip-git',
+        '--force-publish',
+      ],
       { stdout: 'inherit', cwd: '../' },
     );
 

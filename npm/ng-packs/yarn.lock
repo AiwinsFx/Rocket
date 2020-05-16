@@ -2,23 +2,26 @@
 # yarn lockfile v1
 
 
-"@aiwins/ng.account.config@^1.1.3", "@aiwins/ng.account.config@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.account.config/-/ng.account.config-1.1.3.tgz#98dd8b7010f0c1553e70f28a5238ec3a4f36f99d"
-  integrity sha512-+QiEd947MQe89SGzSz/W9Sb8/LNWsOuO9t59EFFx7rqJOGPFJpb0MZNEnNUtGBuVa4m+mvWuHVvSJJlLakA0gA==
-
-"@aiwins/ng.account@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.account/-/ng.account-1.1.3.tgz#7bd239441c4928bf3a36a9bf0a70832b1be966d7"
-  integrity sha512-WzXsrS5wHMvWHM1RXB2QDViwg8snBUcvf4LJcL6XohCEknSGz0MUifE79cCvC+4xCika8dQFAg0OEvdEq4LXTA==
+"@aiwins/ng.account.config@^1.1.10", "@aiwins/ng.account.config@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.account.config/-/ng.account.config-1.1.10.tgz#fc2e0d1ebafd70ebec9312f279ccd2973943df19"
+  integrity sha512-YFoR9z19p6ixtt8piSgAW3MDwhEGNb4Hx2QX8v0jTOTydra3NIujhmNb70skZHmOEbW8CmvAUcoLhyES7LPDGQ==
   dependencies:
-    "@aiwins/ng.account.config" "^1.1.3"
-    "@aiwins/ng.theme.shared" "^1.1.3"
+    tslib "^1.9.0"
 
-"@aiwins/ng.core@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.core/-/ng.core-1.1.3.tgz#e52a2cdcf239435f64bf261e42e54664661fe19b"
-  integrity sha512-eoi79wfM2X6v1hx9Yi346BMCzMDgBuoEyaOT8ytOTcfpJmHa08u81gPsZkMJ54icI93RmPQoij4ok/OsyBf0MQ==
+"@aiwins/ng.account@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.account/-/ng.account-1.1.10.tgz#dfab57bce5f3681a1d262b9b68aad479d24a47c4"
+  integrity sha512-DBFO8LHqv3PDXQA4L6QM0Xjm8nlphKpBStlYI1gt5sLf1JEHAkQgWISNwipb/3CjJiQXacr/G9CS5XMkwvXQfA==
+  dependencies:
+    "@aiwins/ng.account.config" "^1.1.10"
+    "@aiwins/ng.theme.shared" "^1.1.10"
+    tslib "^1.9.0"
+
+"@aiwins/ng.core@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.core/-/ng.core-1.1.10.tgz#a29946062db7862034d0d8c25ac44d9eca36915f"
+  integrity sha512-mssGlmp1YKra7TZY9W0eLK3eeRcJaCIMmE9gTWeQ23ohfjDrbRu0V35nL4ppYcCIWBrwwpvJ9rm6jOqu9FhUIg==
   dependencies:
     "@aiwins/utils" "^1.1.0"
     "@angular/localize" "~9.1.0"
@@ -30,80 +33,94 @@
     just-compare "^1.3.0"
     snq "^1.0.3"
     ts-toolbelt "^6.3.6"
+    tslib "^1.9.0"
 
-"@aiwins/ng.feature-management@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.feature-management/-/ng.feature-management-1.1.3.tgz#5717a7e1ab2eda81595eb222acf874d7c1273961"
-  integrity sha512-rbZ/V69YLunIWvWT8a0+xPBEImG06SS3FY4wbEyT3E3uar2JhnlZQaRvb2uj6OFktKY8tMXaDA/gjnxhBjoyDg==
+"@aiwins/ng.feature-management@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.feature-management/-/ng.feature-management-1.1.10.tgz#106e3fe672592636e51ce6fc2b4ff859248c21e7"
+  integrity sha512-kU2g4dM4RpUxXAQJRqaW8u4ex8vTjwbVago8FUtgWbGtUcfRRwdLt2pvYM9jbRmMhTG2mWf1reHa2G1y/XZIhg==
   dependencies:
-    "@aiwins/ng.theme.shared" "^1.1.3"
+    "@aiwins/ng.theme.shared" "^1.1.10"
+    tslib "^1.9.0"
 
-"@aiwins/ng.identity.config@^1.1.3", "@aiwins/ng.identity.config@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity.config/-/ng.identity.config-1.1.3.tgz#c68886a4eff1c3eb5170940f9deed1a77820d2a4"
-  integrity sha512-DLwBxShUwWIgSe54qU/eeR99ImnXcEM5+HlOO7AdZ40GC1289lu+t8fV4H6OuZHWW9S0t1ayKwc9HtzG9Jn/WQ==
-
-"@aiwins/ng.identity@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity/-/ng.identity-1.1.3.tgz#2d9598ffe4d466f5976e25670f76c64ca486758b"
-  integrity sha512-AUuRO8/vdft556m94D11ZI0Ybmzn6RXRNYe+Zk1HuP1QsZuh7r+HQAF3mMNG1wCV0cWx4FJEumi9W/0GJ3xA/Q==
+"@aiwins/ng.identity.config@^1.1.10", "@aiwins/ng.identity.config@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity.config/-/ng.identity.config-1.1.10.tgz#bba8be37898ea6a7e5fc2bc9584c958e827e5b7f"
+  integrity sha512-svFQ6d3sbK2fo0grgRcNouT1S2E4Ty/inWsjKyUPvKsWIoBX58njZJigdGpTL+vrjUNs6+OrIBj7vvcLzJuQ4g==
   dependencies:
-    "@aiwins/ng.identity.config" "^1.1.3"
-    "@aiwins/ng.permission-management" "^1.1.3"
-    "@aiwins/ng.theme.shared" "^1.1.3"
+    tslib "^1.9.0"
 
-"@aiwins/ng.permission-management@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.permission-management/-/ng.permission-management-1.1.3.tgz#7e559362c69a30487318a5e941dac0a0f1ad0cda"
-  integrity sha512-CkdUksBn/VdjjyHkZeMF9yZIvZ3eXt86I7NNVmDg7wqW1N6TGPHKarinu6dDo10pC7GXpnWI4q4vdpaLgAo7tQ==
+"@aiwins/ng.identity@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity/-/ng.identity-1.1.10.tgz#60f29f64b5330154b5072b74d9b16cee06a7a57e"
+  integrity sha512-jvRRL/T5oYxfA8GTpwKwuPdZ37LxGrfc8xptESVynnTt2GutlJ1o/k0Z7Ak9C11Ui7MJevk1Q+7CEvIsjyvOPg==
   dependencies:
-    "@aiwins/ng.theme.shared" "^1.1.3"
+    "@aiwins/ng.identity.config" "^1.1.10"
+    "@aiwins/ng.permission-management" "^1.1.10"
+    "@aiwins/ng.theme.shared" "^1.1.10"
+    tslib "^1.9.0"
 
-"@aiwins/ng.setting-management.config@^1.1.3", "@aiwins/ng.setting-management.config@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management.config/-/ng.setting-management.config-1.1.3.tgz#79e46a6d76c12ca3a05c98ec98c2ca8b99f12a3f"
-  integrity sha512-mSv1RLTa6aKT/Qwp/DaW1elm8cxc0LMRa5JA5B7G2hdQSpPIR2vhfgvhhZRrylH01vxbYRF1jvYMPz1sLcELNg==
-
-"@aiwins/ng.setting-management@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management/-/ng.setting-management-1.1.3.tgz#aced4970e92ad04268025bc5a62c63a9df4310ad"
-  integrity sha512-XLlNjl8ye2O7iIZXLU2yTjpJTXF+tk2iZiekjJMG8YVmc/NnbTsjLx1eRmEcyHWXEp2xmQgia9K1js4l5NKnew==
+"@aiwins/ng.permission-management@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.permission-management/-/ng.permission-management-1.1.10.tgz#a27be63e0841eb99c94958ff6e1a7782e5541c82"
+  integrity sha512-UHvHtAQ4YvJy7+b2V3gkFYUDRKE+UujGUB5L9rUSCDEyqYr+RySh/avBmCmsdl6+emqraGSQaxS7zjxEGOOSNg==
   dependencies:
-    "@aiwins/ng.setting-management.config" "^1.1.3"
-    "@aiwins/ng.theme.shared" "^1.1.3"
+    "@aiwins/ng.theme.shared" "^1.1.10"
+    tslib "^1.9.0"
 
-"@aiwins/ng.tenant-management.config@^1.1.3", "@aiwins/ng.tenant-management.config@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management.config/-/ng.tenant-management.config-1.1.3.tgz#17508068350d88ee43ce729bca8dd0fb1cdf8a96"
-  integrity sha512-C/FsSgDbuCQPrQ3MdNi7ooX0Uaok9Q79E2+B/i6qMSXQ88ZRxhOioFbHc7eAETA6YFiEZMUHc3Ksnfh479Dbzw==
-
-"@aiwins/ng.tenant-management@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management/-/ng.tenant-management-1.1.3.tgz#12aa8aa31a4d93637a2d0e1b74e6616ebaa59a05"
-  integrity sha512-Nb29HSue8mpGoTf87SB7frkoS8yH6EeE9hJLDCDlPBbDmZAwilgBgXiIr1c+cPpJ8RdECrcgSnaU5E7+jKDdVw==
+"@aiwins/ng.setting-management.config@^1.1.10", "@aiwins/ng.setting-management.config@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management.config/-/ng.setting-management.config-1.1.10.tgz#3281ff4423f2d781b06c702d088e3b5f4f0e1e8b"
+  integrity sha512-CDqNdYGYOMZj1XB4Hg+6FJVZFbr8wdWIwMMsGPgF0Hzc5yuugrMYugUkHqDHn25it0CklK7V5zNSul6jJUlpIg==
   dependencies:
-    "@aiwins/ng.feature-management" "^1.1.3"
-    "@aiwins/ng.tenant-management.config" "^1.1.3"
-    "@aiwins/ng.theme.shared" "^1.1.3"
+    tslib "^1.9.0"
 
-"@aiwins/ng.theme.basic@~1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.basic/-/ng.theme.basic-1.1.3.tgz#62247bcac0328d5a1daed8a5105c85117085c1c1"
-  integrity sha512-hi64iO64Q87T2R2lPvWLZI6QWR0wtAYxIRGpa7Np2m3ssjgjO+z1XZJluOlUq74c2uY14DXZRiVZ+hCJBGQMvg==
+"@aiwins/ng.setting-management@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management/-/ng.setting-management-1.1.10.tgz#d341f9891c0e585a6cf0628e1f2b938d4a6c5ddd"
+  integrity sha512-K/OH2/t1F6SSsK2ez6Dw05PxjWoCjr6oCl3gxw/PFYwep8q9OQUCBY6IEsQU1fSXtwc5BxVLS0jBUtYhJqoqTg==
   dependencies:
-    "@aiwins/ng.theme.shared" "^1.1.3"
+    "@aiwins/ng.setting-management.config" "^1.1.10"
+    "@aiwins/ng.theme.shared" "^1.1.10"
+    tslib "^1.9.0"
 
-"@aiwins/ng.theme.shared@^1.1.3":
-  version "1.1.3"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.shared/-/ng.theme.shared-1.1.3.tgz#5128f74e3de9f044945729ffdd857d7bfa2bb891"
-  integrity sha512-awMD8BEifZBCxZ0qP0g1W612iiNJRDdJm46HFQfTIhV3/+zxAYoflD7tUgrtcGvesR8KeULwwc+1J/BY/3cqHA==
+"@aiwins/ng.tenant-management.config@^1.1.10", "@aiwins/ng.tenant-management.config@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management.config/-/ng.tenant-management.config-1.1.10.tgz#03792e3b6ac458ce76ed85d86945d92bf844adb7"
+  integrity sha512-snHugJAM6OKqz0DYkzRI09qG+8EBI5eYpo4+EnBikVQfu/XB9RtbZXC5nxOTY3Twz3fXAl0kVzJWD502gPvCLg==
   dependencies:
-    "@aiwins/ng.core" "^1.1.3"
+    tslib "^1.9.0"
+
+"@aiwins/ng.tenant-management@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management/-/ng.tenant-management-1.1.10.tgz#d5261333f06ca7a45122e092e5b2e00d888c4fd2"
+  integrity sha512-lNf1KFN9QsxbUMcywNKtyQ/tCao9JDMYd0TUM7FilktYy1nzs8pnq7FdC/VL3JUrJMEblpzEi7R8jPW1uTk72A==
+  dependencies:
+    "@aiwins/ng.feature-management" "^1.1.10"
+    "@aiwins/ng.tenant-management.config" "^1.1.10"
+    "@aiwins/ng.theme.shared" "^1.1.10"
+    tslib "^1.9.0"
+
+"@aiwins/ng.theme.basic@~1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.basic/-/ng.theme.basic-1.1.10.tgz#885ca77361a1fa30684972a2a467a9b557c7da74"
+  integrity sha512-TBRXNfISjE5+GR6gLy5+U0vwqKQfVQW8d5C8SeMD2qA2znLuD2FnX/rpNGnqzQMS5j3kx/kTpJGYLUH1lve5NQ==
+  dependencies:
+    "@aiwins/ng.theme.shared" "^1.1.10"
+    tslib "^1.9.0"
+
+"@aiwins/ng.theme.shared@^1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.shared/-/ng.theme.shared-1.1.10.tgz#98eaa49833171a7d94f41e69cf6650f7ca31bfae"
+  integrity sha512-cR318g5MRUHxmV+p5ST0u/NfRl5C8aTxR/rktlZR/ewQsURs81fQ6gLIMTXaoJ5gFQFgbg6LRmrGpwK35iB0xw==
+  dependencies:
+    "@aiwins/ng.core" "^1.1.10"
     "@fortawesome/fontawesome-free" "^5.12.1"
     "@ng-bootstrap/ng-bootstrap" "^5.3.0"
     "@ngx-validate/core" "^0.0.7"
     bootstrap "^4.4.1"
     chart.js "^2.9.3"
+    tslib "^1.9.0"
 
 "@aiwins/utils@^1.1.0":
   version "1.1.0"

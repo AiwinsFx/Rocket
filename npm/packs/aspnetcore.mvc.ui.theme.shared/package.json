@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/aspnetcore.mvc.ui.theme.shared",
-  "version": "1.1.5",
+  "version": "1.1.12",
   "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
@@ -9,20 +9,20 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/aspnetcore.mvc.ui": "^1.1.5",
-    "@aiwins/bootstrap": "^1.1.5",
-    "@aiwins/bootstrap-datepicker": "^1.1.5",
-    "@aiwins/datatables.net-bs4": "^1.1.5",
-    "@aiwins/font-awesome": "^1.1.5",
-    "@aiwins/jquery-form": "^1.1.5",
-    "@aiwins/jquery-validation-unobtrusive": "^1.1.5",
-    "@aiwins/lodash": "^1.1.5",
-    "@aiwins/luxon": "^1.1.5",
-    "@aiwins/malihu-custom-scrollbar-plugin": "^1.1.5",
-    "@aiwins/select2": "^1.1.5",
-    "@aiwins/sweetalert": "^1.1.5",
-    "@aiwins/timeago": "^1.1.5",
-    "@aiwins/toastr": "^1.1.5"
+    "@aiwins/aspnetcore.mvc.ui": "^1.1.12",
+    "@aiwins/bootstrap": "^1.1.12",
+    "@aiwins/bootstrap-datepicker": "^1.1.12",
+    "@aiwins/datatables.net-bs4": "^1.1.12",
+    "@aiwins/font-awesome": "^1.1.12",
+    "@aiwins/jquery-form": "^1.1.12",
+    "@aiwins/jquery-validation-unobtrusive": "^1.1.12",
+    "@aiwins/lodash": "^1.1.12",
+    "@aiwins/luxon": "^1.1.12",
+    "@aiwins/malihu-custom-scrollbar-plugin": "^1.1.12",
+    "@aiwins/select2": "^1.1.12",
+    "@aiwins/sweetalert": "^1.1.12",
+    "@aiwins/timeago": "^1.1.12",
+    "@aiwins/toastr": "^1.1.12"
   },
-  "gitHead": "e2517190412234a658db6faa6653bff0385e6001"
+  "gitHead": "451e3f0c707bebb6cd8c37d34fd5a69182cbcac5"
 }

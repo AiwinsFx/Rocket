@@ -76,10 +76,17 @@ var rocket = rocket || {};
     rocket.localization.values = {};
 
     rocket.localization.localize = function (key, sourceName) {
+        if (sourceName === '_') { //A convention to suppress the localization
+            return key;
+        }
+
         sourceName = sourceName || rocket.localization.defaultResourceName;
+        if (!sourceName) {
+            rocket.log.warn('Localization source name is not specified and the defaultResourceName was not defined!');
+            return key;
+        }
 
         var source = rocket.localization.values[sourceName];
-
         if (!source) {
             rocket.log.warn('Could not find localization source: ' + sourceName);
             return key;
@@ -95,6 +102,29 @@ var rocket = rocket || {};
         copiedArguments[0] = value;
 
         return rocket.utils.formatString.apply(this, copiedArguments);
+    };
+
+    rocket.localization.isLocalized = function (key, sourceName) {
+        if (sourceName === '_') { //A convention to suppress the localization
+            return true;
+        }
+
+        sourceName = sourceName || rocket.localization.defaultResourceName;
+        if (!sourceName) {
+            return false;
+        }
+
+        var source = rocket.localization.values[sourceName];
+        if (!source) {
+            return false;
+        }
+
+        var value = source[key];
+        if (value === undefined) {
+            return false;
+        }
+
+        return true;
     };
 
     rocket.localization.getResource = function (name) {

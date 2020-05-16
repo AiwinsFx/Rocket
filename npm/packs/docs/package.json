@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/docs",
-  "version": "1.1.5",
+  "version": "1.1.12",
   "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
@@ -9,11 +9,11 @@
     "access": "public"
   },
   "dependencies": {
-    "@aiwins/anchor-js": "^1.1.5",
-    "@aiwins/clipboard": "^1.1.5",
-    "@aiwins/malihu-custom-scrollbar-plugin": "^1.1.5",
-    "@aiwins/popper.js": "^1.1.5",
-    "@aiwins/prismjs": "^1.1.5"
+    "@aiwins/anchor-js": "^1.1.12",
+    "@aiwins/clipboard": "^1.1.12",
+    "@aiwins/malihu-custom-scrollbar-plugin": "^1.1.12",
+    "@aiwins/popper.js": "^1.1.12",
+    "@aiwins/prismjs": "^1.1.12"
   },
-  "gitHead": "e2517190412234a658db6faa6653bff0385e6001"
+  "gitHead": "451e3f0c707bebb6cd8c37d34fd5a69182cbcac5"
 }

@@ -1,6 +1,6 @@
 {
   "name": "@aiwins/aspnetcore.mvc.ui",
-  "version": "1.1.5",
+  "version": "1.1.12",
   "description": "aiwins package",
   "author": "aiwins",
   "homepage": "https://aiwins.cn/",
@@ -16,5 +16,5 @@
     "path": "^0.12.7",
     "rimraf": "^3.0.0"
   },
-  "gitHead": "e2517190412234a658db6faa6653bff0385e6001"
+  "gitHead": "451e3f0c707bebb6cd8c37d34fd5a69182cbcac5"
 }
