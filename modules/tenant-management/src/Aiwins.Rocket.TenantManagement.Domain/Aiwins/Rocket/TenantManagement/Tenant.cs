@@ -4,6 +4,7 @@ using System.Linq;
 using Aiwins.Rocket.Domain.Entities.Auditing;
 using JetBrains.Annotations;
 using Aiwins.Rocket.Pinyin;
+using Aiwins.Rocket.Auditing;
 
 namespace Aiwins.Rocket.TenantManagement {
     public class Tenant : FullAuditedAggregateRoot<Guid>, IPySpelling {
