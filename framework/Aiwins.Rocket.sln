@@ -177,6 +177,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.UI.Navigation
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.AspNetCore.SignalR", "src\Aiwins.Rocket.AspNetCore.SignalR\Aiwins.Rocket.AspNetCore.SignalR.csproj", "{F56BBE61-C5FC-49B4-B9EF-1BD7A2AD84D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.Cli.Core", "src\Aiwins.Rocket.Cli.Core\Aiwins.Rocket.Cli.Core.csproj", "{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Aiwins.Rocket.Cli", "src\Aiwins.Rocket.Cli\Aiwins.Rocket.Cli.csproj", "{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -1234,5 +1238,29 @@ Global
 		{F56BBE61-C5FC-49B4-B9EF-1BD7A2AD84D0}.Release|x64.Build.0 = Release|Any CPU
 		{F56BBE61-C5FC-49B4-B9EF-1BD7A2AD84D0}.Release|x86.ActiveCfg = Release|Any CPU
 		{F56BBE61-C5FC-49B4-B9EF-1BD7A2AD84D0}.Release|x86.Build.0 = Release|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Debug|x64.Build.0 = Debug|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Debug|x86.Build.0 = Debug|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Release|x64.ActiveCfg = Release|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Release|x64.Build.0 = Release|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Release|x86.ActiveCfg = Release|Any CPU
+		{F134DC03-A4EE-4DDF-B1C9-7BCD62D254DA}.Release|x86.Build.0 = Release|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Debug|x64.Build.0 = Debug|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Debug|x86.Build.0 = Debug|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Release|x64.ActiveCfg = Release|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Release|x64.Build.0 = Release|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Release|x86.ActiveCfg = Release|Any CPU
+		{68EF016E-E5F3-4CF5-8505-EC8FF49FE4E4}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
