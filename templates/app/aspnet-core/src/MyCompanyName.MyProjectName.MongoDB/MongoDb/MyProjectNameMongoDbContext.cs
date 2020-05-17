@@ -8,13 +8,13 @@ namespace MyCompanyName.MyProjectName.MongoDB
     [ConnectionStringName("Default")]
     public class MyProjectNameMongoDbContext : RocketMongoDbContext
     {
-        public IMongoCollection<AppUser> Users => Collection<AppUser>();
+        public IMongoCollection<User> Users => Collection<User>();
 
         protected override void CreateModel(IMongoModelBuilder modelBuilder)
         {
             base.CreateModel(modelBuilder);
 
-            modelBuilder.Entity<AppUser>(b =>
+            modelBuilder.Entity<User>(b =>
             {
                 /* Sharing the same "RocketUsers" collection
                  * with the Identity module's IdentityUser class. */

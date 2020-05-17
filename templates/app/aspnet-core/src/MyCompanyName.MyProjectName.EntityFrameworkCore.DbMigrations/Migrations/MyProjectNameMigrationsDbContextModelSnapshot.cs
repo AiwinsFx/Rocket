@@ -6,1753 +6,1721 @@ using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MyCompanyName.MyProjectName.EntityFrameworkCore;
 
-namespace MyCompanyName.MyProjectName.Migrations
-{
-    [DbContext(typeof(MyProjectNameMigrationsDbContext))]
-    partial class MyProjectNameMigrationsDbContextModelSnapshot : ModelSnapshot
-    {
-        protected override void BuildModel(ModelBuilder modelBuilder)
-        {
+namespace MyCompanyName.MyProjectName.Migrations {
+    [DbContext (typeof (MyProjectNameMigrationsDbContext))]
+    partial class MyProjectNameMigrationsDbContextModelSnapshot : ModelSnapshot {
+        protected override void BuildModel (ModelBuilder modelBuilder) {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.0")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-            modelBuilder.Entity("Aiwins.Rocket.AuditLogging.AuditLog", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("ApplicationName")
-                        .HasColumnName("ApplicationName")
-                        .HasColumnType("nvarchar(96)")
-                        .HasMaxLength(96);
-
-                    b.Property<string>("BrowserInfo")
-                        .HasColumnName("BrowserInfo")
-                        .HasColumnType("nvarchar(512)")
-                        .HasMaxLength(512);
-
-                    b.Property<string>("ClientId")
-                        .HasColumnName("ClientId")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
-
-                    b.Property<string>("ClientIpAddress")
-                        .HasColumnName("ClientIpAddress")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
-
-                    b.Property<string>("ClientName")
-                        .HasColumnName("ClientName")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
-
-                    b.Property<string>("Comments")
-                        .HasColumnName("Comments")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("CorrelationId")
-                        .HasColumnName("CorrelationId")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
-
-                    b.Property<string>("Exceptions")
-                        .HasColumnName("Exceptions")
-                        .HasColumnType("nvarchar(4000)")
-                        .HasMaxLength(4000);
-
-                    b.Property<int>("ExecutionDuration")
-                        .HasColumnName("ExecutionDuration")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ExecutionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("HttpMethod")
-                        .HasColumnName("HttpMethod")
-                        .HasColumnType("nvarchar(16)")
-                        .HasMaxLength(16);
-
-                    b.Property<int?>("HttpStatusCode")
-                        .HasColumnName("HttpStatusCode")
-                        .HasColumnType("int");
-
-                    b.Property<Guid?>("ImpersonatorTenantId")
-                        .HasColumnName("ImpersonatorTenantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("ImpersonatorUserId")
-                        .HasColumnName("ImpersonatorUserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnName("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("TenantName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Url")
-                        .HasColumnName("Url")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<Guid?>("UserId")
-                        .HasColumnName("UserId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("UserName")
-                        .HasColumnName("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                .HasAnnotation ("ProductVersion", "3.1.4")
+                .HasAnnotation ("Relational:MaxIdentifierLength", 128)
+                .HasAnnotation ("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+            modelBuilder.Entity ("Aiwins.Rocket.AuditLogging.AuditLog", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<string> ("ApplicationName")
+                    .HasColumnName ("ApplicationName")
+                    .HasColumnType ("nvarchar(96)")
+                    .HasMaxLength (96);
+
+                b.Property<string> ("BrowserInfo")
+                    .HasColumnName ("BrowserInfo")
+                    .HasColumnType ("nvarchar(512)")
+                    .HasMaxLength (512);
+
+                b.Property<string> ("ClientId")
+                    .HasColumnName ("ClientId")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
+
+                b.Property<string> ("ClientIpAddress")
+                    .HasColumnName ("ClientIpAddress")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
+
+                b.Property<string> ("ClientName")
+                    .HasColumnName ("ClientName")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
+
+                b.Property<string> ("Comments")
+                    .HasColumnName ("Comments")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
+
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
+
+                b.Property<string> ("CorrelationId")
+                    .HasColumnName ("CorrelationId")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
+
+                b.Property<string> ("Exceptions")
+                    .HasColumnName ("Exceptions")
+                    .HasColumnType ("nvarchar(4000)")
+                    .HasMaxLength (4000);
+
+                b.Property<int> ("ExecutionDuration")
+                    .HasColumnName ("ExecutionDuration")
+                    .HasColumnType ("int");
+
+                b.Property<DateTime> ("ExecutionTime")
+                    .HasColumnType ("datetime2");
+
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
+
+                b.Property<string> ("HttpMethod")
+                    .HasColumnName ("HttpMethod")
+                    .HasColumnType ("nvarchar(16)")
+                    .HasMaxLength (16);
+
+                b.Property<int?> ("HttpStatusCode")
+                    .HasColumnName ("HttpStatusCode")
+                    .HasColumnType ("int");
+
+                b.Property<Guid?> ("ImpersonatorTenantId")
+                    .HasColumnName ("ImpersonatorTenantId")
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<Guid?> ("ImpersonatorUserId")
+                    .HasColumnName ("ImpersonatorUserId")
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<string> ("TenantName")
+                    .HasColumnType ("nvarchar(max)");
+
+                b.Property<string> ("Url")
+                    .HasColumnName ("Url")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
+
+                b.Property<Guid?> ("UserId")
+                    .HasColumnName ("UserId")
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<string> ("UserName")
+                    .HasColumnName ("UserName")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.HasKey("Id");
+                b.HasKey ("Id");
 
-                    b.HasIndex("TenantId", "ExecutionTime");
+                b.HasIndex ("TenantId", "ExecutionTime");
 
-                    b.HasIndex("TenantId", "UserId", "ExecutionTime");
+                b.HasIndex ("TenantId", "UserId", "ExecutionTime");
 
-                    b.ToTable("RocketAuditLogs");
-                });
+                b.ToTable ("RocketAuditLogs");
+            });
 
-            modelBuilder.Entity("Aiwins.Rocket.AuditLogging.AuditLogAction", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            modelBuilder.Entity ("Aiwins.Rocket.AuditLogging.AuditLogAction", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<Guid>("AuditLogId")
-                        .HasColumnName("AuditLogId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid> ("AuditLogId")
+                    .HasColumnName ("AuditLogId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<int>("ExecutionDuration")
-                        .HasColumnName("ExecutionDuration")
-                        .HasColumnType("int");
+                b.Property<int> ("ExecutionDuration")
+                    .HasColumnName ("ExecutionDuration")
+                    .HasColumnType ("int");
 
-                    b.Property<DateTime>("ExecutionTime")
-                        .HasColumnName("ExecutionTime")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime> ("ExecutionTime")
+                    .HasColumnName ("ExecutionTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("MethodName")
-                        .HasColumnName("MethodName")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("MethodName")
+                    .HasColumnName ("MethodName")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<string>("Parameters")
-                        .HasColumnName("Parameters")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<string> ("Parameters")
+                    .HasColumnName ("Parameters")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.Property<string>("ServiceName")
-                        .HasColumnName("ServiceName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<string> ("ServiceName")
+                    .HasColumnName ("ServiceName")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("Id");
+                b.HasKey ("Id");
 
-                    b.HasIndex("AuditLogId");
+                b.HasIndex ("AuditLogId");
 
-                    b.HasIndex("TenantId", "ServiceName", "MethodName", "ExecutionTime");
+                b.HasIndex ("TenantId", "ServiceName", "MethodName", "ExecutionTime");
 
-                    b.ToTable("RocketAuditLogActions");
-                });
+                b.ToTable ("RocketAuditLogActions");
+            });
 
-            modelBuilder.Entity("Aiwins.Rocket.AuditLogging.EntityChange", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            modelBuilder.Entity ("Aiwins.Rocket.AuditLogging.EntityChange", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<Guid>("AuditLogId")
-                        .HasColumnName("AuditLogId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid> ("AuditLogId")
+                    .HasColumnName ("AuditLogId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<DateTime>("ChangeTime")
-                        .HasColumnName("ChangeTime")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime> ("ChangeTime")
+                    .HasColumnName ("ChangeTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<byte>("ChangeType")
-                        .HasColumnName("ChangeType")
-                        .HasColumnType("tinyint");
+                b.Property<byte> ("ChangeType")
+                    .HasColumnName ("ChangeType")
+                    .HasColumnType ("tinyint");
 
-                    b.Property<string>("EntityId")
-                        .IsRequired()
-                        .HasColumnName("EntityId")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("EntityId")
+                    .IsRequired ()
+                    .HasColumnName ("EntityId")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<Guid?>("EntityTenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid?> ("EntityTenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("EntityTypeFullName")
-                        .IsRequired()
-                        .HasColumnName("EntityTypeFullName")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("EntityTypeFullName")
+                    .IsRequired ()
+                    .HasColumnName ("EntityTypeFullName")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnName("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("Id");
+                b.HasKey ("Id");
 
-                    b.HasIndex("AuditLogId");
+                b.HasIndex ("AuditLogId");
 
-                    b.HasIndex("TenantId", "EntityTypeFullName", "EntityId");
+                b.HasIndex ("TenantId", "EntityTypeFullName", "EntityId");
 
-                    b.ToTable("RocketEntityChanges");
-                });
+                b.ToTable ("RocketEntityChanges");
+            });
 
-            modelBuilder.Entity("Aiwins.Rocket.AuditLogging.EntityPropertyChange", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+            modelBuilder.Entity ("Aiwins.Rocket.AuditLogging.EntityPropertyChange", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<Guid>("EntityChangeId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid> ("EntityChangeId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("NewValue")
-                        .HasColumnName("NewValue")
-                        .HasColumnType("nvarchar(512)")
-                        .HasMaxLength(512);
+                b.Property<string> ("NewValue")
+                    .HasColumnName ("NewValue")
+                    .HasColumnType ("nvarchar(512)")
+                    .HasMaxLength (512);
 
-                    b.Property<string>("OriginalValue")
-                        .HasColumnName("OriginalValue")
-                        .HasColumnType("nvarchar(512)")
-                        .HasMaxLength(512);
+                b.Property<string> ("OriginalValue")
+                    .HasColumnName ("OriginalValue")
+                    .HasColumnType ("nvarchar(512)")
+                    .HasMaxLength (512);
 
-                    b.Property<string>("PropertyName")
-                        .IsRequired()
-                        .HasColumnName("PropertyName")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("PropertyDisplayName")
+                    .IsRequired ()
+                    .HasColumnName ("PropertyDisplayName")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<string>("PropertyTypeFullName")
-                        .IsRequired()
-                        .HasColumnName("PropertyTypeFullName")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<string> ("PropertyName")
+                    .IsRequired ()
+                    .HasColumnName ("PropertyName")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("PropertyTypeFullName")
+                    .IsRequired ()
+                    .HasColumnName ("PropertyTypeFullName")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.HasKey("Id");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasIndex("EntityChangeId");
+                b.HasKey ("Id");
 
-                    b.ToTable("RocketEntityPropertyChanges");
-                });
+                b.HasIndex ("EntityChangeId");
 
-            modelBuilder.Entity("Aiwins.Rocket.BackgroundJobs.BackgroundJobRecord", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketEntityPropertyChanges");
+            });
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+            modelBuilder.Entity ("Aiwins.Rocket.BackgroundJobs.BackgroundJobRecord", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnName ("CreationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<bool>("IsAbandoned")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("JobArgs")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(1048576);
+                b.Property<bool> ("IsAbandoned")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.Property<string>("JobName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("JobArgs")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(max)")
+                    .HasMaxLength (1048576);
 
-                    b.Property<DateTime?>("LastTryTime")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("JobName")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<DateTime>("NextTryTime")
-                        .HasColumnType("datetime2");
+                b.Property<DateTime?> ("LastTryTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<byte>("Priority")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("tinyint")
-                        .HasDefaultValue((byte)15);
+                b.Property<DateTime> ("NextTryTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<short>("TryCount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("smallint")
-                        .HasDefaultValue((short)0);
+                b.Property<byte> ("Priority")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("tinyint")
+                    .HasDefaultValue ((byte) 15);
 
-                    b.HasKey("Id");
+                b.Property<short> ("TryCount")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("smallint")
+                    .HasDefaultValue ((short) 0);
 
-                    b.HasIndex("IsAbandoned", "NextTryTime");
+                b.HasKey ("Id");
 
-                    b.ToTable("RocketBackgroundJobs");
-                });
+                b.HasIndex ("IsAbandoned", "NextTryTime");
 
-            modelBuilder.Entity("Aiwins.Rocket.FeatureManagement.FeatureValue", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketBackgroundJobs");
+            });
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+            modelBuilder.Entity ("Aiwins.Rocket.FeatureManagement.FeatureValue", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<string>("ProviderName")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<string> ("ProviderKey")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("ProviderName")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.HasKey("Id");
+                b.Property<string> ("Value")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.HasIndex("Name", "ProviderName", "ProviderKey");
+                b.HasKey ("Id");
 
-                    b.ToTable("RocketFeatureValues");
-                });
+                b.HasIndex ("Name", "ProviderName", "ProviderKey");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityClaimType", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketFeatureValues");
+            });
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityClaimType", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .IsRequired ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("Description")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<bool>("IsStatic")
-                        .HasColumnType("bit");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<bool> ("IsStatic")
+                    .HasColumnType ("bit");
 
-                    b.Property<string>("Regex")
-                        .HasColumnType("nvarchar(512)")
-                        .HasMaxLength(512);
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<string>("RegexDescription")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("Regex")
+                    .HasColumnType ("nvarchar(512)")
+                    .HasMaxLength (512);
 
-                    b.Property<bool>("Required")
-                        .HasColumnType("bit");
+                b.Property<string> ("RegexDescription")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<int>("ValueType")
-                        .HasColumnType("int");
+                b.Property<bool> ("Required")
+                    .HasColumnType ("bit");
 
-                    b.HasKey("Id");
+                b.Property<int> ("ValueType")
+                    .HasColumnType ("int");
 
-                    b.ToTable("RocketClaimTypes");
-                });
+                b.HasKey ("Id");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityRole", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketClaimTypes");
+            });
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .IsRequired()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityRole", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .IsRequired ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<bool>("IsDefault")
-                        .HasColumnName("IsDefault")
-                        .HasColumnType("bit");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<bool>("IsPublic")
-                        .HasColumnName("IsPublic")
-                        .HasColumnType("bit");
+                b.Property<bool> ("IsDefault")
+                    .HasColumnName ("IsDefault")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("IsStatic")
-                        .HasColumnName("IsStatic")
-                        .HasColumnType("bit");
+                b.Property<bool> ("IsPublic")
+                    .HasColumnName ("IsPublic")
+                    .HasColumnType ("bit");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<bool> ("IsStatic")
+                    .HasColumnName ("IsStatic")
+                    .HasColumnType ("bit");
 
-                    b.Property<string>("NormalizedName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("NormalizedName")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.HasKey("Id");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasIndex("NormalizedName");
+                b.HasKey ("Id");
 
-                    b.ToTable("RocketRoles");
-                });
+                b.HasIndex ("NormalizedName");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityRoleClaim", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketRoles");
+            });
 
-                    b.Property<string>("ClaimType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityRoleClaim", b => {
+                b.Property<Guid> ("Id")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(1024)")
-                        .HasMaxLength(1024);
+                b.Property<string> ("ClaimType")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("ClaimValue")
+                    .HasColumnType ("nvarchar(1024)")
+                    .HasMaxLength (1024);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
+                b.Property<Guid> ("RoleId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasIndex("RoleId");
-
-                    b.ToTable("RocketRoleClaims");
-                });
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUser", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("AccessFailedCount")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("AccessFailedCount")
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnName("DeleterId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnName("DeletionTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnName("Email")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
-
-                    b.Property<bool>("EmailConfirmed")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("EmailConfirmed")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
-
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime2");
-
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnName("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
+                b.HasKey ("Id");
 
-                    b.Property<bool>("LockoutEnabled")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("LockoutEnabled")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.HasIndex ("RoleId");
+
+                b.ToTable ("RocketRoleClaims");
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUser", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<int> ("AccessFailedCount")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("AccessFailedCount")
+                    .HasColumnType ("int")
+                    .HasDefaultValue (0);
+
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
+
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnName ("CreationTime")
+                    .HasColumnType ("datetime2");
+
+                b.Property<Guid?> ("CreatorId")
+                    .HasColumnName ("CreatorId")
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<Guid?> ("DeleterId")
+                    .HasColumnName ("DeleterId")
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<DateTime?> ("DeletionTime")
+                    .HasColumnName ("DeletionTime")
+                    .HasColumnType ("datetime2");
+
+                b.Property<string> ("Email")
+                    .HasColumnName ("Email")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
+
+                b.Property<bool> ("EmailConfirmed")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("EmailConfirmed")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.Property<DateTimeOffset?>("LockoutEnd")
-                        .HasColumnType("datetimeoffset");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("Name")
-                        .HasColumnName("Name")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<bool> ("IsDeleted")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("IsDeleted")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
+
+                b.Property<DateTime?> ("LastModificationTime")
+                    .HasColumnName ("LastModificationTime")
+                    .HasColumnType ("datetime2");
+
+                b.Property<Guid?> ("LastModifierId")
+                    .HasColumnName ("LastModifierId")
+                    .HasColumnType ("uniqueidentifier");
+
+                b.Property<bool> ("LockoutEnabled")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("LockoutEnabled")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.Property<string>("NormalizedEmail")
-                        .IsRequired()
-                        .HasColumnName("NormalizedEmail")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<DateTimeOffset?> ("LockoutEnd")
+                    .HasColumnType ("datetimeoffset");
 
-                    b.Property<string>("NormalizedUserName")
-                        .IsRequired()
-                        .HasColumnName("NormalizedUserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<string> ("Name")
+                    .HasColumnName ("Name")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.Property<string>("PasswordHash")
-                        .HasColumnName("PasswordHash")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<string> ("NormalizedEmail")
+                    .HasColumnName ("NormalizedEmail")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<string>("PhoneNumber")
-                        .HasColumnName("PhoneNumber")
-                        .HasColumnType("nvarchar(16)")
-                        .HasMaxLength(16);
+                b.Property<string> ("NormalizedUserName")
+                    .IsRequired ()
+                    .HasColumnName ("NormalizedUserName")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<bool>("PhoneNumberConfirmed")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("PhoneNumberConfirmed")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.Property<string> ("PasswordHash")
+                    .HasColumnName ("PasswordHash")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<string>("SecurityStamp")
-                        .IsRequired()
-                        .HasColumnName("SecurityStamp")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<string> ("PhoneNumber")
+                    .IsRequired ()
+                    .HasColumnName ("PhoneNumber")
+                    .HasColumnType ("nvarchar(16)")
+                    .HasMaxLength (16);
 
-                    b.Property<string>("Surname")
-                        .HasColumnName("Surname")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<bool> ("PhoneNumberConfirmed")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("PhoneNumberConfirmed")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnName("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("SecurityStamp")
+                    .IsRequired ()
+                    .HasColumnName ("SecurityStamp")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<bool>("TwoFactorEnabled")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("TwoFactorEnabled")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.Property<string> ("Surname")
+                    .HasColumnName ("Surname")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.Property<string>("UserName")
-                        .IsRequired()
-                        .HasColumnName("UserName")
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("Id");
+                b.Property<bool> ("TwoFactorEnabled")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("TwoFactorEnabled")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.HasIndex("Email");
+                b.Property<string> ("UserName")
+                    .IsRequired ()
+                    .HasColumnName ("UserName")
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.HasIndex("NormalizedEmail");
+                b.HasKey ("Id");
 
-                    b.HasIndex("NormalizedUserName");
+                b.HasIndex ("NormalizedUserName");
 
-                    b.HasIndex("UserName");
+                b.HasIndex ("PhoneNumber");
 
-                    b.ToTable("RocketUsers");
-                });
+                b.HasIndex ("UserName");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserClaim", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketUsers");
+            });
 
-                    b.Property<string>("ClaimType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(256)")
-                        .HasMaxLength(256);
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserClaim", b => {
+                b.Property<Guid> ("Id")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ClaimValue")
-                        .HasColumnType("nvarchar(1024)")
-                        .HasMaxLength(1024);
+                b.Property<string> ("ClaimType")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(256)")
+                    .HasMaxLength (256);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("ClaimValue")
+                    .HasColumnType ("nvarchar(1024)")
+                    .HasMaxLength (1024);
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("Id");
+                b.Property<Guid> ("UserId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasIndex("UserId");
+                b.HasKey ("Id");
 
-                    b.ToTable("RocketUserClaims");
-                });
+                b.HasIndex ("UserId");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserLogin", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketUserClaims");
+            });
 
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserLogin", b => {
+                b.Property<Guid> ("UserId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ProviderDisplayName")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("LoginProvider")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.Property<string>("ProviderKey")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(196)")
-                        .HasMaxLength(196);
+                b.Property<string> ("ProviderDisplayName")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("ProviderKey")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(196)")
+                    .HasMaxLength (196);
 
-                    b.HasKey("UserId", "LoginProvider");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasIndex("LoginProvider", "ProviderKey");
+                b.HasKey ("UserId", "LoginProvider");
 
-                    b.ToTable("RocketUserLogins");
-                });
+                b.HasIndex ("LoginProvider", "ProviderKey");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserRole", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketUserLogins");
+            });
 
-                    b.Property<Guid>("RoleId")
-                        .HasColumnType("uniqueidentifier");
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserRole", b => {
+                b.Property<Guid> ("UserId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid> ("RoleId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("UserId", "RoleId");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasIndex("RoleId", "UserId");
+                b.HasKey ("UserId", "RoleId");
 
-                    b.ToTable("RocketUserRoles");
-                });
+                b.HasIndex ("RoleId", "UserId");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserToken", b =>
-                {
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketUserRoles");
+            });
 
-                    b.Property<string>("LoginProvider")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserToken", b => {
+                b.Property<Guid> ("UserId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.Property<string> ("LoginProvider")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("Name")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("UserId", "LoginProvider", "Name");
+                b.Property<string> ("Value")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.ToTable("RocketUserTokens");
-                });
+                b.HasKey ("UserId", "LoginProvider", "Name");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("RocketUserTokens");
+            });
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnName ("CreationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnName("DeleterId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid?> ("CreatorId")
+                    .HasColumnName ("CreatorId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnName("DeletionTime")
-                        .HasColumnType("datetime2");
+                b.Property<Guid?> ("DeleterId")
+                    .HasColumnName ("DeleterId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                b.Property<DateTime?> ("DeletionTime")
+                    .HasColumnName ("DeletionTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("Description")
+                    .HasColumnType ("nvarchar(1000)")
+                    .HasMaxLength (1000);
 
-                    b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                b.Property<string> ("DisplayName")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<bool> ("Enabled")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime2");
+                b.Property<bool> ("IsDeleted")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("IsDeleted")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnName("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime?> ("LastModificationTime")
+                    .HasColumnName ("LastModificationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<Guid?> ("LastModifierId")
+                    .HasColumnName ("LastModifierId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Properties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.HasKey("Id");
+                b.Property<string> ("Properties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.ToTable("IdentityServerApiResources");
-                });
+                b.HasKey ("Id");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiResourceClaim", b =>
-                {
-                    b.Property<Guid>("ApiResourceId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerApiResources");
+            });
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiResourceClaim", b => {
+                b.Property<Guid> ("ApiResourceId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("ApiResourceId", "Type");
+                b.Property<string> ("Type")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.ToTable("IdentityServerApiClaims");
-                });
+                b.HasKey ("ApiResourceId", "Type");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiScope", b =>
-                {
-                    b.Property<Guid>("ApiResourceId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerApiClaims");
+            });
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiScope", b => {
+                b.Property<Guid> ("ApiResourceId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                b.Property<string> ("Name")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("Description")
+                    .HasColumnType ("nvarchar(1000)")
+                    .HasMaxLength (1000);
 
-                    b.Property<bool>("Emphasize")
-                        .HasColumnType("bit");
+                b.Property<string> ("DisplayName")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<bool>("Required")
-                        .HasColumnType("bit");
+                b.Property<bool> ("Emphasize")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("ShowInDiscoveryDocument")
-                        .HasColumnType("bit");
+                b.Property<bool> ("Required")
+                    .HasColumnType ("bit");
 
-                    b.HasKey("ApiResourceId", "Name");
+                b.Property<bool> ("ShowInDiscoveryDocument")
+                    .HasColumnType ("bit");
 
-                    b.ToTable("IdentityServerApiScopes");
-                });
+                b.HasKey ("ApiResourceId", "Name");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiScopeClaim", b =>
-                {
-                    b.Property<Guid>("ApiResourceId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerApiScopes");
+            });
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiScopeClaim", b => {
+                b.Property<Guid> ("ApiResourceId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("Name")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.HasKey("ApiResourceId", "Name", "Type");
+                b.Property<string> ("Type")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.ToTable("IdentityServerApiScopeClaims");
-                });
+                b.HasKey ("ApiResourceId", "Name", "Type");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiSecret", b =>
-                {
-                    b.Property<Guid>("ApiResourceId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerApiScopeClaims");
+            });
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiSecret", b => {
+                b.Property<Guid> ("ApiResourceId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(4000)")
-                        .HasMaxLength(4000);
+                b.Property<string> ("Type")
+                    .HasColumnType ("nvarchar(250)")
+                    .HasMaxLength (250);
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<string> ("Value")
+                    .HasColumnType ("nvarchar(4000)")
+                    .HasMaxLength (4000);
 
-                    b.Property<DateTime?>("Expiration")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("Description")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.HasKey("ApiResourceId", "Type", "Value");
+                b.Property<DateTime?> ("Expiration")
+                    .HasColumnType ("datetime2");
 
-                    b.ToTable("IdentityServerApiSecrets");
-                });
+                b.HasKey ("ApiResourceId", "Type", "Value");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.Client", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerApiSecrets");
+            });
 
-                    b.Property<int>("AbsoluteRefreshTokenLifetime")
-                        .HasColumnType("int");
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.Client", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<int>("AccessTokenLifetime")
-                        .HasColumnType("int");
+                b.Property<int> ("AbsoluteRefreshTokenLifetime")
+                    .HasColumnType ("int");
 
-                    b.Property<int>("AccessTokenType")
-                        .HasColumnType("int");
+                b.Property<int> ("AccessTokenLifetime")
+                    .HasColumnType ("int");
 
-                    b.Property<bool>("AllowAccessTokensViaBrowser")
-                        .HasColumnType("bit");
+                b.Property<int> ("AccessTokenType")
+                    .HasColumnType ("int");
 
-                    b.Property<bool>("AllowOfflineAccess")
-                        .HasColumnType("bit");
+                b.Property<bool> ("AllowAccessTokensViaBrowser")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("AllowPlainTextPkce")
-                        .HasColumnType("bit");
+                b.Property<bool> ("AllowOfflineAccess")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("AllowRememberConsent")
-                        .HasColumnType("bit");
+                b.Property<bool> ("AllowPlainTextPkce")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("AlwaysIncludeUserClaimsInIdToken")
-                        .HasColumnType("bit");
+                b.Property<bool> ("AllowRememberConsent")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("AlwaysSendClientClaims")
-                        .HasColumnType("bit");
+                b.Property<bool> ("AlwaysIncludeUserClaimsInIdToken")
+                    .HasColumnType ("bit");
 
-                    b.Property<int>("AuthorizationCodeLifetime")
-                        .HasColumnType("int");
+                b.Property<bool> ("AlwaysSendClientClaims")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("BackChannelLogoutSessionRequired")
-                        .HasColumnType("bit");
+                b.Property<int> ("AuthorizationCodeLifetime")
+                    .HasColumnType ("int");
 
-                    b.Property<string>("BackChannelLogoutUri")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<bool> ("BackChannelLogoutSessionRequired")
+                    .HasColumnType ("bit");
 
-                    b.Property<string>("ClientClaimsPrefix")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("BackChannelLogoutUri")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.Property<string>("ClientId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("ClientClaimsPrefix")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<string>("ClientName")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("ClientId")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<string>("ClientUri")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<string> ("ClientName")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("ClientUri")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.Property<int?>("ConsentLifetime")
-                        .HasColumnType("int");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
+                b.Property<int?> ("ConsentLifetime")
+                    .HasColumnType ("int");
 
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnName ("CreationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnName("DeleterId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid?> ("CreatorId")
+                    .HasColumnName ("CreatorId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnName("DeletionTime")
-                        .HasColumnType("datetime2");
+                b.Property<Guid?> ("DeleterId")
+                    .HasColumnName ("DeleterId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                b.Property<DateTime?> ("DeletionTime")
+                    .HasColumnName ("DeletionTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<int>("DeviceCodeLifetime")
-                        .HasColumnType("int");
+                b.Property<string> ("Description")
+                    .HasColumnType ("nvarchar(1000)")
+                    .HasMaxLength (1000);
 
-                    b.Property<bool>("EnableLocalLogin")
-                        .HasColumnType("bit");
+                b.Property<int> ("DeviceCodeLifetime")
+                    .HasColumnType ("int");
 
-                    b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                b.Property<bool> ("EnableLocalLogin")
+                    .HasColumnType ("bit");
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<bool> ("Enabled")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("FrontChannelLogoutSessionRequired")
-                        .HasColumnType("bit");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("FrontChannelLogoutUri")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<bool> ("FrontChannelLogoutSessionRequired")
+                    .HasColumnType ("bit");
 
-                    b.Property<int>("IdentityTokenLifetime")
-                        .HasColumnType("int");
+                b.Property<string> ("FrontChannelLogoutUri")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.Property<bool>("IncludeJwtId")
-                        .HasColumnType("bit");
+                b.Property<int> ("IdentityTokenLifetime")
+                    .HasColumnType ("int");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.Property<bool> ("IncludeJwtId")
+                    .HasColumnType ("bit");
 
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime2");
+                b.Property<bool> ("IsDeleted")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("IsDeleted")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnName("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime?> ("LastModificationTime")
+                    .HasColumnName ("LastModificationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("LogoUri")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<Guid?> ("LastModifierId")
+                    .HasColumnName ("LastModifierId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("PairWiseSubjectSalt")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("LogoUri")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.Property<string>("ProtocolType")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("PairWiseSubjectSalt")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<int>("RefreshTokenExpiration")
-                        .HasColumnType("int");
+                b.Property<string> ("ProtocolType")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<int>("RefreshTokenUsage")
-                        .HasColumnType("int");
+                b.Property<int> ("RefreshTokenExpiration")
+                    .HasColumnType ("int");
 
-                    b.Property<bool>("RequireClientSecret")
-                        .HasColumnType("bit");
+                b.Property<int> ("RefreshTokenUsage")
+                    .HasColumnType ("int");
 
-                    b.Property<bool>("RequireConsent")
-                        .HasColumnType("bit");
+                b.Property<bool> ("RequireClientSecret")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("RequirePkce")
-                        .HasColumnType("bit");
+                b.Property<bool> ("RequireConsent")
+                    .HasColumnType ("bit");
 
-                    b.Property<int>("SlidingRefreshTokenLifetime")
-                        .HasColumnType("int");
+                b.Property<bool> ("RequirePkce")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("UpdateAccessTokenClaimsOnRefresh")
-                        .HasColumnType("bit");
+                b.Property<int> ("SlidingRefreshTokenLifetime")
+                    .HasColumnType ("int");
 
-                    b.Property<string>("UserCodeType")
-                        .HasColumnType("nvarchar(100)")
-                        .HasMaxLength(100);
+                b.Property<bool> ("UpdateAccessTokenClaimsOnRefresh")
+                    .HasColumnType ("bit");
 
-                    b.Property<int?>("UserSsoLifetime")
-                        .HasColumnType("int");
+                b.Property<string> ("UserCodeType")
+                    .HasColumnType ("nvarchar(100)")
+                    .HasMaxLength (100);
 
-                    b.HasKey("Id");
+                b.Property<int?> ("UserSsoLifetime")
+                    .HasColumnType ("int");
 
-                    b.HasIndex("ClientId");
+                b.HasKey ("Id");
 
-                    b.ToTable("IdentityServerClients");
-                });
+                b.HasIndex ("ClientId");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientClaim", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClients");
+            });
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientClaim", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+                b.Property<string> ("Type")
+                    .HasColumnType ("nvarchar(250)")
+                    .HasMaxLength (250);
 
-                    b.HasKey("ClientId", "Type", "Value");
+                b.Property<string> ("Value")
+                    .HasColumnType ("nvarchar(250)")
+                    .HasMaxLength (250);
 
-                    b.ToTable("IdentityServerClientClaims");
-                });
+                b.HasKey ("ClientId", "Type", "Value");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientCorsOrigin", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientClaims");
+            });
 
-                    b.Property<string>("Origin")
-                        .HasColumnType("nvarchar(150)")
-                        .HasMaxLength(150);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientCorsOrigin", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("ClientId", "Origin");
+                b.Property<string> ("Origin")
+                    .HasColumnType ("nvarchar(150)")
+                    .HasMaxLength (150);
 
-                    b.ToTable("IdentityServerClientCorsOrigins");
-                });
+                b.HasKey ("ClientId", "Origin");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientGrantType", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientCorsOrigins");
+            });
 
-                    b.Property<string>("GrantType")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientGrantType", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("ClientId", "GrantType");
+                b.Property<string> ("GrantType")
+                    .HasColumnType ("nvarchar(250)")
+                    .HasMaxLength (250);
 
-                    b.ToTable("IdentityServerClientGrantTypes");
-                });
+                b.HasKey ("ClientId", "GrantType");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientIdPRestriction", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientGrantTypes");
+            });
 
-                    b.Property<string>("Provider")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientIdPRestriction", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("ClientId", "Provider");
+                b.Property<string> ("Provider")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.ToTable("IdentityServerClientIdPRestrictions");
-                });
+                b.HasKey ("ClientId", "Provider");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientPostLogoutRedirectUri", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientIdPRestrictions");
+            });
 
-                    b.Property<string>("PostLogoutRedirectUri")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientPostLogoutRedirectUri", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("ClientId", "PostLogoutRedirectUri");
+                b.Property<string> ("PostLogoutRedirectUri")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.ToTable("IdentityServerClientPostLogoutRedirectUris");
-                });
+                b.HasKey ("ClientId", "PostLogoutRedirectUri");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientProperty", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientPostLogoutRedirectUris");
+            });
 
-                    b.Property<string>("Key")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientProperty", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<string> ("Key")
+                    .HasColumnType ("nvarchar(250)")
+                    .HasMaxLength (250);
 
-                    b.HasKey("ClientId", "Key");
+                b.Property<string> ("Value")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.ToTable("IdentityServerClientProperties");
-                });
+                b.HasKey ("ClientId", "Key");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientRedirectUri", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientProperties");
+            });
 
-                    b.Property<string>("RedirectUri")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientRedirectUri", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("ClientId", "RedirectUri");
+                b.Property<string> ("RedirectUri")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.ToTable("IdentityServerClientRedirectUris");
-                });
+                b.HasKey ("ClientId", "RedirectUri");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientScope", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientRedirectUris");
+            });
 
-                    b.Property<string>("Scope")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientScope", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("ClientId", "Scope");
+                b.Property<string> ("Scope")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.ToTable("IdentityServerClientScopes");
-                });
+                b.HasKey ("ClientId", "Scope");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientSecret", b =>
-                {
-                    b.Property<Guid>("ClientId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientScopes");
+            });
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(250)")
-                        .HasMaxLength(250);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientSecret", b => {
+                b.Property<Guid> ("ClientId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(4000)")
-                        .HasMaxLength(4000);
+                b.Property<string> ("Type")
+                    .HasColumnType ("nvarchar(250)")
+                    .HasMaxLength (250);
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(2000)")
-                        .HasMaxLength(2000);
+                b.Property<string> ("Value")
+                    .HasColumnType ("nvarchar(4000)")
+                    .HasMaxLength (4000);
 
-                    b.Property<DateTime?>("Expiration")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("Description")
+                    .HasColumnType ("nvarchar(2000)")
+                    .HasMaxLength (2000);
 
-                    b.HasKey("ClientId", "Type", "Value");
+                b.Property<DateTime?> ("Expiration")
+                    .HasColumnType ("datetime2");
 
-                    b.ToTable("IdentityServerClientSecrets");
-                });
+                b.HasKey ("ClientId", "Type", "Value");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Devices.DeviceFlowCodes", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerClientSecrets");
+            });
 
-                    b.Property<string>("ClientId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Devices.DeviceFlowCodes", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("ClientId")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnName ("CreationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("Data")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(50000);
+                b.Property<Guid?> ("CreatorId")
+                    .HasColumnName ("CreatorId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("DeviceCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("Data")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(max)")
+                    .HasMaxLength (50000);
 
-                    b.Property<DateTime?>("Expiration")
-                        .IsRequired()
-                        .HasColumnType("datetime2");
+                b.Property<string> ("DeviceCode")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<DateTime?> ("Expiration")
+                    .IsRequired ()
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("UserCode")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("SubjectId")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.HasKey("Id");
+                b.Property<string> ("UserCode")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.HasIndex("DeviceCode")
-                        .IsUnique();
+                b.HasKey ("Id");
 
-                    b.HasIndex("Expiration");
+                b.HasIndex ("DeviceCode")
+                    .IsUnique ();
 
-                    b.HasIndex("UserCode")
-                        .IsUnique();
+                b.HasIndex ("Expiration");
 
-                    b.ToTable("IdentityServerDeviceFlowCodes");
-                });
+                b.HasIndex ("UserCode")
+                    .IsUnique ();
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Grants.PersistedGrant", b =>
-                {
-                    b.Property<string>("Key")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.ToTable ("IdentityServerDeviceFlowCodes");
+            });
 
-                    b.Property<string>("ClientId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Grants.PersistedGrant", b => {
+                b.Property<string> ("Key")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("ClientId")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("Data")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)")
-                        .HasMaxLength(50000);
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<DateTime?>("Expiration")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("Data")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(max)")
+                    .HasMaxLength (50000);
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<DateTime?> ("Expiration")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<Guid>("Id")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<string>("SubjectId")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<Guid> ("Id")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Type")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                b.Property<string> ("SubjectId")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.HasKey("Key");
+                b.Property<string> ("Type")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(50)")
+                    .HasMaxLength (50);
 
-                    b.HasIndex("Expiration");
+                b.HasKey ("Key");
 
-                    b.HasIndex("SubjectId", "ClientId", "Type");
+                b.HasIndex ("Expiration");
 
-                    b.ToTable("IdentityServerPersistedGrants");
-                });
+                b.HasIndex ("SubjectId", "ClientId", "Type");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityClaim", b =>
-                {
-                    b.Property<Guid>("IdentityResourceId")
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerPersistedGrants");
+            });
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityClaim", b => {
+                b.Property<Guid> ("IdentityResourceId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.HasKey("IdentityResourceId", "Type");
+                b.Property<string> ("Type")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.ToTable("IdentityServerIdentityClaims");
-                });
+                b.HasKey ("IdentityResourceId", "Type");
 
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityResource", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerIdentityClaims");
+            });
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityResource", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnName ("CreationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnName("DeleterId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<Guid?> ("CreatorId")
+                    .HasColumnName ("CreatorId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnName("DeletionTime")
-                        .HasColumnType("datetime2");
+                b.Property<Guid?> ("DeleterId")
+                    .HasColumnName ("DeleterId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Description")
-                        .HasColumnType("nvarchar(1000)")
-                        .HasMaxLength(1000);
+                b.Property<DateTime?> ("DeletionTime")
+                    .HasColumnName ("DeletionTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("DisplayName")
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<string> ("Description")
+                    .HasColumnType ("nvarchar(1000)")
+                    .HasMaxLength (1000);
 
-                    b.Property<bool>("Emphasize")
-                        .HasColumnType("bit");
+                b.Property<string> ("DisplayName")
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<bool>("Enabled")
-                        .HasColumnType("bit");
+                b.Property<bool> ("Emphasize")
+                    .HasColumnType ("bit");
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<bool> ("Enabled")
+                    .HasColumnType ("bit");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime2");
+                b.Property<bool> ("IsDeleted")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("IsDeleted")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnName("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime?> ("LastModificationTime")
+                    .HasColumnName ("LastModificationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(200)")
-                        .HasMaxLength(200);
+                b.Property<Guid?> ("LastModifierId")
+                    .HasColumnName ("LastModifierId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("Properties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(200)")
+                    .HasMaxLength (200);
 
-                    b.Property<bool>("Required")
-                        .HasColumnType("bit");
+                b.Property<string> ("Properties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<bool>("ShowInDiscoveryDocument")
-                        .HasColumnType("bit");
+                b.Property<bool> ("Required")
+                    .HasColumnType ("bit");
 
-                    b.HasKey("Id");
+                b.Property<bool> ("ShowInDiscoveryDocument")
+                    .HasColumnType ("bit");
 
-                    b.ToTable("IdentityServerIdentityResources");
-                });
+                b.HasKey ("Id");
 
-            modelBuilder.Entity("Aiwins.Rocket.PermissionManagement.PermissionGrant", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.ToTable ("IdentityServerIdentityResources");
+            });
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+            modelBuilder.Entity ("Aiwins.Rocket.PermissionManagement.PermissionGrant", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ProviderKey")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<string>("ProviderName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<string> ("ProviderKey")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.Property<Guid?>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("ProviderName")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.HasKey("Id");
+                b.Property<string> ("ProviderScope")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(16)")
+                    .HasMaxLength (16);
 
-                    b.HasIndex("Name", "ProviderName", "ProviderKey");
+                b.Property<Guid?> ("TenantId")
+                    .HasColumnName ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.ToTable("RocketPermissionGrants");
-                });
+                b.HasKey ("Id");
 
-            modelBuilder.Entity("Aiwins.Rocket.SettingManagement.Setting", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.HasIndex ("Name", "ProviderName", "ProviderScope", "ProviderKey");
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(128)")
-                        .HasMaxLength(128);
+                b.ToTable ("RocketPermissionGrants");
+            });
 
-                    b.Property<string>("ProviderKey")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+            modelBuilder.Entity ("Aiwins.Rocket.SettingManagement.Setting", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ProviderName")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(2048)")
-                        .HasMaxLength(2048);
+                b.Property<string> ("ProviderKey")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.HasKey("Id");
+                b.Property<string> ("ProviderName")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.HasIndex("Name", "ProviderName", "ProviderKey");
+                b.Property<string> ("Value")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(2048)")
+                    .HasMaxLength (2048);
 
-                    b.ToTable("RocketSettings");
-                });
+                b.HasKey ("Id");
 
-            modelBuilder.Entity("Aiwins.Rocket.TenantManagement.Tenant", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                b.HasIndex ("Name", "ProviderName", "ProviderKey");
 
-                    b.Property<string>("ConcurrencyStamp")
-                        .IsConcurrencyToken()
-                        .HasColumnName("ConcurrencyStamp")
-                        .HasColumnType("nvarchar(max)");
+                b.ToTable ("RocketSettings");
+            });
 
-                    b.Property<DateTime>("CreationTime")
-                        .HasColumnName("CreationTime")
-                        .HasColumnType("datetime2");
+            modelBuilder.Entity ("Aiwins.Rocket.TenantManagement.Tenant", b => {
+                b.Property<Guid> ("Id")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<Guid?>("CreatorId")
-                        .HasColumnName("CreatorId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("ConcurrencyStamp")
+                    .IsConcurrencyToken ()
+                    .HasColumnName ("ConcurrencyStamp")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<Guid?>("DeleterId")
-                        .HasColumnName("DeleterId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<DateTime> ("CreationTime")
+                    .HasColumnName ("CreationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<DateTime?>("DeletionTime")
-                        .HasColumnName("DeletionTime")
-                        .HasColumnType("datetime2");
+                b.Property<Guid?> ("CreatorId")
+                    .HasColumnName ("CreatorId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<string>("ExtraProperties")
-                        .HasColumnName("ExtraProperties")
-                        .HasColumnType("nvarchar(max)");
+                b.Property<Guid?> ("DeleterId")
+                    .HasColumnName ("DeleterId")
+                    .HasColumnType ("uniqueidentifier");
 
-                    b.Property<bool>("IsDeleted")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnName("IsDeleted")
-                        .HasColumnType("bit")
-                        .HasDefaultValue(false);
+                b.Property<DateTime?> ("DeletionTime")
+                    .HasColumnName ("DeletionTime")
+                    .HasColumnType ("datetime2");
 
-                    b.Property<DateTime?>("LastModificationTime")
-                        .HasColumnName("LastModificationTime")
-                        .HasColumnType("datetime2");
+                b.Property<string> ("ExtraProperties")
+                    .HasColumnName ("ExtraProperties")
+                    .HasColumnType ("nvarchar(max)");
 
-                    b.Property<Guid?>("LastModifierId")
-                        .HasColumnName("LastModifierId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("FirstPySpelling")
+                    .HasColumnType ("nvarchar(32)")
+                    .HasMaxLength (32);
 
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.Property<string> ("FullPySpelling")
+                    .HasColumnType ("nvarchar(128)")
+                    .HasMaxLength (128);
 
-                    b.HasKey("Id");
+                b.Property<bool> ("IsDeleted")
+                    .ValueGeneratedOnAdd ()
+                    .HasColumnName ("IsDeleted")
+                    .HasColumnType ("bit")
+                    .HasDefaultValue (false);
 
-                    b.HasIndex("Name");
+                b.Property<DateTime?> ("LastModificationTime")
+                    .HasColumnName ("LastModificationTime")
+                    .HasColumnType ("datetime2");
 
-                    b.ToTable("RocketTenants");
-                });
+                b.Property<Guid?> ("LastModifierId")
+                    .HasColumnName ("LastModifierId")
+                    .HasColumnType ("uniqueidentifier");
 
-            modelBuilder.Entity("Aiwins.Rocket.TenantManagement.TenantConnectionString", b =>
-                {
-                    b.Property<Guid>("TenantId")
-                        .HasColumnType("uniqueidentifier");
+                b.Property<string> ("Name")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(64)")
-                        .HasMaxLength(64);
+                b.HasKey ("Id");
 
-                    b.Property<string>("Value")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(1024)")
-                        .HasMaxLength(1024);
+                b.HasIndex ("Name");
 
-                    b.HasKey("TenantId", "Name");
+                b.ToTable ("RocketTenants");
+            });
 
-                    b.ToTable("RocketTenantConnectionStrings");
-                });
+            modelBuilder.Entity ("Aiwins.Rocket.TenantManagement.TenantConnectionString", b => {
+                b.Property<Guid> ("TenantId")
+                    .HasColumnType ("uniqueidentifier");
 
-            modelBuilder.Entity("Aiwins.Rocket.AuditLogging.AuditLogAction", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.AuditLogging.AuditLog", null)
-                        .WithMany("Actions")
-                        .HasForeignKey("AuditLogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                b.Property<string> ("Name")
+                    .HasColumnType ("nvarchar(64)")
+                    .HasMaxLength (64);
 
-            modelBuilder.Entity("Aiwins.Rocket.AuditLogging.EntityChange", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.AuditLogging.AuditLog", null)
-                        .WithMany("EntityChanges")
-                        .HasForeignKey("AuditLogId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                b.Property<string> ("Value")
+                    .IsRequired ()
+                    .HasColumnType ("nvarchar(1024)")
+                    .HasMaxLength (1024);
 
-            modelBuilder.Entity("Aiwins.Rocket.AuditLogging.EntityPropertyChange", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.AuditLogging.EntityChange", null)
-                        .WithMany("PropertyChanges")
-                        .HasForeignKey("EntityChangeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                b.HasKey ("TenantId", "Name");
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityRoleClaim", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.Identity.IdentityRole", null)
-                        .WithMany("Claims")
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+                b.ToTable ("RocketTenantConnectionStrings");
+            });
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserClaim", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.Identity.IdentityUser", null)
-                        .WithMany("Claims")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            modelBuilder.Entity ("Aiwins.Rocket.AuditLogging.AuditLogAction", b => {
+                b.HasOne ("Aiwins.Rocket.AuditLogging.AuditLog", null)
+                    .WithMany ("Actions")
+                    .HasForeignKey ("AuditLogId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserLogin", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.Identity.IdentityUser", null)
-                        .WithMany("Logins")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            modelBuilder.Entity ("Aiwins.Rocket.AuditLogging.EntityChange", b => {
+                b.HasOne ("Aiwins.Rocket.AuditLogging.AuditLog", null)
+                    .WithMany ("EntityChanges")
+                    .HasForeignKey ("AuditLogId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
 
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserRole", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.Identity.IdentityRole", null)
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Aiwins.Rocket.Identity.IdentityUser", null)
-                        .WithMany("Roles")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.Identity.IdentityUserToken", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.Identity.IdentityUser", null)
-                        .WithMany("Tokens")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiResourceClaim", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", null)
-                        .WithMany("UserClaims")
-                        .HasForeignKey("ApiResourceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiScope", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", null)
-                        .WithMany("Scopes")
-                        .HasForeignKey("ApiResourceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiScopeClaim", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.ApiResources.ApiScope", null)
-                        .WithMany("UserClaims")
-                        .HasForeignKey("ApiResourceId", "Name")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.ApiResources.ApiSecret", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", null)
-                        .WithMany("Secrets")
-                        .HasForeignKey("ApiResourceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientClaim", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("Claims")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientCorsOrigin", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("AllowedCorsOrigins")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientGrantType", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("AllowedGrantTypes")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientIdPRestriction", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("IdentityProviderRestrictions")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientPostLogoutRedirectUri", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("PostLogoutRedirectUris")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientProperty", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("Properties")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientRedirectUri", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("RedirectUris")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientScope", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("AllowedScopes")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.Clients.ClientSecret", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.Clients.Client", null)
-                        .WithMany("ClientSecrets")
-                        .HasForeignKey("ClientId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityClaim", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityResource", null)
-                        .WithMany("UserClaims")
-                        .HasForeignKey("IdentityResourceId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
-            modelBuilder.Entity("Aiwins.Rocket.TenantManagement.TenantConnectionString", b =>
-                {
-                    b.HasOne("Aiwins.Rocket.TenantManagement.Tenant", null)
-                        .WithMany("ConnectionStrings")
-                        .HasForeignKey("TenantId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
+            modelBuilder.Entity ("Aiwins.Rocket.AuditLogging.EntityPropertyChange", b => {
+                b.HasOne ("Aiwins.Rocket.AuditLogging.EntityChange", null)
+                    .WithMany ("PropertyChanges")
+                    .HasForeignKey ("EntityChangeId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityRoleClaim", b => {
+                b.HasOne ("Aiwins.Rocket.Identity.IdentityRole", null)
+                    .WithMany ("Claims")
+                    .HasForeignKey ("RoleId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserClaim", b => {
+                b.HasOne ("Aiwins.Rocket.Identity.IdentityUser", null)
+                    .WithMany ("Claims")
+                    .HasForeignKey ("UserId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserLogin", b => {
+                b.HasOne ("Aiwins.Rocket.Identity.IdentityUser", null)
+                    .WithMany ("Logins")
+                    .HasForeignKey ("UserId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserRole", b => {
+                b.HasOne ("Aiwins.Rocket.Identity.IdentityRole", null)
+                    .WithMany ()
+                    .HasForeignKey ("RoleId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+
+                b.HasOne ("Aiwins.Rocket.Identity.IdentityUser", null)
+                    .WithMany ("Roles")
+                    .HasForeignKey ("UserId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.Identity.IdentityUserToken", b => {
+                b.HasOne ("Aiwins.Rocket.Identity.IdentityUser", null)
+                    .WithMany ("Tokens")
+                    .HasForeignKey ("UserId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiResourceClaim", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", null)
+                    .WithMany ("UserClaims")
+                    .HasForeignKey ("ApiResourceId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiScope", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", null)
+                    .WithMany ("Scopes")
+                    .HasForeignKey ("ApiResourceId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiScopeClaim", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.ApiResources.ApiScope", null)
+                    .WithMany ("UserClaims")
+                    .HasForeignKey ("ApiResourceId", "Name")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.ApiResources.ApiSecret", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.ApiResources.ApiResource", null)
+                    .WithMany ("Secrets")
+                    .HasForeignKey ("ApiResourceId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientClaim", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("Claims")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientCorsOrigin", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("AllowedCorsOrigins")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientGrantType", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("AllowedGrantTypes")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientIdPRestriction", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("IdentityProviderRestrictions")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientPostLogoutRedirectUri", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("PostLogoutRedirectUris")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientProperty", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("Properties")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientRedirectUri", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("RedirectUris")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientScope", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("AllowedScopes")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.Clients.ClientSecret", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.Clients.Client", null)
+                    .WithMany ("ClientSecrets")
+                    .HasForeignKey ("ClientId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityClaim", b => {
+                b.HasOne ("Aiwins.Rocket.IdentityServer.IdentityResources.IdentityResource", null)
+                    .WithMany ("UserClaims")
+                    .HasForeignKey ("IdentityResourceId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
+
+            modelBuilder.Entity ("Aiwins.Rocket.TenantManagement.TenantConnectionString", b => {
+                b.HasOne ("Aiwins.Rocket.TenantManagement.Tenant", null)
+                    .WithMany ("ConnectionStrings")
+                    .HasForeignKey ("TenantId")
+                    .OnDelete (DeleteBehavior.Cascade)
+                    .IsRequired ();
+            });
 #pragma warning restore 612, 618
         }
     }

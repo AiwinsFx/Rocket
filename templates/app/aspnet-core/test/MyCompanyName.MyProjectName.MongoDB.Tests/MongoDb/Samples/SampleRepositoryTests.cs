@@ -10,21 +10,21 @@ namespace MyCompanyName.MyProjectName.MongoDB.Samples
 {
     /* This is just an example test class.
      * Normally, you don't test ROCKET framework code
-     * (like default AppUser repository IRepository<AppUser, Guid> here).
+     * (like default User repository IRepository<User, Guid> here).
      * Only test your custom repository methods.
      */
     [Collection(MongoTestCollection.Name)]
     public class SampleRepositoryTests : MyProjectNameMongoDbTestBase
     {
-        private readonly IRepository<AppUser, Guid> _appUserRepository;
+        private readonly IRepository<User, Guid> _userRepository;
 
         public SampleRepositoryTests()
         {
-            _appUserRepository = GetRequiredService<IRepository<AppUser, Guid>>();
+            _userRepository = GetRequiredService<IRepository<User, Guid>>();
         }
 
         [Fact]
-        public async Task Should_Query_AppUser()
+        public async Task Should_Query_User()
         {
             /* Need to manually start Unit Of Work because
              * FirstOrDefaultAsync should be executed while db connection / context is available.
@@ -32,7 +32,7 @@ namespace MyCompanyName.MyProjectName.MongoDB.Samples
             await WithUnitOfWorkAsync(async () =>
             {
                 //Act
-                var adminUser = await _appUserRepository
+                var adminUser = await _userRepository
                     .GetMongoQueryable()
                     .FirstOrDefaultAsync(u => u.UserName == "admin");
 

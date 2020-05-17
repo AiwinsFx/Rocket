@@ -12,7 +12,7 @@ namespace MyCompanyName.MyProjectName.Users
      * - You can query users from database with this entity.
      * - You can update values of your custom properties.
      */
-    public class AppUser : FullAuditedAggregateRoot<Guid>, IUser
+    public class User : FullAuditedAggregateRoot<Guid>, IUser
     {
         #region Base properties
 
@@ -55,7 +55,7 @@ namespace MyCompanyName.MyProjectName.Users
          * schema change to the database.
          */
 
-        private AppUser()
+        private User()
         {
             
         }
