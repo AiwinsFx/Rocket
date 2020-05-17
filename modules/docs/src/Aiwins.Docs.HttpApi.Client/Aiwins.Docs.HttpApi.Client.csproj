@@ -4,7 +4,7 @@
   <Import Project="..\..\..\..\common.props" />
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Aiwins.Docs.HttpApi.Client</AssemblyName>
     <PackageId>Aiwins.Docs.HttpApi.Client</PackageId>
     <RootNamespace />
