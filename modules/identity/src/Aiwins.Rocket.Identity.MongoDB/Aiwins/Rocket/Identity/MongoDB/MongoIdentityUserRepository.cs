@@ -86,6 +86,9 @@ namespace Aiwins.Rocket.Identity.MongoDB {
                 .WhereIf<IdentityUser, IMongoQueryable<IdentityUser>> (!filter.IsNullOrWhiteSpace (),
                     u =>
                     u.UserName.Contains (filter) ||
+                    u.Name.Contains (filter) || 
+                    u.FullPySpelling.Contains (filter) || 
+                    u.FirstPySpelling.Contains (filter) || 
                     u.Email.Contains (filter)
                 )
                 .OrderBy (sorting ?? nameof (IdentityUser.UserName))
@@ -110,6 +113,9 @@ namespace Aiwins.Rocket.Identity.MongoDB {
                 .WhereIf<IdentityUser, IMongoQueryable<IdentityUser>> (!filter.IsNullOrWhiteSpace (),
                     u =>
                     u.UserName.Contains (filter) ||
+                    u.Name.Contains (filter) || 
+                    u.FullPySpelling.Contains (filter) || 
+                    u.FirstPySpelling.Contains (filter) || 
                     u.Email.Contains (filter)
                 )
                 .LongCountAsync (GetCancellationToken (cancellationToken));

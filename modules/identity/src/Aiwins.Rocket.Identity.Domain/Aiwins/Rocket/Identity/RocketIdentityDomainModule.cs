@@ -32,7 +32,8 @@ namespace Aiwins.Rocket.Identity {
             });
 
             var identityBuilder = context.Services.AddRocketIdentity (options => {
-                options.User.RequireUniqueEmail = true;
+                // 如果邮箱为必填则可以设置为true
+                // options.User.RequireUniqueEmail = true;
             });
 
             context.Services.AddObjectAccessor (identityBuilder);

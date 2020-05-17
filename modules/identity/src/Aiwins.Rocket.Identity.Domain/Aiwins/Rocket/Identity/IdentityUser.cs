@@ -6,12 +6,13 @@ using System.Security.Claims;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Entities.Auditing;
 using Aiwins.Rocket.Guids;
+using Aiwins.Rocket.Pinyin;
 using Aiwins.Rocket.Users;
 using JetBrains.Annotations;
 using Microsoft.AspNetCore.Identity;
 
 namespace Aiwins.Rocket.Identity {
-    public class IdentityUser : FullAuditedAggregateRoot<Guid>, IUser {
+    public class IdentityUser : FullAuditedAggregateRoot<Guid>, IUser, IPySpelling {
         public virtual Guid? TenantId { get; protected set; }
 
         /// <summary>
@@ -121,6 +122,12 @@ namespace Aiwins.Rocket.Identity {
         /// Navigation property for this users tokens.
         /// </summary>
         public virtual ICollection<IdentityUserToken> Tokens { get; protected set; }
+
+        [DisableAuditing]
+        public virtual string FullPySpelling { get; set; }
+
+        [DisableAuditing]
+        public virtual string FirstPySpelling { get; set; }
 
         protected IdentityUser () {
             ExtraProperties = new Dictionary<string, object> ();

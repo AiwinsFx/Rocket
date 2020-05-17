@@ -96,6 +96,9 @@ namespace Aiwins.Rocket.Identity.EntityFrameworkCore {
                 .WhereIf (!filter.IsNullOrWhiteSpace (),
                     u =>
                     u.UserName.Contains (filter) ||
+                    u.Name.Contains (filter) || 
+                    u.FullPySpelling.Contains (filter) || 
+                    u.FirstPySpelling.Contains (filter) || 
                     u.Email.Contains (filter)
                 )
                 .OrderBy (sorting ?? nameof (IdentityUser.UserName))
@@ -121,6 +124,9 @@ namespace Aiwins.Rocket.Identity.EntityFrameworkCore {
             return await this.WhereIf (!filter.IsNullOrWhiteSpace (),
                     u =>
                     u.UserName.Contains (filter) ||
+                    u.Name.Contains (filter) || 
+                    u.FullPySpelling.Contains (filter) || 
+                    u.FirstPySpelling.Contains (filter) || 
                     u.Email.Contains (filter)
                 )
                 .LongCountAsync (GetCancellationToken (cancellationToken));

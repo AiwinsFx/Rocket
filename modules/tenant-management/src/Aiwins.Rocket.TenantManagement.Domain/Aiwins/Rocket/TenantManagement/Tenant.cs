@@ -8,7 +8,9 @@ using Aiwins.Rocket.Pinyin;
 namespace Aiwins.Rocket.TenantManagement {
     public class Tenant : FullAuditedAggregateRoot<Guid>, IPySpelling {
         public virtual string Name { get; set; }
+        [DisableAuditing]
         public virtual string FullPySpelling { get; set; }
+        [DisableAuditing]
         public virtual string FirstPySpelling { get; set; }
 
         public virtual List<TenantConnectionString> ConnectionStrings { get; protected set; }

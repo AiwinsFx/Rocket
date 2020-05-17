@@ -55,7 +55,7 @@ namespace Aiwins.Rocket.Identity {
                 adminPhoneNumber,
                 tenantId
             ) {
-                Name = adminUserName
+                Name = "超级管理员"
             };
 
             (await UserManager.CreateAsync (adminUser, adminPassword)).CheckErrors ();

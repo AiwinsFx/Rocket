@@ -18,7 +18,6 @@ namespace Aiwins.Rocket.Users {
 
         bool EmailConfirmed { get; }
 
-        [CanBeNull]
         string PhoneNumber { get; }
 
         bool PhoneNumberConfirmed { get; }
