@@ -4,7 +4,7 @@ $rootFolder = Join-Path $packFolder "../"
 
 # List of solutions
 $solutions = (
-    "framework",
+    # "framework",
     "modules/account",
     "modules/audit-logging",
     "modules/background-jobs",
@@ -18,6 +18,8 @@ $solutions = (
     "modules/setting-management",
     "modules/tenant-management",
     "modules/users"
+
+    # "samples/Lion/aspnet-core"
 )
 
 # List of projects
@@ -230,4 +232,23 @@ $projects = (
     "modules/users/src/Aiwins.Rocket.Users.Domain.Shared",
     "modules/users/src/Aiwins.Rocket.Users.EntityFrameworkCore",
     "modules/users/src/Aiwins.Rocket.Users.MongoDB"
+
+    # # samples/Lion
+    # "samples/Lion/aspnet-core/src/Lion.Application.Contracts",
+    # "samples/Lion/aspnet-core/src/Lion.Application",
+    # "samples/Lion/aspnet-core/src/Lion.EntityFrameworkCore",
+    # "samples/Lion/aspnet-core/src/Lion.EntityFrameworkCore.DbMigrations",
+    # "samples/Lion/aspnet-core/src/Lion.IdentityServer",
+    # "samples/Lion/aspnet-core/src/Lion.DbMigrator",
+    # "samples/Lion/aspnet-core/src/Lion.Domain.Shared",
+    # "samples/Lion/aspnet-core/src/Lion.Domain",
+    # "samples/Lion/aspnet-core/src/Lion.HttpApi",
+    # "samples/Lion/aspnet-core/src/Lion.HttpApi.Client",
+    # "samples/Lion/aspnet-core/src/Lion.HttpApi.Host",
+
+    # "samples/Lion/aspnet-core/test/Lion.TestBase",
+    # "samples/Lion/aspnet-core/test/Lion.Application.Tests",
+    # "samples/Lion/aspnet-core/test/Lion.Domain.Tests",
+    # "samples/Lion/aspnet-core/test/Lion.EntityFrameworkCore.Tests",
+    # "samples/Lion/aspnet-core/test/Lion.HttpApi.Client.ConsoleTestApp"
 )
