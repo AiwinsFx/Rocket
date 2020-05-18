@@ -19,7 +19,7 @@ namespace Aiwins.Rocket.UI.Navigation
             Configure<RocketLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<RocketUiNavigationResource>("en")
+                    .Add<RocketUiNavigationResource>("zh-Hans")
                     .AddVirtualJson("/Aiwins/Rocket/Ui/Navigation/Localization/Resource");
             });
 

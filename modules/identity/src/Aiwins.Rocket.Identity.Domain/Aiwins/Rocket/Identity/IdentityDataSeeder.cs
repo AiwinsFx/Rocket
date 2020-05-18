@@ -39,8 +39,9 @@ namespace Aiwins.Rocket.Identity {
 
             var result = new IdentityDataSeedResult ();
 
-            // userName -> phoneNumber(默认)
-            string adminUserName = adminPhoneNumber;
+            //"超管账号" 用户
+            const string adminName = "超管账号";
+            string adminUserName = adminPhoneNumber;  // 将用户名设置为手机号 userName -> phoneNumber(默认)
             var adminUser = await UserRepository.FindByNormalizedUserNameAsync (
                 LookupNormalizer.NormalizeName (adminUserName)
             );
@@ -55,14 +56,14 @@ namespace Aiwins.Rocket.Identity {
                 adminPhoneNumber,
                 tenantId
             ) {
-                Name = "超级管理员"
+                Name = adminName
             };
 
             (await UserManager.CreateAsync (adminUser, adminPassword)).CheckErrors ();
             result.CreatedAdminUser = true;
 
-            //"admin" role
-            const string adminRoleName = "admin";
+            //"超级管理员" 角色
+            const string adminRoleName = "超级管理员";
             var adminRole = await RoleRepository.FindByNormalizedNameAsync (LookupNormalizer.NormalizeName (adminRoleName));
             if (adminRole == null) {
                 adminRole = new IdentityRole (

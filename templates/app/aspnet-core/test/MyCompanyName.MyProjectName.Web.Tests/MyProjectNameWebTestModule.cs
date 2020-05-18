@@ -42,10 +42,10 @@ namespace MyCompanyName.MyProjectName
 
         private static void ConfigureLocalizationServices(IServiceCollection services)
         {
-            var cultures = new List<CultureInfo> { new CultureInfo("en"), new CultureInfo("tr") };
+            var cultures = new List<CultureInfo> { new CultureInfo("zh-Hans"), new CultureInfo("en") };
             services.Configure<RequestLocalizationOptions>(options =>
             {
-                options.DefaultRequestCulture = new RequestCulture("en");
+                options.DefaultRequestCulture = new RequestCulture("zh-Hans");
                 options.SupportedCultures = cultures;
                 options.SupportedUICultures = cultures;
             });

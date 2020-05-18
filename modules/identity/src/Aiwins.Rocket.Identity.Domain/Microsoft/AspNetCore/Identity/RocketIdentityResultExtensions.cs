@@ -38,9 +38,9 @@ namespace Microsoft.AspNetCore.Identity {
             var localizedString = localizer[key];
 
             if (!localizedString.ResourceNotFound) {
-                var englishLocalizedString = localizer.WithCulture (CultureInfo.GetCultureInfo ("zh-Hans")) [key];
-                if (!englishLocalizedString.ResourceNotFound) {
-                    if (FormattedStringValueExtracter.IsMatch (error.Description, englishLocalizedString.Value, out var values)) {
+                var chineseLocalizedString = localizer.WithCulture (CultureInfo.GetCultureInfo ("zh-Hans")) [key];
+                if (!chineseLocalizedString.ResourceNotFound) {
+                    if (FormattedStringValueExtracter.IsMatch (error.Description, chineseLocalizedString.Value, out var values)) {
                         return string.Format (localizedString.Value, values.Cast<object> ().ToArray ());
                     }
                 }

@@ -36,7 +36,7 @@ namespace MyCompanyName.MyProjectName
             Configure<RocketLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<MyProjectNameResource>("en")
+                    .Add<MyProjectNameResource>("zh-Hans")
                     .AddBaseTypes(typeof(RocketValidationResource))
                     .AddVirtualJson("/Localization/MyProjectName");
                 

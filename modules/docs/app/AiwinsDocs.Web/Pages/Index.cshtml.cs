@@ -40,14 +40,14 @@ namespace AiwinsDocs.Web.Pages
             return Page();
         }
 
-        private async Task<IActionResult> RedirectToProjectAsync(ProjectDto project, string language = "en", string version = null)
+        private async Task<IActionResult> RedirectToProjectAsync(ProjectDto project, string language = "zh-Hans", string version = null)
         {
             var path = GetUrlForProject(project, language, version);
             return await Task.FromResult(Redirect(path));
         }
 
         //Eg: "/en/rocket/latest"
-        public string GetUrlForProject(ProjectDto project, string language = "en", string version = null)
+        public string GetUrlForProject(ProjectDto project, string language = "zh-Hans", string version = null)
         {
             return "." +
                    _urlUiOptions.RoutePrefix.EnsureStartsWith('/').EnsureEndsWith('/') +

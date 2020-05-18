@@ -6,7 +6,7 @@ namespace Aiwins.Rocket.Localization {
         public override void Define (ISettingDefinitionContext context) {
             context.Add (
                 new SettingDefinition (LocalizationSettingNames.DefaultLanguage,
-                    "en",
+                    "zh-Hans",
                     L ("DisplayName:Rocket.Localization.DefaultLanguage"),
                     L ("Description:Rocket.Localization.DefaultLanguage"),
                     isVisibleToClients : true)

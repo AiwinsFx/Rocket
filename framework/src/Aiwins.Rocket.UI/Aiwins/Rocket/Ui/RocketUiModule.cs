@@ -21,7 +21,7 @@ namespace Aiwins.Rocket.UI
             Configure<RocketLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<RocketUiResource>("en")
+                    .Add<RocketUiResource>("zh-Hans")
                     .AddVirtualJson("/Localization/Resources/RocketUi");
             });
         }

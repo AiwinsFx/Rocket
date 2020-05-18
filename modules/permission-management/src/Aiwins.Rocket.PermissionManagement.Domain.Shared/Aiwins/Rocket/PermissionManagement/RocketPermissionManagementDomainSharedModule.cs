@@ -22,7 +22,7 @@ namespace Aiwins.Rocket.PermissionManagement
             Configure<RocketLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<RocketPermissionManagementResource>("en")
+                    .Add<RocketPermissionManagementResource>("zh-Hans")
                     .AddBaseTypes(
                         typeof(RocketValidationResource)
                     ).AddVirtualJson("/Aiwins/Rocket/PermissionManagement/Localization/Domain");

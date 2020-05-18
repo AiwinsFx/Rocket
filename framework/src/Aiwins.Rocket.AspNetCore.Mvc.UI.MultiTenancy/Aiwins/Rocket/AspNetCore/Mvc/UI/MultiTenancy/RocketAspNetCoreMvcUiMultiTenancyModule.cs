@@ -43,7 +43,7 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.UI.MultiTenancy
             Configure<RocketLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<RocketUiMultiTenancyResource>("en")
+                    .Add<RocketUiMultiTenancyResource>("zh-Hans")
                     .AddVirtualJson("/Aiwins/Rocket/AspNetCore/Mvc/UI/MultiTenancy/Localization");
             });
 

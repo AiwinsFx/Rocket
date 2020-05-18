@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Aiwins.Rocket.Authorization.Permissions;
@@ -31,7 +32,18 @@ namespace Aiwins.Rocket.PermissionManagement {
 
             var permissions = new Dictionary<string, string> ();
             foreach (var permissionDefinition in permissionDefinitions) {
-                permissions.Add (permissionDefinition.Name, permissionDefinition.Scopes.FirstOrDefault ().Name);
+                var selectedScope = permissionDefinition.Scopes.FirstOrDefault ();
+                // 系统权限需要首先设置Scope范围
+                if (selectedScope == null) {
+                    throw new RocketException ($"No scopes defined for the permission '{permissionDefinition.Name}', please define permission scopes first.");
+                }
+
+                // 系统权限需要设置最大权限作为第一个权限
+                if (selectedScope.Name == nameof (PermissionScopeType.Prohibited)) {
+                    throw new RocketException ($"Prohibited scope for the permission '{permissionDefinition.Name}' can not set as first scope, please set max scope as the first scope.");
+                }
+
+                permissions.Add (permissionDefinition.Name, selectedScope.Name);
             }
 
             return PermissionDataSeeder.SeedAsync (

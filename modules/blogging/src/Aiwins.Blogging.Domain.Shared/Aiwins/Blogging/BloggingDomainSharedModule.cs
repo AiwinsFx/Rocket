@@ -20,7 +20,7 @@ namespace Aiwins.Blogging
             Configure<RocketLocalizationOptions>(options =>
             {
                 options.Resources
-                    .Add<BloggingResource>("en")
+                    .Add<BloggingResource>("zh-Hans")
                     .AddBaseTypes(typeof(RocketValidationResource))
                     .AddVirtualJson("Aiwins/Blogging/Localization/Resources");
             });

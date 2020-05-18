@@ -7,77 +7,63 @@ using System.Threading.Tasks;
 using System.Xml;
 using Aiwins.Rocket.Cli.Utils;
 using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.IO;
 
-namespace Aiwins.Rocket.Cli.ProjectModification
-{
-    public class NugetPackageToLocalReferenceConverter : ITransientDependency
-    {
-        public async Task Convert(ModuleWithMastersInfo module, string solutionFile)
-        {
-            var nugetPackageList = GetNugetPackages(module);
-            var modulesFolder = Path.Combine(Path.GetDirectoryName(solutionFile), "modules");
-            var srcFolder = Path.Combine(Path.GetDirectoryName(solutionFile), "src");
-            var testFolder = Path.Combine(Path.GetDirectoryName(solutionFile), "test");
+namespace Aiwins.Rocket.Cli.ProjectModification {
+    public class NugetPackageToLocalReferenceConverter : ITransientDependency {
+        public async Task Convert (ModuleWithMastersInfo module, string solutionFile) {
+            var nugetPackageList = GetNugetPackages (module);
+            var modulesFolder = Path.Combine (Path.GetDirectoryName (solutionFile), "modules");
+            var srcFolder = Path.Combine (Path.GetDirectoryName (solutionFile), "src");
+            var testFolder = Path.Combine (Path.GetDirectoryName (solutionFile), "test");
 
-            ConvertToLocalReference(modulesFolder, nugetPackageList, "..\\..\\..\\");
-            ConvertToLocalReference(srcFolder, nugetPackageList, "..\\..\\modules\\");
-            ConvertToLocalReference(testFolder, nugetPackageList, "..\\..\\modules\\", "test");
+            await ConvertToLocalReference (modulesFolder, nugetPackageList, "..\\..\\..\\");
+            await ConvertToLocalReference (srcFolder, nugetPackageList, "..\\..\\modules\\");
+            await ConvertToLocalReference (testFolder, nugetPackageList, "..\\..\\modules\\", "test");
         }
 
-        private void ConvertToLocalReference(string folder, List<NugetPackageInfoWithModuleName> nugetPackageList, string localPathPrefix, string sourceFile = "src")
-        {
-            var projectFiles = GetProjectFilesUnder(folder);
+        private async Task ConvertToLocalReference (string folder, List<NugetPackageInfoWithModuleName> nugetPackageList, string localPathPrefix, string sourceFile = "src") {
+            var projectFiles = GetProjectFilesUnder (folder);
 
-            foreach (var projectFile in projectFiles)
-            {
-                var content = File.ReadAllText(projectFile);
-                var doc = new XmlDocument() { PreserveWhitespace = true };
+            foreach (var projectFile in projectFiles) {
+                var content = await FileHelper.ReadAllTextAsync (projectFile);
+                var doc = new XmlDocument () { PreserveWhitespace = true };
 
-                doc.Load(StreamHelper.GenerateStreamFromString(content));
+                doc.Load (StreamHelper.GenerateStreamFromString (content));
 
-                var convertedProject = ProcessReferenceNodes(folder, doc, nugetPackageList, localPathPrefix, sourceFile);
+                var convertedProject = ProcessReferenceNodes (folder, doc, nugetPackageList, localPathPrefix, sourceFile);
 
-                File.WriteAllText(projectFile, convertedProject);
+                File.WriteAllText (projectFile, convertedProject);
             }
         }
 
-        private string ProcessReferenceNodes(string folder, XmlDocument doc, List<NugetPackageInfoWithModuleName> nugetPackageList, string localPathPrefix, string sourceFile = "src")
-        {
-            var nodes = doc.SelectNodes("/Project/ItemGroup/PackageReference[starts-with(@Include, 'Aiwins.')]");
+        private string ProcessReferenceNodes (string folder, XmlDocument doc, List<NugetPackageInfoWithModuleName> nugetPackageList, string localPathPrefix, string sourceFile = "src") {
+            var nodes = doc.SelectNodes ("/Project/ItemGroup/PackageReference[starts-with(@Include, 'Aiwins.')]");
 
-            if (nodes == null)
-            {
+            if (nodes == null) {
                 return doc.OuterXml;
             }
 
-            foreach (XmlNode oldNode in nodes)
-            {
+            foreach (XmlNode oldNode in nodes) {
                 var tempSourceFile = sourceFile;
                 var oldNodeIncludeValue = oldNode?.Attributes?["Include"]?.Value;
 
-                var moduleName = nugetPackageList.FirstOrDefault(n => n.NugetPackage.Name == oldNodeIncludeValue)?.ModuleName;
+                var moduleName = nugetPackageList.FirstOrDefault (n => n.NugetPackage.Name == oldNodeIncludeValue)?.ModuleName;
 
-                if (moduleName == null)
-                {
-                    var localProject = GetProjectFilesUnder(folder).FirstOrDefault(f=> f.EndsWith($"{oldNodeIncludeValue}.csproj"));
+                if (moduleName == null) {
+                    var localProject = GetProjectFilesUnder (folder).FirstOrDefault (f => f.EndsWith ($"{oldNodeIncludeValue}.csproj"));
 
-                    if (localProject != null)
-                    {
-                        moduleName = Directory.GetParent(Directory.GetParent(Path.GetDirectoryName(localProject)).FullName).Name;
+                    if (localProject != null) {
+                        moduleName = Directory.GetParent (Directory.GetParent (Path.GetDirectoryName (localProject)).FullName).Name;
 
-                        if (oldNodeIncludeValue.EndsWith(".test", StringComparison.InvariantCultureIgnoreCase) ||
-                            oldNodeIncludeValue.EndsWith(".tests", StringComparison.InvariantCultureIgnoreCase) ||
-                            oldNodeIncludeValue.EndsWith(".testbase", StringComparison.InvariantCultureIgnoreCase))
-                        {
+                        if (oldNodeIncludeValue.EndsWith (".test", StringComparison.InvariantCultureIgnoreCase) ||
+                            oldNodeIncludeValue.EndsWith (".tests", StringComparison.InvariantCultureIgnoreCase) ||
+                            oldNodeIncludeValue.EndsWith (".testbase", StringComparison.InvariantCultureIgnoreCase)) {
                             tempSourceFile = "test";
-                        }
-                        else
-                        {
+                        } else {
                             tempSourceFile = "src";
                         }
-                    }
-                    else
-                    {
+                    } else {
                         continue;
                     }
                 }
@@ -85,55 +71,48 @@ namespace Aiwins.Rocket.Cli.ProjectModification
                 var referenceProjectPath =
                     $"{localPathPrefix}{moduleName}\\{tempSourceFile}\\{oldNodeIncludeValue}\\{oldNodeIncludeValue}.csproj";
 
-                XmlNode newNode = GetNewReferenceNode(doc, referenceProjectPath);
+                XmlNode newNode = GetNewReferenceNode (doc, referenceProjectPath);
 
-                oldNode?.ParentNode?.ReplaceChild(newNode, oldNode);
+                oldNode?.ParentNode?.ReplaceChild (newNode, oldNode);
             }
 
             return doc.OuterXml;
         }
 
-        protected XmlElement GetNewReferenceNode(XmlDocument doc, string newValue)
-        {
-            var newNode = doc.CreateElement("ProjectReference");
+        protected XmlElement GetNewReferenceNode (XmlDocument doc, string newValue) {
+            var newNode = doc.CreateElement ("ProjectReference");
 
-            var includeAttr = doc.CreateAttribute("Include");
+            var includeAttr = doc.CreateAttribute ("Include");
             includeAttr.Value = newValue;
-            newNode.Attributes.Append(includeAttr);
+            newNode.Attributes.Append (includeAttr);
 
             return newNode;
         }
 
-        public List<NugetPackageInfoWithModuleName> GetNugetPackages(ModuleWithMastersInfo module)
-        {
-            var list = new List<NugetPackageInfoWithModuleName>();
+        public List<NugetPackageInfoWithModuleName> GetNugetPackages (ModuleWithMastersInfo module) {
+            var list = new List<NugetPackageInfoWithModuleName> ();
 
-            list.AddRange(module.NugetPackages.Select(n => new NugetPackageInfoWithModuleName
-            {
+            list.AddRange (module.NugetPackages.Select (n => new NugetPackageInfoWithModuleName {
                 ModuleName = module.Name,
-                NugetPackage = n
+                    NugetPackage = n
             }));
 
-            if (module.MasterModuleInfos != null)
-            {
-                foreach (var masterModule in module.MasterModuleInfos)
-                {
-                    list.AddRange(GetNugetPackages(masterModule));
+            if (module.MasterModuleInfos != null) {
+                foreach (var masterModule in module.MasterModuleInfos) {
+                    list.AddRange (GetNugetPackages (masterModule));
                 }
             }
 
             return list;
         }
 
-        private static string[] GetProjectFilesUnder(string path)
-        {
-            return Directory.GetFiles(path,
+        private static string[] GetProjectFilesUnder (string path) {
+            return Directory.GetFiles (path,
                 "*.csproj",
                 SearchOption.AllDirectories);
         }
 
-        public class NugetPackageInfoWithModuleName
-        {
+        public class NugetPackageInfoWithModuleName {
             public NugetPackageInfo NugetPackage { get; set; }
 
             public string ModuleName { get; set; }
