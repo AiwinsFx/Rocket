@@ -44,7 +44,6 @@
     <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.Autofac\Aiwins.Rocket.Autofac.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic\Aiwins.Rocket.AspNetCore.Mvc.UI.Theme.Basic.csproj" />
     <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Serilog\Aiwins.Rocket.AspNetCore.Serilog.csproj" />
-    <ProjectReference Include="..\..\..\..\..\framework\src\Aiwins.Rocket.AspNetCore.Serilog\Aiwins.Rocket.AspNetCore.Serilog.csproj" />
     <ProjectReference Include="..\..\..\..\..\modules\account\src\Aiwins.Rocket.Account.Web.IdentityServer\Aiwins.Rocket.Account.Web.IdentityServer.csproj" />
     <ProjectReference Include="..\..\..\..\..\modules\account\src\Aiwins.Rocket.Account.Application\Aiwins.Rocket.Account.Application.csproj" />
     <ProjectReference Include="..\MyCompanyName.MyProjectName.EntityFrameworkCore.DbMigrations\MyCompanyName.MyProjectName.EntityFrameworkCore.DbMigrations.csproj" />

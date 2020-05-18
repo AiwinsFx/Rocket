@@ -527,6 +527,12 @@ namespace MyCompanyName.MyProjectName.Migrations {
                     .HasColumnName ("ExtraProperties")
                     .HasColumnType ("nvarchar(max)");
 
+                b.Property<string> ("FirstPySpelling")
+                    .HasColumnType ("nvarchar(max)");
+
+                b.Property<string> ("FullPySpelling")
+                    .HasColumnType ("nvarchar(max)");
+
                 b.Property<bool> ("IsDeleted")
                     .ValueGeneratedOnAdd ()
                     .HasColumnName ("IsDeleted")

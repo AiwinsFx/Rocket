@@ -36,7 +36,7 @@ namespace Aiwins.Rocket.PermissionManagement {
 
             return PermissionDataSeeder.SeedAsync (
                 RolePermissionValueProvider.ProviderName,
-                "admin",
+                "超级管理员",
                 permissions,
                 context.TenantId
             );
