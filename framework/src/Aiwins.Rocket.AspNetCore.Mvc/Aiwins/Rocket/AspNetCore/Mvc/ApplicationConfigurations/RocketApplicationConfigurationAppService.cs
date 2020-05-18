@@ -96,8 +96,10 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
                 IsAuthenticated = _currentUser.IsAuthenticated,
                     Id = _currentUser.Id,
                     TenantId = _currentUser.TenantId,
+                    Name = _currentUser.Name,
                     UserName = _currentUser.UserName,
-                    Email = _currentUser.Email
+                    Email = _currentUser.Email,
+                    PhoneNumber = _currentUser.PhoneNumber
             };
         }
 

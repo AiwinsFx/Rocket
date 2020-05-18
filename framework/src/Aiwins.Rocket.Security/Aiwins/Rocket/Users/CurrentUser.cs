@@ -13,6 +13,8 @@ namespace Aiwins.Rocket.Users {
 
         public virtual Guid? Id => _principalAccessor.Principal?.FindUserId ();
 
+        public virtual string Name => this.FindClaimValue (RocketClaimTypes.Name);
+
         public virtual string UserName => this.FindClaimValue (RocketClaimTypes.UserName);
 
         public virtual string PhoneNumber => this.FindClaimValue (RocketClaimTypes.PhoneNumber);

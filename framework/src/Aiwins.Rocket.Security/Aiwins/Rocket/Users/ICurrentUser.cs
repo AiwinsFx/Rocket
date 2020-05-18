@@ -10,6 +10,9 @@ namespace Aiwins.Rocket.Users {
         Guid? Id { get; }
 
         [CanBeNull]
+        string Name { get; }
+
+        [CanBeNull]
         string UserName { get; }
 
         [CanBeNull]

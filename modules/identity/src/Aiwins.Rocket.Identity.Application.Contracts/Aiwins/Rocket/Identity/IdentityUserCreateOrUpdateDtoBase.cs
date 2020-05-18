@@ -14,11 +14,12 @@ namespace Aiwins.Rocket.Identity {
         [StringLength (IdentityUserConsts.MaxSurnameLength)]
         public string Surname { get; set; }
 
-        [Required]
         [EmailAddress]
         [StringLength (IdentityUserConsts.MaxEmailLength)]
         public string Email { get; set; }
 
+        [Required]
+        [RegularExpression (@"^1[3456789][0-9]{9}$")]
         [StringLength (IdentityUserConsts.MaxPhoneNumberLength)]
         public string PhoneNumber { get; set; }
 

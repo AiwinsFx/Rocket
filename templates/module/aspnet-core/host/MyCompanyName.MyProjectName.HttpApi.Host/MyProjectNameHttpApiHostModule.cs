@@ -94,7 +94,8 @@ namespace MyCompanyName.MyProjectName
 
             //Updates RocketClaimTypes to be compatible with identity server claims.
             RocketClaimTypes.UserId = JwtClaimTypes.Subject;
-            RocketClaimTypes.UserName = JwtClaimTypes.Name;
+            RocketClaimTypes.Name = JwtClaimTypes.Name;
+            RocketClaimTypes.UserName = JwtClaimTypes.PreferredUserName;
             RocketClaimTypes.Role = JwtClaimTypes.Role;
             RocketClaimTypes.Email = JwtClaimTypes.Email;
 

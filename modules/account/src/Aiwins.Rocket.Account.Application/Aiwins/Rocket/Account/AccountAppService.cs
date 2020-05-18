@@ -21,11 +21,11 @@ namespace Aiwins.Rocket.Account {
         public virtual async Task<IdentityUserDto> RegisterAsync (RegisterDto input) {
             await CheckSelfRegistrationAsync ();
 
-            var user = new IdentityUser (GuidGenerator.Create (), input.UserName, input.EmailAddress, CurrentTenant.Id);
+            var user = new IdentityUser (GuidGenerator.Create (), input.UserName, input.PhoneNumber, CurrentTenant.Id);
 
             (await UserManager.CreateAsync (user, input.Password)).CheckErrors ();
 
-            await UserManager.SetEmailAsync (user, input.EmailAddress);
+            await UserManager.SetPhoneNumberAsync (user, input.PhoneNumber);
             await UserManager.AddDefaultRolesAsync (user);
 
             return ObjectMapper.Map<IdentityUser, IdentityUserDto> (user);

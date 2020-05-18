@@ -26,16 +26,20 @@ namespace Aiwins.Rocket.IdentityServer {
 
             if (options.UpdateRocketClaimTypes) {
                 RocketClaimTypes.UserId = JwtClaimTypes.Subject;
-                RocketClaimTypes.UserName = JwtClaimTypes.Name;
+                RocketClaimTypes.Name = JwtClaimTypes.Name;
+                RocketClaimTypes.UserName = JwtClaimTypes.PreferredUserName;
                 RocketClaimTypes.Role = JwtClaimTypes.Role;
                 RocketClaimTypes.Email = JwtClaimTypes.Email;
+                RocketClaimTypes.PhoneNumber = JwtClaimTypes.PhoneNumber;
             }
 
             if (options.UpdateJwtSecurityTokenHandlerDefaultInboundClaimTypeMap) {
                 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap[RocketClaimTypes.UserId] = RocketClaimTypes.UserId;
+                JwtSecurityTokenHandler.DefaultInboundClaimTypeMap[RocketClaimTypes.Name] = RocketClaimTypes.Name;
                 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap[RocketClaimTypes.UserName] = RocketClaimTypes.UserName;
                 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap[RocketClaimTypes.Role] = RocketClaimTypes.Role;
                 JwtSecurityTokenHandler.DefaultInboundClaimTypeMap[RocketClaimTypes.Email] = RocketClaimTypes.Email;
+                JwtSecurityTokenHandler.DefaultInboundClaimTypeMap[RocketClaimTypes.PhoneNumber] = RocketClaimTypes.PhoneNumber;
             }
 
             return builder;

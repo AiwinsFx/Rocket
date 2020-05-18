@@ -6,13 +6,14 @@ using System.Net;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Logging.Abstractions;
-using Newtonsoft.Json.Linq;
 using Aiwins.Rocket.Cli.Args;
 using Aiwins.Rocket.Cli.ProjectBuilding;
 using Aiwins.Rocket.Cli.ProjectBuilding.Building;
 using Aiwins.Rocket.DependencyInjection;
+using Aiwins.Rocket.IO;
+using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging.Abstractions;
+using Newtonsoft.Json.Linq;
 
 namespace Aiwins.Rocket.Cli.Commands {
     public class GenerateProxyCommand : IConsoleCommand, ITransientDependency {
@@ -44,7 +45,7 @@ namespace Aiwins.Rocket.Cli.Commands {
 
             var apiUrl = commandLineArgs.Options.GetOrNull (Options.ApiUrl.Short, Options.ApiUrl.Long);
             if (string.IsNullOrWhiteSpace (apiUrl)) {
-                var environmentJson = File.ReadAllText ("src/environments/environment.ts").Split ("export const environment = ") [1].Replace (";", " ");
+                var environmentJson = (await FileHelper.ReadAllTextAsync ("src/environments/environment.ts")).Split ("export const environment = ") [1].Replace (";", " ");
                 var environment = JObject.Parse (environmentJson);
                 apiUrl = environment["apis"]["default"]["url"].ToString ();
             }
@@ -62,6 +63,7 @@ namespace Aiwins.Rocket.Cli.Commands {
             try {
                 json = client.DownloadString (apiUrl);
             } catch (Exception ex) {
+                Logger.LogInformation (ex.Message);
                 throw new CliUsageException (
                     "Cannot connect to the host {" + apiUrl + "}! Check that the host is up and running." +
                     Environment.NewLine + Environment.NewLine +

@@ -8,7 +8,12 @@ namespace Aiwins.Rocket.Security.Claims {
         /// <summary>
         /// 默认值: <see cref="ClaimTypes.Name"/>
         /// </summary>
-        public static string UserName { get; set; } = ClaimTypes.Name;
+        public static string Name { get; set; } = ClaimTypes.Name;
+
+        /// <summary>
+        /// 默认值: "preferred_username"
+        /// </summary>
+        public static string UserName { get; set; } = "preferred_username";
 
         /// <summary>
         /// 默认值: <see cref="ClaimTypes.NameIdentifier"/>

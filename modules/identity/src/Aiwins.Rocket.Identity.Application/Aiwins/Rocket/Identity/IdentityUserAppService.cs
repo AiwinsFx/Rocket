@@ -51,7 +51,7 @@ namespace Aiwins.Rocket.Identity {
             var user = new IdentityUser (
                 GuidGenerator.Create (),
                 input.UserName,
-                input.Email,
+                input.PhoneNumber,
                 CurrentTenant.Id
             );
 

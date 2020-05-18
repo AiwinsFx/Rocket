@@ -28,11 +28,13 @@ namespace Aiwins.Rocket.Identity {
                 (await UserManager.SetUserNameAsync (user, input.UserName)).CheckErrors ();
             }
 
+            if (await SettingProvider.IsTrueAsync (IdentitySettingNames.User.IsPhoneNumberUpdateEnabled)) {
+                (await UserManager.SetPhoneNumberAsync (user, input.PhoneNumber)).CheckErrors ();
+            }
+
             if (await SettingProvider.IsTrueAsync (IdentitySettingNames.User.IsEmailUpdateEnabled)) {
                 (await UserManager.SetEmailAsync (user, input.Email)).CheckErrors ();
             }
-
-            (await UserManager.SetPhoneNumberAsync (user, input.PhoneNumber)).CheckErrors ();
 
             user.Name = input.Name;
             user.Surname = input.Surname;
