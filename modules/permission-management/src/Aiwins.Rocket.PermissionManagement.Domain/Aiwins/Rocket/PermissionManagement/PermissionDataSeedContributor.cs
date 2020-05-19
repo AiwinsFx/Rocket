@@ -46,7 +46,7 @@ namespace Aiwins.Rocket.PermissionManagement {
                 permissions.Add (permissionDefinition.Name, selectedScope.Name);
             }
 
-            // 设置超级管理员角色权限 c074f9e8-4213-10b3-fcb7-39f53afe88b2
+            // 设置超级管理员角色权限 63eab816-3619-a6d7-c82b-39f53e403b4a
             await PermissionDataSeeder.SeedAsync (
                 RolePermissionValueProvider.ProviderName,
                 "63eab816-3619-a6d7-c82b-39f53e403b4a",
@@ -54,7 +54,7 @@ namespace Aiwins.Rocket.PermissionManagement {
                 context.TenantId
             );
 
-            // 设置超管账号权限 ca916292-3bf8-fa1e-5103-39f53afe8701
+            // 设置超管账号权限 716d0fe6-3101-057b-ba30-39f53e403930
             await PermissionDataSeeder.SeedAsync (
                 UserPermissionValueProvider.ProviderName,
                 "716d0fe6-3101-057b-ba30-39f53e403930",
