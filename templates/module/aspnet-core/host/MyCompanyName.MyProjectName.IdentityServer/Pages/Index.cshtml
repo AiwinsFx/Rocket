@@ -9,11 +9,11 @@
         <rocket-row>
             <rocket-column size-md="_3" class="text-center">
                 <i class="fa fa-user d-block" style="font-size: 10em; color: #12b900"></i>
-                <a rocket-button="Primary" asp-controller="Logout" asp-action="Index" asp-area="Account">Logout</a>
+                <a rocket-button="Primary" asp-controller="Logout" asp-action="Index" asp-area="Account">注销</a>
             </rocket-column>
             <rocket-column size-md="_9">
-                <h2>@CurrentUser.UserName</h2>
-                <h5 class="text-muted">@CurrentUser.Email</h5>
+                <h2>@CurrentUser.Name</h2>
+                <h5 class="text-muted">@CurrentUser.PhoneNumber</h5>
                 <div>
                     <strong>Roles</strong>: @CurrentUser.Roles.JoinAsString(", ")
                     <br />
@@ -29,6 +29,6 @@
 {
     <div class="text-center">
         <i class="fa fa-user d-block" style="font-size: 10em; color: #aaa"></i><br/><br />
-        <a rocket-button="Primary" asp-page="/Account/Login">Login</a>
+        <a rocket-button="Primary" asp-page="/Account/Login">登录</a>
     </div>
 }

@@ -15,7 +15,7 @@
     <rocket-card-header>@L["Welcome"]</rocket-card-header>
     <rocket-card-body>
         <p>@L["LongWelcomeMessage"]</p>
-        @if (!CurrentUser.IsAuthenticated)
+        @if (!.IsAuthenticated)
         {
             <form method="POST">
                 <input type="submit" asp-page-handler="Login" value="LOGIN" class="btn btn-login" />

@@ -10,11 +10,16 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account {
 
         protected IProfileAppService ProfileAppService { get; }
 
-        public ManageModel (IProfileAppService profileAppService) {
+        protected ICurrentUser CurrentUser { get; }
+
+        public ManageModel (ICurrentUser currentUser, IProfileAppService profileAppService) {
             ProfileAppService = profileAppService;
+            CurrentUser = currentUser;
         }
 
         public virtual async Task OnGetAsync () {
+
+            var a = CurrentUser;
             var user = await ProfileAppService.GetAsync ();
 
             PersonalSettingsInfoModel = ObjectMapper.Map<ProfileDto, PersonalSettingsInfoModel> (user);

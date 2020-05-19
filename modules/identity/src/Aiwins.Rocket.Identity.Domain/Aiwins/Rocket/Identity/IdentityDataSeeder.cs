@@ -51,7 +51,8 @@ namespace Aiwins.Rocket.Identity {
             }
 
             adminUser = new IdentityUser (
-                GuidGenerator.Create (),
+                // GuidGenerator.Create (),
+                new Guid("716d0fe6-3101-057b-ba30-39f53e403930"),
                 adminUserName,
                 adminPhoneNumber,
                 tenantId
@@ -67,7 +68,8 @@ namespace Aiwins.Rocket.Identity {
             var adminRole = await RoleRepository.FindByNormalizedNameAsync (LookupNormalizer.NormalizeName (adminRoleName));
             if (adminRole == null) {
                 adminRole = new IdentityRole (
-                GuidGenerator.Create (),
+                // GuidGenerator.Create (),
+                new Guid("63eab816-3619-a6d7-c82b-39f53e403b4a"),
                 adminRoleName,
                 tenantId
                 ) {

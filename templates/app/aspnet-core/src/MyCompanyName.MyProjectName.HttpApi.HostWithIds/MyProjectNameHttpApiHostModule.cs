@@ -188,7 +188,7 @@ namespace MyCompanyName.MyProjectName
 
             app.UseAuditing();
             app.UseRocketSerilogEnrichers();
-            app.UseMvcWithDefaultRouteAndArea();
+            app.UseConfiguredEndpoints();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Aiwins.Rocket.DependencyInjection;
@@ -29,5 +30,21 @@ namespace Aiwins.Rocket.Identity {
 
             return principal;
         }
+
+        // [UnitOfWork]
+        // public override async Task<ClaimsPrincipal> CreateAsync (IdentityUser user) {
+        //     if (user == null) {
+        //         throw new ArgumentNullException (nameof (user));
+        //     }
+
+        //     var principal = new ClaimsPrincipal (await GenerateClaimsAsync (user));
+        //     if (user.TenantId.HasValue) {
+        //         principal.Identities
+        //             .First ()
+        //             .AddClaim (new Claim (RocketClaimTypes.TenantId, user.TenantId.ToString ()));
+        //     }
+
+        //     return principal;
+        // }
     }
 }

@@ -142,7 +142,7 @@ namespace MyCompanyName.MyProjectName
             app.UseRocketRequestLocalization();
             app.UseAuditing();
             app.UseRocketSerilogEnrichers();
-            app.UseMvcWithDefaultRouteAndArea();
+            app.UseConfiguredEndpoints();
 
             using (var scope = context.ServiceProvider.CreateScope())
             {

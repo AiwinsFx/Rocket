@@ -221,7 +221,7 @@ namespace MyCompanyName.MyProjectName.Web
             });
             app.UseAuditing();
             app.UseRocketSerilogEnrichers();
-            app.UseMvcWithDefaultRouteAndArea();
+            app.UseConfiguredEndpoints();
         }
     }
 }

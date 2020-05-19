@@ -94,8 +94,8 @@ namespace MyCompanyName.MyProjectName
 
             //Updates RocketClaimTypes to be compatible with identity server claims.
             RocketClaimTypes.UserId = JwtClaimTypes.Subject;
-            RocketClaimTypes.Name = JwtClaimTypes.Name;
-            RocketClaimTypes.UserName = JwtClaimTypes.PreferredUserName;
+            RocketClaimTypes.Name = JwtClaimTypes.GivenName;
+            RocketClaimTypes.UserName = JwtClaimTypes.Name;
             RocketClaimTypes.Role = JwtClaimTypes.Role;
             RocketClaimTypes.Email = JwtClaimTypes.Email;
 
@@ -172,7 +172,7 @@ namespace MyCompanyName.MyProjectName
             });
             app.UseAuditing();
             app.UseRocketSerilogEnrichers();
-            app.UseMvcWithDefaultRouteAndArea();
+            app.UseConfiguredEndpoints();
         }
     }
 }
