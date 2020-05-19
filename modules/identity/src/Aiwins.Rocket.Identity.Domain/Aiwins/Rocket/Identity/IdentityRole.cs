@@ -2,12 +2,13 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using Aiwins.Rocket.Auditing;
 using System.Security.Claims;
+using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MultiTenancy;
+using Aiwins.Rocket.Pinyin;
 using JetBrains.Annotations;
 
 namespace Aiwins.Rocket.Identity {
@@ -20,7 +21,7 @@ namespace Aiwins.Rocket.Identity {
         /// <summary>
         /// Gets or sets the name for this role.
         /// </summary>
-        public virtual string Name { get; protected internal set; }
+        public virtual string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the normalized name for this role.
