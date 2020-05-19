@@ -10,9 +10,8 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account {
 
         protected IProfileAppService ProfileAppService { get; }
 
-        public ManageModel (ICurrentUser currentUser, IProfileAppService profileAppService) {
+        public ManageModel (IProfileAppService profileAppService) {
             ProfileAppService = profileAppService;
-            CurrentUser = currentUser;
         }
 
         public virtual async Task OnGetAsync () {
