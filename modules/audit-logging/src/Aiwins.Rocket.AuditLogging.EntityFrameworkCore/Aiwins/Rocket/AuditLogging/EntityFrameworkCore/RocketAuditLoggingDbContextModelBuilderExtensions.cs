@@ -39,6 +39,7 @@ namespace Aiwins.Rocket.AuditLogging.EntityFrameworkCore {
                 b.Property (x => x.ImpersonatorUserId).HasColumnName (nameof (AuditLog.ImpersonatorUserId));
                 b.Property (x => x.UserId).HasColumnName (nameof (AuditLog.UserId));
                 b.Property (x => x.UserName).HasMaxLength (AuditLogConsts.MaxUserNameLength).HasColumnName (nameof (AuditLog.UserName));
+                b.Property (x => x.UserPhoneNumber).HasMaxLength (AuditLogConsts.MaxUserPhoneNumberLength).HasColumnName (nameof (AuditLog.UserPhoneNumber));
                 b.Property (x => x.TenantId).HasColumnName (nameof (AuditLog.TenantId));
 
                 b.HasMany (a => a.Actions).WithOne ().HasForeignKey (x => x.AuditLogId).IsRequired ();

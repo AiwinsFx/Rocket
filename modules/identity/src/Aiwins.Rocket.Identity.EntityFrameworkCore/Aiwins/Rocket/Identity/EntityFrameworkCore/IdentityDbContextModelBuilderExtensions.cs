@@ -30,6 +30,8 @@ namespace Aiwins.Rocket.Identity.EntityFrameworkCore {
                 b.Property (u => u.TwoFactorEnabled).HasDefaultValue (false).HasColumnName (nameof (IdentityUser.TwoFactorEnabled));
                 b.Property (u => u.LockoutEnabled).HasDefaultValue (false).HasColumnName (nameof (IdentityUser.LockoutEnabled));
                 b.Property (u => u.AccessFailedCount).HasDefaultValue (0).HasColumnName (nameof (IdentityUser.AccessFailedCount));
+                b.Property (u => u.FirstPySpelling).HasMaxLength (IdentityUserConsts.MaxNameLength / 2);
+                b.Property (u => u.FullPySpelling).HasMaxLength (IdentityUserConsts.MaxNameLength * 2);
 
                 b.HasMany (u => u.Claims).WithOne ().HasForeignKey (uc => uc.UserId).IsRequired ();
                 b.HasMany (u => u.Logins).WithOne ().HasForeignKey (ul => ul.UserId).IsRequired ();
@@ -99,10 +101,12 @@ namespace Aiwins.Rocket.Identity.EntityFrameworkCore {
 
                 b.Property (r => r.Name).IsRequired ().HasMaxLength (IdentityRoleConsts.MaxNameLength);
                 b.Property (r => r.NormalizedName).IsRequired ().HasMaxLength (IdentityRoleConsts.MaxNormalizedNameLength);
-                b.Property (u => u.ConcurrencyStamp).IsRequired ().IsConcurrencyToken ().HasMaxLength (IdentityRoleConsts.MaxConcurrencyStampLength).HasColumnName (nameof (IdentityRole.ConcurrencyStamp));
+                b.Property (r => r.ConcurrencyStamp).IsRequired ().IsConcurrencyToken ().HasMaxLength (IdentityRoleConsts.MaxConcurrencyStampLength).HasColumnName (nameof (IdentityRole.ConcurrencyStamp));
                 b.Property (r => r.IsDefault).HasColumnName (nameof (IdentityRole.IsDefault));
                 b.Property (r => r.IsStatic).HasColumnName (nameof (IdentityRole.IsStatic));
                 b.Property (r => r.IsPublic).HasColumnName (nameof (IdentityRole.IsPublic));
+                b.Property (r => r.FirstPySpelling).HasMaxLength (IdentityRoleConsts.MaxNameLength / 2);
+                b.Property (r => r.FullPySpelling).HasMaxLength (IdentityRoleConsts.MaxNameLength * 2);
 
                 b.HasMany (r => r.Claims).WithOne ().HasForeignKey (rc => rc.RoleId).IsRequired ();
 

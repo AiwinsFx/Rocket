@@ -18,19 +18,6 @@ namespace Aiwins.Rocket.Identity {
             roleManager,
             options) { }
 
-        // [UnitOfWork]
-        // public override async Task<ClaimsPrincipal> CreateAsync (IdentityUser user) {
-        //     var principal = await base.CreateAsync (user);
-
-        //     if (user.TenantId.HasValue) {
-        //         principal.Identities
-        //             .First ()
-        //             .AddClaim (new Claim (RocketClaimTypes.TenantId, user.TenantId.ToString ()));
-        //     }
-
-        //     return principal;
-        // }
-
         [UnitOfWork]
         public override async Task<ClaimsPrincipal> CreateAsync (IdentityUser user) {
             if (user == null) {
@@ -48,11 +35,12 @@ namespace Aiwins.Rocket.Identity {
         }
 
         protected virtual async Task<ClaimsIdentity> GenerateIdentityClaimsAsync (IdentityUser user) {
-            user = await UserManager.GetUserAsync (user);
-
+            // user = await UserManager.GetUserAsync (user);
+            // var userId = await UserManager.GetUserIdAsync (user);
+            // var userName = await UserManager.GetUserNameAsync (user);
             var id = new ClaimsIdentity ("Identity.Application", Options.ClaimsIdentity.UserNameClaimType, Options.ClaimsIdentity.RoleClaimType);
 
-            id.AddClaim (new Claim (RocketClaimTypes.UserId, user.Id));
+            id.AddClaim (new Claim (RocketClaimTypes.UserId, user.Id.ToString()));
             id.AddClaim (new Claim (RocketClaimTypes.UserName, user.UserName));
             id.AddClaim (new Claim (RocketClaimTypes.Name, user.Name));
 
@@ -69,7 +57,7 @@ namespace Aiwins.Rocket.Identity {
                 foreach (var roleName in roles) {
                     var role = await RoleManager.FindByNameAsync (roleName);
                     if (role != null) {
-                        id.AddClaim (new Claim (RocketClaimTypes.RoleId, role.Id));
+                        id.AddClaim (new Claim (RocketClaimTypes.RoleId, role.Id.ToString()));
                         id.AddClaim (new Claim (RocketClaimTypes.Role, role.Name));
                         if (RoleManager.SupportsRoleClaims) {
                             // 获取role下的claims
@@ -80,5 +68,18 @@ namespace Aiwins.Rocket.Identity {
             }
             return id;
         }
+
+        // [UnitOfWork]
+        // public override async Task<ClaimsPrincipal> CreateAsync (IdentityUser user) {
+        //     var principal = await base.CreateAsync (user);
+
+        //     if (user.TenantId.HasValue) {
+        //         principal.Identities
+        //             .First ()
+        //             .AddClaim (new Claim (RocketClaimTypes.TenantId, user.TenantId.ToString ()));
+        //     }
+
+        //     return principal;
+        // }
     }
 }

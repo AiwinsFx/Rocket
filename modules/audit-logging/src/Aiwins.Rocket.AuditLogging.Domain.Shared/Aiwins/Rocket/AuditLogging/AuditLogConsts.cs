@@ -1,4 +1,5 @@
-﻿namespace Aiwins.Rocket.AuditLogging {
+﻿using Aiwins.Rocket.Users;
+namespace Aiwins.Rocket.AuditLogging {
     public static class AuditLogConsts {
         public const int MaxApplicationNameLength = 96;
 
@@ -19,9 +20,11 @@
         public const int MaxUrlLength = 256;
 
         public const int MaxHttpMethodLength = 16;
-
-        public const int MaxUserNameLength = 256;
-
+        
         public const int MaxTenantNameLength = 64;
+
+        public const int MaxUserNameLength = RocketUserConsts.MaxNameLength;
+
+        public const int MaxUserPhoneNumberLength = RocketUserConsts.MaxPhoneNumberLength;
     }
 }

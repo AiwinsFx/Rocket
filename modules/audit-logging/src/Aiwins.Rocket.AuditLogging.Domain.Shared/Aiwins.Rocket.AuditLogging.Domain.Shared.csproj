@@ -9,6 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\..\users\src\Aiwins.Rocket.Users.Domain.Shared\Aiwins.Rocket.Users.Domain.Shared.csproj" />
     <ProjectReference Include="..\..\..\..\framework\src\Aiwins.Rocket.Localization\Aiwins.Rocket.Localization.csproj" />
   </ItemGroup>
 

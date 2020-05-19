@@ -4,7 +4,6 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Security.Claims;
 using Aiwins.Rocket.Auditing;
-using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.MultiTenancy;
