@@ -30,6 +30,9 @@ namespace Aiwins.Rocket.Users {
         [NotNull]
         string[] Roles { get; }
 
+        [NotNull]
+        Guid[] RoleIds { get; }
+
         [CanBeNull]
         Claim FindClaim (string claimType);
 

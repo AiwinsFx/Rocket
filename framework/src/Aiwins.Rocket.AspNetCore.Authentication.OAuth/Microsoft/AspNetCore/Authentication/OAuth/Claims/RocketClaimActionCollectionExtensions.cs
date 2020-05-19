@@ -7,16 +7,16 @@ namespace Microsoft.AspNetCore.Authentication.OAuth.Claims
     {
         public static void MapRocketClaimTypes(this ClaimActionCollection claimActions)
         {
-            if (RocketClaimTypes.UserName != "preferred_username")
+            if (RocketClaimTypes.UserName != "name")
             {
-                claimActions.MapJsonKey(RocketClaimTypes.UserName, "preferred_username");
-                claimActions.DeleteClaim("preferred_username");
+                claimActions.MapJsonKey(RocketClaimTypes.UserName, "name");
+                claimActions.DeleteClaim("name");
             }
 
-            if (RocketClaimTypes.Name != "name")
+            if (RocketClaimTypes.Name != "given_name")
             {
-                claimActions.MapJsonKey(RocketClaimTypes.Name, "name");
-                claimActions.DeleteClaim("name");
+                claimActions.MapJsonKey(RocketClaimTypes.Name, "given_name");
+                claimActions.DeleteClaim("given_name");
             }
 
             if (RocketClaimTypes.Email != "email")

@@ -29,6 +29,8 @@ namespace Aiwins.Rocket.Users {
 
         public virtual string[] Roles => FindClaims (RocketClaimTypes.Role).Select (c => c.Value).ToArray ();
 
+        public virtual Guid[] RoleIds => FindClaims (RocketClaimTypes.RoleId).Select (c => new Guid(c.Value)).ToArray ();
+
         private readonly ICurrentPrincipalAccessor _principalAccessor;
 
         public CurrentUser (ICurrentPrincipalAccessor principalAccessor) {
@@ -49,6 +51,10 @@ namespace Aiwins.Rocket.Users {
 
         public virtual bool IsInRole (string roleName) {
             return FindClaims (RocketClaimTypes.Role).Any (c => c.Value == roleName);
+        }
+
+        public virtual bool IsInRole (Guid roleId) {
+            return FindClaims (RocketClaimTypes.RoleId).Any (c => c.Value == roleId.ToString ());
         }
     }
 }

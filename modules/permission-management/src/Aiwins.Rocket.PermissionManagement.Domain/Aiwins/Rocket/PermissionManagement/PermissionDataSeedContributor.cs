@@ -23,7 +23,7 @@ namespace Aiwins.Rocket.PermissionManagement {
             CurrentTenant = currentTenant;
         }
 
-        public virtual Task SeedAsync (DataSeedContext context) {
+        public virtual async Task SeedAsync (DataSeedContext context) {
             var multiTenancySide = CurrentTenant.GetMultiTenancySide ();
             var permissionDefinitions = PermissionDefinitionManager
                 .GetPermissions ()
@@ -46,9 +46,18 @@ namespace Aiwins.Rocket.PermissionManagement {
                 permissions.Add (permissionDefinition.Name, selectedScope.Name);
             }
 
-            return PermissionDataSeeder.SeedAsync (
+            // 设置超级管理员角色权限 c074f9e8-4213-10b3-fcb7-39f53afe88b2
+            await PermissionDataSeeder.SeedAsync (
                 RolePermissionValueProvider.ProviderName,
-                "超级管理员",
+                "c074f9e8-4213-10b3-fcb7-39f53afe88b2",
+                permissions,
+                context.TenantId
+            );
+
+            // 设置超管账号权限 ca916292-3bf8-fa1e-5103-39f53afe8701
+            await PermissionDataSeeder.SeedAsync (
+                UserPermissionValueProvider.ProviderName,
+                "ca916292-3bf8-fa1e-5103-39f53afe8701",
                 permissions,
                 context.TenantId
             );

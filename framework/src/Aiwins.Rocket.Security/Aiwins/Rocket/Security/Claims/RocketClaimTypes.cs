@@ -8,12 +8,7 @@ namespace Aiwins.Rocket.Security.Claims {
         /// <summary>
         /// 默认值: <see cref="ClaimTypes.Name"/>
         /// </summary>
-        public static string Name { get; set; } = ClaimTypes.Name;
-
-        /// <summary>
-        /// 默认值: "preferred_username"
-        /// </summary>
-        public static string UserName { get; set; } = "preferred_username";
+        public static string UserName { get; set; } =  ClaimTypes.Name;
 
         /// <summary>
         /// 默认值: <see cref="ClaimTypes.NameIdentifier"/>
@@ -21,9 +16,19 @@ namespace Aiwins.Rocket.Security.Claims {
         public static string UserId { get; set; } = ClaimTypes.NameIdentifier;
 
         /// <summary>
+        /// 默认值: "given_name"
+        /// </summary>
+        public static string Name { get; set; } = "given_name";
+
+        /// <summary>
         /// 默认值: <see cref="ClaimTypes.Role"/>
         /// </summary>
         public static string Role { get; set; } = ClaimTypes.Role;
+
+        /// <summary>
+        /// 默认值: "role_id"
+        /// </summary>
+        public static string RoleId { get; set; } = "role_id";
 
         /// <summary>
         /// 默认值: <see cref="ClaimTypes.Email"/>

@@ -24,8 +24,9 @@ namespace MyCompanyName.MyProjectName.Security
                                 new List<Claim>
                                 {
                                     new Claim(RocketClaimTypes.UserId,"2e701e62-0953-4dd3-910b-dc6cc93ccb0d"),
-                                    new Claim(RocketClaimTypes.UserName,"admin"),
-                                    new Claim(RocketClaimTypes.Email,"admin@aiwins.cn")
+                                    new Claim(RocketClaimTypes.UserName,"18638215946"),
+                                    new Claim(RocketClaimTypes.Name,"测试账号"),
+                                    new Claim(RocketClaimTypes.PhoneNumber,"18638215945")
                                 }
                             )
                         );

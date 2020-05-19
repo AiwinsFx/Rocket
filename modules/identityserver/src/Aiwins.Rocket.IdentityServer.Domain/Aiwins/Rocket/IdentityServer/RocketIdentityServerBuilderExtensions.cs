@@ -26,8 +26,8 @@ namespace Aiwins.Rocket.IdentityServer {
 
             if (options.UpdateRocketClaimTypes) {
                 RocketClaimTypes.UserId = JwtClaimTypes.Subject;
-                RocketClaimTypes.Name = JwtClaimTypes.Name;
-                RocketClaimTypes.UserName = JwtClaimTypes.PreferredUserName;
+                RocketClaimTypes.Name = JwtClaimTypes.GivenName;
+                RocketClaimTypes.UserName = JwtClaimTypes.Name;
                 RocketClaimTypes.Role = JwtClaimTypes.Role;
                 RocketClaimTypes.Email = JwtClaimTypes.Email;
                 RocketClaimTypes.PhoneNumber = JwtClaimTypes.PhoneNumber;
