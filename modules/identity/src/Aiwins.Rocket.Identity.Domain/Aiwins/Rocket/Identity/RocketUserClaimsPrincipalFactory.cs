@@ -35,9 +35,6 @@ namespace Aiwins.Rocket.Identity {
         }
 
         protected virtual async Task<ClaimsIdentity> GenerateIdentityClaimsAsync (IdentityUser user) {
-            // user = await UserManager.GetUserAsync (user);
-            // var userId = await UserManager.GetUserIdAsync (user);
-            // var userName = await UserManager.GetUserNameAsync (user);
             var id = new ClaimsIdentity ("Identity.Application", Options.ClaimsIdentity.UserNameClaimType, Options.ClaimsIdentity.RoleClaimType);
 
             id.AddClaim (new Claim (RocketClaimTypes.UserId, user.Id.ToString()));
@@ -45,8 +42,7 @@ namespace Aiwins.Rocket.Identity {
             id.AddClaim (new Claim (RocketClaimTypes.Name, user.Name));
 
             if (UserManager.SupportsUserSecurityStamp) {
-                id.AddClaim (new Claim (Options.ClaimsIdentity.SecurityStampClaimType,
-                    await UserManager.GetSecurityStampAsync (user)));
+                id.AddClaim (new Claim (Options.ClaimsIdentity.SecurityStampClaimType,user.SecurityStamp));
             }
             if (UserManager.SupportsUserClaim) {
                 id.AddClaims (await UserManager.GetClaimsAsync (user));
@@ -60,7 +56,6 @@ namespace Aiwins.Rocket.Identity {
                         id.AddClaim (new Claim (RocketClaimTypes.RoleId, role.Id.ToString()));
                         id.AddClaim (new Claim (RocketClaimTypes.Role, role.Name));
                         if (RoleManager.SupportsRoleClaims) {
-                            // 获取role下的claims
                             id.AddClaims (await RoleManager.GetClaimsAsync (role));
                         }
                     }

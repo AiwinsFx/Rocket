@@ -6,6 +6,7 @@ using Aiwins.Rocket.Application.Services;
 using Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations.ObjectExtending;
 using Aiwins.Rocket.AspNetCore.Mvc.MultiTenancy;
 using Aiwins.Rocket.Authorization;
+using Aiwins.Rocket.Caching;
 using Aiwins.Rocket.Features;
 using Aiwins.Rocket.Localization;
 using Aiwins.Rocket.MultiTenancy;
@@ -24,12 +25,14 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
         private readonly IServiceProvider _serviceProvider;
         private readonly IRocketAuthorizationPolicyProvider _rocketAuthorizationPolicyProvider;
         private readonly IAuthorizationService _authorizationService;
-        private readonly ICurrentUser _currentUser;
         private readonly ISettingProvider _settingProvider;
         private readonly ISettingDefinitionManager _settingDefinitionManager;
         private readonly IFeatureDefinitionManager _featureDefinitionManager;
         private readonly ILanguageProvider _languageProvider;
         private readonly ICachedObjectExtensionsDtoService _cachedObjectExtensionsDtoService;
+
+        private readonly IDistributedCache<ApplicationCommonConfigurationCacheItem> _commonConfigurationCache;
+        private readonly IDistributedCache<ApplicationPersonalConfigurationCacheItem> _personalConfigurationCache;
 
         public RocketApplicationConfigurationAppService (
             IOptions<RocketLocalizationOptions> localizationOptions,
@@ -37,16 +40,16 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             IServiceProvider serviceProvider,
             IRocketAuthorizationPolicyProvider rocketAuthorizationPolicyProvider,
             IAuthorizationService authorizationService,
-            ICurrentUser currentUser,
             ISettingProvider settingProvider,
             ISettingDefinitionManager settingDefinitionManager,
             IFeatureDefinitionManager featureDefinitionManager,
             ILanguageProvider languageProvider,
-            ICachedObjectExtensionsDtoService cachedObjectExtensionsDtoService) {
+            ICachedObjectExtensionsDtoService cachedObjectExtensionsDtoService,
+            IDistributedCache<ApplicationCommonConfigurationCacheItem> commonConfigurationCache,
+            IDistributedCache<ApplicationPersonalConfigurationCacheItem> personalConfigurationCache) {
             _serviceProvider = serviceProvider;
             _rocketAuthorizationPolicyProvider = rocketAuthorizationPolicyProvider;
             _authorizationService = authorizationService;
-            _currentUser = currentUser;
             _settingProvider = settingProvider;
             _settingDefinitionManager = settingDefinitionManager;
             _featureDefinitionManager = featureDefinitionManager;
@@ -54,27 +57,111 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             _cachedObjectExtensionsDtoService = cachedObjectExtensionsDtoService;
             _localizationOptions = localizationOptions.Value;
             _multiTenancyOptions = multiTenancyOptions.Value;
+            
+            _commonConfigurationCache = commonConfigurationCache;
+            _personalConfigurationCache = personalConfigurationCache;
         }
 
-        public virtual async Task<ApplicationConfigurationDto> GetAsync () {
-            //TODO: Optimize & cache..?
+        // public virtual async Task<ApplicationConfigurationDto> GetAsync () {
+        //     //TODO: Optimize & cache..?
 
-            Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetAsync()...");
+        //     Logger.LogDebug ("Executing RocketApplicationConfigurationAppService.GetAsync()...");
+
+        //     var result = new ApplicationConfigurationDto {
+        //         Auth = await GetAuthConfigAsync (),
+        //         Features = await GetFeaturesConfigAsync (),
+        //         Localization = await GetLocalizationConfigAsync (),
+        //         CurrentUser = GetCurrentUser (),
+        //         Setting = await GetSettingConfigAsync (),
+        //         MultiTenancy = GetMultiTenancy (),
+        //         CurrentTenant = GetCurrentTenant (),
+        //         ObjectExtensions = _cachedObjectExtensionsDtoService.Get ()
+        //     };
+
+        //     Logger.LogDebug ("Executed RocketApplicationConfigurationAppService.GetAsync().");
+
+        //     return result;
+        // }
+
+        public virtual async Task<ApplicationConfigurationDto> GetAsync () {
+            var commonConfigurationCacheItem = await GetCommonConfigurationCacheItemAsync ();
+            var personalConfigurationCacheItem = await GetPersonalConfigurationCacheItemAsync ();
 
             var result = new ApplicationConfigurationDto {
-                Auth = await GetAuthConfigAsync (),
-                Features = await GetFeaturesConfigAsync (),
-                Localization = await GetLocalizationConfigAsync (),
-                CurrentUser = GetCurrentUser (),
-                Setting = await GetSettingConfigAsync (),
+                Localization = commonConfigurationCacheItem.Localization,
+                Auth = personalConfigurationCacheItem.Auth,
+                Features = personalConfigurationCacheItem.Features,
+                Setting = personalConfigurationCacheItem.Setting,
                 MultiTenancy = GetMultiTenancy (),
                 CurrentTenant = GetCurrentTenant (),
+                CurrentUser = GetCurrentUser (),
                 ObjectExtensions = _cachedObjectExtensionsDtoService.Get ()
             };
 
-            Logger.LogDebug ("Executed RocketApplicationConfigurationAppService.GetAsync().");
-
             return result;
+
+        }
+
+        protected virtual async Task<ApplicationCommonConfigurationCacheItem> GetCommonConfigurationCacheItemAsync () {
+            var cacheKey = CalculateCacheKey ();
+
+            Logger.LogDebug ($"RocketApplicationConfigurationAppService.GetCacheItemAsync: {cacheKey}");
+
+            var cacheItem = await _commonConfigurationCache.GetAsync (cacheKey);
+
+            if (cacheItem != null) {
+                Logger.LogDebug ($"Found in the cache: {cacheKey}");
+                return cacheItem;
+            }
+
+            Logger.LogDebug ($"Not found in the cache, getting from the repository: {cacheKey}");
+
+            cacheItem = new ApplicationCommonConfigurationCacheItem {
+                Localization = await GetLocalizationConfigAsync ()
+            };
+
+            Logger.LogDebug ($"Setting the cache item: {cacheKey}");
+
+            await _commonConfigurationCache.SetAsync (
+                cacheKey,
+                cacheItem
+            );
+
+            Logger.LogDebug ($"Finished setting the cache item: {cacheKey}");
+
+            return cacheItem;
+        }
+
+        protected virtual async Task<ApplicationPersonalConfigurationCacheItem> GetPersonalConfigurationCacheItemAsync () {
+            var cacheKey = CalculateCacheKey (CurrentTenant?.Id?.ToString (), CurrentUser?.Id?.ToString ());
+
+            Logger.LogDebug ($"RocketApplicationConfigurationAppService.GetCacheItemAsync: {cacheKey}");
+
+            var cacheItem = await _personalConfigurationCache.GetAsync (cacheKey);
+
+            if (cacheItem != null) {
+                Logger.LogDebug ($"Found in the cache: {cacheKey}");
+                return cacheItem;
+            }
+
+            Logger.LogDebug ($"Not found in the cache, getting from the repository: {cacheKey}");
+
+            cacheItem = new ApplicationPersonalConfigurationCacheItem {
+                Auth = await GetAuthConfigAsync (),
+                Features = await GetFeaturesConfigAsync (),
+                Setting = await GetSettingConfigAsync ()
+            };
+
+            Logger.LogDebug ($"Setting the cache item: {cacheKey}");
+
+            await _personalConfigurationCache.SetAsync (
+                cacheKey,
+                cacheItem
+            );
+
+            Logger.LogDebug ($"Finished setting the cache item: {cacheKey}");
+
+            return cacheItem;
         }
 
         protected virtual CurrentTenantDto GetCurrentTenant () {
@@ -93,13 +180,13 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
 
         protected virtual CurrentUserDto GetCurrentUser () {
             return new CurrentUserDto {
-                IsAuthenticated = _currentUser.IsAuthenticated,
-                    Id = _currentUser.Id,
-                    TenantId = _currentUser.TenantId,
-                    Name = _currentUser.Name,
-                    UserName = _currentUser.UserName,
-                    Email = _currentUser.Email,
-                    PhoneNumber = _currentUser.PhoneNumber
+                IsAuthenticated = CurrentUser.IsAuthenticated,
+                    Id = CurrentUser.Id,
+                    TenantId = CurrentUser.TenantId,
+                    Name = CurrentUser.Name,
+                    UserName = CurrentUser.UserName,
+                    Email = CurrentUser.Email,
+                    PhoneNumber = CurrentUser.PhoneNumber
             };
         }
 
@@ -199,6 +286,14 @@ namespace Aiwins.Rocket.AspNetCore.Mvc.ApplicationConfigurations {
             }
 
             return result;
+        }
+
+        protected virtual string CalculateCacheKey () {
+            return ApplicationCommonConfigurationCacheItem.CalculateCacheKey ();
+        }
+
+        protected virtual string CalculateCacheKey (string tenantId, string userId) {
+            return ApplicationPersonalConfigurationCacheItem.CalculateCacheKey (tenantId, userId);
         }
     }
 }

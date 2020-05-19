@@ -10,6 +10,7 @@ using Aiwins.Rocket.AspNetCore.Mvc.DependencyInjection;
 using Aiwins.Rocket.AspNetCore.Mvc.Json;
 using Aiwins.Rocket.AspNetCore.Mvc.Localization;
 using Aiwins.Rocket.AspNetCore.VirtualFileSystem;
+using Aiwins.Rocket.Caching;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.DynamicProxy;
 using Aiwins.Rocket.Http;
@@ -40,10 +41,12 @@ namespace Aiwins.Rocket.AspNetCore.Mvc {
     [DependsOn (
         typeof (RocketAspNetCoreModule),
         typeof (RocketLocalizationModule),
+        typeof (RocketCachingModule),
         typeof (RocketApiVersioningAbstractionsModule),
         typeof (RocketAspNetCoreMvcContractsModule),
         typeof (RocketUiModule)
     )]
+
     public class RocketAspNetCoreMvcModule : RocketModule {
         public override void PreConfigureServices (ServiceConfigurationContext context) {
             DynamicProxyIgnoreTypes.Add<ControllerBase> ();

@@ -16,6 +16,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Aiwins.Rocket.Ddd.Application\Aiwins.Rocket.Ddd.Application.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Caching\Aiwins.Rocket.Caching.csproj" />
   </ItemGroup>
 
 </Project>

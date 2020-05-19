@@ -53,11 +53,12 @@ namespace Aiwins.Rocket.Authorization.Permissions {
             var context = new PermissionValueCheckContext (permission, claimsPrincipal);
 
             // 可选权限策略:一、获取最大权限；二、以用户权限为主
-            // 当前权限策略:以用户权限为主（用户权限 > 角色权限 > 客户端权限）
-            // 对权限提供程序排序，用户权限放到最后赋值，覆盖前者权限
-            var providers = PermissionValueProviderManager.ValueProviders.OrderBy (m => m.Name).ToList ();
+            // 当前权限策略:用户权限为主（用户权限 > 角色权限 > 客户端权限）
+            // 对权限提供程序排序，用户权限放到第一位
+            var providers = PermissionValueProviderManager.ValueProviders.OrderByDescending (m => m.Name).ToList ();
 
             var permissionGrantResult = PermissionGrantResult.Undefined;
+
             foreach (var provider in providers) {
                 if (context.Permission.Providers.Any () && !context.Permission.Providers.Contains (provider.Name)) {
                     continue;
@@ -65,11 +66,12 @@ namespace Aiwins.Rocket.Authorization.Permissions {
 
                 var result = await provider.GetResultAsync (context);
 
-                // 以用户权限为主，将用户权限解析程序放到最后赋值，覆盖前者权限（用户权限 > 角色权限 > 客户端权限）
+                // 用户权限为主（用户权限 > 角色权限 > 客户端权限）
                 if (Options.PermissionPolicy == PermissionPolicy.User) {
                     permissionGrantResult = result;
+                    break;
                 } else {
-                    // 以获取的最大权限为主
+                    // 最大权限为主
                     if (result?.GrantType == PermissionGrantType.Granted && result?.ScopeType > permissionGrantResult.ScopeType) {
                         permissionGrantResult = result;
                     }
