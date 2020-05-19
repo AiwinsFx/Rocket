@@ -40,7 +40,7 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account {
 
             var registerDto = new RegisterDto {
                 AppName = "MVC",
-                PhoneNumber = Input.PhoneNumber,
+                EmailAddress = Input.EmailAddress,
                 Password = Input.Password,
                 UserName = Input.UserName
             };
@@ -48,7 +48,7 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account {
             var userDto = await AccountAppService.RegisterAsync (registerDto);
             var user = await UserManager.GetByIdAsync (userDto.Id);
 
-            await UserManager.SetPhoneNumberAsync (user, Input.PhoneNumber);
+            await UserManager.SetEmailAsync (user, Input.EmailAddress);
 
             await SignInManager.SignInAsync (user, isPersistent : false);
 
@@ -68,9 +68,9 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account {
             public string UserName { get; set; }
 
             [Required]
-            [RegularExpression (@"^1[3456789][0-9]{9}$")]
-            [StringLength (IdentityUserConsts.MaxPhoneNumberLength)]
-            public string PhoneNumber { get; set; }
+            [EmailAddress]
+            [StringLength (IdentityUserConsts.MaxEmailLength)]
+            public string EmailAddress { get; set; }
 
             [Required]
             [StringLength (IdentityUserConsts.MaxPasswordLength)]

@@ -15,8 +15,6 @@ namespace Aiwins.Rocket.Account.Web.Pages.Account {
         }
 
         public virtual async Task OnGetAsync () {
-
-            var a = CurrentUser;
             var user = await ProfileAppService.GetAsync ();
 
             PersonalSettingsInfoModel = ObjectMapper.Map<ProfileDto, PersonalSettingsInfoModel> (user);

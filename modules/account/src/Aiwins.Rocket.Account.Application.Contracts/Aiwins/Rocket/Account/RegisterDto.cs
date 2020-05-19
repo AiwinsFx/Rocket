@@ -9,9 +9,9 @@ namespace Aiwins.Rocket.Account {
         public string UserName { get; set; }
 
         [Required]
-        [RegularExpression (@"^1[3456789][0-9]{9}$")]
-        [StringLength (IdentityUserConsts.MaxPhoneNumberLength)]
-        public string PhoneNumber { get; set; }
+        [EmailAddress]
+        [StringLength (IdentityUserConsts.MaxEmailLength)]
+        public string EmailAddress { get; set; }
 
         [Required]
         [StringLength (IdentityUserConsts.MaxPasswordLength)]
