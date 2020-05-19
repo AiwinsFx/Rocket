@@ -13,6 +13,8 @@ namespace Aiwins.Rocket.Auditing {
 
         public string UserName { get; set; }
 
+        public string UserPhoneNumber { get; set; }
+
         public Guid? TenantId { get; set; }
 
         public string TenantName { get; set; }
@@ -63,7 +65,7 @@ namespace Aiwins.Rocket.Auditing {
             var sb = new StringBuilder ();
 
             sb.AppendLine ($"AUDIT LOG: [{HttpStatusCode?.ToString() ?? "---"}: {(HttpMethod ?? "-------").PadRight(7)}] {Url}");
-            sb.AppendLine ($"- UserName - UserId                 : {UserName} - {UserId}");
+            sb.AppendLine ($"- UserName - UserId                 : {UserName}({UserPhoneNumber}) - {UserId}");
             sb.AppendLine ($"- ClientIpAddress        : {ClientIpAddress}");
             sb.AppendLine ($"- ExecutionDuration      : {ExecutionDuration}");
 

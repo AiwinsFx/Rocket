@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using Aiwins.Rocket.Auditing;
 using System.Security.Claims;
 using Aiwins.Rocket.Auditing;
 using Aiwins.Rocket.Domain.Entities;
@@ -13,7 +14,7 @@ namespace Aiwins.Rocket.Identity {
     /// <summary>
     /// Represents a role in the identity system
     /// </summary>
-    public class IdentityRole : AggregateRoot<Guid>, IMultiTenant {
+    public class IdentityRole : AggregateRoot<Guid>, IMultiTenant, IPySpelling {
         public virtual Guid? TenantId { get; protected set; }
 
         /// <summary>
@@ -46,6 +47,12 @@ namespace Aiwins.Rocket.Identity {
         /// A user can see other user's public roles
         /// </summary>
         public virtual bool IsPublic { get; set; }
+
+        [DisableAuditing]
+        public virtual string FullPySpelling { get; set; }
+
+        [DisableAuditing]
+        public virtual string FirstPySpelling { get; set; }
 
         /// <summary>
         /// Initializes a new instance of <see cref="IdentityRole"/>.

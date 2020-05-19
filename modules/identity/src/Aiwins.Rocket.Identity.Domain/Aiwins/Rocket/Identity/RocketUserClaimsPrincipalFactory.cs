@@ -18,10 +18,26 @@ namespace Aiwins.Rocket.Identity {
             roleManager,
             options) { }
 
+        // [UnitOfWork]
+        // public override async Task<ClaimsPrincipal> CreateAsync (IdentityUser user) {
+        //     var principal = await base.CreateAsync (user);
+
+        //     if (user.TenantId.HasValue) {
+        //         principal.Identities
+        //             .First ()
+        //             .AddClaim (new Claim (RocketClaimTypes.TenantId, user.TenantId.ToString ()));
+        //     }
+
+        //     return principal;
+        // }
+
         [UnitOfWork]
         public override async Task<ClaimsPrincipal> CreateAsync (IdentityUser user) {
-            var principal = await base.CreateAsync (user);
+            if (user == null) {
+                throw new ArgumentNullException (nameof (user));
+            }
 
+            var principal = new ClaimsPrincipal (await GenerateIdentityClaimsAsync (user));
             if (user.TenantId.HasValue) {
                 principal.Identities
                     .First ()
@@ -31,20 +47,38 @@ namespace Aiwins.Rocket.Identity {
             return principal;
         }
 
-        // [UnitOfWork]
-        // public override async Task<ClaimsPrincipal> CreateAsync (IdentityUser user) {
-        //     if (user == null) {
-        //         throw new ArgumentNullException (nameof (user));
-        //     }
+        protected virtual async Task<ClaimsIdentity> GenerateIdentityClaimsAsync (IdentityUser user) {
+            user = await UserManager.GetUserAsync (user);
 
-        //     var principal = new ClaimsPrincipal (await GenerateClaimsAsync (user));
-        //     if (user.TenantId.HasValue) {
-        //         principal.Identities
-        //             .First ()
-        //             .AddClaim (new Claim (RocketClaimTypes.TenantId, user.TenantId.ToString ()));
-        //     }
+            var id = new ClaimsIdentity ("Identity.Application", Options.ClaimsIdentity.UserNameClaimType, Options.ClaimsIdentity.RoleClaimType);
 
-        //     return principal;
-        // }
+            id.AddClaim (new Claim (RocketClaimTypes.UserId, user.Id));
+            id.AddClaim (new Claim (RocketClaimTypes.UserName, user.UserName));
+            id.AddClaim (new Claim (RocketClaimTypes.Name, user.Name));
+
+            if (UserManager.SupportsUserSecurityStamp) {
+                id.AddClaim (new Claim (Options.ClaimsIdentity.SecurityStampClaimType,
+                    await UserManager.GetSecurityStampAsync (user)));
+            }
+            if (UserManager.SupportsUserClaim) {
+                id.AddClaims (await UserManager.GetClaimsAsync (user));
+            }
+
+            if (UserManager.SupportsUserRole) {
+                var roles = await UserManager.GetRolesAsync (user);
+                foreach (var roleName in roles) {
+                    var role = await RoleManager.FindByNameAsync (roleName);
+                    if (role != null) {
+                        id.AddClaim (new Claim (RocketClaimTypes.RoleId, role.Id));
+                        id.AddClaim (new Claim (RocketClaimTypes.Role, role.Name));
+                        if (RoleManager.SupportsRoleClaims) {
+                            // 获取role下的claims
+                            id.AddClaims (await RoleManager.GetClaimsAsync (role));
+                        }
+                    }
+                }
+            }
+            return id;
+        }
     }
 }

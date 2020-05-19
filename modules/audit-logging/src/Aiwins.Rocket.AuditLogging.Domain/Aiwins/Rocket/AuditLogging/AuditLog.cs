@@ -14,6 +14,8 @@ namespace Aiwins.Rocket.AuditLogging {
         public virtual Guid? UserId { get; protected set; }
 
         public virtual string UserName { get; protected set; }
+        
+        public virtual string UserPhoneNumber { get; protected set; }
 
         public virtual Guid? TenantId { get; protected set; }
 
@@ -62,6 +64,7 @@ namespace Aiwins.Rocket.AuditLogging {
             TenantName = auditInfo.TenantName.Truncate (AuditLogConsts.MaxTenantNameLength);
             UserId = auditInfo.UserId;
             UserName = auditInfo.UserName.Truncate (AuditLogConsts.MaxUserNameLength);
+            UserPhoneNumber = auditInfo.UserPhoneNumber;
             ExecutionTime = auditInfo.ExecutionTime;
             ExecutionDuration = auditInfo.ExecutionDuration;
             ClientIpAddress = auditInfo.ClientIpAddress.Truncate (AuditLogConsts.MaxClientIpAddressLength);

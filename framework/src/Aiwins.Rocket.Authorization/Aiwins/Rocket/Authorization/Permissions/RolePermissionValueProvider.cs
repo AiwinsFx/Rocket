@@ -13,16 +13,16 @@ namespace Aiwins.Rocket.Authorization.Permissions {
         }
 
         public override async Task<PermissionGrantResult> GetResultAsync (PermissionValueCheckContext context) {
-            var roles = context.Principal?.FindAll (RocketClaimTypes.Role).Select (c => c.Value).ToArray ();
+            var roleIds = context.Principal?.FindAll (RocketClaimTypes.RoleId).Select (c => c.Value).ToArray ();
 
-            if (roles == null || !roles.Any ()) {
+            if (roleIds == null || !roleIds.Any ()) {
                 return PermissionGrantResult.Undefined;
             }
 
             var permissionGrantResult = PermissionGrantResult.Undefined;
 
-            foreach (var role in roles) {
-                var result = await PermissionStore.GetResultAsync (context.Permission.Name, Name, role);
+            foreach (var roleId in roleIds) {
+                var result = await PermissionStore.GetResultAsync (context.Permission.Name, Name, roleId);
                 if (result == null) continue;
 
                 if (result.ScopeType > permissionGrantResult.ScopeType) {

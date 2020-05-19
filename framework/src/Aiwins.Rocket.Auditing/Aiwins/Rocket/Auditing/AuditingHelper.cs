@@ -113,6 +113,7 @@ namespace Aiwins.Rocket.Auditing {
                 TenantName = CurrentTenant.Name,
                 UserId = CurrentUser.Id,
                 UserName = CurrentUser.Name,
+                UserPhoneNumber = CurrentUser.PhoneNumber,
                 ClientId = CurrentClient.Id,
                 CorrelationId = CorrelationIdProvider.Get (),
                 //ImpersonatorUserId = RocketSession.ImpersonatorUserId, //TODO: Impersonation system is not available yet!
