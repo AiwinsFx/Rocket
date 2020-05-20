@@ -57,7 +57,7 @@ namespace Aiwins.Rocket.PermissionManagement {
                         // 仅当scopes的元素为两个，且仅包含禁止和启用两种权限的时候才可以使用非下拉框的类型控件
                         IsDropdownBox = permission.Scopes.Count == 2 && permission.Scopes.Contains(PermissionDefinitionProvider.Prohibited)  && permission.Scopes.Contains(PermissionDefinitionProvider.Granted) ? permission.IsDropdownBox : true,
                         AllowedProviders = permission.Providers,
-                        Scopes = permission.Scopes.Where (m => !m.MultiTenancySide.HasFlag (multiTenancySide)).Select (m => new PermissionScopeDto () { Name = m.Name, DisplayName = m.DisplayName }).ToList (),
+                        Scopes = permission.Scopes.Where (m => m.MultiTenancySide.HasFlag (multiTenancySide)).Select (m => new PermissionScopeDto () { Name = m.Name, DisplayName = m.DisplayName }).ToList (),
                         GrantedProviders = new List<ProviderInfoDto> ()
                     };
 

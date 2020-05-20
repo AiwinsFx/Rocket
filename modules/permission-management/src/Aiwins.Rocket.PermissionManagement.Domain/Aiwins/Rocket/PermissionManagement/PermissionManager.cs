@@ -20,7 +20,7 @@ namespace Aiwins.Rocket.PermissionManagement {
 
         protected ICurrentTenant CurrentTenant { get; }
 
-        protected IReadOnlyList<IPermissionManagementProvider> Providers => _lazyProviders.Value.OrderBy (m => m.Name).ToList ();
+        protected IReadOnlyList<IPermissionManagementProvider> Providers => _lazyProviders.Value.OrderByDescending (m => m.Name).ToList ();
 
         protected PermissionManagementOptions Options { get; }
 
