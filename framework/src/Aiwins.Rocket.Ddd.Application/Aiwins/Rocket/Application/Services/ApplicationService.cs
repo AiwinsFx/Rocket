@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Aiwins.Rocket.Aspects;
 using Aiwins.Rocket.Auditing;
+using Aiwins.Rocket.Authorization.Permissions;
 using Aiwins.Rocket.DependencyInjection;
 using Aiwins.Rocket.Features;
 using Aiwins.Rocket.Guids;

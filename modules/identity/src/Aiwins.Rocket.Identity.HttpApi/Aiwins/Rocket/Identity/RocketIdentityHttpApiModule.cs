@@ -6,7 +6,10 @@ using Localization.Resources.RocketUi;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Aiwins.Rocket.Identity {
-    [DependsOn (typeof (RocketIdentityApplicationContractsModule), typeof (RocketAspNetCoreMvcModule))]
+    [DependsOn (
+        typeof (RocketIdentityApplicationContractsModule),
+        typeof (RocketAspNetCoreMvcModule)
+    )]
     public class RocketIdentityHttpApiModule : RocketModule {
         public override void PreConfigureServices (ServiceConfigurationContext context) {
             PreConfigure<IMvcBuilder> (mvcBuilder => {

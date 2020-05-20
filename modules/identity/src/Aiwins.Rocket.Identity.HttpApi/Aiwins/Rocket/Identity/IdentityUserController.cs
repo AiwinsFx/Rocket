@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Aiwins.Rocket.Identity {
     [RemoteService (Name = IdentityRemoteServiceConsts.RemoteServiceName)]
     [Area ("identity")]
-    [ControllerName ("user")]
+    [ControllerName ("User")]
     [Route ("api/identity/users")]
     public class IdentityUserController : RocketController, IIdentityUserAppService {
         protected IIdentityUserAppService UserAppService { get; }

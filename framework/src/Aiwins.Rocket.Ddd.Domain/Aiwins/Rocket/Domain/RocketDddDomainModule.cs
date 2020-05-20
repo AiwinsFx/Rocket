@@ -1,9 +1,9 @@
 ﻿using Aiwins.Rocket.Auditing;
+using Aiwins.Rocket.Authorization;
 using Aiwins.Rocket.Data;
 using Aiwins.Rocket.EventBus;
 using Aiwins.Rocket.Guids;
 using Aiwins.Rocket.Modularity;
-using Aiwins.Rocket.MultiTenancy;
 using Aiwins.Rocket.ObjectMapping;
 using Aiwins.Rocket.Threading;
 using Aiwins.Rocket.Timing;
@@ -15,10 +15,10 @@ namespace Aiwins.Rocket.Domain {
         typeof (RocketDataModule),
         typeof (RocketEventBusModule),
         typeof (RocketGuidsModule),
-        typeof (RocketMultiTenancyModule),
         typeof (RocketThreadingModule),
         typeof (RocketTimingModule),
         typeof (RocketUnitOfWorkModule),
+        typeof (RocketAuthorizationModule),
         typeof (RocketObjectMappingModule)
     )]
     public class RocketDddDomainModule : RocketModule {

@@ -163,9 +163,7 @@ namespace Aiwins.Rocket.Domain.Repositories.MongoDB {
         }
 
         public virtual IMongoQueryable<TEntity> GetMongoQueryable () {
-            return ApplyDataFilters (
-                Collection.AsQueryable ()
-            );
+            return AsyncHelper.RunSync(() => ApplyDataFilters (Collection.AsQueryable ()));
         }
         protected virtual bool IsHardDeleted (TEntity entity) {
             var hardDeletedEntities = UnitOfWorkManager?.Current?.Items.GetOrDefault (UnitOfWorkItemNames.HardDeletedEntities) as HashSet<IEntity>;

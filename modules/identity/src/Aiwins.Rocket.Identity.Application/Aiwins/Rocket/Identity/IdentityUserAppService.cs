@@ -18,7 +18,6 @@ namespace Aiwins.Rocket.Identity {
             UserRepository = userRepository;
         }
 
-        //TODO: [Authorize(IdentityPermissions.Users.Default)] should go the IdentityUserAppService class.
         [Authorize (IdentityPermissions.Users.Default)]
         public virtual async Task<IdentityUserDto> GetAsync (Guid id) {
             return ObjectMapper.Map<IdentityUser, IdentityUserDto> (

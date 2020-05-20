@@ -19,11 +19,11 @@
     <ProjectReference Include="..\Aiwins.Rocket.Data\Aiwins.Rocket.Data.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.EventBus\Aiwins.Rocket.EventBus.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Guids\Aiwins.Rocket.Guids.csproj" />
-    <ProjectReference Include="..\Aiwins.Rocket.MultiTenancy\Aiwins.Rocket.MultiTenancy.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.ObjectMapping\Aiwins.Rocket.ObjectMapping.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Threading\Aiwins.Rocket.Threading.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Timing\Aiwins.Rocket.Timing.csproj" />
     <ProjectReference Include="..\Aiwins.Rocket.Uow\Aiwins.Rocket.Uow.csproj" />
+    <ProjectReference Include="..\Aiwins.Rocket.Authorization\Aiwins.Rocket.Authorization.csproj" />
   </ItemGroup>
 
 </Project>

@@ -6,6 +6,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.MemoryDb;
+using Aiwins.Rocket.Threading;
 
 namespace Aiwins.Rocket.Domain.Repositories.MemoryDb {
     public class MemoryDbRepository<TMemoryDbContext, TEntity> : RepositoryBase<TEntity>, IMemoryDbRepository<TEntity>
@@ -24,7 +25,7 @@ namespace Aiwins.Rocket.Domain.Repositories.MemoryDb {
         }
 
         protected override IQueryable<TEntity> GetQueryable () {
-            return ApplyDataFilters (Collection.AsQueryable ());
+            return AsyncHelper.RunSync(() => ApplyDataFilters (Collection.AsQueryable ()));
         }
 
         public override Task<TEntity> FindAsync (

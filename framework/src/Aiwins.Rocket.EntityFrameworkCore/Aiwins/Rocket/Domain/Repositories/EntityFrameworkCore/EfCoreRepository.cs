@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using Aiwins.Rocket.Domain.Entities;
 using Aiwins.Rocket.EntityFrameworkCore;
 using Aiwins.Rocket.EntityFrameworkCore.DependencyInjection;
+using Aiwins.Rocket.Threading;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
@@ -77,8 +78,12 @@ namespace Aiwins.Rocket.Domain.Repositories.EntityFrameworkCore {
             return await DbSet.LongCountAsync (GetCancellationToken (cancellationToken));
         }
 
+        // protected override IQueryable<TEntity> GetQueryable () {
+        //     return DbSet.AsQueryable ();
+        // }
+
         protected override IQueryable<TEntity> GetQueryable () {
-            return DbSet.AsQueryable ();
+            return AsyncHelper.RunSync(() => ApplyDataFilters (DbSet.AsQueryable ()));
         }
 
         public override async Task<TEntity> FindAsync (
