@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "@aiwins/core": "^1.1.12",
-    "markdown-it": "^10.0.0"
+    "markdown-it": "^12.3.2"
   },
   "gitHead": "451e3f0c707bebb6cd8c37d34fd5a69182cbcac5"
 }
