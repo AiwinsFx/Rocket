@@ -2,32 +2,32 @@
 # yarn lockfile v1
 
 
-"@aiwins/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@aiwins/core/-/core-1.1.0.tgz#c5d0021174539dec0322b720668c37ff2f9e40f7"
-  integrity sha512-vemX3OhYqetrXuvK4kqTIEia2NG+gCH0zcxWt7dgtkWc5Z2P3JLjkufLoYNX9WySbDC0xKwlZznvSkISGKm4LQ==
+"@aiwins/core@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/core/-/core-1.1.12.tgz#631a6c5035839ceae5842c1a9f29617366194690"
+  integrity sha512-4AzKDYlGWJvPl7hmrVTAVpyRlfptXHj+WtQA2pZBDZC9OJzABqUwwRpTR3qcVdwrQhZooP8mwSWfA5aW7CJTvg==
   dependencies:
-    "@aiwins/utils" "^1.1.0"
+    "@aiwins/utils" "^1.1.12"
 
-"@aiwins/jquery@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@aiwins/jquery/-/jquery-1.1.0.tgz#f2498e79afbbf7d5887d705c557fabf46e51a3e9"
-  integrity sha512-oI5LChFuHAV3mOvHxctDpxtuZ8noj5enxJOV9cR1Ft2ZJywvDxKWOpBrz84cziD4ab4qyqwbfLOknL1anzmfWQ==
+"@aiwins/jquery@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/jquery/-/jquery-1.1.12.tgz#cc0057572c0f1610d85b2f3703fbe40cbc521e70"
+  integrity sha512-7XJDt+e4sxVLYiD0ajNONiHDVMaHkT453OJnbi3SX+N44AY9jPvKZvv+Z3sCDAg4GU9MYdfqcF2cUxr/UECpwA==
   dependencies:
-    "@aiwins/core" "^1.1.0"
+    "@aiwins/core" "^1.1.12"
     jquery "^3.4.1"
 
-"@aiwins/utils@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.0.tgz#a01ecf56e8f4a08e45afadd17d65d92d927c20cd"
-  integrity sha512-nawxFOlEdpI//gwwk+EvNrQkltkulR6B+IQ5EZHU4MkH7sM91nNKl3GnpmoQjdz/jY3xwrslzM0sQp54vcJ7+g==
+"@aiwins/utils@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.12.tgz#5e2cb24dd5a2c0655bc040ef2ed67666aadb7bda"
+  integrity sha512-Ikne/pstSzxZyxlRHM1VfsOQlkrDfY65WajmeMpNE1xEW4EP07PgyfLXQxdT4ra6kuJ7T9naN6C7zlRybYLzuA==
   dependencies:
     just-compare "^1.3.0"
 
 jquery-validation@^1.19.1:
-  version "1.19.1"
-  resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.1.tgz#a85043467dc2b70d9fff05778646d150e747742f"
-  integrity sha512-QNnrZBqSltWUEJx+shOY5WtfrIb0gWmDjFfQP8rZKqMMSfpRSwEkSqhfHPvDfkObD8Hnv5KHSYI8yg73sVFdqA==
+  version "1.19.3"
+  resolved "https://registry.yarnpkg.com/jquery-validation/-/jquery-validation-1.19.3.tgz#50b350eba8b02bcfd119ba15f199487b7eb64086"
+  integrity sha512-iXxCS5W7STthSTMFX/NDZfWHBLbJ1behVK3eAgHXAV8/0vRa9M4tiqHvJMr39VGWHMGdlkhrtrkBuaL2UlE8yw==
 
 jquery@^3.4.1:
   version "3.5.1"
