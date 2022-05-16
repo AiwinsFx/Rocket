@@ -2,17 +2,17 @@
 # yarn lockfile v1
 
 
-"@aiwins/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@aiwins/core/-/core-1.1.0.tgz#c5d0021174539dec0322b720668c37ff2f9e40f7"
-  integrity sha512-vemX3OhYqetrXuvK4kqTIEia2NG+gCH0zcxWt7dgtkWc5Z2P3JLjkufLoYNX9WySbDC0xKwlZznvSkISGKm4LQ==
+"@aiwins/core@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/core/-/core-1.1.12.tgz#631a6c5035839ceae5842c1a9f29617366194690"
+  integrity sha512-4AzKDYlGWJvPl7hmrVTAVpyRlfptXHj+WtQA2pZBDZC9OJzABqUwwRpTR3qcVdwrQhZooP8mwSWfA5aW7CJTvg==
   dependencies:
-    "@aiwins/utils" "^1.1.0"
+    "@aiwins/utils" "^1.1.12"
 
-"@aiwins/utils@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.0.tgz#a01ecf56e8f4a08e45afadd17d65d92d927c20cd"
-  integrity sha512-nawxFOlEdpI//gwwk+EvNrQkltkulR6B+IQ5EZHU4MkH7sM91nNKl3GnpmoQjdz/jY3xwrslzM0sQp54vcJ7+g==
+"@aiwins/utils@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.12.tgz#5e2cb24dd5a2c0655bc040ef2ed67666aadb7bda"
+  integrity sha512-Ikne/pstSzxZyxlRHM1VfsOQlkrDfY65WajmeMpNE1xEW4EP07PgyfLXQxdT4ra6kuJ7T9naN6C7zlRybYLzuA==
   dependencies:
     just-compare "^1.3.0"
 
@@ -22,6 +22,6 @@ just-compare@^1.3.0:
   integrity sha512-i4QNo3mPYubDmAwPbCKQl5C2b5s0yudP5V5GDp6lGR1PM22Em4Idf7mcaIzXYcL6/RLdZtuGrAqkBe9RYM/t4w==
 
 lodash@^4.17.15:
-  version "4.17.15"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.15.tgz#b447f6670a0455bbfeedd11392eff330ea097548"
-  integrity sha512-8xOcRHvCjnocdS5cpwXQXVzmmh5e5+saE2QGoeQmbKmRS6J3VQppPOIt0MnmE+4xlZoumy0GPG0D0MVIQbNA1A==
+  version "4.17.21"
+  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.21.tgz#679591c564c3bffaae8454cf0b3df370c3d6911c"
+  integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
