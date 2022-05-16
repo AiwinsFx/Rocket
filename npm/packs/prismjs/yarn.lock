@@ -2,40 +2,19 @@
 # yarn lockfile v1
 
 
-"@aiwins/core@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@aiwins/core/-/core-1.1.0.tgz#c5d0021174539dec0322b720668c37ff2f9e40f7"
-  integrity sha512-vemX3OhYqetrXuvK4kqTIEia2NG+gCH0zcxWt7dgtkWc5Z2P3JLjkufLoYNX9WySbDC0xKwlZznvSkISGKm4LQ==
+"@aiwins/core@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/core/-/core-1.1.12.tgz#631a6c5035839ceae5842c1a9f29617366194690"
+  integrity sha512-4AzKDYlGWJvPl7hmrVTAVpyRlfptXHj+WtQA2pZBDZC9OJzABqUwwRpTR3qcVdwrQhZooP8mwSWfA5aW7CJTvg==
   dependencies:
-    "@aiwins/utils" "^1.1.0"
+    "@aiwins/utils" "^1.1.12"
 
-"@aiwins/utils@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.0.tgz#a01ecf56e8f4a08e45afadd17d65d92d927c20cd"
-  integrity sha512-nawxFOlEdpI//gwwk+EvNrQkltkulR6B+IQ5EZHU4MkH7sM91nNKl3GnpmoQjdz/jY3xwrslzM0sQp54vcJ7+g==
+"@aiwins/utils@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.12.tgz#5e2cb24dd5a2c0655bc040ef2ed67666aadb7bda"
+  integrity sha512-Ikne/pstSzxZyxlRHM1VfsOQlkrDfY65WajmeMpNE1xEW4EP07PgyfLXQxdT4ra6kuJ7T9naN6C7zlRybYLzuA==
   dependencies:
     just-compare "^1.3.0"
-
-clipboard@^2.0.0:
-  version "2.0.6"
-  resolved "https://registry.yarnpkg.com/clipboard/-/clipboard-2.0.6.tgz#52921296eec0fdf77ead1749421b21c968647376"
-  integrity sha512-g5zbiixBRk/wyKakSwCKd7vQXDjFnAMGHoEyBogG/bw9kTD9GvdAvaoRR1ALcEzt3pVKxZR0pViekPMIS0QyGg==
-  dependencies:
-    good-listener "^1.2.2"
-    select "^1.1.2"
-    tiny-emitter "^2.0.0"
-
-delegate@^3.1.2:
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/delegate/-/delegate-3.2.0.tgz#b66b71c3158522e8ab5744f720d8ca0c2af59166"
-  integrity sha512-IofjkYBZaZivn0V8nnsMJGBr4jVLxHDheKSW88PyxS5QC4Vo9ZbZVvhzlSxY87fVq3STR6r+4cGepyHkcWOQSw==
-
-good-listener@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/good-listener/-/good-listener-1.2.2.tgz#d53b30cdf9313dffb7dc9a0d477096aa6d145c50"
-  integrity sha1-1TswzfkxPf+33JoNR3CWqm0UXFA=
-  dependencies:
-    delegate "^3.1.2"
 
 just-compare@^1.3.0:
   version "1.3.0"
@@ -43,18 +22,6 @@ just-compare@^1.3.0:
   integrity sha512-i4QNo3mPYubDmAwPbCKQl5C2b5s0yudP5V5GDp6lGR1PM22Em4Idf7mcaIzXYcL6/RLdZtuGrAqkBe9RYM/t4w==
 
 prismjs@^1.17.1:
-  version "1.20.0"
-  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.20.0.tgz#9b685fc480a3514ee7198eac6a3bf5024319ff03"
-  integrity sha512-AEDjSrVNkynnw6A+B1DsFkd6AVdTnp+/WoUixFRULlCLZVRZlVQMVWio/16jv7G1FscUxQxOQhWwApgbnxr6kQ==
-  optionalDependencies:
-    clipboard "^2.0.0"
-
-select@^1.1.2:
-  version "1.1.2"
-  resolved "https://registry.yarnpkg.com/select/-/select-1.1.2.tgz#0e7350acdec80b1108528786ec1d4418d11b396d"
-  integrity sha1-DnNQrN7ICxEIUoeG7B1EGNEbOW0=
-
-tiny-emitter@^2.0.0:
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/tiny-emitter/-/tiny-emitter-2.1.0.tgz#1d1a56edfc51c43e863cbb5382a72330e3555423"
-  integrity sha512-NB6Dk1A9xgQPMoGqC5CVXn123gWyte215ONT5Pp5a0yt4nlEoO1ZWeCwpncaekPHXO60i47ihFnZPiRPjRMq4Q==
+  version "1.27.0"
+  resolved "https://registry.yarnpkg.com/prismjs/-/prismjs-1.27.0.tgz#bb6ee3138a0b438a3653dd4d6ce0cc6510a45057"
+  integrity sha512-t13BGPUlFDR7wRB5kQDG4jjl7XeuH6jbJGt11JHPL96qwsEHNX2+68tFXqc1/k+/jALsbSWJKUOT/hcYAZ5LkA==
