@@ -2,26 +2,26 @@
 # yarn lockfile v1
 
 
-"@aiwins/ng.account.config@^1.1.10", "@aiwins/ng.account.config@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.account.config/-/ng.account.config-1.1.10.tgz#fc2e0d1ebafd70ebec9312f279ccd2973943df19"
-  integrity sha512-YFoR9z19p6ixtt8piSgAW3MDwhEGNb4Hx2QX8v0jTOTydra3NIujhmNb70skZHmOEbW8CmvAUcoLhyES7LPDGQ==
+"@aiwins/ng.account.config@^1.1.12", "@aiwins/ng.account.config@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.account.config/-/ng.account.config-1.1.12.tgz#1262402046893e2f24d841c9de17194a1c2b983e"
+  integrity sha512-rdifvYjI72SOi4/pTn3LqvFsDf/FVHo2uN0YOr1adTATqjCB1YUlKNMfNvYl0Cxx4l/flInmohDFbwnh4nY4Bw==
   dependencies:
     tslib "^1.9.0"
 
-"@aiwins/ng.account@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.account/-/ng.account-1.1.10.tgz#dfab57bce5f3681a1d262b9b68aad479d24a47c4"
-  integrity sha512-DBFO8LHqv3PDXQA4L6QM0Xjm8nlphKpBStlYI1gt5sLf1JEHAkQgWISNwipb/3CjJiQXacr/G9CS5XMkwvXQfA==
+"@aiwins/ng.account@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.account/-/ng.account-1.1.12.tgz#5a936d9eea5c28286d7b6cc22625d9701c71b8ce"
+  integrity sha512-qwfXba0Lno0QYeE4ITiIPQEvcc47KJXWQdPGg69Ypjwxl8+D7RVMcSez8QFL8zl1/wr9QjYdEW62A9EVgqQO/w==
   dependencies:
-    "@aiwins/ng.account.config" "^1.1.10"
-    "@aiwins/ng.theme.shared" "^1.1.10"
+    "@aiwins/ng.account.config" "^1.1.12"
+    "@aiwins/ng.theme.shared" "^1.1.12"
     tslib "^1.9.0"
 
-"@aiwins/ng.core@^1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.core/-/ng.core-1.1.10.tgz#a29946062db7862034d0d8c25ac44d9eca36915f"
-  integrity sha512-mssGlmp1YKra7TZY9W0eLK3eeRcJaCIMmE9gTWeQ23ohfjDrbRu0V35nL4ppYcCIWBrwwpvJ9rm6jOqu9FhUIg==
+"@aiwins/ng.core@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.core/-/ng.core-1.1.12.tgz#2828ba23bd8cad81cab96e4dd6fc94f49e807bfc"
+  integrity sha512-caJ98JGVDpyHgZKeb2SAU8ZAXTZkfZ0bOZqxgFsyyq/I5Xp7wxCQxZAobY1u1i6uYJiAcagIa9y338VH4E6avw==
   dependencies:
     "@aiwins/utils" "^1.1.0"
     "@angular/localize" "~9.1.0"
@@ -35,86 +35,86 @@
     ts-toolbelt "^6.3.6"
     tslib "^1.9.0"
 
-"@aiwins/ng.feature-management@^1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.feature-management/-/ng.feature-management-1.1.10.tgz#106e3fe672592636e51ce6fc2b4ff859248c21e7"
-  integrity sha512-kU2g4dM4RpUxXAQJRqaW8u4ex8vTjwbVago8FUtgWbGtUcfRRwdLt2pvYM9jbRmMhTG2mWf1reHa2G1y/XZIhg==
+"@aiwins/ng.feature-management@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.feature-management/-/ng.feature-management-1.1.12.tgz#ac27958ed2e1845764f9acf9dcc5a7b8352692dd"
+  integrity sha512-/7/LeJ04jtV8DGOO1LlWsB5hd0/WdMiJ/RC4gP9ujzkdNEkoCRlKtR20JXRzOWN/PQFr2F82PqJnJ44yfDSURQ==
   dependencies:
-    "@aiwins/ng.theme.shared" "^1.1.10"
+    "@aiwins/ng.theme.shared" "^1.1.12"
     tslib "^1.9.0"
 
-"@aiwins/ng.identity.config@^1.1.10", "@aiwins/ng.identity.config@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity.config/-/ng.identity.config-1.1.10.tgz#bba8be37898ea6a7e5fc2bc9584c958e827e5b7f"
-  integrity sha512-svFQ6d3sbK2fo0grgRcNouT1S2E4Ty/inWsjKyUPvKsWIoBX58njZJigdGpTL+vrjUNs6+OrIBj7vvcLzJuQ4g==
-  dependencies:
-    tslib "^1.9.0"
-
-"@aiwins/ng.identity@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity/-/ng.identity-1.1.10.tgz#60f29f64b5330154b5072b74d9b16cee06a7a57e"
-  integrity sha512-jvRRL/T5oYxfA8GTpwKwuPdZ37LxGrfc8xptESVynnTt2GutlJ1o/k0Z7Ak9C11Ui7MJevk1Q+7CEvIsjyvOPg==
-  dependencies:
-    "@aiwins/ng.identity.config" "^1.1.10"
-    "@aiwins/ng.permission-management" "^1.1.10"
-    "@aiwins/ng.theme.shared" "^1.1.10"
-    tslib "^1.9.0"
-
-"@aiwins/ng.permission-management@^1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.permission-management/-/ng.permission-management-1.1.10.tgz#a27be63e0841eb99c94958ff6e1a7782e5541c82"
-  integrity sha512-UHvHtAQ4YvJy7+b2V3gkFYUDRKE+UujGUB5L9rUSCDEyqYr+RySh/avBmCmsdl6+emqraGSQaxS7zjxEGOOSNg==
-  dependencies:
-    "@aiwins/ng.theme.shared" "^1.1.10"
-    tslib "^1.9.0"
-
-"@aiwins/ng.setting-management.config@^1.1.10", "@aiwins/ng.setting-management.config@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management.config/-/ng.setting-management.config-1.1.10.tgz#3281ff4423f2d781b06c702d088e3b5f4f0e1e8b"
-  integrity sha512-CDqNdYGYOMZj1XB4Hg+6FJVZFbr8wdWIwMMsGPgF0Hzc5yuugrMYugUkHqDHn25it0CklK7V5zNSul6jJUlpIg==
+"@aiwins/ng.identity.config@^1.1.12", "@aiwins/ng.identity.config@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity.config/-/ng.identity.config-1.1.12.tgz#e4aad8af821608024d7739a0d2235610e9ba0392"
+  integrity sha512-HXQUHenV8PqrcEQonK5JwLzL6gvahU9aT/ggWDNxV0v7RCXh5/DFJ6L7ObaZmw40rLaUAKcnEyBUV4MkGDcn+g==
   dependencies:
     tslib "^1.9.0"
 
-"@aiwins/ng.setting-management@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management/-/ng.setting-management-1.1.10.tgz#d341f9891c0e585a6cf0628e1f2b938d4a6c5ddd"
-  integrity sha512-K/OH2/t1F6SSsK2ez6Dw05PxjWoCjr6oCl3gxw/PFYwep8q9OQUCBY6IEsQU1fSXtwc5BxVLS0jBUtYhJqoqTg==
+"@aiwins/ng.identity@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.identity/-/ng.identity-1.1.12.tgz#d6aae45f3dd232466e6eeb1446983082c48eaa42"
+  integrity sha512-82znDrIdAD2jSbECDsEEOtSR8SfHaRoP/2WUF/4xXF+Y0NW+AhyoS9pZRZhwrR3RGcrCFQh3llJtBqisqYgH2w==
   dependencies:
-    "@aiwins/ng.setting-management.config" "^1.1.10"
-    "@aiwins/ng.theme.shared" "^1.1.10"
+    "@aiwins/ng.identity.config" "^1.1.12"
+    "@aiwins/ng.permission-management" "^1.1.12"
+    "@aiwins/ng.theme.shared" "^1.1.12"
     tslib "^1.9.0"
 
-"@aiwins/ng.tenant-management.config@^1.1.10", "@aiwins/ng.tenant-management.config@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management.config/-/ng.tenant-management.config-1.1.10.tgz#03792e3b6ac458ce76ed85d86945d92bf844adb7"
-  integrity sha512-snHugJAM6OKqz0DYkzRI09qG+8EBI5eYpo4+EnBikVQfu/XB9RtbZXC5nxOTY3Twz3fXAl0kVzJWD502gPvCLg==
+"@aiwins/ng.permission-management@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.permission-management/-/ng.permission-management-1.1.12.tgz#cf5372e0368b653b6668f79d4cf27643ee1b6ee4"
+  integrity sha512-FcYqEyOqBBM6Noa+LLx0665RuMRUdMqBZkndbhpdCR1P6f58Oeo4V21PUgmtDAgYnDyxee9eqdu/+mhU6ya2TA==
+  dependencies:
+    "@aiwins/ng.theme.shared" "^1.1.12"
+    tslib "^1.9.0"
+
+"@aiwins/ng.setting-management.config@^1.1.12", "@aiwins/ng.setting-management.config@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management.config/-/ng.setting-management.config-1.1.12.tgz#3ab5c9f20f6bcffb3dfada392edfb6d7b796769c"
+  integrity sha512-xP9eaGSPWOJNbPEI6RQ+VJnh537JRamXdZhNvvZ52jxavYgFM9r7FLG+jWnY1iVu+zY2MhyW5jiEDCBrnhx9iA==
   dependencies:
     tslib "^1.9.0"
 
-"@aiwins/ng.tenant-management@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management/-/ng.tenant-management-1.1.10.tgz#d5261333f06ca7a45122e092e5b2e00d888c4fd2"
-  integrity sha512-lNf1KFN9QsxbUMcywNKtyQ/tCao9JDMYd0TUM7FilktYy1nzs8pnq7FdC/VL3JUrJMEblpzEi7R8jPW1uTk72A==
+"@aiwins/ng.setting-management@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.setting-management/-/ng.setting-management-1.1.12.tgz#88fc30a1a14f5822a90acc5047dd9c8a85cd8b2a"
+  integrity sha512-HRoeLPd/4EZuHWEf5WBw2BmOMpXh3upMKQ7ZvPIO+ZnBUzIRFZmxOzpYTFxLJu4uoXlXKpu301B5lBhNQ/+zMg==
   dependencies:
-    "@aiwins/ng.feature-management" "^1.1.10"
-    "@aiwins/ng.tenant-management.config" "^1.1.10"
-    "@aiwins/ng.theme.shared" "^1.1.10"
+    "@aiwins/ng.setting-management.config" "^1.1.12"
+    "@aiwins/ng.theme.shared" "^1.1.12"
     tslib "^1.9.0"
 
-"@aiwins/ng.theme.basic@~1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.basic/-/ng.theme.basic-1.1.10.tgz#885ca77361a1fa30684972a2a467a9b557c7da74"
-  integrity sha512-TBRXNfISjE5+GR6gLy5+U0vwqKQfVQW8d5C8SeMD2qA2znLuD2FnX/rpNGnqzQMS5j3kx/kTpJGYLUH1lve5NQ==
+"@aiwins/ng.tenant-management.config@^1.1.12", "@aiwins/ng.tenant-management.config@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management.config/-/ng.tenant-management.config-1.1.12.tgz#76b5acd243fde92fe241e2fbc31d85f5a73b4783"
+  integrity sha512-Yb6w1P2RjHm+RCmIU5nSpGCTZ8jp60Q+aSQdbJDUjabp55EK+6yob1sOkaxuMSEL2hUqcwWNG0t/4MfJO9cEvQ==
   dependencies:
-    "@aiwins/ng.theme.shared" "^1.1.10"
     tslib "^1.9.0"
 
-"@aiwins/ng.theme.shared@^1.1.10":
-  version "1.1.10"
-  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.shared/-/ng.theme.shared-1.1.10.tgz#98eaa49833171a7d94f41e69cf6650f7ca31bfae"
-  integrity sha512-cR318g5MRUHxmV+p5ST0u/NfRl5C8aTxR/rktlZR/ewQsURs81fQ6gLIMTXaoJ5gFQFgbg6LRmrGpwK35iB0xw==
+"@aiwins/ng.tenant-management@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.tenant-management/-/ng.tenant-management-1.1.12.tgz#451bc804d727c0db7ee11259673f19fb1644b536"
+  integrity sha512-wR85UOWRwEpMx8iBBNBvZ91BhnbqIg1QZjaWIu5C13C1y0YdG2d8/j9OEUk63WIv3/Z4bM9NpLWgceajFSKGjw==
   dependencies:
-    "@aiwins/ng.core" "^1.1.10"
+    "@aiwins/ng.feature-management" "^1.1.12"
+    "@aiwins/ng.tenant-management.config" "^1.1.12"
+    "@aiwins/ng.theme.shared" "^1.1.12"
+    tslib "^1.9.0"
+
+"@aiwins/ng.theme.basic@~1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.basic/-/ng.theme.basic-1.1.12.tgz#69ac99e0e29f87d5c95891798504eb786b2402ab"
+  integrity sha512-Q2xaDTMIw/naWLqq0Txq1Kri1p8qhp2tTPyy0+DxNmTF+vyiFoWsiYEVA3cS2S3tUHeVq5s+50nXzfqhbHhr3w==
+  dependencies:
+    "@aiwins/ng.theme.shared" "^1.1.12"
+    tslib "^1.9.0"
+
+"@aiwins/ng.theme.shared@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/ng.theme.shared/-/ng.theme.shared-1.1.12.tgz#1afce6cfba9097ca251d3f0fb76f76495cecea5a"
+  integrity sha512-hyl+yABDExk2qTQGptJnebSts28/HfvRU2b/Zeqb8Whk6AyI68dN5UpU6a3b8ph39pTJNvyLR1VYYkw5pL4auA==
+  dependencies:
+    "@aiwins/ng.core" "^1.1.12"
     "@fortawesome/fontawesome-free" "^5.12.1"
     "@ng-bootstrap/ng-bootstrap" "^5.3.0"
     "@ngx-validate/core" "^0.0.7"
@@ -126,6 +126,13 @@
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.0.tgz#a01ecf56e8f4a08e45afadd17d65d92d927c20cd"
   integrity sha512-nawxFOlEdpI//gwwk+EvNrQkltkulR6B+IQ5EZHU4MkH7sM91nNKl3GnpmoQjdz/jY3xwrslzM0sQp54vcJ7+g==
+  dependencies:
+    just-compare "^1.3.0"
+
+"@aiwins/utils@^1.1.12":
+  version "1.1.12"
+  resolved "https://registry.yarnpkg.com/@aiwins/utils/-/utils-1.1.12.tgz#5e2cb24dd5a2c0655bc040ef2ed67666aadb7bda"
+  integrity sha512-Ikne/pstSzxZyxlRHM1VfsOQlkrDfY65WajmeMpNE1xEW4EP07PgyfLXQxdT4ra6kuJ7T9naN6C7zlRybYLzuA==
   dependencies:
     just-compare "^1.3.0"
 
@@ -336,12 +343,12 @@
   dependencies:
     tslib "^1.9.0"
 
-"@angular/core@~8.2.14":
-  version "8.2.14"
-  resolved "https://registry.yarnpkg.com/@angular/core/-/core-8.2.14.tgz#35566f5b19480369229477e7e0e0fde740bd5204"
-  integrity sha512-zeePkigi+hPh3rN7yoNENG/YUBUsIvUXdxx+AZq+QPaFeKEA2FBSrKn36ojHFrdJUjKzl0lPMEiGC2b6a6bo6g==
+"@angular/core@~11.0.5":
+  version "11.0.5"
+  resolved "https://registry.yarnpkg.com/@angular/core/-/core-11.0.5.tgz#b8c448c3cd4f6dae7327cc1ba4ee2aa29c8dbc26"
+  integrity sha512-XAXWQi7R3ucZXQwx9QK5jSKJeQyRJ53u2dQDpr7R5stzeCy1a5hrNOkZLg9zOTTPcth/6+FrOrRZP9SMdxtw3w==
   dependencies:
-    tslib "^1.9.0"
+    tslib "^2.0.0"
 
 "@angular/forms@~8.2.14":
   version "8.2.14"
@@ -11839,6 +11846,11 @@ tslib@^1.10.0, tslib@^1.8.0, tslib@^1.8.1, tslib@^1.9.0:
   version "1.13.0"
   resolved "https://registry.yarnpkg.com/tslib/-/tslib-1.13.0.tgz#c881e13cc7015894ed914862d276436fa9a47043"
   integrity sha512-i/6DQjL8Xf3be4K/E6Wgpekn5Qasl1usyw++dAA35Ue5orEn65VIxOA+YvNNl9HV3qv70T7CNwjODHZrLwvd1Q==
+
+tslib@^2.0.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/tslib/-/tslib-2.4.0.tgz#7cecaa7f073ce680a05847aa77be941098f36dc3"
+  integrity sha512-d6xOpEDfsi2CZVlPQzGeux8XMwLT9hssAsaPYExaQMuYskwb+x1x7J371tWlbBdWHroy99KnVB6qIkUbs5X3UQ==
 
 tslint@~5.20.0:
   version "5.20.1"
